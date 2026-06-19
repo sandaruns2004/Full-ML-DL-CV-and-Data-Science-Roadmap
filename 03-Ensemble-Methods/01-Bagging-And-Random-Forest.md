@@ -412,4 +412,4 @@ print(f"Test score: {search.score(X_test, y_test):.4f}")
 
 ---
 
-[← Naive Bayes](../02-Supervised-Learning/07-Naive-Bayes.md) | [Back to Index](../README.md) | [Next: Boosting →](./02-Boosting.md)
+[← Model Selection Guide](../02-Supervised-Learning/08-Model-Selection-Guide.md) | [Back to Index](../README.md) | [Next: Boosting →](./02-Boosting.md)

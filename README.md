@@ -105,6 +105,7 @@ START HERE
 | 5 | [Decision Trees](./02-Supervised-Learning/05-Decision-Trees.md) |
 | 6 | [SVM](./02-Supervised-Learning/06-SVM.md) |
 | 7 | [Naive Bayes](./02-Supervised-Learning/07-Naive-Bayes.md) |
+| 8 | [Model Selection Guide](./02-Supervised-Learning/08-Model-Selection-Guide.md) |
 
 ### 📁 03-Ensemble-Methods
 | # | File |

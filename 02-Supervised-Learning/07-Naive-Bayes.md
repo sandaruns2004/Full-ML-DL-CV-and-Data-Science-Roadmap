@@ -19,6 +19,9 @@
 
 ## 1. Bayes' Theorem Review
 
+> **🧠 ELI5 Analogy (Bayes' Theorem):** Imagine you take a medical test for a very rare disease (only 1 in 10,000 people have it). The test is 99% accurate. You test positive! Should you panic? 
+> Bayes' theorem tells us *no*. Because the disease is so rare (the Prior), even a 1% false positive rate means that out of 10,000 people, 100 perfectly healthy people will test positive, but only 1 truly sick person will test positive. So even with a positive result on a 99% accurate test, your actual probability of having the disease is still less than 1%! Bayes' theorem tells us how to update our existing beliefs based on new evidence.
+
 $$P(y|\mathbf{x}) = \frac{P(\mathbf{x}|y) \cdot P(y)}{P(\mathbf{x})}$$
 
 | Term | Name | ML Interpretation |
@@ -35,6 +38,9 @@ $$\hat{y} = \arg\max_y P(y) \cdot P(\mathbf{x}|y)$$
 ---
 
 ## 2. The "Naive" Assumption
+
+> **🧠 Why is it called "Naive"?** 
+> It assumes that every feature is completely independent of every other feature. For example, if the model is trying to identify an apple, it assumes that being "red", being "round", and being "sweet" have absolutely nothing to do with each other. In real life, this is completely naive (red round things in a fruit bowl are highly likely to be sweet). But computationally, this "dumb" assumption makes the math incredibly fast and actually works amazingly well!
 
 The **naive** assumption is that features are **conditionally independent** given the class:
 
@@ -311,16 +317,36 @@ for email in test_emails:
 ## 9. Project Ideas & What's Next
 
 ### Project Ideas
-- 🟢 **News Category Classifier** — Classify news articles into categories
-- 🟡 **Sentiment Analyzer** — Build a Twitter/review sentiment classifier
-- 🔴 **Email Spam Filter** — Complete end-to-end spam detection system
+
+#### 🟢 News Category Classifier (Beginner)
+- **Dataset:** 20 Newsgroups dataset (available via sklearn).
+- **Task:** Classify news articles into topics like sports, politics, or technology.
+- **Skills:** Basic text processing, implementing `MultinomialNB`, comparing results with `GaussianNB`.
+- **Output:** A system that accepts raw text input and outputs predicted categories with their respective probability scores.
+
+#### 🟡 Twitter Sentiment Analyzer (Intermediate)
+- **Dataset:** Sentiment140 or similar Twitter datasets.
+- **Task:** Classify tweets as positive, negative, or neutral.
+- **Skills:** Handling noisy text data (hashtags, mentions, emojis), n-gram feature generation, tuning Laplace smoothing (`alpha`).
+- **Output:** A robust baseline classifier for social media sentiment that processes hundreds of thousands of records in seconds.
+
+#### 🔴 End-to-End Spam Filter API (Advanced)
+- **Dataset:** Enron Email Dataset or a custom scraped dataset.
+- **Task:** Build a production-ready spam classification system.
+- **Skills:** Advanced NLP feature engineering (measuring capitalization frequency, link counts), building a scikit-learn Pipeline, wrapping the model in a FastAPI or Flask endpoint.
+- **Output:** A locally hosted web API where a user can POST an email body and receive a JSON response indicating whether it is spam, driven by a serialized Naive Bayes model.
 
 ### What's Next
-| Next | Why |
-|------|-----|
-| [Bagging & Random Forest](../03-Ensemble-Methods/01-Bagging-And-Random-Forest.md) | Combine multiple models |
-| [NLP](../08-Specialized-Domains/01-NLP.md) | Deep dive into text processing |
+
+Congratulations! You have covered the core of classical supervised learning. 
+
+| Next Topic | Why it's Important |
+|------------|--------------------|
+| [Model Selection Guide](./08-Model-Selection-Guide.md) | A capstone summary of when to use which supervised learning algorithm. |
+| [Ensemble Methods](../03-Ensemble-Methods/01-Bagging-And-Random-Forest.md) | Start combining these standalone algorithms (like Decision Trees) into powerful ensembles like Random Forests and XGBoost. |
+| [Natural Language Processing (NLP)](../12-NLP/01-Text-Preprocessing.md) | Take the text classification concepts learned here and dive deep into word embeddings, transformers, and deep learning for text. |
+| [Unsupervised Learning](../04-Unsupervised-Learning/01-Clustering.md) | What if your data doesn't have labels (no Y variable)? Learn how to let algorithms find patterns on their own. |
 
 ---
 
-[← SVM](./06-SVM.md) | [Back to Index](../README.md) | [Next: Bagging And Random Forest →](../03-Ensemble-Methods/01-Bagging-And-Random-Forest.md)
+[← SVM](./06-SVM.md) | [Back to Index](../README.md) | [Next: Model Selection Guide →](./08-Model-Selection-Guide.md)

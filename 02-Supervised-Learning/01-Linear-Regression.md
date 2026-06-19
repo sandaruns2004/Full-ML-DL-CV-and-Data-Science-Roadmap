@@ -70,6 +70,8 @@ plt.show()
 
 ### 3.1 Ordinary Least Squares (OLS)
 
+> **🧠 ELI5 Analogy:** Imagine you're holding a straight ruler over a board with lots of pins sticking out of it. You want to place the ruler so it rests as closely as possible to all the pins. OLS mathematically measures the exact distance from the ruler to every single pin, squares those distances, and finds the exact position that makes the total sum of those squared distances the absolute smallest!
+
 OLS finds the line that minimizes the **sum of squared residuals**:
 
 $$\min_{w, b} \quad J(w, b) = \sum_{i=1}^{n} (y_i - (wx_i + b))^2 = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
@@ -173,6 +175,18 @@ print(f"  Slope (w):     {theta[1]:.4f} (true: 3.0)")
 ---
 
 ## 4. Gradient Descent for Linear Regression
+
+> **🧠 ELI5 Analogy:** Imagine you are blindfolded on the side of a mountain, and your goal is to reach the valley floor (representing the lowest possible error). You can't see the whole mountain, but you can feel the slope of the ground under your feet. Gradient Descent means you simply feel the slope and take a step straight downhill. If it's steep, you take a big step. As it levels out near the valley floor, your steps become smaller until you safely stop at the exact bottom.
+
+```mermaid
+graph TD
+    A[Start: Random Guess for Weights] --> B[Calculate Error 'Height on Mountain']
+    B --> C[Calculate Gradient 'Slope under feet']
+    C --> D{Is gradient almost zero?}
+    D -- Yes --> E[Valley Floor Reached! Final Weights]
+    D -- No --> F[Update Weights: Take step downhill]
+    F --> B
+```
 
 When the normal equation is too expensive (large datasets), we use **gradient descent**.
 
@@ -602,28 +616,35 @@ plt.show()
 ## 11. Project Ideas
 
 ### 🟢 Project 1: House Price Predictor (Beginner)
-- Use California Housing dataset
-- Build linear regression, evaluate with R², RMSE
-- Visualize predictions vs actual
+- **Dataset:** California Housing or Ames Housing dataset (Kaggle).
+- **Task:** Predict the median house value for a given neighborhood.
+- **Skills:** Basic data loading (Pandas), building a simple Linear Regression model (scikit-learn), handling missing values.
+- **Evaluation:** Measure performance using Mean Absolute Error (MAE) and R².
+- **Bonus:** Create a scatter plot of predicted vs actual prices to visually inspect model performance.
 
 ### 🟡 Project 2: Salary Predictor (Intermediate)
-- Predict salary from experience, education, location
-- Feature engineer: interaction terms, polynomial features
-- Compare OLS, Gradient Descent, and scikit-learn
+- **Dataset:** StackOverflow Developer Survey or similar tech salary datasets.
+- **Task:** Predict developer salary based on years of experience, education level, and geographic location.
+- **Skills:** Categorical encoding (One-Hot Encoding), Feature Engineering (polynomial features or interaction terms).
+- **Evaluation:** Compare standard OLS regression against Gradient Descent implementations. Analyze feature importance using model coefficients.
 
 ### 🔴 Project 3: Stock Price Direction (Advanced)
-- Use financial indicators as features
-- Apply multiple regression with feature selection
-- Backtest predictions against actual returns
+- **Dataset:** Historical stock data using the `yfinance` library.
+- **Task:** Forecast the closing price of a stock for the next day.
+- **Skills:** Time-series feature engineering (moving averages, momentum indicators), rigorous feature selection to avoid multicollinearity.
+- **Evaluation:** Backtesting predictions against actual returns using Walk-Forward validation. Understand the limitations of linear regression in financial forecasting.
 
 ---
 
 ## 12. What's Next
 
-| Next Topic | Why |
-|------------|-----|
-| [Polynomial & Regularization](./02-Polynomial-And-Regularization.md) | Handle non-linearity and overfitting |
-| [Logistic Regression](./03-Logistic-Regression.md) | Classification version of regression |
+Congratulations on completing the foundation of predictive modeling! Here's where to go next:
+
+| Next Topic | Why it's Important |
+|------------|--------------------|
+| [Polynomial & Regularization](./02-Polynomial-And-Regularization.md) | Standard linear regression struggles with non-linear relationships and is prone to overfitting. Regularization (Ridge/Lasso) solves this. |
+| [Logistic Regression](./03-Logistic-Regression.md) | What if your target isn't a continuous number but a discrete category (e.g., Yes/No)? We adapt regression for classification. |
+| [Exploratory Data Analysis](../01-Data-Science-Foundations/06-EDA.md) | Better models start with better data understanding. |
 
 ---
 

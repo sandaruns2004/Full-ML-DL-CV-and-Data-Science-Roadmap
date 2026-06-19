@@ -19,18 +19,21 @@
 
 ## 1. Intuition
 
-A decision tree learns a series of **if-then rules** from data. It's like playing 20 Questions:
+## 1. Intuition
 
-```
-Is the animal a mammal?
-├── Yes → Does it have 4 legs?
-│         ├── Yes → Does it bark?
-│         │         ├── Yes → DOG 🐕
-│         │         └── No  → CAT 🐱
-│         └── No  → HUMAN 👤
-└── No  → Does it fly?
-          ├── Yes → BIRD 🐦
-          └── No  → FISH 🐟
+> **🧠 ELI5 Analogy:** A decision tree is exactly like playing the game "20 Questions". You start with a big group of possibilities (e.g., all animals). You ask a yes/no question ("Does it have 4 legs?"). Depending on the answer, you split the possibilities into two smaller, more specific groups. You keep asking questions until you are absolutely sure of the answer!
+
+```mermaid
+graph TD
+    A[Is it a mammal?]
+    A -- Yes --> B[Does it have 4 legs?]
+    A -- No --> C[Does it fly?]
+    B -- Yes --> D[Does it bark?]
+    B -- No --> E[HUMAN 👤]
+    C -- Yes --> F[BIRD 🐦]
+    C -- No --> G[FISH 🐟]
+    D -- Yes --> H[DOG 🐕]
+    D -- No --> I[CAT 🐱]
 ```
 
 ---
@@ -65,6 +68,11 @@ $$\text{IG}(S, A) = H(S) - \sum_{v \in \text{values}(A)} \frac{|S_v|}{|S|} H(S_v
 **Choose the feature with the highest information gain!**
 
 ### 3.3 Gini Impurity
+
+> **🧠 ELI5 Analogy:** Imagine a bucket filled with 100 colored balls. 
+> - If all 100 balls are red, the bucket is completely *pure* (Gini = 0). If you reach in blindfolded, you have zero chance of guessing wrong.
+> - If there are 50 red balls and 50 blue balls, the bucket is completely *impure* (Gini = 0.5). If you reach in, it's a total coin toss.
+> Decision trees want to split the data so the resulting "buckets" (leaf nodes) are as close to Gini=0 as possible!
 
 $$G(S) = 1 - \sum_{i=1}^{C} p_i^2$$
 
@@ -333,15 +341,32 @@ plt.show()
 ## 9. Project Ideas & What's Next
 
 ### Project Ideas
-- 🟢 **Loan Approval Predictor** — Interpretable decision rules
-- 🟡 **Medical Diagnosis System** — Visualize decision process
-- 🔴 **Custom Tree with Advanced Pruning** — Implement cost-complexity pruning from scratch
+
+#### 🟢 Loan Approval Predictor (Beginner)
+- **Dataset:** Lending Club or general loan approval datasets.
+- **Task:** Predict whether a customer will default on a loan based on income, credit score, and debt levels.
+- **Skills:** Training a basic `DecisionTreeClassifier`, handling categorical data.
+- **Output:** Export and visualize the actual decision tree using `plot_tree` to see exactly what rules the model learned. Explain the top rules to a non-technical audience.
+
+#### 🟡 Medical Diagnosis System (Intermediate)
+- **Dataset:** Heart Disease or Breast Cancer Wisconsin datasets.
+- **Task:** Diagnose conditions while prioritizing interpretability. Doctors need to know *why* a model made a decision.
+- **Skills:** Hyperparameter tuning (`max_depth`, `min_samples_leaf`) to prevent the tree from becoming overly complex and unreadable. Feature importance extraction.
+- **Output:** A robust, pruned tree and a bar chart of the most important clinical features driving the diagnoses.
+
+#### 🔴 Custom Tree with Advanced Pruning (Advanced)
+- **Dataset:** Any classification dataset.
+- **Task:** Implement a Decision Tree from scratch or perform manual Cost-Complexity Pruning (ccp_alpha) to find the mathematically optimal sub-tree.
+- **Skills:** Understanding Gini Impurity/Entropy mathematically, extracting the pruning path, cross-validating pruning parameters.
+- **Output:** A plot of accuracy vs alpha on both training and validation sets, demonstrating exactly where overfitting is cured.
 
 ### What's Next
-| Next | Why |
-|------|-----|
-| [SVM](./06-SVM.md) | Maximum margin classification |
-| [Random Forest](../03-Ensemble-Methods/01-Bagging-And-Random-Forest.md) | Ensemble of trees = much better! |
+
+| Next Topic | Why it's Important |
+|------------|--------------------|
+| [Support Vector Machines (SVM)](./06-SVM.md) | A powerful algorithm that focuses strictly on the boundaries between classes, introducing the concept of the "margin". |
+| [Random Forest](../03-Ensemble-Methods/01-Bagging-And-Random-Forest.md) | A single tree is prone to overfitting. Combining hundreds of trees (an ensemble) fixes this entirely. This is the natural next step. |
+| [Feature Engineering](../01-Data-Science-Foundations/08-Feature-Engineering.md) | Trees handle raw data well, but creating powerful new features can still drastically improve splits. |
 
 ---
 
