@@ -188,7 +188,7 @@ for param in model.parameters():
 ### What's Next
 | Next | Why |
 |------|-----|
-| [Classical NLP](../12-NLP/02-Classical-NLP.md) | We've finished the Generative Models section! Now we move back to text, exploring how Natural Language Processing evolved from basic word counting to complex sequence modeling. |
+| [Image Processing Fundamentals](../11-CV/01-Image-Processing-Fundamentals.md) | We've finished the Generative Models section! Now we move to Computer Vision, starting from the basics of image processing. |
 
 ---
 

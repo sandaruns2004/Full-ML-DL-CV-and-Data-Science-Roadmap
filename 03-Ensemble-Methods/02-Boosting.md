@@ -21,16 +21,26 @@
 
 Boosting builds models **sequentially**, where each new model tries to fix the errors of the previous one.
 
-```
-Model 1: Makes predictions → Some errors
-                                    ↓
-Model 2: Focus on errors of Model 1 → Some remaining errors
-                                            ↓
-Model 3: Focus on remaining errors → Even fewer errors
-                                            ↓
-...continue until good enough...
-
-Final prediction = Weighted combination of all models
+```mermaid
+flowchart TD
+    M1["Model 1"] -->|"Makes Predictions"| E1["Errors 1"]
+    
+    E1 -->|"Focus on Errors"| M2["Model 2"]
+    M2 -->|"Makes Predictions"| E2["Errors 2"]
+    
+    E2 -->|"Focus on Errors"| M3["Model 3"]
+    M3 -->|"Makes Predictions"| EN["..."]
+    
+    M1 -.->|"Weight α₁"| Final{"Weighted\nCombination"}
+    M2 -.->|"Weight α₂"| Final
+    M3 -.->|"Weight α₃"| Final
+    
+    Final --> P["🏆 Final Prediction"]
+    
+    style E1 fill:#ffcccc,stroke:#ff0000
+    style E2 fill:#ffdddd,stroke:#ff0000
+    style Final fill:#bbf,stroke:#333,stroke-width:2px
+    style P fill:#bfb,stroke:#333,stroke-width:2px
 ```
 
 **Key difference from Bagging**:
@@ -362,13 +372,25 @@ print(f"CatBoost accuracy: {model.score(X_test, y_test):.4f}")
 
 ### When to Use What
 
-```
-Start here: XGBoost (great all-rounder)
-     │
-     ├── Large dataset? → LightGBM (faster, lower memory)
-     ├── Categorical features? → CatBoost (native handling)
-     ├── Kaggle competition? → Try all, ensemble the best
-     └── Need interpretability? → Gradient Boosting + SHAP
+```mermaid
+graph TD
+    Start["Start Here"] --> XGB["XGBoost\nGreat all-rounder"]
+    
+    XGB --> Q1{"Large dataset?"}
+    Q1 -->|Yes| LGBM["LightGBM\nFaster, lower memory"]
+    Q1 -->|No| Q2{"Categorical features?"}
+    
+    Q2 -->|Yes| CB["CatBoost\nNative handling"]
+    Q2 -->|No| Q3{"Kaggle Competition?"}
+    
+    Q3 -->|Yes| Ens["Try All & Ensemble\nStacking/Voting"]
+    Q3 -->|No| Q4{"Need Interpretability?"}
+    
+    Q4 -->|Yes| GB["Gradient Boosting + SHAP"]
+    Q4 -->|No| XGB
+    
+    style Start fill:#f9f,stroke:#333,stroke-width:2px
+    style XGB fill:#bfb,stroke:#333,stroke-width:2px
 ```
 
 ---
@@ -417,15 +439,17 @@ for name, model in models.items():
 ## 9. Project Ideas & What's Next
 
 ### Project Ideas
-- 🟢 **Kaggle Tabular Competition** — Use XGBoost/LightGBM
-- 🟡 **Customer Churn Prediction** — Compare all boosting algorithms
-- 🔴 **Gradient Boosting from Scratch** — Build GBM for regression and classification
+- 🟢 **Kaggle Tabular Competition:** Jump into any ongoing or past Kaggle tabular data competition (like Titanic or House Prices) and build a robust XGBoost or LightGBM model. Focus on getting a feel for hyperparameter tuning.
+- 🟡 **Customer Churn Prediction:** Use a telecommunications dataset to predict which customers will leave. Train models using XGBoost, LightGBM, and CatBoost, and compare their training times, evaluation metrics, and feature importances.
+- 🔴 **Gradient Boosting from Scratch:** Implement a basic Gradient Boosting Machine (GBM) for regression from scratch using `numpy` and standard Decision Trees as base learners. This will solidify your understanding of fitting trees to residuals.
 
 ### What's Next
-| Next | Why |
-|------|-----|
-| [Stacking & Voting](./03-Stacking-And-Voting.md) | Combine different model types |
-| [Hyperparameter Tuning](../05-Model-Evaluation/03-Hyperparameter-Tuning.md) | Optimize boosting models |
+Boosting is often the pinnacle of tabular data performance, but what if you combine it with other techniques?
+
+| Next Topic | Why You Should Learn It |
+|------------|-------------------------|
+| [**Stacking & Voting**](./03-Stacking-And-Voting.md) | Why choose between Random Forest, SVM, and XGBoost when you can use all of them together? Learn how to stack models for ultimate predictive power. |
+| [**Hyperparameter Tuning**](../05-Model-Evaluation/03-Hyperparameter-Tuning.md) | Boosting algorithms have many delicate hyperparameters (learning rate, depth, regularization). Learn systematic ways to tune them effectively. |
 
 ---
 

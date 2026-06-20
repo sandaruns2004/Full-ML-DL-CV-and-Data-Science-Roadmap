@@ -130,7 +130,7 @@ def train_student(teacher, student, dataloader, optimizer, T=3.0, alpha=0.5):
 ### What's Next
 | Next | Why |
 |------|-----|
-| [AB Testing](../14-DS-Advanced/01-AB-Testing.md) | Shift focus to Advanced Data Science topics. |
+| [Semi-Supervised Learning](./08-Semi-Supervised-Learning.md) | We learned how to compress models. Next, we learn how to train models when we have very little labeled data. |
 
 ---
 

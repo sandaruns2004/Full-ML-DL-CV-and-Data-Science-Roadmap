@@ -145,7 +145,7 @@ spark.stop()
 ### What's Next
 | Next | Why |
 |------|-----|
-| [ML Pipeline & Feature Stores](../15-ML-In-Production/01-ML-Pipeline.md) | We've finished all the advanced modeling! Now, we move to the final phase: MLOps. How do we take these massive models and deploy them safely into production software systems? |
+| [Data Ethics & Fairness](./06-Data-Ethics-Fairness.md) | As we handle massive datasets, we must also ensure our models are fair, unbiased, and ethical before deploying them to the real world. |
 
 ---
 

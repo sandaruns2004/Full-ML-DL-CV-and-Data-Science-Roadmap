@@ -24,12 +24,21 @@
 
 **Why ensembles work**: Individual models make different errors. When we combine them, errors cancel out while correct predictions reinforce each other.
 
-```
-Single Tree:     Accuracy ≈ 75%
-                 High variance (unstable)
-
-Random Forest:   Accuracy ≈ 95%
-(100 trees)      Low variance (stable)
+```mermaid
+graph LR
+    subgraph Single_Tree ["🌲 Single Tree"]
+        direction TB
+        A["High Variance"] --> B("Accuracy ≈ 75%")
+        B --> C["Unstable Predictions"]
+    end
+    
+    subgraph Random_Forest ["🌲🌲🌲 Random Forest (100 Trees)"]
+        direction TB
+        D["Low Variance"] --> E("Accuracy ≈ 95%")
+        E --> F["Stable Predictions"]
+    end
+    
+    Single_Tree -.-> |"Combine Multiple Trees\n(Wisdom of Crowds)"| Random_Forest
 ```
 
 Three main ensemble strategies:
@@ -105,11 +114,29 @@ Random Forest = Bagging + **Random Feature Selection** at each split.
 
 This creates **more diverse trees**, which reduces correlation between trees and improves the ensemble.
 
-```
-Step 1: Bootstrap sample → Different subsets of DATA
-Step 2: Random feature subset at each split → Different VIEWS of data
-Step 3: Build full tree (no pruning) → Complex individual models
-Step 4: Aggregate → Majority vote or average
+```mermaid
+flowchart TD
+    Data[("Original Dataset")] -->|Bootstrap Sampling| S1["Sample 1"]
+    Data -->|Bootstrap Sampling| S2["Sample 2"]
+    Data -->|Bootstrap Sampling| S3["Sample N"]
+    
+    S1 -->|Random Features| T1["🌲 Tree 1"]
+    S2 -->|Random Features| T2["🌲 Tree 2"]
+    S3 -->|Random Features| T3["🌲 Tree N"]
+    
+    T1 --> P1["Prediction 1"]
+    T2 --> P2["Prediction 2"]
+    T3 --> P3["Prediction N"]
+    
+    P1 --> Agg{"Aggregation\nMajority Vote / Average"}
+    P2 --> Agg
+    P3 --> Agg
+    
+    Agg --> Final["🏆 Final Prediction"]
+    
+    style Data fill:#f9f,stroke:#333,stroke-width:2px
+    style Agg fill:#bbf,stroke:#333,stroke-width:2px
+    style Final fill:#bfb,stroke:#333,stroke-width:2px
 ```
 
 ---
@@ -400,15 +427,17 @@ print(f"Test score: {search.score(X_test, y_test):.4f}")
 ## 10. Project Ideas & What's Next
 
 ### Project Ideas
-- 🟢 **Credit Risk Prediction** — Random Forest with feature importance analysis
-- 🟡 **Kaggle Competition** — Use RF as a strong baseline
-- 🔴 **Custom Bagging Framework** — Support any base estimator
+- 🟢 **Credit Risk Prediction:** Build a Random Forest classifier using historical banking data to predict loan defaults. Focus on interpreting the results using feature importance to explain why certain clients are denied credit.
+- 🟡 **Kaggle House Pricing Competition:** Participate in the classic Kaggle competition by using Random Forest as a robust baseline regression model. Practice handling missing values and categorical encoding before feeding the data into the ensemble.
+- 🔴 **Custom Bagging Framework from Scratch:** Build a Python class that replicates `BaggingClassifier`. Your class should be able to accept *any* scikit-learn base estimator (e.g., Logistic Regression, SVM) and perform bootstrap sampling and aggregation manually.
 
 ### What's Next
-| Next | Why |
-|------|-----|
-| [Boosting](./02-Boosting.md) | Sequential ensemble — reduces bias |
-| [Stacking](./03-Stacking-And-Voting.md) | Meta-learning ensemble |
+Now that you understand Bagging (which primarily reduces *variance*), it's time to explore the other primary ensemble techniques:
+
+| Next Topic | Why You Should Learn It |
+|------------|-------------------------|
+| [**Boosting**](./02-Boosting.md) | While Bagging builds models independently, Boosting builds them sequentially, focusing on reducing *bias* by learning from previous mistakes. Essential for Kaggle! |
+| [**Stacking & Voting**](./03-Stacking-And-Voting.md) | Learn how to combine entirely different types of models (e.g., mixing Trees, SVMs, and Linear Models) into a single, highly powerful meta-model. |
 
 ---
 

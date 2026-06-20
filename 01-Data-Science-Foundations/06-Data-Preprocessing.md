@@ -56,7 +56,7 @@ from sklearn.impute import SimpleImputer, KNNImputer
 
 df = pd.DataFrame({
     'age': [25, 30, np.nan, 45, 50],
-    'income': [50k, 60k, 80k, np.nan, 120k],
+    'income': [50000, 60000, 80000, np.nan, 120000],
     'city': ['NY', 'LA', 'NY', np.nan, 'SF']
 })
 

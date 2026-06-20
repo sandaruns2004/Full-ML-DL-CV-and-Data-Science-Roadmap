@@ -206,7 +206,7 @@ Percentage of trainable params: 0.391%
 ### What's Next
 | Next | Why |
 |------|-----|
-| [Generative Models & VAEs](../10-Generative/02-Variational-Autoencoders.md) | We've finished Transformers! Now we move to Image Generation, starting with the mathematical beauty of Variational Autoencoders. |
+| [Mixture Of Experts](./07-Mixture-Of-Experts.md) | Learn how massive models like GPT-4 route queries to specialized sub-networks to save compute. |
 
 ---
 

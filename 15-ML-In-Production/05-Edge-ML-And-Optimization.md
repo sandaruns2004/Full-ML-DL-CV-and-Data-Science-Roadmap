@@ -148,7 +148,7 @@ print(f"Speedup: {time_fp32 / time_int8:.2f}x")
 ### What's Next
 | Next | Why |
 |------|-----|
-| [Capstone Projects](../16-Projects/README.md) | You have reached the end of the theoretical curriculum! You now know everything from Linear Regression to Kubernetes MLOps. It is time to prove it by building comprehensive Portfolio Projects. |
+| [Experiment Tracking](./06-Experiment-Tracking.md) | Now that our model runs on edge, we need to track our experiments properly. |
 
 ---
 

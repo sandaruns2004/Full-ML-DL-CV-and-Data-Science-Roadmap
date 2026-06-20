@@ -135,8 +135,7 @@ print(f"Layer 2 output shape: {out2.shape}") # Should be [32, 64, 100]
 ### What's Next
 | Next | Why |
 |------|-----|
-| **Phase 2 Complete!** | You have mastered the fundamentals of Deep Learning and Sequence Models. |
-| [Phase 3: CNN Complete Section](../README.md) | We will move back to vision, deep diving into standard 2D convolutions, architectures like ResNet, and advanced tasks like Object Detection. |
+| [Attention Mechanism](../09-Transformers/01-Attention-Mechanism.md) | We have mastered RNNs and TCNs. Now we enter the modern era: Attention mechanisms and Transformers! |
 
 ---
 

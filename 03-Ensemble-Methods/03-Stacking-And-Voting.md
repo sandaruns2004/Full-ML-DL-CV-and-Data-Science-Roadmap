@@ -62,11 +62,33 @@ for name, model in estimators + [('Hard Voting', hard_voting), ('Soft Voting', s
 
 Stacking uses **predictions from base models as features** for a **meta-learner**:
 
-```
-Layer 1 (Base Models):
-  Model A → prediction_A
-  Model B → prediction_B     →  [pred_A, pred_B, pred_C]  →  Meta-learner → Final prediction
-  Model C → prediction_C
+```mermaid
+flowchart LR
+    subgraph Layer_1 ["Layer 1 (Base Models)"]
+        direction TB
+        M_A["🤖 Model A"] --> P_A("pred_A")
+        M_B["🤖 Model B"] --> P_B("pred_B")
+        M_C["🤖 Model C"] --> P_C("pred_C")
+    end
+    
+    subgraph Features ["Meta Features"]
+        F["[pred_A, pred_B, pred_C]"]
+    end
+    
+    subgraph Layer_2 ["Layer 2"]
+        Meta["🧠 Meta-Learner\n(e.g., Logistic Regression)"]
+    end
+    
+    P_A --> F
+    P_B --> F
+    P_C --> F
+    
+    F --> Meta
+    Meta --> Final["🏆 Final Prediction"]
+    
+    style Features fill:#e1f5fe,stroke:#0288d1
+    style Meta fill:#fff9c4,stroke:#fbc02d
+    style Final fill:#c8e6c9,stroke:#388e3c
 ```
 
 **Key**: Use **cross-validation** for base model predictions to avoid overfitting!
@@ -185,15 +207,17 @@ print(f"Blending accuracy: {meta.score(test_features, y_test):.4f}")
 ## 5. Project Ideas & What's Next
 
 ### Project Ideas
-- 🟢 **Model Comparison Framework** — Compare voting vs stacking
-- 🟡 **Kaggle Ensemble Strategy** — Build a multi-layer stacking system
-- 🔴 **Auto-Ensemble Builder** — Automatically select and combine best models
+- 🟢 **Model Comparison Framework:** Build a system that automatically trains Random Forest, Logistic Regression, and SVM, and then compares their individual performances against a Hard/Soft Voting Classifier.
+- 🟡 **Kaggle Ensemble Strategy:** Take an old Kaggle competition dataset (like the Titanic or House Prices) and build a robust 2-layer stacking architecture. Use Tree-based and Linear models in Layer 1, and a simple Logistic Regression or Ridge Regression as the Meta-learner in Layer 2.
+- 🔴 **Auto-Ensemble Builder:** Create a Python tool that takes in a dataset, automatically selects top-performing base models using cross-validation, and optimizes a stacking meta-learner to maximize the final metric. Implement Blending as an alternative fast mode.
 
 ### What's Next
-| Next | Why |
-|------|-----|
-| [Clustering](../04-Unsupervised-Learning/01-Clustering.md) | Unsupervised learning |
-| [Model Evaluation](../05-Model-Evaluation/01-Metrics-And-Evaluation.md) | Properly evaluate your ensembles |
+You have reached the end of the **Ensemble Methods** module. You now possess the most powerful predictive tools available for tabular data!
+
+| Next Module | Why You Should Learn It |
+|-------------|-------------------------|
+| [**Clustering (Unsupervised Learning)**](../04-Unsupervised-Learning/01-Clustering.md) | Take a break from predicting labels. Learn how to find hidden structures, groups, and patterns in data when you *don't* have a target variable. |
+| [**Model Evaluation & Metrics**](../05-Model-Evaluation/01-Metrics-And-Evaluation.md) | Ensure you are evaluating your complex stacking architectures correctly. Learn advanced metrics beyond simple accuracy. |
 
 ---
 

@@ -2,7 +2,7 @@
 
 > **From Zero to Production — A comprehensive, math-heavy, code-rich learning path for Machine Learning.**
 
-Welcome to the most comprehensive, open-source Machine Learning curriculum ever created. This repository contains 105 meticulously crafted files that will take you from absolute beginner (Linear Algebra & Python) to Senior ML Engineer (Transformers, MLOps, & Distributed Systems).
+Welcome to the most comprehensive, open-source Machine Learning curriculum ever created. This repository contains 125 meticulously crafted files that will take you from absolute beginner (Linear Algebra & Python) to Senior ML Engineer (Transformers, MLOps, & Distributed Systems).
 
 ---
 
