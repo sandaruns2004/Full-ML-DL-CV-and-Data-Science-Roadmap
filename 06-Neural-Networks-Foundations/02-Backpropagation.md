@@ -98,51 +98,34 @@ $$d\mathbf{b}^{[l]} = \frac{1}{m} \sum_{i=1}^{m} d\mathbf{Z}^{[l](i)}$$
 
 Here is a Python script that visually graphs a simple computational node.
 
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-import networkx as nx
-
-# Create a directed graph for visualization
-G = nx.DiGraph()
-
-# Add nodes
-nodes = ['x=2', 'w=3', 'z=x*w=6', 'b=1', 'out=z+b=7', 'L=MSE(out,y)']
-G.add_nodes_from(nodes)
-
-# Add edges (Forward pass)
-G.add_edge('x=2', 'z=x*w=6', weight='*w')
-G.add_edge('w=3', 'z=x*w=6', weight='*x')
-G.add_edge('z=x*w=6', 'out=z+b=7', weight='+')
-G.add_edge('b=1', 'out=z+b=7', weight='+')
-G.add_edge('out=z+b=7', 'L=MSE(out,y)', weight='Loss')
-
-pos = {
-    'x=2': (0, 2),
-    'w=3': (0, 0),
-    'z=x*w=6': (2, 1),
-    'b=1': (2, -1),
-    'out=z+b=7': (4, 0),
-    'L=MSE(out,y)': (6, 0)
-}
-
-plt.figure(figsize=(10, 5))
-nx.draw_networkx_nodes(G, pos, node_size=3000, node_color='lightblue', edgecolors='black')
-nx.draw_networkx_labels(G, pos, font_size=10, font_weight='bold')
-
-# Draw Forward Edges (Black)
-nx.draw_networkx_edges(G, pos, edge_color='black', arrows=True, arrowsize=20)
-
-# Draw Backward Edges (Red, dashed - conceptual)
-backward_edges = [(v, u) for u, v in G.edges()]
-nx.draw_networkx_edges(G, pos, edgelist=backward_edges, edge_color='red', 
-                       style='dashed', arrows=True, arrowsize=20, connectionstyle='arc3,rad=0.2')
-
-plt.title("Computational Graph: Forward (Black) & Backward Pass (Red)", fontsize=14, fontweight='bold')
-plt.axis('off')
-plt.tight_layout()
-plt.savefig('computational_graph.png', dpi=150)
-plt.show()
+```mermaid
+graph LR
+    %% Nodes
+    x((x=2))
+    w((w=3))
+    b((b=1))
+    
+    %% Operations
+    mul{*}
+    add{+}
+    loss{MSE}
+    
+    %% Forward Pass
+    x -- "x (2)" --> mul
+    w -- "w (3)" --> mul
+    mul -- "z=6" --> add
+    b -- "b (1)" --> add
+    add -- "out=7" --> loss
+    
+    %% Backward Pass (Red edges)
+    loss -. "dL/dout" .-> add
+    add -. "dout/db = 1" .-> b
+    add -. "dout/dz = 1" .-> mul
+    mul -. "dz/dw = x" .-> w
+    mul -. "dz/dx = w" .-> x
+    
+    classDef op fill:#f9f,stroke:#333,stroke-width:2px;
+    class mul,add,loss op;
 ```
 
 ---

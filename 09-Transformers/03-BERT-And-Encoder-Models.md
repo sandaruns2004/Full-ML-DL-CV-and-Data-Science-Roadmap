@@ -9,8 +9,9 @@
 2. [Masked Language Modeling (MLM)](#2-masked-language-modeling-mlm)
 3. [Next Sentence Prediction (NSP)](#3-next-sentence-prediction-nsp)
 4. [The [CLS] Token & Fine-Tuning](#4-the-cls-token--fine-tuning)
-5. [BERT Variants (RoBERTa, ALBERT, DistilBERT)](#5-bert-variants-roberta-albert-distilbert)
-6. [Project Ideas & What's Next](#6-project-ideas--whats-next)
+5. [Code Example: Fine-Tuning with HuggingFace](#5-code-example-fine-tuning-with-huggingface)
+6. [BERT Variants (RoBERTa, ALBERT, DistilBERT)](#6-bert-variants-roberta-albert-distilbert)
+7. [Project Ideas & What's Next](#7-project-ideas--whats-next)
 
 ---
 
@@ -37,7 +38,7 @@ How do you train a model to "understand" language without human labels? You use 
 4. The network outputs a probability distribution over the entire English vocabulary for those masked positions.
 5. Calculate Cross-Entropy Loss against the original words (*"chef"*, *"meal"*).
 
-Because the network must guess the missing words, it is forced to deeply learn grammar, syntax, and world facts (e.g., chefs cook meals).
+Because the network must guess the missing words, it is forced to deeply learn grammar, syntax, and world facts.
 
 ---
 
@@ -67,11 +68,61 @@ Because self-attention allows all tokens to communicate, the `[CLS]` token acts 
 3. Attach a randomly initialized Feed Forward Neural Network (a classification head) directly to the output of the `[CLS]` token.
 4. Train the model on your small, labeled dataset (e.g., 500 spam emails and 500 safe emails).
 
-This paradigm—**Pre-train on massive text, Fine-tune on specific tasks**—defined the modern NLP era.
+---
+
+## 5. Code Example: Fine-Tuning with HuggingFace
+
+The HuggingFace `transformers` library makes fine-tuning BERT remarkably simple. Here's how you can fine-tune a model for Sequence Classification (e.g., Sentiment Analysis).
+
+```python
+# pip install transformers datasets torch
+import torch
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer, TrainingArguments
+from datasets import load_dataset
+
+# 1. Load Dataset & Tokenizer
+dataset = load_dataset("imdb") # Movie reviews (positive/negative)
+tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
+
+def tokenize_function(examples):
+    # Padding and truncation ensure all sequences are the same length
+    return tokenizer(examples["text"], padding="max_length", truncation=True)
+
+tokenized_datasets = dataset.map(tokenize_function, batched=True)
+
+# 2. Load Pre-trained Model with Classification Head
+model = AutoModelForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=2)
+
+# 3. Setup Training Arguments
+training_args = TrainingArguments(
+    output_dir="./results",
+    evaluation_strategy="epoch",
+    learning_rate=2e-5, # Small learning rate for fine-tuning
+    per_device_train_batch_size=16,
+    num_train_epochs=3,
+    weight_decay=0.01,
+)
+
+# 4. Initialize Trainer and Fine-Tune
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=tokenized_datasets["train"].shuffle(seed=42).select(range(1000)), # Subset for speed
+    eval_dataset=tokenized_datasets["test"].shuffle(seed=42).select(range(500)),
+)
+
+trainer.train()
+
+# 5. Inference
+inputs = tokenizer("This movie was absolutely amazing!", return_tensors="pt")
+outputs = model(**inputs)
+predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
+print(predictions) # Output probabilities for Negative and Positive
+```
 
 ---
 
-## 5. BERT Variants (RoBERTa, ALBERT, DistilBERT)
+## 6. BERT Variants (RoBERTa, ALBERT, DistilBERT)
 
 The original BERT was a massive breakthrough, but researchers quickly optimized it:
 
@@ -81,10 +132,11 @@ The original BERT was a massive breakthrough, but researchers quickly optimized 
 
 ---
 
-## 6. Project Ideas & What's Next
+## 7. Project Ideas & What's Next
 
 ### Project Ideas
 - 🟢 **Spam Classifier**: Go to Kaggle and download the SMS Spam Collection Dataset. Use the Hugging Face `transformers` library to load `distilbert-base-uncased`. Pass the SMS messages through the model, extract the `[CLS]` token embedding, and train a simple Scikit-Learn Logistic Regression model on top of it to classify spam!
+- 🟡 **Named Entity Recognition**: Modify the HuggingFace script to use `AutoModelForTokenClassification` and fine-tune BERT on the CoNLL-2003 dataset to extract people, locations, and organizations.
 
 ### What's Next
 | Next | Why |

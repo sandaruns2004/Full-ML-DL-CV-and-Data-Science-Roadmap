@@ -43,6 +43,50 @@ A standard pipeline has 4 isolated stages:
 
 If any step fails, the pipeline halts. Because the steps are isolated scripts, they can be run perfectly on any machine, triggered automatically on a schedule.
 
+```mermaid
+graph LR
+    %% Data Sources
+    DB[(Database)]
+    Cloud[Cloud Storage]
+    
+    %% Pipeline Stages
+    subgraph ML Pipeline Orchestration
+        Extract[extract.py]
+        Preprocess[preprocess.py]
+        Train[train.py]
+        Eval[evaluate.py]
+    end
+    
+    %% Artifacts
+    RawData[raw_data.csv]
+    TrainData[train.csv]
+    Model[model.pkl]
+    Metrics[metrics.json]
+    
+    %% Data Flow
+    DB --> Extract
+    Extract -- writes --> RawData
+    RawData --> Preprocess
+    Preprocess -- writes --> TrainData
+    TrainData --> Train
+    Train -- writes --> Model
+    Model --> Eval
+    Eval -- writes --> Metrics
+    
+    %% DVC & Git
+    Metrics -.-> GitRepo[Git Repository\nCode + Metrics]
+    Model -.-> DVC[DVC / Cloud\nLarge Files]
+    RawData -.-> DVC
+    
+    classDef script fill:#e3f2fd,stroke:#1565c0,stroke-width:2px;
+    classDef artifact fill:#f1f8e9,stroke:#33691e,stroke-width:2px;
+    classDef storage fill:#fff3e0,stroke:#e65100,stroke-width:2px;
+    
+    class Extract,Preprocess,Train,Eval script;
+    class RawData,TrainData,Model,Metrics artifact;
+    class DB,Cloud,DVC,GitRepo storage;
+```
+
 ---
 
 ## 3. Data & Model Versioning (DVC)

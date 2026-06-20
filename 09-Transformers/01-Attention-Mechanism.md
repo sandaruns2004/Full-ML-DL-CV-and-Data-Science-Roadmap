@@ -56,6 +56,38 @@ Let's break this down:
 3. **$\text{Softmax}$**: Normalizes the scores so they sum to $1$. This creates the **Attention Matrix** (e.g., word $A$ pays 90% attention to word $B$, and 10% to word $C$).
 4. **$\times \mathbf{V}$**: We multiply the Attention Matrix by the Values. The final representation for word $A$ is now a weighted mixture of the values of the words it paid attention to!
 
+```mermaid
+graph TD
+    %% Inputs
+    X[Input Tokens X] --> WQ[Weights W_Q]
+    X --> WK[Weights W_K]
+    X --> WV[Weights W_V]
+    
+    WQ --> Q[Queries Q]
+    WK --> K[Keys K]
+    WV --> V[Values V]
+    
+    %% Math Operations
+    Q --> Dot[MatMul: Q * K^T]
+    K --> Dot
+    
+    Dot --> Scale[Scale: / sqrt d_k]
+    Scale --> Mask[Optional Masking]
+    Mask --> Softmax[Softmax]
+    
+    Softmax --> AttnMat[Attention Matrix]
+    
+    AttnMat --> FinalDot[MatMul: Attn * V]
+    V --> FinalDot
+    
+    FinalDot --> Output[Attention Output Context Vectors]
+    
+    classDef tensor fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classdef op fill:#f3e5f5,stroke:#4a148c,stroke-width:2px;
+    class Q,K,V,AttnMat,Output tensor;
+    class Dot,Scale,Mask,Softmax,FinalDot op;
+```
+
 ---
 
 ## 4. Multi-Head Attention
