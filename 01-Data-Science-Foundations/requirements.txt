@@ -1,0 +1,36 @@
+# 01-Data-Science-Foundations — Module Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core Data Science
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Machine Learning (for preprocessing & feature engineering)
+scikit-learn>=1.3.0
+
+# Jupyter Notebooks
+jupyter>=1.0.0
+ipykernel>=6.25.0
+
+# Data Collection
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# File Formats
+openpyxl>=3.1.0
+
+# Database
+sqlalchemy>=2.0.0
+
+# Utilities
+tqdm>=4.65.0
+missingno>=0.5.2
+
+# Imbalanced Data
+imbalanced-learn>=0.11.0

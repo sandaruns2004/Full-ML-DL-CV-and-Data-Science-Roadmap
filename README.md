@@ -55,7 +55,7 @@ A structured progression estimating **~500 Hours** of total learning.
 | ----- | ----- | ---------- | --------------- | ----------- |
 | `00` | Prerequisites | ⭐☆☆☆☆ | 20 | Python Essentials, Linear Algebra, Probability, Calculus |
 | `01` | Data Science Foundations | ⭐☆☆☆☆ | 30 | EDA, Visualization, Statistical Inference, Preprocessing |
-| `02-05` | Classical ML | ⭐⭐☆☆☆ | 60 | Supervised/Unsupervised Learning, Ensembles, Evaluation |
+| `02-05` | Classical ML | ⭐⭐☆☆☆ | 60 | Supervised Learning, **Unsupervised Learning (Clustering, PCA, Apriori)**, Ensembles, Evaluation |
 | `06` | Neural Network Foundations | ⭐⭐⭐☆☆ | 40 | Backprop, Optimizers, PyTorch Fundamentals |
 | `07` & `11` | Computer Vision | ⭐⭐⭐☆☆ | 50 | CNNs, Object Detection, Segmentation, OpenCV |
 | `08` & `12` | NLP Basics | ⭐⭐⭐☆☆ | 40 | Embeddings, Text Classification, RNNs/LSTMs |
@@ -65,6 +65,45 @@ A structured progression estimating **~500 Hours** of total learning.
 | `13` & `14` | Advanced & Distributed | ⭐⭐⭐⭐⭐ | 50 | Reinforcement Learning, Graph Neural Networks, Big Data |
 | `15` | MLOps & Production | ⭐⭐⭐⭐⭐ | 60 | Pipelines, CI/CD, Deployment, Docker, Edge ML |
 | `16` | Projects | 🎓 | On-going | Applying all skills to end-to-end applications |
+
+---
+
+## 📂 Full Directory Structure & Module Deep Dives
+
+Here is an in-depth look at our newly upgraded modules, such as the Data Science Foundations and Unsupervised Learning sections:
+
+### 01-Data-Science-Foundations (Beginner → Advanced)
+A complete, 16-part curriculum covering the entire data science lifecycle, from data collection to ethics:
+*   `01-Introduction-to-Data-Science.md` (Lifecycle, CRISP-DM, Roles)
+*   `02-Python-for-Data-Science.md` (Environments, Generators, Vectorization)
+*   `03-Data-Collection.md` (APIs, Web Scraping, SQL connections)
+*   `04-Data-Cleaning.md` (Missing values, Duplicates, Outlier Detection)
+*   `05-Exploratory-Data-Analysis.md` (Univariate, Bivariate, Automated Profiling)
+*   `06-Descriptive-Statistics.md` (Dispersion, Skewness, Kurtosis)
+*   `07-Probability-and-Distributions.md` (Normal, Binomial, Poisson, CLT)
+*   `08-Inferential-Statistics.md` (Hypothesis Testing, p-values, A/B Testing)
+*   `09-Bayesian-Statistics.md` (Priors, Posteriors, Naive Bayes, MCMC)
+*   `10-Data-Visualization.md` (Matplotlib, Seaborn, Plotly, Storytelling)
+*   `11-Data-Preprocessing.md` (Encoding, Scaling, ML Pipelines)
+*   `12-Feature-Engineering.md` (Polynomials, Binning, TF-IDF)
+*   `13-Feature-Selection.md` (Filter, Wrapper, Embedded methods)
+*   `14-Imbalanced-Data.md` (Accuracy Paradox, SMOTE, Class Weights)
+*   `15-SQL-for-Data-Science.md` (Aggregations, JOINs, Window Functions)
+*   `16-Data-Ethics.md` (Algorithmic Bias, GDPR, Responsible AI)
+*   `projects/` (5 hands-on Jupyter notebooks applying all concepts)
+
+### 04-Unsupervised-Learning (Beginner → Advanced)
+A complete, math-heavy, and code-rich breakdown of Unsupervised techniques:
+*   `01-K-Means-Clustering.md` (K-Means, Elbow Method)
+*   `02-Hierarchical-Clustering.md` (Agglomerative, Dendrograms, Linkages)
+*   `03-DBSCAN-Clustering.md` (Density-based, Noise isolation)
+*   `04-Mean-Shift-Clustering.md` (KDE, automatic peak discovery)
+*   `05-Gaussian-Mixture-Models.md` (Soft assignments, Density Estimation, EM Algorithm)
+*   `06-Dimensionality-Reduction.md` (PCA, t-SNE, Math proofs)
+*   `07-Anomaly-Detection.md` (Z-Score, Isolation Forest, LOF, PCA Reconstruction)
+*   `08-Association-Rule-Mining.md` (Apriori, Support/Confidence/Lift)
+
+*(More directory structures will be mapped out as they are upgraded!)*
 
 ---
 
@@ -82,7 +121,7 @@ A structured progression estimating **~500 Hours** of total learning.
 ## 🚀 Skills You Will Gain
 
 After completing this repository you will be able to:
-- ✅ **Build ML models**: From Linear Regression to Gradient Boosting Trees.
+- ✅ **Build ML models**: From Linear Regression to Gradient Boosting Trees and Unsupervised clustering.
 - ✅ **Train Deep Learning systems**: Architect custom Neural Networks in PyTorch.
 - ✅ **Build Computer Vision applications**: Implement Real-time Object Tracking and Segmentation.
 - ✅ **Build NLP applications**: Sentiment Analysis, Named Entity Recognition, and Translation.
@@ -95,13 +134,17 @@ After completing this repository you will be able to:
 
 ## 🛠️ Project Showcase
 
-Applying knowledge is the fastest way to learn. Here are some of the projects included:
+Applying knowledge is the fastest way to learn. Each concept is paired with an end-of-module mini-project.
 
 | Project | Difficulty | Skills Learned |
 | ------- | ---------- | -------------- |
 | **Real Estate Price Predictor** | Beginner | Pandas, EDA, Feature Engineering, Random Forest |
-| **Customer Segmentation Engine** | Beginner | Unsupervised Learning, K-Means, DBSCAN, PCA |
-| **The Sentiment Analyzer** | Beginner | Text Preprocessing, TF-IDF, Naive Bayes |
+| **Customer Segmentation Engine** | Beginner | Unsupervised Learning, K-Means |
+| **Market Basket Analysis** | Beginner | Apriori, Association Rules |
+| **Image Compression Pipeline** | Intermediate | PCA, Eigen-decomposition |
+| **Credit Card Fraud Detection** | Intermediate | Isolation Forest, LOF, Anomaly Detection |
+| **Sensor Anomaly Detection** | Intermediate | Time Series, Z-Score |
+| **Dimensionality Reduction Pipeline** | Intermediate | PCA + t-SNE Pipeline |
 | **Pneumonia Detection from X-Rays** | Intermediate | PyTorch, CNNs, Transfer Learning (ResNet), Medical AI |
 | **Real-Time Object Tracking with YOLO** | Intermediate | Computer Vision, OpenCV, YOLOv8 |
 | **FastAPI Credit Scoring Engine** | Intermediate | XGBoost, Model Deployment, REST APIs, Docker |
@@ -124,9 +167,9 @@ Hands-on Jupyter Notebooks to explore concepts interactively:
 
 ---
 
-## ⚡ Quick Start
+## ⚡ Quick Start & Setup Instructions
 
-Get your environment set up in less than 2 minutes.
+Get your environment set up in less than 2 minutes so you can start running the code examples immediately!
 
 ### 1. Clone the repository
 ```bash
@@ -135,6 +178,7 @@ cd Full-ML-DL-CV-and-Data-Science-Roadmap
 ```
 
 ### 2. Create a virtual environment
+It is highly recommended to use a virtual environment to isolate dependencies.
 ```bash
 python -m venv venv
 
@@ -146,12 +190,17 @@ source venv/bin/activate
 ```
 
 ### 3. Install requirements
+Our `requirements.txt` is categorized by module (ML, DL, NLP, etc.). Ensure you are in the root directory:
 ```bash
 pip install -r requirements.txt
 ```
+*(Note: If you run into issues installing PyTorch, please visit the [PyTorch website](https://pytorch.org/get-started/locally/) for specific commands for your OS/CUDA version).*
 
-### 4. Navigation Guide
-Start chronologically in the `00-Prerequisites` folder, and read through the beautifully formatted markdown files. Run any associated Jupyter notebooks in the `Jupyter Notebooks` folder when referenced.
+### 4. How to Run Examples
+All Python blocks inside the markdown files are completely standalone and runnable! 
+You can copy-paste them into a Python script (`test.py`) or into a Jupyter Notebook cell and they will execute, generate synthetic data, train the model, and save visualizations to your local directory.
+
+Navigation Guide: Start chronologically in the `00-Prerequisites` folder, and read through the beautifully formatted markdown files. Run any associated Jupyter notebooks in the `Jupyter Notebooks` folder when referenced.
 
 ---
 
