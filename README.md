@@ -185,6 +185,46 @@ A complete, math-heavy, and code-rich breakdown of Model Evaluation and MLOps me
 *   `notebooks/` (Interactive Jupyter notebooks with runnable evaluation metrics)
 *   `projects/` (5 mandatory projects including Hyperparameter Labs and Production Monitoring Simulators)
 
+### 06-Neural-Networks-Foundations (Beginner → Advanced)
+A world-class, math-rich, visualization-heavy Neural Networks module covering first principles to production pipelines:
+*   `01-Introduction-To-Neural-Networks.md` (Fundamental concepts, biological inspiration)
+*   `02-Perceptron-And-Biological-Analogy.md` (Rosenblatt's Perceptron, step functions, XOR proof)
+*   `03-Activation-Functions.md` (Sigmoid, Tanh, ReLU, Leaky ReLU, Softmax derivatives)
+*   `04-Forward-Propagation.md` (Matrix forms, layer computations, memory caching)
+*   `05-Loss-Functions.md` (MSE, MAE, BCE, CCE, Maximum Likelihood Estimation)
+*   `06-Gradient-Descent.md` (Batch, Mini-batch, Stochastic Gradient Descent)
+*   `07-Backpropagation.md` (The Chain Rule, vector/matrix derivatives, Jacobians)
+*   `08-Multi-Layer-Perceptron.md` (Universal Approximation Theorem, representation depth)
+*   `09-Weight-Initialization.md` (Xavier, He, variance propagation derivations)
+*   `10-Optimizers.md` (SGD, Momentum, RMSProp, Adam, AdamW weight decay)
+*   `11-Vanishing-And-Exploding-Gradients.md` (Jacobian products, skip connections, ResNets)
+*   `12-Computational-Graphs.md` (Autograd node mechanics, topological sorting)
+*   `13-Neural-Network-From-Scratch-Numpy.md` (Modular object-oriented NumPy framework)
+*   `14-Neural-Network-PyTorch-Implementation.md` (Standard training pipelines, datasets, custom Autograd)
+*   `notebooks/` (Activation Functions Explorer, Backpropagation Visualizer, NN from Scratch)
+*   `projects/` (Modular NumPy NN, PyTorch MLP Classifier, Activation Study, Gradient Simulator, XOR Solver)
+
+### 07-Computer-Vision-CNNs (Beginner → Advanced)
+A world-class, math-rich, visualization-heavy Computer Vision & CNN module covering pixel structures to advanced detection/segmentation tasks:
+*   `01-Introduction-To-Computer-Vision.md` (Human vision systems, early visual features)
+*   `02-Image-Representation-And-Pixels.md` (Grayscale, RGB, color channels, tensor shapes)
+*   `03-Convolution-Operation.md` (Math of sliding filters, cross-correlation, 3D convolutions)
+*   `04-Padding-And-Strides.md` (Output dimension formulas, boundaries, strided downsampling)
+*   `05-Pooling-Layers.md` (Max, average pooling, gradient routing backprop)
+*   `06-CNN-Architecture-Basics.md` (Stacking blocks, receptive fields, parameters counting)
+*   `07-Edge-Detection-And-Feature-Maps.md` (Sobel operators, gradient magnitude, orientation)
+*   `08-CNN-Backpropagation.md` (Chain rule in spatial domain, weight sharing gradients)
+*   `09-LeNet-And-AlexNet.md` (Yann LeCun's LeNet-5, AlexNet ReLU/Dropout innovations)
+*   `10-VGG-Net.md` (Stacked 3x3 convolutions, parameter savings proofs)
+*   `11-Modern-CNN-Architectures.md` (ResNet skip connections, DenseNet, EfficientNet scaling laws)
+*   `12-Transfer-Learning.md` (Feature extraction vs. fine-tuning, discriminative learning rates)
+*   `13-Data-Augmentation.md` (Regularizing vision models, affine transformation math)
+*   `14-Object-Detection-Introduction.md` (Bounding boxes, IoU calculations, YOLO vs. Faster R-CNN)
+*   `15-Image-Segmentation-Introduction.md` (Semantic vs. instance segmentation, transposed convolutions)
+*   `16-CNN-From-Scratch-PyTorch.md` (Standard training pipelines, validation loops, datasets)
+*   `notebooks/` (CNN Basics From Scratch, Image Classification CNN, Transfer Learning Exploration)
+*   `projects/` (CIFAR-10 Classifier, Transfer Learning fine-tuning, Data Augmentation study, Edge Visualizer)
+
 *(More directory structures will be mapped out as they are upgraded!)*
 
 ---

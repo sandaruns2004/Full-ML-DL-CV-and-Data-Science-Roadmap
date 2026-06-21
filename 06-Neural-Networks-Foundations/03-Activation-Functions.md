@@ -1,197 +1,159 @@
 # ⚡ Activation Functions
 
-> **Prerequisites**: Perceptron & MLP, Calculus | **Difficulty**: ⭐⭐⭐☆☆ Intermediate
-
 ---
 
 ## 📋 Table of Contents
-1. [Why We Need Activation Functions](#1-why-we-need-activation-functions)
-2. [The Classical Era: Sigmoid & Tanh](#2-the-classical-era-sigmoid--tanh)
-3. [The Modern Era: ReLU and its Variants](#3-the-modern-era-relu-and-its-variants)
-4. [State of the Art: GELU & Swish](#4-state-of-the-art-gelu--swish)
-5. [Output Layer Activations: Softmax](#5-output-layer-activations-softmax)
-6. [Visualizing All Functions and Derivatives](#6-visualizing-all-functions-and-derivatives)
-7. [Cheat Sheet: Which Activation to Use?](#7-cheat-sheet-which-activation-to-use)
-8. [Project Ideas & What's Next](#8-project-ideas--whats-next)
+1. [Beginner: The Gatekeepers of Neural Networks](#1-beginner-the-gatekeepers-of-neural-networks)
+2. [Intermediate: Python Implementation & Derivatives](#2-intermediate-python-implementation--derivatives)
+3. [Advanced: Mathematical Derivations & Research Insights](#3-advanced-mathematical-derivations--research-insights)
 
 ---
 
-## 1. Why We Need Activation Functions
+## 1. Beginner: The Gatekeepers of Neural Networks
 
-Without activation functions, Neural Networks are completely useless for complex tasks.
-If a network only consists of linear transformations ($\mathbf{Z} = \mathbf{X} \mathbf{W} + \mathbf{b}$), stacking 100 layers together is mathematically equivalent to just one single layer. 
+### Simple Explanation
+In a neural network, a neuron receives inputs, multiplies them by weights, adds a bias, and gets a single number (the weighted sum). If we passed this number directly to the next layer, our network would only be performing linear equations (like drawing a straight line).
+An **activation function** is a non-linear mathematical operation applied to the weighted sum. It decides whether and to what extent a neuron should "fire" (send its signal to the next layer). Non-linear activations allow the network to bend, twist, and curve the space, enabling it to learn complex, non-linear patterns (like curves, circles, and shapes).
 
-$$\mathbf{W}^{[3]} (\mathbf{W}^{[2]} (\mathbf{W}^{[1]} \mathbf{X})) = (\mathbf{W}^{[3]} \mathbf{W}^{[2]} \mathbf{W}^{[1]}) \mathbf{X} = \mathbf{W}_{\text{combined}} \mathbf{X}$$
+### Real-World Analogy: The Audition Judge
+Imagine a talent show with a judge:
+- **Linear Transformation**: The judge scores the contestant on different categories (voice quality, stage presence) and sums up the points.
+- **Activation Function (Sigmoid-like)**: The judge has a threshold. If the contestant gets a score below the threshold, they get a $0$ (rejected). If they get a score above it, they get a $1$ (passed). The transition might be a smooth curve where the closer they are to passing, the more enthusiastic the judge's recommendation.
+- **ReLU-like**: If the contestant's score is negative or zero, they get ignored ($0$). If they get a positive score, their pass probability is directly proportional to their score ($z$).
 
-Non-linear activation functions bend and fold the multi-dimensional space, allowing the network to learn arbitrary decision boundaries and approximate any function (Universal Approximation Theorem).
-
----
-
-## 2. The Classical Era: Sigmoid & Tanh
-
-Before 2012, neural networks almost exclusively used these two functions in their hidden layers.
-
-### 2.1 Sigmoid (Logistic) Function
-Maps any real-valued number into the range $(0, 1)$.
-
-- **Formula**: $\sigma(z) = \frac{1}{1 + e^{-z}}$
-- **Derivative**: $\sigma'(z) = \sigma(z)(1 - \sigma(z))$
-- **Range**: $(0, 1)$
-
-**Why we stopped using it for hidden layers**:
-1. **Vanishing Gradients**: The maximum value of the derivative is $0.25$ (at $z=0$). During backpropagation, multiplying by values $< 0.25$ across multiple layers exponentially shrinks the gradient to exactly $0$.
-2. **Not Zero-Centered**: Outputs are always positive, causing undesirable zig-zagging dynamics during gradient descent.
-
-*Where it's used today*: ONLY in the final output layer for binary classification.
-
-### 2.2 Tanh (Hyperbolic Tangent)
-A scaled and shifted version of the Sigmoid function that solves the zero-centered problem.
-
-- **Formula**: $\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}$
-- **Derivative**: $\tanh'(z) = 1 - \tanh^2(z)$
-- **Range**: $(-1, 1)$
-
-**Pros/Cons**: It is zero-centered, making optimization easier than Sigmoid. However, it still suffers heavily from the vanishing gradient problem when $z$ is large (positive or negative).
-
-*Where it's used today*: Inside RNNs and LSTMs.
+### Visual Intuition
+Without non-linear activations, stacking multiple layers is equivalent to a single linear layer. The non-linearities bend the space so that non-linearly separable classes (like XOR or circular clusters) can be cleanly separated.
 
 ---
 
-## 3. The Modern Era: ReLU and its Variants
+## 2. Intermediate: Python Implementation & Derivatives
 
-In 2012, AlexNet revolutionized Deep Learning by switching to ReLU, allowing deep networks to finally train without gradients vanishing.
-
-### 3.1 ReLU (Rectified Linear Unit)
-- **Formula**: $f(z) = \max(0, z)$
-- **Derivative**: $f'(z) = 1$ if $z > 0$, else $0$
-- **Range**: $[0, \infty)$
-
-**Pros**: 
-1. Solves the vanishing gradient problem (derivative is exactly 1 for positive inputs).
-2. Extremely fast to compute.
-3. Induces sparsity (many neurons output exactly 0).
-
-**The Dying ReLU Problem**:
-If a large gradient updates a weight such that a neuron's input is always negative, that neuron will output $0$ forever. Its gradient will be $0$ forever. It is effectively "dead."
-
-### 3.2 Leaky ReLU
-Created to fix the Dying ReLU problem by allowing a small, non-zero gradient when $z < 0$.
-
-- **Formula**: $f(z) = \max(\alpha z, z)$ where $\alpha$ is usually $0.01$.
-- **Derivative**: $f'(z) = 1$ if $z > 0$, else $\alpha$
-
-### 3.3 ELU (Exponential Linear Unit)
-Instead of a sharp angle like Leaky ReLU, ELU curves smoothly for negative values, making it robust to noise.
-
-- **Formula**: $f(z) = z$ if $z > 0$, else $\alpha(e^z - 1)$
-- **Derivative**: $f'(z) = 1$ if $z > 0$, else $f(z) + \alpha$
-
----
-
-## 4. State of the Art: GELU & Swish
-
-In the era of Transformers (BERT, GPT) and massive CNNs (EfficientNet), researchers found functions that slightly outperform ReLU.
-
-### 4.1 GELU (Gaussian Error Linear Unit)
-The standard activation function used in **BERT, GPT-3, and Vision Transformers (ViTs)**.
-It weighs the input by its probability under a Gaussian distribution.
-
-- **Formula**: $f(z) = z \cdot \Phi(z)$, where $\Phi(z)$ is the standard Gaussian cumulative distribution function.
-- **Approximation**: $f(z) \approx 0.5z \left(1 + \tanh\left(\sqrt{\frac{2}{\pi}} (z + 0.044715z^3)\right)\right)$
-
-**Why it works**: It provides a smoother transition near zero than ReLU, combining properties of dropout, zoneout, and ReLUs.
-
-### 4.2 Swish / SiLU (Sigmoid Linear Unit)
-Discovered by Google Brain using automated search techniques. Used in **YOLOv8 and EfficientNet**.
-
-- **Formula**: $f(z) = z \cdot \sigma(z) = \frac{z}{1 + e^{-z}}$
-- **Derivative**: $f'(z) = f(z) + \sigma(z)(1 - f(z))$
-
-**Why it works**: Like GELU, it is non-monotonic (it dips slightly below zero before going up). This negative dip helps pull weights back if they go too far negative, self-stabilizing the training.
-
----
-
-## 5. Output Layer Activations: Softmax
-
-Used exclusively in the final layer for **Multi-Class Classification**. It converts a vector of raw scores (logits) into a probability distribution that sums to 1.
-
-- **Formula**: $\text{Softmax}(z_i) = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}$
-
-**The Softmax Derivative (Jacobian):**
-Because the output of Softmax node $i$ depends on the input of node $j$ (due to the denominator sum), the derivative forms a matrix (Jacobian):
-$$ \frac{\partial S_i}{\partial z_j} = \begin{cases} S_i(1 - S_i) & \text{if } i = j \\ -S_i S_j & \text{if } i \neq j \end{cases} $$
-
----
-
-## 6. Visualizing All Functions and Derivatives
+Let us implement the most common activation functions and their derivatives in pure NumPy.
 
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
 
-z = np.linspace(-4, 4, 200)
+# 1. Sigmoid
+def sigmoid(z: np.ndarray) -> np.ndarray:
+    return 1 / (1 + np.exp(-np.clip(z, -500, 500)))
 
-# Definitions
-sigmoid = 1 / (1 + np.exp(-z))
-tanh = np.tanh(z)
-relu = np.maximum(0, z)
-leaky_relu = np.maximum(0.1*z, z)
-elu = np.where(z > 0, z, 1.0 * (np.exp(z) - 1))
-swish = z * sigmoid
-gelu = 0.5 * z * (1 + np.tanh(np.sqrt(2/np.pi) * (z + 0.044715 * z**3)))
+def sigmoid_derivative(z: np.ndarray) -> np.ndarray:
+    s = sigmoid(z)
+    return s * (1 - s)
 
-# Plotting
-fig, axes = plt.subplots(2, 3, figsize=(16, 9))
-funcs = [
-    ('Sigmoid', sigmoid, 'Vanishing Gradients'),
-    ('Tanh', tanh, 'Zero-centered, still vanishes'),
-    ('ReLU', relu, 'The Modern Standard'),
-    ('Leaky ReLU', leaky_relu, 'Fixes Dying ReLU'),
-    ('Swish / SiLU', swish, 'Non-monotonic dip (YOLO/EfficientNet)'),
-    ('GELU', gelu, 'The Transformer Standard (GPT/BERT)')
-]
+# 2. Tanh
+def tanh(z: np.ndarray) -> np.ndarray:
+    return np.tanh(z)
 
-for ax, (name, y, desc) in zip(axes.flat, funcs):
-    ax.plot(z, y, lw=3, color='#2196F3')
-    ax.axhline(0, color='black', lw=1, alpha=0.5)
-    ax.axvline(0, color='black', lw=1, alpha=0.5)
-    ax.set_title(f"{name}\n{desc}", fontsize=12, fontweight='bold')
-    ax.grid(alpha=0.3)
-    ax.set_ylim(-1.5, 3)
+def tanh_derivative(z: np.ndarray) -> np.ndarray:
+    return 1 - np.tanh(z)**2
+
+# 3. ReLU (Rectified Linear Unit)
+def relu(z: np.ndarray) -> np.ndarray:
+    return np.maximum(0, z)
+
+def relu_derivative(z: np.ndarray) -> np.ndarray:
+    return np.where(z > 0, 1.0, 0.0)
+
+# 4. Leaky ReLU
+def leaky_relu(z: np.ndarray, alpha: float = 0.01) -> np.ndarray:
+    return np.where(z > 0, z, alpha * z)
+
+def leaky_relu_derivative(z: np.ndarray, alpha: float = 0.01) -> np.ndarray:
+    return np.where(z > 0, 1.0, alpha)
+
+# 5. Softmax (Numerical stability: subtract max)
+def softmax(z: np.ndarray) -> np.ndarray:
+    # Assumes z is shape (batch_size, num_classes) or (num_classes,)
+    if z.ndim == 1:
+        exp_z = np.exp(z - np.max(z))
+        return exp_z / np.sum(exp_z)
+    else:
+        exp_z = np.exp(z - np.max(z, axis=-1, keepdims=True))
+        return exp_z / np.sum(exp_z, axis=-1, keepdims=True)
+```
+
+### Visualizing Functions & Derivatives
+Using matplotlib, we can visualize how these functions transform inputs and how their gradients change across the domain.
+
+```python
+# Generate inputs
+z = np.linspace(-5, 5, 200)
+
+plt.figure(figsize=(12, 8))
+
+# Plot Sigmoid
+plt.subplot(2, 2, 1)
+plt.plot(z, sigmoid(z), label="Sigmoid", color="blue", lw=2)
+plt.plot(z, sigmoid_derivative(z), label="Derivative", color="cyan", linestyle="--")
+plt.title("Sigmoid & Derivative")
+plt.grid(True)
+plt.legend()
+
+# Plot Tanh
+plt.subplot(2, 2, 2)
+plt.plot(z, tanh(z), label="Tanh", color="red", lw=2)
+plt.plot(z, tanh_derivative(z), label="Derivative", color="orange", linestyle="--")
+plt.title("Tanh & Derivative")
+plt.grid(True)
+plt.legend()
+
+# Plot ReLU
+plt.subplot(2, 2, 3)
+plt.plot(z, relu(z), label="ReLU", color="green", lw=2)
+plt.plot(z, relu_derivative(z), label="Derivative", color="lime", linestyle="--")
+plt.title("ReLU & Derivative")
+plt.grid(True)
+plt.legend()
+
+# Plot Leaky ReLU
+plt.subplot(2, 2, 4)
+plt.plot(z, leaky_relu(z), label="Leaky ReLU", color="purple", lw=2)
+plt.plot(z, leaky_relu_derivative(z), label="Derivative", color="violet", linestyle="--")
+plt.title("Leaky ReLU & Derivative")
+plt.grid(True)
+plt.legend()
 
 plt.tight_layout()
-plt.savefig('all_activations.png', dpi=150)
 plt.show()
 ```
 
 ---
 
-## 7. Cheat Sheet: Which Activation to Use?
+## 3. Advanced: Mathematical Derivations & Research Insights
 
-| Task / Layer | Recommended Activation |
-|---|---|
-| **Default for Hidden Layers (MLP/CNN)** | ReLU |
-| **If your network is dying (all 0s)** | Leaky ReLU |
-| **Transformers (LLMs, ViTs)** | GELU |
-| **State-of-the-art CNNs (EfficientNet)** | Swish (SiLU) |
-| **Recurrent Neural Networks (RNN/LSTM)** | Tanh (for hidden state), Sigmoid (for gates) |
-| **Output: Binary Classification** | Sigmoid |
-| **Output: Multi-Class Classification** | Softmax |
-| **Output: Regression** | Linear (None) |
+### Derivative Derivations
+
+#### 1. Sigmoid Derivative
+Let $\sigma(z) = \frac{1}{1 + e^{-z}}$. Applying the quotient rule:
+$$\sigma'(z) = \frac{d}{dz} (1 + e^{-z})^{-1} = -1(1 + e^{-z})^{-2} \cdot (-e^{-z}) = \frac{e^{-z}}{(1 + e^{-z})^2}$$
+$$\sigma'(z) = \left(\frac{1}{1 + e^{-z}}\right) \left(\frac{e^{-z}}{1 + e^{-z}}\right) = \sigma(z) \cdot (1 - \sigma(z))$$
+
+#### 2. Tanh Derivative
+Let $\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}$. Since $\tanh(z) = \frac{\sinh(z)}{\cosh(z)}$:
+$$\tanh'(z) = \frac{\cosh(z)\cosh(z) - \sinh(z)\sinh(z)}{\cosh^2(z)} = \frac{\cosh^2(z) - \sinh^2(z)}{\cosh^2(z)} = \frac{1}{\cosh^2(z)} = 1 - \tanh^2(z)$$
+
+#### 3. Softmax Jacobian Derivation
+The Softmax function for index $i$ is defined as $a_i = \frac{e^{z_i}}{\sum_k e^{z_k}}$. 
+Since the output $a_i$ depends on all elements of the input vector $\mathbf{z}$, the derivative $\frac{\partial a_i}{\partial z_j}$ is a Jacobian matrix.
+
+Using the Quotient Rule:
+$$\frac{\partial a_i}{\partial z_j} = \frac{\frac{\partial}{\partial z_j}(e^{z_i}) \cdot \sum_k e^{z_k} - e^{z_i} \cdot \frac{\partial}{\partial z_j}(\sum_k e^{z_k})}{\left(\sum_k e^{z_k}\right)^2}$$
+
+**Case 1: $i = j$**
+$$\frac{\partial a_i}{\partial z_i} = \frac{e^{z_i} \sum_k e^{z_k} - e^{z_i} e^{z_i}}{\left(\sum_k e^{z_k}\right)^2} = \frac{e^{z_i}}{\sum_k e^{z_k}} - \left(\frac{e^{z_i}}{\sum_k e^{z_k}}\right)^2 = a_i(1 - a_i)$$
+
+**Case 2: $i \neq j$**
+$$\frac{\partial a_i}{\partial z_j} = \frac{0 - e^{z_i} e^{z_j}}{\left(\sum_k e^{z_k}\right)^2} = -\left(\frac{e^{z_i}}{\sum_k e^{z_k}}\right)\left(\frac{e^{z_j}}{\sum_k e^{z_k}}\right) = -a_i a_j$$
+
+In Kronecker Delta notation ($\delta_{ij} = 1$ if $i=j$, else $0$):
+$$\frac{\partial a_i}{\partial z_j} = a_i (\delta_{ij} - a_j)$$
+
+### Research Insights
+- **Sparsity vs. Information Loss**: ReLU introduces sparsity (zero-activations), which reduces memory overhead and computation. However, it can lead to the **Dying ReLU** problem (where neurons get locked into the negative half-space with a zero gradient). Leaky ReLU and ELU address this by keeping a small gradient channel alive.
+- **Smoothness (GELU & Swish)**: Standard ReLU has a sharp non-differentiable point at $z=0$. State-of-the-art architectures (like Transformers) use **GELU** ($z \cdot \Phi(z)$) or **Swish** ($z \cdot \sigma(\beta z)$), which are smooth, non-monotonic curves that dip below zero. This smooth landscape significantly improves optimization convergence rates.
 
 ---
 
-## 8. Project Ideas & What's Next
-
-### Project Ideas
-- 🟢 **Swish vs ReLU Benchmark**: Build a 4-layer MLP using PyTorch. Train it on FashionMNIST once using `nn.ReLU()` and once using `nn.SiLU()`. Plot the training loss curves on the same graph to see which converges faster.
-
-### What's Next
-| Next | Why |
-|------|-----|
-| [Loss Functions Deep Dive](./04-Loss-Functions-Deep-Dive.md) | We know how to activate neurons, but how do we mathematically penalize them when they are wrong? |
-| [Optimizers Deep Dive](./05-Optimizers-Deep-Dive.md) | Once we have the loss, how do we best update the weights? (Adam, RMSProp). |
-
----
-
-[← Backpropagation](./02-Backpropagation.md) | [Back to Index](../README.md) | [Next: Loss Functions Deep Dive →](./04-Loss-Functions-Deep-Dive.md)
+[← Previous: Perceptron And Biological Analogy](./02-Perceptron-And-Biological-Analogy.md) | [Back to Index](./README.md) | [Next: Forward Propagation →](./04-Forward-Propagation.md)
