@@ -110,21 +110,28 @@ A complete, 16-part curriculum covering the entire data science lifecycle, from 
 *   `projects/` (5 mandatory hands-on projects including Sales Data Analysis and End-to-End EDA)
 
 ### [02-Supervised-Learning](./02-Supervised-Learning/README.md) (Beginner → Advanced)
-A complete, math-heavy, and code-rich breakdown of Supervised Machine Learning algorithms:
+A world-class, math-heavy, and code-rich breakdown of Supervised Machine Learning algorithms, divided into three phases:
+**Phase 1: Conceptual Mini-Books**
 *   `01-Introduction-To-Supervised-Learning.md` (Workflow, Regression vs Classification)
-*   `02-Linear-Regression.md` (Cost Function, Gradient Descent)
-*   `03-Polynomial-Regression.md` (Non-linear Relationships, Degree Selection)
-*   `04-Logistic-Regression.md` (Sigmoid, Binary vs Multiclass)
-*   `05-KNN.md` (Distance Metrics, K Selection)
+*   `02-Linear-Regression.md` (Intuition, Math, Cost Function, Workflow)
+*   `03-Polynomial-Regression.md` (Non-linear Relationships, Feature Expansion)
+*   `04-Logistic-Regression.md` (Sigmoid, Binary Classification, Log Loss)
+*   `05-KNN.md` (Instance-based Learning, Distance Metrics)
 *   `06-Decision-Trees.md` (Entropy, Information Gain, Gini)
-*   `07-Support-Vector-Machines.md` (Linear, Kernel Trick)
-*   `08-Naive-Bayes.md` (Gaussian, Multinomial, Bernoulli)
+*   `07-Support-Vector-Machines.md` (Hyperplanes, Margins, Kernel Trick)
+*   `08-Naive-Bayes.md` (Bayes Theorem, Laplace Smoothing)
 *   `09-Feature-Engineering-For-Supervised-Learning.md` (Encoding, Scaling, Missing Values)
 *   `10-Regularization.md` (Ridge, Lasso, ElasticNet, Overfitting)
-*   `11-Model-Building-Pipeline.md` (Scikit-Learn Pipelines, End-to-End Workflows)
-*   `12-Model-Selection-Guide.md` (How to choose an algorithm)
-*   `notebooks/` (Interactive Jupyter notebooks for hands-on application)
-*   `projects/` (6 mandatory projects including House Price and Customer Churn Prediction)
+*   `11-Model-Building-Pipeline.md` (Scikit-Learn Pipelines, Data Leakage Prevention)
+*   `12-Model-Selection-Guide.md` (Algorithm selection heuristics, Bias-Variance Tradeoff)
+
+**Phase 2: Implementation Workshops (`notebooks/`)**
+*   Interactive Jupyter notebooks featuring From-Scratch, NumPy, and Scikit-Learn implementations, complete with visualization labs and hyperparameter experiments.
+
+**Phase 3: Industry Portfolio Projects (`projects/`)**
+*   `01-House-Price-Prediction` (Regression end-to-end architecture)
+*   `02-Customer-Churn-Prediction` (Classification business problem)
+*   `03-Spam-Detection-System` (NLP text classification)
 
 ### [03-Ensemble-Methods](./03-Ensemble-Methods/README.md) (Beginner → Advanced)
 A complete, math-heavy, and code-rich breakdown of Ensemble Learning algorithms:
