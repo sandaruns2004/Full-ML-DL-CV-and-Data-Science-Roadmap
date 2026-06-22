@@ -65,6 +65,7 @@ Below is the file layout of this module:
 - 📄 [16 Data Ethics](./16-Data-Ethics.md)
 - 📄 [17 Feature Selection](./17-Feature-Selection.md)
 - 📄 [18 Imbalanced Data](./18-Imbalanced-Data.md)
+- 📂 [assets/](./assets/)
 - 📂 [notebooks/](./notebooks/)
 - 📂 [projects/](./projects/)
 - 📄 [requirements.txt](./requirements.txt)

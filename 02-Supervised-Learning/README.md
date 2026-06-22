@@ -53,6 +53,7 @@ Below is the file layout of this module:
 - 📄 [10 Regularization](./10-Regularization.md)
 - 📄 [11 Model Building Pipeline](./11-Model-Building-Pipeline.md)
 - 📄 [12 Model Selection Guide](./12-Model-Selection-Guide.md)
+- 📂 [assets/](./assets/)
 - 📂 [notebooks/](./notebooks/)
 - 📂 [projects/](./projects/)
 

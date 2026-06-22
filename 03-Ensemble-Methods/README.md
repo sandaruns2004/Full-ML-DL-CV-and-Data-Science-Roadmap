@@ -55,6 +55,7 @@ Below is the file layout of this module:
 - 📄 [12 Stacking](./12-Stacking.md)
 - 📄 [13 Blending](./13-Blending.md)
 - 📄 [14 Model Selection For Ensembles](./14-Model-Selection-For-Ensembles.md)
+- 📂 [assets/](./assets/)
 - 📂 [notebooks/](./notebooks/)
 - 📂 [projects/](./projects/)
 

@@ -58,6 +58,7 @@ Below is the file layout of this module:
 - 📄 [12 Anomaly Detection](./12-Anomaly-Detection.md)
 - 📄 [13 Isolation Forest](./13-Isolation-Forest.md)
 - 📄 [14 Local Outlier Factor](./14-Local-Outlier-Factor.md)
+- 📂 [assets/](./assets/)
 - 📂 [notebooks/](./notebooks/)
 - 📂 [projects/](./projects/)
 
