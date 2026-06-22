@@ -35,23 +35,20 @@ Data Science is the discipline of extracting **meaningful insights** from data u
 
 Data Science exists at the intersection of three core fields:
 
-```
-        ┌──────────────────┐
-        │   Domain         │
-        │   Knowledge      │
-        │  (Business,      │
-        │   Healthcare,    │
-        │   Finance...)    │
-        └───────┬──────────┘
-                │
-    ┌───────────┼───────────┐
-    │           │           │
-┌───▼───┐  ┌───▼───┐  ┌────▼────┐
-│ Math  │  │ DATA  │  │Computer │
-│  &    │──│SCIENCE│──│ Science │
-│Stats  │  │       │  │   &     │
-│       │  │       │  │ Coding  │
-└───────┘  └───────┘  └─────────┘
+```mermaid
+venn-beta
+    title The Data Science Intersection
+    set Math ["Math & Stats"] : 5
+    set CS ["Computer Science & Coding"] : 5
+    set Domain ["Domain Knowledge\n(Business, Finance, Healthcare...)"] : 5
+    union Math,CS ["Machine Learning"] : 1
+    union CS,Domain ["Software & Tech"] : 1
+    union Math,Domain ["Traditional Research"] : 1
+    union Math,CS,Domain ["DATA SCIENCE"] : 0.8
+    
+    style Math fill:#3b82f6,fill-opacity:0.35,stroke:#3b82f6,stroke-width:2px
+    style CS fill:#6366f1,fill-opacity:0.35,stroke:#6366f1,stroke-width:2px
+    style Domain fill:#ec4899,fill-opacity:0.35,stroke:#ec4899,stroke-width:2px
 ```
 
 **What makes Data Science different from traditional analytics?**
@@ -87,31 +84,42 @@ This is an **iterative** process — you will frequently loop back to earlier st
 
 Think of these as nested circles — each one fits inside the next:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                   Data Science (DS)                         │
-│  The discipline of extracting insights from data.           │
-│  Uses math, stats, programming, and domain expertise.       │
-│                                                             │
-│       ┌──────────────────────────────────────────────┐      │
-│       │           Artificial Intelligence (AI)       │      │
-│       │  Systems that mimic human intelligence.      │      │
-│       │                                              │      │
-│       │   ┌──────────────────────────────────────┐   │      │
-│       │   │         Machine Learning (ML)        │   │      │
-│       │   │  Algorithms that learn from data     │   │      │
-│       │   │  without explicit programming.       │   │      │
-│       │   │                                      │   │      │
-│       │   │   ┌──────────────────────────────┐   │   │      │
-│       │   │   │      Deep Learning (DL)      │   │   │      │
-│       │   │   │  Neural networks with many   │   │   │      │
-│       │   │   │  layers (Deep Neural Nets).  │   │   │      │
-│       │   │   └──────────────────────────────┘   │   │      │
-│       │   └──────────────────────────────────────┘   │      │
-│       └──────────────────────────────────────────────┘      │
-│                                                             │
-│   Other DS Tools: Data Eng, Big Data, BI, SQL, Viz, Stats   │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph DS ["Data Science (DS)"]
+        direction TB
+        DS_desc["The discipline of extracting insights from data.<br>Uses math, stats, programming, and domain expertise."]
+        
+        subgraph AI ["Artificial Intelligence (AI)"]
+            direction TB
+            AI_desc["Systems that mimic human intelligence."]
+            
+            subgraph ML ["Machine Learning (ML)"]
+                direction TB
+                ML_desc["Algorithms that learn from data without explicit programming."]
+                
+                subgraph DL ["Deep Learning (DL)"]
+                    DL_desc["Neural networks with many layers (Deep Neural Nets)."]
+                end
+            end
+        end
+        
+        Other["Other DS Tools:<br>Data Eng, Big Data, BI, SQL, Viz, Stats"]
+    end
+
+    %% Style Subgraphs
+    style DS fill:#ecfdf5,stroke:#10b981,stroke-width:2px
+    style AI fill:#eff6ff,stroke:#3b82f6,stroke-width:2px
+    style ML fill:#faf5ff,stroke:#6366f1,stroke-width:2px
+    style DL fill:#fff1f2,stroke:#ec4899,stroke-width:2px
+
+    %% Style Description Nodes
+    style DS_desc fill:none,stroke:none,color:#065f46
+    style Other fill:#d1fae5,stroke:#059669,stroke-width:1px,color:#065f46
+    
+    style AI_desc fill:none,stroke:none,color:#1e40af
+    style ML_desc fill:none,stroke:none,color:#3730a3
+    style DL_desc fill:none,stroke:none,color:#9d174d
 ```
 
 | Term | What It Does | Example |
@@ -135,23 +143,86 @@ Think of these as nested circles — each one fits inside the next:
 ### 🔴 Advanced
 
 **The Modern Data Science Stack**:
-```
-┌─────────────────────────────────────┐
-│     Applications                     │
-│  scikit-learn │ PyTorch │ TensorFlow │
-├─────────────────────────────────────┤
-│     Data Layer                       │
-│  Pandas │ Spark │ Dask │ Polars     │
-├─────────────────────────────────────┤
-│     Computation Layer                │
-│  NumPy │ SciPy │ CuPy (GPU)        │
-├─────────────────────────────────────┤
-│     Visualization Layer              │
-│  Matplotlib │ Seaborn │ Plotly      │
-├─────────────────────────────────────┤
-│     Infrastructure                   │
-│  Docker │ MLflow │ Airflow │ K8s    │
-└─────────────────────────────────────┘
+```mermaid
+flowchart TD
+    %% Nodes
+    subgraph App ["Applications Layer"]
+        sklearn["scikit-learn"]
+        pytorch["PyTorch"]
+        tf["TensorFlow"]
+    end
+    
+    subgraph Data ["Data Layer"]
+        pandas["Pandas"]
+        spark["Apache Spark"]
+        dask["Dask"]
+        polars["Polars"]
+    end
+    
+    subgraph Comp ["Computation Layer"]
+        numpy["NumPy"]
+        scipy["SciPy"]
+        cupy["CuPy (GPU)"]
+    end
+    
+    subgraph Vis ["Visualization Layer"]
+        plt["Matplotlib"]
+        sns["Seaborn"]
+        plotly["Plotly"]
+    end
+    
+    subgraph Infra ["Infrastructure & MLOps"]
+        docker["Docker"]
+        mlflow["MLflow"]
+        airflow["Apache Airflow"]
+        k8s["Kubernetes (K8s)"]
+    end
+
+    %% Dependency Arrows
+    App --> Data
+    App --> Comp
+    Data --> Comp
+    Vis --> Data
+    Vis --> Comp
+    Data --> Infra
+    Comp --> Infra
+
+    %% Link Styling
+    linkStyle default stroke:#94a3b8,stroke-width:2px;
+
+    %% Subgraph Styling
+    style App fill:#fff1f2,stroke:#fda4af,stroke-width:2px
+    style Data fill:#faf5ff,stroke:#d8b4fe,stroke-width:2px
+    style Comp fill:#eff6ff,stroke:#93c5fd,stroke-width:2px
+    style Vis fill:#f0fdf4,stroke:#86efac,stroke-width:2px
+    style Infra fill:#f8fafc,stroke:#cbd5e1,stroke-width:2px
+    
+    %% App Nodes
+    style sklearn fill:#f43f5e,color:#fff,stroke:#e11d48
+    style pytorch fill:#f43f5e,color:#fff,stroke:#e11d48
+    style tf fill:#f43f5e,color:#fff,stroke:#e11d48
+    
+    %% Data Nodes
+    style pandas fill:#a855f7,color:#fff,stroke:#9333ea
+    style spark fill:#a855f7,color:#fff,stroke:#9333ea
+    style dask fill:#a855f7,color:#fff,stroke:#9333ea
+    style polars fill:#a855f7,color:#fff,stroke:#9333ea
+    
+    %% Comp Nodes
+    style numpy fill:#3b82f6,color:#fff,stroke:#2563eb
+    style scipy fill:#3b82f6,color:#fff,stroke:#2563eb
+    style cupy fill:#3b82f6,color:#fff,stroke:#2563eb
+    
+    %% Vis Nodes
+    style plt fill:#10b981,color:#fff,stroke:#059669
+    style sns fill:#10b981,color:#fff,stroke:#059669
+    style plotly fill:#10b981,color:#fff,stroke:#059669
+    
+    %% Infra Nodes
+    style docker fill:#64748b,color:#fff,stroke:#475569
+    style mlflow fill:#64748b,color:#fff,stroke:#475569
+    style airflow fill:#64748b,color:#fff,stroke:#475569
+    style k8s fill:#64748b,color:#fff,stroke:#475569
 ```
 
 ---
@@ -172,16 +243,37 @@ Think of these as nested circles — each one fits inside the next:
 
 The end-to-end Data Science workflow:
 
-```
-┌────────────┐   ┌─────────────┐   ┌──────────────┐   ┌───────────┐
-│ 1. Define  │──→│ 2. Collect   │──→│ 3. Clean     │──→│ 4. Explore│
-│   Problem  │   │    Data      │   │    Data      │   │   (EDA)   │
-└────────────┘   └─────────────┘   └──────────────┘   └─────┬─────┘
-                                                              │
-┌────────────┐   ┌─────────────┐   ┌──────────────┐         │
-│ 7. Deploy  │←──│ 6. Evaluate │←──│ 5. Model &   │←────────┘
-│  & Monitor │   │             │   │   Analyze    │
-└────────────┘   └─────────────┘   └──────────────┘
+```mermaid
+flowchart TD
+    subgraph Row1 ["Discovery & Data Preparation"]
+        direction LR
+        P1["1. Define Problem"] --> P2["2. Collect Data"] --> P3["3. Clean Data"] --> P4["4. Explore (EDA)"]
+    end
+    
+    subgraph Row2 ["Modeling & Deployment"]
+        direction RL
+        P5["5. Model & Analyze"] --> P6["6. Evaluate"] --> P7["7. Deploy & Monitor"]
+    end
+    
+    P4 --> P5
+    P7 -.-> P1
+
+    %% Link Styling
+    linkStyle default stroke:#6366f1,stroke-width:2px;
+    linkStyle 6 stroke:#f43f5e,stroke-width:2px,stroke-dasharray: 5 5;
+
+    %% Subgraph Styling
+    style Row1 fill:#f8fafc,stroke:#e2e8f0,stroke-width:1px
+    style Row2 fill:#f8fafc,stroke:#e2e8f0,stroke-width:1px
+
+    %% Node Styling
+    style P1 fill:#eff6ff,stroke:#3b82f6,stroke-width:2px
+    style P2 fill:#ecfeff,stroke:#06b6d4,stroke-width:2px
+    style P3 fill:#f0fdf4,stroke:#22c55e,stroke-width:2px
+    style P4 fill:#f0fdfa,stroke:#14b8a6,stroke-width:2px
+    style P5 fill:#faf5ff,stroke:#a855f7,stroke-width:2px
+    style P6 fill:#fff1f2,stroke:#f43f5e,stroke-width:2px
+    style P7 fill:#fff7ed,stroke:#f97316,stroke-width:2px
 ```
 
 | Phase | Key Activities | Tools |
@@ -236,22 +328,39 @@ Deployment             ██░░░░░░░░░░░░░░░░░
 ### 🔴 Advanced
 
 **The Modern Data Team Structure**:
-```
-                    ┌───────────────┐
-                    │  VP of Data   │
-                    │   / CTO       │
-                    └───────┬───────┘
-                            │
-        ┌───────────────────┼───────────────────┐
-        │                   │                   │
-┌───────▼───────┐  ┌────────▼────────┐  ┌───────▼───────┐
-│ Data Science  │  │ Data Engineering│  │   Analytics   │
-│    Team       │  │     Team        │  │    Team       │
-│               │  │                 │  │               │
-│ • Scientists  │  │ • Data Eng.     │  │ • Analysts    │
-│ • ML Eng.     │  │ • Platform Eng. │  │ • BI Eng.     │
-│ • Research    │  │ • DevOps        │  │ • Reporting   │
-└───────────────┘  └─────────────────┘  └───────────────┘
+```mermaid
+flowchart TD
+    VP["VP of Data / CTO"]
+    
+    subgraph DS ["Data Science Team"]
+        DS_roles["• Scientists<br>• ML Engineers<br>• Researchers"]
+    end
+    
+    subgraph DE ["Data Engineering Team"]
+        DE_roles["• Data Engineers<br>• Platform Engineers<br>• DevOps"]
+    end
+    
+    subgraph Anal ["Analytics Team"]
+        Anal_roles["• Analysts<br>• BI Engineers<br>• Reporting"]
+    end
+
+    VP --> DS
+    VP --> DE
+    VP --> Anal
+
+    %% Link Styling
+    linkStyle default stroke:#6366f1,stroke-width:2px;
+
+    %% Subgraph Styling
+    style DS fill:#eff6ff,stroke:#3b82f6,stroke-width:2px
+    style DE fill:#faf5ff,stroke:#6366f1,stroke-width:2px
+    style Anal fill:#f0fdf4,stroke:#10b981,stroke-width:2px
+
+    %% Node Styling
+    style VP fill:#1e1b4b,color:#fff,stroke:#312e81,stroke-width:2px,font-weight:bold
+    style DS_roles fill:none,stroke:none,color:#1e40af
+    style DE_roles fill:none,stroke:none,color:#3730a3
+    style Anal_roles fill:none,stroke:none,color:#065f46
 ```
 
 ---
@@ -477,4 +586,4 @@ print(f"\nClassification Report:\n{classification_report(y_test, y_pred, target_
 
 ---
 
-[Back to Main Index](../README.md) | [Next: Python for Data Science →](./02-Python-for-Data-Science.md)
+[← 10. SQL for Data Science](../00-Prerequisites/10-SQL-For-Data-Science.md) | [Back to Index](../README.md) | [Next: Python for Data Science →](02-Python-For-Data-Science.md)

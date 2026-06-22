@@ -95,4 +95,4 @@ plt.show()
 
 ---
 
-[← PCA](./07-Principal-Component-Analysis.md) | [Back to Index](../README.md) | [Next: UMAP →](./09-UMAP-Introduction.md)
+[← Principal Component Analysis (PCA)](07-Principal-Component-Analysis.md) | [Back to Index](../README.md) | [Next: UMAP (Uniform Manifold Approximation and Projection) →](09-UMAP-Introduction.md)

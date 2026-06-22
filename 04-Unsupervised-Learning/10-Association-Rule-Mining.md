@@ -18,3 +18,7 @@
 ### 🔴 Advanced
 **Industry Considerations**: 
 While simple, Association Rules explode computationally. If a supermarket has 10,000 unique items, there are $2^{10000}$ possible combinations. We need efficient algorithms (like Apriori or FP-Growth) to prune the search space.
+
+---
+
+[← UMAP (Uniform Manifold Approximation and Projection)](09-UMAP-Introduction.md) | [Back to Index](../README.md) | [Next: Apriori Algorithm →](11-Apriori-Algorithm.md)

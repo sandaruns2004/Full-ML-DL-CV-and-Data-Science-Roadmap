@@ -178,4 +178,4 @@ print(f"Final Hidden State Shape: {final_hidden_state.shape} -> (Batch, Hidden_S
 
 ---
 
-[← Training Deep CNNs](../07-CNNs/06-Training-Deep-CNNs.md) | [Back to Index](../README.md) | [Next: LSTM And GRU →](./02-LSTM-And-GRU.md)
+[← CNN from Scratch (PyTorch)](../07-Computer-Vision-CNNs/16-CNN-From-Scratch-PyTorch.md) | [Back to Index](../README.md) | [Next: Long Short-Term Memory (LSTM) & GRUs →](02-LSTM-And-GRU.md)

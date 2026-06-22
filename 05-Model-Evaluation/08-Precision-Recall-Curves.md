@@ -44,3 +44,7 @@ Where $P_n$ and $R_n$ are the precision and recall at the $n$-th threshold.
 
 **Industry Application**: 
 In Credit Card Fraud detection, where anomalies are 0.17% of the data, an ROC AUC might look like 0.98 (excellent), while the PR-AUC might be 0.40 (terrible). Always use PR curves for minority-class detection problems in production systems.
+
+---
+
+[← ROC Curves and AUC](07-ROC-And-AUC.md) | [Back to Index](../README.md) | [Next: Cross Validation →](09-Cross-Validation.md)

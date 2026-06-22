@@ -1,6 +1,6 @@
 # ⚖️ Handling Imbalanced Data
 
-> **Prerequisites**: [Feature Selection](./13-Feature-Selection.md) | **Difficulty**: ⭐⭐⭐☆☆ Intermediate
+> **Prerequisites**: [Feature Selection](./17-Feature-Selection.md) | **Difficulty**: ⭐⭐⭐☆☆ Intermediate
 
 ---
 
@@ -161,14 +161,12 @@ Certain algorithms like **Isolation Forests** (Anomaly Detection) or **Balanced 
 
 ## 6. What's Next
 
-Congratulations! You have completed the core data manipulation, statistics, visualization, and preprocessing syllabus. 
+You have officially completed **Module 01: Data Science Foundations**!
 
-To round out your foundational knowledge, we must cover two essential topics that are heavily tested in interviews: SQL and Data Ethics.
-
-| Next Topic | Why |
+| Next Phase | Why |
 |------------|-----|
-| [SQL for Data Science](./15-SQL-for-Data-Science.md) | Data lives in databases. If you can't write SQL, you can't be a Data Scientist. Learn how to write analytic queries. |
+| [Introduction to Supervised Learning](../02-Supervised-Learning/01-Introduction-To-Supervised-Learning.md) | Transition into modeling by understanding the core supervised learning process. |
 
 ---
 
-[← Previous: Feature Selection](./13-Feature-Selection.md) | [Back to Main Index](../README.md) | [Next: SQL for Data Science →](./15-SQL-for-Data-Science.md)
+[← Feature Selection Methods](17-Feature-Selection.md) | [Back to Index](../README.md) | [Next: Introduction to Supervised Learning →](../02-Supervised-Learning/01-Introduction-To-Supervised-Learning.md)

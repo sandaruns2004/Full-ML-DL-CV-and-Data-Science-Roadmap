@@ -1,6 +1,6 @@
 # 🧹 Data Cleaning
 
-> **Prerequisites**: [Data Collection](./03-Data-Collection.md) | **Difficulty**: ⭐⭐☆☆☆ Intermediate
+> **Prerequisites**: [Data Collection](./05-Data-Collection.md) | **Difficulty**: ⭐⭐☆☆☆ Intermediate
 
 ---
 
@@ -251,13 +251,12 @@ Now that your data is clean, complete, and formatted correctly, you are ready to
 
 | Next Topic | Why |
 |------------|-----|
-| [Exploratory Data Analysis](./05-Exploratory-Data-Analysis.md) | Learn how to visualize your clean data to uncover hidden patterns and correlations. |
-
----
-
-[← Previous: Data Collection](./03-Data-Collection.md) | [Back to Main Index](../README.md) | [Next: Exploratory Data Analysis →](./05-Exploratory-Data-Analysis.md)
-
+| [Exploratory Data Analysis](./07-Exploratory-Data-Analysis.md) | Learn how to visualize your clean data to uncover hidden patterns and correlations. |
 
 ### 🟢 Visual Examples
 
 ![Missing Values Visualization](assets/missing_values.png)
+
+---
+
+[← Data Collection](05-Data-Collection.md) | [Back to Index](../README.md) | [Next: Exploratory Data Analysis (EDA) →](07-Exploratory-Data-Analysis.md)

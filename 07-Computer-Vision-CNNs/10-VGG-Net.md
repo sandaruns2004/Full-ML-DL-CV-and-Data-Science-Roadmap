@@ -141,4 +141,4 @@ Let $C$ be the number of input and output channels.
 
 ---
 
-[← Previous: LeNet And AlexNet](./09-LeNet-And-AlexNet.md) | [Back to Index](./README.md) | [Next: Modern CNN Architectures →](./11-Modern-CNN-Architectures.md)
+[← LeNet and AlexNet](09-LeNet-And-AlexNet.md) | [Back to Index](../README.md) | [Next: Modern CNN Architectures →](11-Modern-CNN-Architectures.md)

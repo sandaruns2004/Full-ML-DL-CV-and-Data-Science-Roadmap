@@ -25,10 +25,10 @@
 
 **Visual Intuition**:
 ```text
-Raw Data (CSV):        Pandas DataFrame:
-Name,Age,City          |   | Name  | Age | City  |
-Alice,25,NY       =>   | 0 | Alice | 25  | NY    |
-Bob,30,LA              | 1 | Bob   | 30  | LA    |
+Raw Data (CSV):          Pandas DataFrame:
+Name,Age,City            |   | Name  | Age | City  |
+Alice,25,NY         =>   | 0 | Alice | 25  | NY    |
+Bob,30,LA           =>   | 1 | Bob   | 30  | LA    |
 ```
 
 ### 🟡 Intermediate
@@ -149,4 +149,4 @@ Merging in Pandas employs Hash Joins and Sort-Merge Joins under the hood. Unders
 
 ---
 
-[Back to Main Index](../README.md) | [Next: Data Collection →](./05-Data-Collection.md)
+[← NumPy for Data Science](03-NumPy.md) | [Back to Index](../README.md) | [Next: Data Collection →](05-Data-Collection.md)

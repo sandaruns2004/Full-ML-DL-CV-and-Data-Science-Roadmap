@@ -1,6 +1,6 @@
 # 🎲 Probability and Distributions
 
-> **Prerequisites**: [Descriptive Statistics](./06-Descriptive-Statistics.md) | **Difficulty**: ⭐⭐⭐☆☆ Intermediate
+> **Prerequisites**: [Descriptive Statistics](./08-Descriptive-Statistics.md) | **Difficulty**: ⭐⭐⭐☆☆ Intermediate
 
 ---
 
@@ -201,8 +201,8 @@ Now that we understand probability distributions and the Central Limit Theorem, 
 
 | Next Topic | Why |
 |------------|-----|
-| [Inferential Statistics](./08-Inferential-Statistics.md) | Learn A/B Testing, p-values, and how to prove that your ML model is actually better than random chance. |
+| [Inferential Statistics](./10-Inferential-Statistics.md) | Learn A/B Testing, p-values, and how to prove that your ML model is actually better than random chance. |
 
 ---
 
-[← Previous: Descriptive Statistics](./06-Descriptive-Statistics.md) | [Back to Main Index](../README.md) | [Next: Inferential Statistics →](./08-Inferential-Statistics.md)
+[← Descriptive Statistics](08-Descriptive-Statistics.md) | [Back to Index](../README.md) | [Next: Inferential Statistics & Hypothesis Testing →](10-Inferential-Statistics.md)

@@ -75,4 +75,4 @@ $$\frac{\partial \mathcal{L}}{\partial x_i} = \frac{1}{N} \frac{\partial \mathca
 
 ---
 
-[← Previous: Padding And Strides](./04-Padding-And-Strides.md) | [Back to Index](./README.md) | [Next: CNN Architecture Basics →](./06-CNN-Architecture-Basics.md)
+[← Padding and Strides](04-Padding-And-Strides.md) | [Back to Index](../README.md) | [Next: CNN Architecture Basics →](06-CNN-Architecture-Basics.md)

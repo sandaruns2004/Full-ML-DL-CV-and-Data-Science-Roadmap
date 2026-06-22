@@ -186,3 +186,7 @@ echo $OPENAI_API_KEY
 - [ ] I know how to transfer files to a cloud server using `scp`.
 
 Next up, we return to theory to cover the mathematical engine of AI: **[08-Mathematical-Foundations.md](./08-Mathematical-Foundations.md)**!
+
+---
+
+[← 06. Git and GitHub for ML](06-Git-And-GitHub.md) | [Back to Index](./README.md) | [Next: Mathematical Foundations for Machine Learning →](08-Mathematical-Foundations.md)

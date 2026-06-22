@@ -65,4 +65,4 @@ If you want to understand modern AI, read these papers in chronological order.
 
 ---
 
-[← Capstone Projects](./04-Capstone-Projects.md) | [Back to Index](../README.md) | [Next: Career And Learning Paths →](./06-Career-And-Learning-Paths.md)
+[← Capstone Projects](04-Capstone-Projects.md) | [Back to Index](../README.md) | [Next: Career & Learning Paths →](06-Career-And-Learning-Paths.md)

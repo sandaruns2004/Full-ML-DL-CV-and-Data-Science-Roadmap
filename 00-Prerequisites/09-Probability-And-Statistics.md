@@ -1118,4 +1118,4 @@ Build a general-purpose MLE engine that:
 
 ---
 
-[← Mathematical Foundations](./08-Mathematical-Foundations.md) | [Back to Index](./README.md) | [Next: SQL for Data Science →](./10-SQL-For-Data-Science.md)
+[← Mathematical Foundations for Machine Learning](08-Mathematical-Foundations.md) | [Back to Index](./README.md) | [Next: 10. SQL for Data Science →](10-SQL-For-Data-Science.md)

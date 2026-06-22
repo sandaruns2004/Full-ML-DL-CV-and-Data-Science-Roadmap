@@ -1,6 +1,6 @@
 # ⚖️ Data Ethics and Responsible AI
 
-> **Prerequisites**: [Introduction to Data Science](./01-Introduction-to-Data-Science.md) | **Difficulty**: ⭐☆☆☆☆ Beginner
+> **Prerequisites**: [SQL for Data Science](./15-SQL-For-Data-Science.md) | **Difficulty**: ⭐☆☆☆☆ Beginner
 
 ---
 
@@ -109,10 +109,12 @@ You understand:
 
 You are now ready to start training actual algorithms.
 
-| Next Phase |
-|------------|
-| Head to **02-Classical-Machine-Learning** to build your first predictive models! |
+## 6. What's Next
+
+| Next Topic | Why |
+|------------|-----|
+| [Feature Selection](./17-Feature-Selection.md) | Learn how to identify and remove redundant or low-signal features to make your models faster and more generalizable. |
 
 ---
 
-[← Previous: SQL for Data Science](./15-SQL-for-Data-Science.md) | [Back to Main Index](../README.md)
+[← SQL for Data Science](15-SQL-For-Data-Science.md) | [Back to Index](../README.md) | [Next: Feature Selection Methods →](17-Feature-Selection.md)

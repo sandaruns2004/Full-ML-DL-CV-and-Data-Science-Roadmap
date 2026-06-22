@@ -1,7 +1,7 @@
 
 # 🎣 Data Collection
 
-> **Prerequisites**: [Python for Data Science](./02-Python-for-Data-Science.md) | **Difficulty**: ⭐☆☆☆☆ Beginner to 🟡 Intermediate
+> **Prerequisites**: [Python for Data Science](./02-Python-For-Data-Science.md) | **Difficulty**: ⭐☆☆☆☆ Beginner to 🟡 Intermediate
 
 ---
 
@@ -236,8 +236,8 @@ Once you have acquired your data, you will immediately notice something: **it is
 
 | Next Topic | Why |
 |------------|-----|
-| [Data Cleaning](./04-Data-Cleaning.md) | Learn how to fix missing values, correct data types, and handle duplicates so your models don't crash. |
+| [Data Cleaning](./06-Data-Cleaning.md) | Learn how to fix missing values, correct data types, and handle duplicates so your models don't crash. |
 
 ---
 
-[← Previous: Python for Data Science](./02-Python-for-Data-Science.md) | [Back to Main Index](../README.md) | [Next: Data Cleaning →](./04-Data-Cleaning.md)
+[← Pandas for Data Science](04-Pandas.md) | [Back to Index](../README.md) | [Next: Data Cleaning →](06-Data-Cleaning.md)

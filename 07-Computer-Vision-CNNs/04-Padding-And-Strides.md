@@ -77,4 +77,4 @@ Given:
 
 ---
 
-[← Previous: Convolution Operation](./03-Convolution-Operation.md) | [Back to Index](./README.md) | [Next: Pooling Layers →](./05-Pooling-Layers.md)
+[← The Convolution Operation](03-Convolution-Operation.md) | [Back to Index](../README.md) | [Next: Pooling Layers →](05-Pooling-Layers.md)

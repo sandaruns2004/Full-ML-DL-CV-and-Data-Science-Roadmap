@@ -103,4 +103,4 @@ print(f"Average fraction of unique samples: {np.mean(fractions):.4f} (expected: 
 
 ---
 
-[← Introduction to Ensembles](./01-Introduction-To-Ensemble-Learning.md) | [Back to Index](../README.md) | [Next: Random Forest →](./03-Random-Forest.md)
+[← Introduction To Ensemble Learning](01-Introduction-To-Ensemble-Learning.md) | [Back to Index](../README.md) | [Next: Random Forest →](03-Random-Forest.md)

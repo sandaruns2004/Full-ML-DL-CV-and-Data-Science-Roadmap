@@ -1,6 +1,6 @@
 # 📈 Descriptive Statistics
 
-> **Prerequisites**: [Exploratory Data Analysis](./05-Exploratory-Data-Analysis.md) | **Difficulty**: ⭐⭐☆☆☆ Intermediate
+> **Prerequisites**: [Exploratory Data Analysis](./07-Exploratory-Data-Analysis.md) | **Difficulty**: ⭐⭐☆☆☆ Intermediate
 
 ---
 
@@ -156,13 +156,12 @@ Descriptive Statistics allow us to summarize data, but they heavily rely on unde
 
 | Next Topic | Why |
 |------------|-----|
-| [Probability & Distributions](./07-Probability-and-Distributions.md) | Master the Normal curve, Binomial distributions, and Bayes' Theorem. |
-
----
-
-[← Previous: Exploratory Data Analysis](./05-Exploratory-Data-Analysis.md) | [Back to Main Index](../README.md) | [Next: Probability & Distributions →](./07-Probability-and-Distributions.md)
-
+| [Probability & Distributions](./09-Probability-And-Distributions.md) | Master the Normal curve, Binomial distributions, and Bayes' Theorem. |
 
 ### 🟢 Visual Examples
 
 ![Boxplot](assets/boxplot.png)
+
+---
+
+[← Exploratory Data Analysis (EDA)](07-Exploratory-Data-Analysis.md) | [Back to Index](../README.md) | [Next: Probability and Distributions →](09-Probability-And-Distributions.md)

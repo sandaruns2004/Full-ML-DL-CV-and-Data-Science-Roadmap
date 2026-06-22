@@ -20,3 +20,7 @@
 ### 🔴 Advanced
 **Complexity & Alternatives**: 
 Apriori requires multiple scans of the entire database, which is terrible for I/O bounds in big data. In production (Hadoop/Spark), **FP-Growth (Frequent Pattern Growth)** is heavily preferred as it only scans the database twice by building an FP-Tree in memory.
+
+---
+
+[← Association Rule Mining](10-Association-Rule-Mining.md) | [Back to Index](../README.md) | [Next: Anomaly Detection (Outlier Detection) →](12-Anomaly-Detection.md)

@@ -18,3 +18,7 @@
 ### 🔴 Advanced
 **Applications & Challenges**: 
 Used heavily in Credit Card Fraud, Cyber Intrusion Detection, and Predictive Maintenance. The main challenge in industry is the massive class imbalance (anomalies might be 0.001% of the data) and the cost of False Positives (alert fatigue).
+
+---
+
+[← Apriori Algorithm](11-Apriori-Algorithm.md) | [Back to Index](../README.md) | [Next: Isolation Forest →](13-Isolation-Forest.md)

@@ -116,4 +116,4 @@ for name, model in base_estimators:
 
 ---
 
-[← CatBoost Concepts](./11-CatBoost-Concepts.md) | [Back to Index](../README.md) | [Next: Blending →](./13-Blending.md)
+[← CatBoost](11-CatBoost-Concepts.md) | [Back to Index](../README.md) | [Next: Blending →](13-Blending.md)

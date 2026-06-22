@@ -38,3 +38,7 @@ print(f"Balanced Accuracy: {balanced_accuracy_score(y_true, y_pred)}") # 0.50
 **Class Weights vs Resampling Evaluation**:
 When handling class imbalance, you can use SMOTE (Synthetic Minority Over-sampling Technique) during training. **CRITICAL WARNING**: Never use SMOTE on your Validation or Test sets! If you evaluate your model on SMOTE-generated data, you are testing your model's performance on fake, synthetic data, which completely breaks real-world generalization. You only oversample the `X_train` dataset.
 Instead of SMOTE, modern industry systems usually prefer applying `class_weights='balanced'` in the model algorithm directly, which modifies the loss function to heavily penalize errors made on the minority class.
+
+---
+
+[← Hyperparameter Evaluation](12-Hyperparameter-Tuning-Evaluation.md) | [Back to Index](../README.md) | [Next: Model Comparison and Statistical Significance →](14-Model-Comparison.md)

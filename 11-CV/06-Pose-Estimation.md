@@ -97,4 +97,4 @@ It calculates the distance between the predicted keypoint and the ground truth, 
 
 ---
 
-[← Image Segmentation](./05-Image-Segmentation.md) | [Back to Index](../README.md) | [Next: Image Generation →](./07-Image-Generation.md)
+[← Image Segmentation](05-Image-Segmentation.md) | [Back to Index](../README.md) | [Next: Image Generation →](07-Image-Generation.md)

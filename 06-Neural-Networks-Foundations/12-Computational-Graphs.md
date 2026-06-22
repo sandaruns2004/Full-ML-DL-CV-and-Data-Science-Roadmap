@@ -129,4 +129,4 @@ Modern frameworks have converged: PyTorch uses a dynamic graph by default for de
 
 ---
 
-[← Previous: Vanishing And Exploding Gradients](./11-Vanishing-And-Exploding-Gradients.md) | [Back to Index](./README.md) | [Next: Neural Network From Scratch Numpy →](./13-Neural-Network-From-Scratch-Numpy.md)
+[← Vanishing and Exploding Gradients](11-Vanishing-And-Exploding-Gradients.md) | [Back to Index](../README.md) | [Next: Neural Network from Scratch (NumPy) →](13-Neural-Network-From-Scratch-Numpy.md)

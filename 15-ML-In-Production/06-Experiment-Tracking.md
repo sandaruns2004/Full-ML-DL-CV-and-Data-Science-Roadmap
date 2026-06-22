@@ -186,4 +186,4 @@ Never rely on printing metrics to the console or saving hyperparameters in a spr
 
 ---
 
-[← Edge ML And Optimization](./05-Edge-ML-And-Optimization.md) | [Back to Index](../README.md) | [Next: Distributed Training →](./07-Distributed-Training.md)
+[← Edge ML & Optimization](05-Edge-ML-And-Optimization.md) | [Back to Index](../README.md) | [Next: Distributed Training →](07-Distributed-Training.md)

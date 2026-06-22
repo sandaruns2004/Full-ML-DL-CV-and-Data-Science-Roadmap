@@ -207,3 +207,7 @@ Modern AI relies heavily on the cloud. You will download pre-trained weights fro
 - [ ] I understand what an IP address, `localhost`, and network ports are.
 
 Next up, we will translate this hardware knowledge into logic by covering **[03-Programming-Fundamentals.md](./03-Programming-Fundamentals.md)**!
+
+---
+
+[← 01. Introduction to the AI Ecosystem](01-Introduction-To-AI-Ecosystem.md) | [Back to Index](./README.md) | [Next: 03. Programming Fundamentals →](03-Programming-Fundamentals.md)

@@ -59,4 +59,4 @@ Below are three beginner projects designed to solidify your understanding of Sup
 
 ---
 
-[← Data Versioning DVC](../15-ML-In-Production/08-Data-Versioning-DVC.md) | [Back to Index](../README.md) | [Next: Intermediate Projects →](./02-Intermediate-Projects.md)
+[← Data Versioning (DVC)](../15-ML-In-Production/08-Data-Versioning-DVC.md) | [Back to Index](../README.md) | [Next: Intermediate Projects →](02-Intermediate-Projects.md)

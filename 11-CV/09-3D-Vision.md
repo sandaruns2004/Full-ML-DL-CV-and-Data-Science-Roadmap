@@ -89,4 +89,4 @@ Instead of an implicit neural network, Gaussian Splatting uses an explicit repre
 
 ---
 
-[← Video Analysis](./08-Video-Analysis.md) | [Back to Index](../README.md) | [Next: CV Real World Projects →](./10-CV-Real-World-Projects.md)
+[← Video Analysis](08-Video-Analysis.md) | [Back to Index](../README.md) | [Next: CV Projects →](10-CV-Real-World-Projects.md)

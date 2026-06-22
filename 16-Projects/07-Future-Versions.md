@@ -55,4 +55,4 @@ Thank you for embarking on this incredible Machine Learning journey. The future 
 
 ---
 
-[← Career And Learning Paths](./06-Career-And-Learning-Paths.md) | [Back to Index](../README.md) | [Next: ML Algorithms Comparison →](../Cheat-Sheets/01-ML-Algorithms-Comparison.md)
+[← Career & Learning Paths](06-Career-And-Learning-Paths.md) | [Back to Index](../README.md)

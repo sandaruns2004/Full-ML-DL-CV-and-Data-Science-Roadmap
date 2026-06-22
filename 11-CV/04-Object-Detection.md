@@ -108,4 +108,4 @@ Because YOLO divides the image into a grid, multiple adjacent grid cells might t
 
 ---
 
-[← Image Classification Pipeline](./03-Image-Classification-Pipeline.md) | [Back to Index](../README.md) | [Next: Image Segmentation →](./05-Image-Segmentation.md)
+[← End-to-End Image Classification Pipeline](03-Image-Classification-Pipeline.md) | [Back to Index](../README.md) | [Next: Image Segmentation →](05-Image-Segmentation.md)

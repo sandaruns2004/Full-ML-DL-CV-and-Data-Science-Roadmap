@@ -134,4 +134,4 @@ def train_student(teacher, student, dataloader, optimizer, T=3.0, alpha=0.5):
 
 ---
 
-[← Time Series Deep Dive](./06-Time-Series-Deep-Dive.md) | [Back to Index](../README.md) | [Next: Semi Supervised Learning →](./08-Semi-Supervised-Learning.md)
+[← Time Series](06-Time-Series-Deep-Dive.md) | [Back to Index](../README.md) | [Next: Semi-Supervised Learning →](08-Semi-Supervised-Learning.md)

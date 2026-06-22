@@ -68,4 +68,4 @@ This centers the features around zero with a standard deviation of 1, which help
 
 ---
 
-[← Previous: Introduction To Computer Vision](./01-Introduction-To-Computer-Vision.md) | [Back to Index](./README.md) | [Next: Convolution Operation →](./03-Convolution-Operation.md)
+[← Introduction to Computer Vision](01-Introduction-To-Computer-Vision.md) | [Back to Index](../README.md) | [Next: The Convolution Operation →](03-Convolution-Operation.md)

@@ -226,4 +226,4 @@ def main():
 
 ---
 
-[← OpenCV Masterclass](./02-OpenCV-Masterclass.md) | [Back to Index](../README.md) | [Next: Object Detection →](./04-Object-Detection.md)
+[← OpenCV Masterclass](02-OpenCV-Masterclass.md) | [Back to Index](../README.md) | [Next: Object Detection →](04-Object-Detection.md)

@@ -160,4 +160,4 @@ def forward_with_fast_weights(model, x, fast_weights):
 
 ---
 
-[← Self Supervised Learning](./03-Self-Supervised-Learning.md) | [Back to Index](../README.md) | [Next: Recommender Systems →](./05-Recommender-Systems.md)
+[← Self-Supervised Learning](03-Self-Supervised-Learning.md) | [Back to Index](../README.md) | [Next: Deep Recommender Systems →](05-Recommender-Systems.md)

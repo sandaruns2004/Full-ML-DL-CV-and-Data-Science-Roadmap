@@ -119,4 +119,4 @@ It also includes a **Brevity Penalty**. If the reference is 10 words, and the mo
 
 ---
 
-[← Named Entity Recognition](./05-Named-Entity-Recognition.md) | [Back to Index](../README.md) | [Next: Modern NLP With Transformers →](./07-Modern-NLP-With-Transformers.md)
+[← NER](05-Named-Entity-Recognition.md) | [Back to Index](../README.md) | [Next: Modern NLP →](07-Modern-NLP-With-Transformers.md)

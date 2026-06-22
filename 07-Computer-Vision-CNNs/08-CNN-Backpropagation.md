@@ -97,4 +97,4 @@ This equation is a mathematically formal convolution (which flips the kernel wei
 
 ---
 
-[← Previous: Edge Detection And Feature Maps](./07-Edge-Detection-And-Feature-Maps.md) | [Back to Index](./README.md) | [Next: LeNet And AlexNet →](./09-LeNet-And-AlexNet.md)
+[← Edge Detection & Feature Maps](07-Edge-Detection-And-Feature-Maps.md) | [Back to Index](../README.md) | [Next: LeNet and AlexNet →](09-LeNet-And-AlexNet.md)

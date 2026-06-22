@@ -74,4 +74,4 @@ print(f"Blending Test Accuracy: {meta.score(test_features, y_test):.4f}")
 
 ---
 
-[← Stacking](./12-Stacking.md) | [Back to Index](../README.md) | [Next: Ensemble Selection Strategies →](./14-Model-Selection-For-Ensembles.md)
+[← Stacking (Stacked Generalization)](12-Stacking.md) | [Back to Index](../README.md) | [Next: Ensemble Selection Strategies →](14-Model-Selection-For-Ensembles.md)

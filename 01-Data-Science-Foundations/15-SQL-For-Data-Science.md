@@ -1,6 +1,6 @@
 # 💾 SQL for Data Science
 
-> **Prerequisites**: [Data Collection](./03-Data-Collection.md) | **Difficulty**: ⭐⭐☆☆☆ Intermediate
+> **Prerequisites**: [Feature Engineering](./14-Feature-Engineering.md) | **Difficulty**: ⭐⭐☆☆☆ Intermediate
 
 ---
 
@@ -199,4 +199,4 @@ You now have the technical skills to acquire, clean, visualize, test, and engine
 
 ---
 
-[← Previous: Imbalanced Data](./14-Imbalanced-Data.md) | [Back to Main Index](../README.md) | [Next: Data Ethics →](./16-Data-Ethics.md)
+[← Feature Engineering](14-Feature-Engineering.md) | [Back to Index](../README.md) | [Next: Data Ethics and Responsible AI →](16-Data-Ethics.md)

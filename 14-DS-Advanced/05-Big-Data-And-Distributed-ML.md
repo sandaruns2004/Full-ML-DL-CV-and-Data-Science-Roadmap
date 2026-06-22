@@ -149,4 +149,4 @@ spark.stop()
 
 ---
 
-[← Geospatial Analysis](./04-Geospatial-Analysis.md) | [Back to Index](../README.md) | [Next: Data Ethics Fairness →](./06-Data-Ethics-Fairness.md)
+[← Geospatial Analysis & Mapping](04-Geospatial-Analysis.md) | [Back to Index](../README.md) | [Next: Data Ethics & Fairness →](06-Data-Ethics-Fairness.md)

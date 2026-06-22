@@ -129,4 +129,4 @@ print("\nGeneration:\n", res[0]['generated_text'])
 
 ---
 
-[← Machine Translation](./06-Machine-Translation.md) | [Back to Index](../README.md) | [Next: Reinforcement Learning →](../13-Advanced/01-Reinforcement-Learning.md)
+[← Machine Translation](06-Machine-Translation.md) | [Back to Index](../README.md) | [Next: Deep Reinforcement Learning (DRL) →](../13-Advanced/01-Reinforcement-Learning.md)

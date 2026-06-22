@@ -22,3 +22,7 @@
 
 ### 🔴 Advanced
 **Mathematics**: Let the dataset be $X = \{x_1, x_2, \dots, x_N\}$. Unsupervised learning seeks to learn the underlying probability distribution $p(x)$ of the data, or to find a mapping $f(x)$ that transforms the data into a more compact or interpretable representation (manifold learning).
+
+---
+
+[← Ensemble Selection Strategies](../03-Ensemble-Methods/14-Model-Selection-For-Ensembles.md) | [Back to Index](../README.md) | [Next: K-Means Clustering →](02-K-Means-Clustering.md)

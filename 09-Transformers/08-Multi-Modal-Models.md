@@ -132,4 +132,4 @@ Initially, $\alpha=0$, so $\tanh(0)=0$. The cross-attention output is completely
 
 ---
 
-[← Mixture Of Experts](./07-Mixture-Of-Experts.md) | [Back to Index](../README.md) | [Next: RAG And Vector Databases →](./09-RAG-And-Vector-Databases.md)
+[← Mixture of Experts (MoE)](07-Mixture-Of-Experts.md) | [Back to Index](../README.md) | [Next: RAG & Vector Databases →](09-RAG-And-Vector-Databases.md)

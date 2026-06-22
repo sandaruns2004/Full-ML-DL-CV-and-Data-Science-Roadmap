@@ -80,4 +80,4 @@ In 2012, GPUs had very limited memory. To train the network, the authors split t
 
 ---
 
-[← Previous: CNN Backpropagation](./08-CNN-Backpropagation.md) | [Back to Index](./README.md) | [Next: VGG-Net →](./10-VGG-Net.md)
+[← CNN Backpropagation](08-CNN-Backpropagation.md) | [Back to Index](../README.md) | [Next: VGG-Net →](10-VGG-Net.md)

@@ -23,3 +23,7 @@ Optimization via Gradient Descent: $\theta_j := \theta_j - \alpha \frac{\partial
 Or via Normal Equation: $\theta = (X^T X)^{-1} X^T y$
 
 **Assumptions**: Linearity, Independence, Homoscedasticity, Normality of Residuals.
+
+---
+
+[← Introduction to Supervised Learning](01-Introduction-To-Supervised-Learning.md) | [Back to Index](../README.md) | [Next: Polynomial Regression →](03-Polynomial-Regression.md)

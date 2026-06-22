@@ -112,4 +112,4 @@ This sum yields a single value per sliding position, collapsing the channels. If
 
 ---
 
-[← Previous: Image Representation And Pixels](./02-Image-Representation-And-Pixels.md) | [Back to Index](./README.md) | [Next: Padding And Strides →](./04-Padding-And-Strides.md)
+[← Image Representation and Pixels](02-Image-Representation-And-Pixels.md) | [Back to Index](../README.md) | [Next: Padding and Strides →](04-Padding-And-Strides.md)

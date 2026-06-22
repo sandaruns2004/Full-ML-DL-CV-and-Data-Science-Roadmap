@@ -101,4 +101,4 @@ In practice (and in PyTorch), you should never apply Softmax and then take Log-l
 
 ---
 
-[← Previous: Forward Propagation](./04-Forward-Propagation.md) | [Back to Index](./README.md) | [Next: Gradient Descent →](./06-Gradient-Descent.md)
+[← Forward Propagation](04-Forward-Propagation.md) | [Back to Index](../README.md) | [Next: Gradient Descent →](06-Gradient-Descent.md)

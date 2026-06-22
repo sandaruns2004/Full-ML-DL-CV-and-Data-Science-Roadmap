@@ -71,4 +71,4 @@
 
 ---
 
-[← Research Paper Reading Guide](./05-Research-Paper-Reading-Guide.md) | [Back to Index](../README.md) | [Next: Future Versions →](./07-Future-Versions.md)
+[← Research Paper Reading Guide](05-Research-Paper-Reading-Guide.md) | [Back to Index](../README.md) | [Next: Future Versions →](07-Future-Versions.md)

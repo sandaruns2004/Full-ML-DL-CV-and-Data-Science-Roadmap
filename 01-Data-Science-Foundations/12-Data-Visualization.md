@@ -1,6 +1,6 @@
 # 🎨 Data Visualization
 
-> **Prerequisites**: [Exploratory Data Analysis](./05-Exploratory-Data-Analysis.md) | **Difficulty**: ⭐⭐☆☆☆ Intermediate
+> **Prerequisites**: [Exploratory Data Analysis](./07-Exploratory-Data-Analysis.md) | **Difficulty**: ⭐⭐☆☆☆ Intermediate
 
 ---
 
@@ -178,14 +178,13 @@ You've explored the data, found the patterns, and visualized them perfectly. Now
 
 | Next Topic | Why |
 |------------|-----|
-| [Data Preprocessing](./11-Data-Preprocessing.md) | Machine Learning models only understand numbers. Learn how to convert text categories, scale features, and build ML pipelines. |
-
----
-
-[← Previous: Bayesian Statistics](./09-Bayesian-Statistics.md) | [Back to Main Index](../README.md) | [Next: Data Preprocessing →](./11-Data-Preprocessing.md)
-
+| [Data Preprocessing](./13-Data-Preprocessing.md) | Machine Learning models only understand numbers. Learn how to convert text categories, scale features, and build ML pipelines. |
 
 ### 🟢 Visual Examples
 
 ![Histogram](assets/histogram.png)
 ![Scatterplot](assets/scatterplot.png)
+
+---
+
+[← Bayesian Statistics](11-Bayesian-Statistics.md) | [Back to Index](../README.md) | [Next: Data Preprocessing for Machine Learning →](13-Data-Preprocessing.md)

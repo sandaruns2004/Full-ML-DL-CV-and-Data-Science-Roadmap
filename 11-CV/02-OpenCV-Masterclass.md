@@ -140,4 +140,4 @@ for cnt in contours:
 
 ---
 
-[← Image Processing Fundamentals](./01-Image-Processing-Fundamentals.md) | [Back to Index](../README.md) | [Next: Image Classification Pipeline →](./03-Image-Classification-Pipeline.md)
+[← Image Processing Fundamentals](01-Image-Processing-Fundamentals.md) | [Back to Index](../README.md) | [Next: End-to-End Image Classification Pipeline →](03-Image-Classification-Pipeline.md)

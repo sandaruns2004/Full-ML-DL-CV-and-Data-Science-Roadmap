@@ -141,4 +141,4 @@ jobs:
 
 ---
 
-[← Model Deployment](./02-Model-Deployment.md) | [Back to Index](../README.md) | [Next: Model Monitoring →](./04-Model-Monitoring.md)
+[← Model Deployment](02-Model-Deployment.md) | [Back to Index](../README.md) | [Next: Model Monitoring →](04-Model-Monitoring.md)

@@ -123,4 +123,4 @@ This stabilizes training immensely. However, at *inference* (testing) time, we d
 
 ---
 
-[← LSTM And GRU](./02-LSTM-And-GRU.md) | [Back to Index](../README.md) | [Next: Temporal Convolutional Networks →](./04-Temporal-Convolutional-Networks.md)
+[← Long Short-Term Memory (LSTM) & GRUs](02-LSTM-And-GRU.md) | [Back to Index](../README.md) | [Next: TCNs →](04-Temporal-Convolutional-Networks.md)

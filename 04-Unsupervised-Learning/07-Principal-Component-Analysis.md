@@ -128,4 +128,4 @@ plt.show()
 
 ---
 
-[← Gaussian Mixture Models](./06-Gaussian-Mixture-Models.md) | [Back to Index](../README.md) | [Next: t-SNE →](./08-tSNE.md)
+[← Gaussian Mixture Models (GMM)](06-Gaussian-Mixture-Models.md) | [Back to Index](../README.md) | [Next: t-SNE (t-Distributed Stochastic Neighbor Embedding) →](08-tSNE.md)

@@ -156,4 +156,4 @@ $$\frac{\partial a_i}{\partial z_j} = a_i (\delta_{ij} - a_j)$$
 
 ---
 
-[← Previous: Perceptron And Biological Analogy](./02-Perceptron-And-Biological-Analogy.md) | [Back to Index](./README.md) | [Next: Forward Propagation →](./04-Forward-Propagation.md)
+[← The Perceptron & Biological Analogy](02-Perceptron-And-Biological-Analogy.md) | [Back to Index](../README.md) | [Next: Forward Propagation →](04-Forward-Propagation.md)

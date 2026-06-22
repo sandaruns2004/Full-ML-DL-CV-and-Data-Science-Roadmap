@@ -59,4 +59,4 @@ These projects are difficult. They require understanding recent research papers,
 
 ---
 
-[← Intermediate Projects](./02-Intermediate-Projects.md) | [Back to Index](../README.md) | [Next: Capstone Projects →](./04-Capstone-Projects.md)
+[← Intermediate Projects](02-Intermediate-Projects.md) | [Back to Index](../README.md) | [Next: Capstone Projects →](04-Capstone-Projects.md)

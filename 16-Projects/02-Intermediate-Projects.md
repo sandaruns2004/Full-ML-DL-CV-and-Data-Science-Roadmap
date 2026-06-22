@@ -57,4 +57,4 @@ These projects push you beyond Scikit-Learn. You will build Custom Neural Networ
 
 ---
 
-[← Beginner Projects](./01-Beginner-Projects.md) | [Back to Index](../README.md) | [Next: Advanced Projects →](./03-Advanced-Projects.md)
+[← Beginner Projects](01-Beginner-Projects.md) | [Back to Index](../README.md) | [Next: Advanced Projects →](03-Advanced-Projects.md)

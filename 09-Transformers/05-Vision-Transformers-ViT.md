@@ -218,4 +218,4 @@ Swin (Shifted Window) Transformer reintroduces CNN-like hierarchy. It starts wit
 
 ---
 
-[← GPT And Decoder Models](./04-GPT-And-Decoder-Models.md) | [Back to Index](../README.md) | [Next: LLM Fine Tuning And RLHF →](./06-LLM-Fine-Tuning-And-RLHF.md)
+[← GPT & Decoder-Only Models](04-GPT-And-Decoder-Models.md) | [Back to Index](../README.md) | [Next: LLM Fine-Tuning & RLHF →](06-LLM-Fine-Tuning-And-RLHF.md)

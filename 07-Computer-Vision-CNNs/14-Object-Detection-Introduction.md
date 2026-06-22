@@ -92,4 +92,4 @@ One-stage models treat detection as a single regression problem:
 
 ---
 
-[← Previous: Data Augmentation](./13-Data-Augmentation.md) | [Back to Index](./README.md) | [Next: Image Segmentation Introduction →](./15-Image-Segmentation-Introduction.md)
+[← Data Augmentation](13-Data-Augmentation.md) | [Back to Index](../README.md) | [Next: Image Segmentation Introduction →](15-Image-Segmentation-Introduction.md)

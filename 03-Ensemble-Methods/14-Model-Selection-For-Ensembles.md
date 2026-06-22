@@ -18,3 +18,7 @@
 ### 🔴 Advanced
 **Industry Examples**: 
 In production, ensembles add latency and memory overhead. A massive stacking architecture might win a Kaggle competition but is totally useless for a high-frequency trading bot requiring sub-millisecond inference. Model distillation (training a single model to mimic the ensemble) is often used to bridge this gap.
+
+---
+
+[← Blending](13-Blending.md) | [Back to Index](../README.md) | [Next: Introduction To Unsupervised Learning →](../04-Unsupervised-Learning/01-Introduction-To-Unsupervised-Learning.md)

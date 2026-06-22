@@ -170,4 +170,4 @@ print(f"Output shape: {output.shape}") # Expected: (32, 2)
 
 ---
 
-[← Word Embeddings](./03-Word-Embeddings.md) | [Back to Index](../README.md) | [Next: Named Entity Recognition →](./05-Named-Entity-Recognition.md)
+[← Word Embeddings (Word2Vec & GloVe)](03-Word-Embeddings.md) | [Back to Index](../README.md) | [Next: NER →](05-Named-Entity-Recognition.md)

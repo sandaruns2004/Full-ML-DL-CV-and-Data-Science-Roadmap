@@ -48,3 +48,7 @@ Data leakage occurs when information from outside the training dataset is used t
 - **Temporal Leakage**: In time-series data, random splitting is disastrous. You must use chronological splitting (e.g., train on Jan-Oct, test on Nov-Dec).
 - **Feature Leakage**: Applying `StandardScaler().fit_transform()` on the *entire* dataset before splitting leaks the global mean and variance into the training set. 
 **Mathematical Rule**: Any statistic (mean, variance, PCA components, Imputation values) used for transformation must be calculated *strictly* on $\mathcal{D}_{train}$ and then applied to $\mathcal{D}_{val}$ and $\mathcal{D}_{test}$.
+
+---
+
+[← Introduction to Model Evaluation](01-Introduction-To-Model-Evaluation.md) | [Back to Index](../README.md) | [Next: The Bias-Variance Tradeoff →](03-Bias-Variance-Tradeoff.md)

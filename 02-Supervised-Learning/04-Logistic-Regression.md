@@ -20,3 +20,7 @@
 Sigmoid Function: $\sigma(z) = \frac{1}{1 + e^{-z}}$
 Cost Function (Log Loss / Cross-Entropy): 
 $J(\theta) = -\frac{1}{m} \sum_{i=1}^m [y^{(i)}\log(h_\theta(x^{(i)})) + (1 - y^{(i)})\log(1 - h_\theta(x^{(i)}))]$
+
+---
+
+[← Polynomial Regression](03-Polynomial-Regression.md) | [Back to Index](../README.md) | [Next: K-Nearest Neighbors (KNN) →](05-KNN.md)

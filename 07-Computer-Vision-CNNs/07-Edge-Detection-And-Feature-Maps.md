@@ -83,4 +83,4 @@ In CNNs, the filter weights are not fixed Sobel filters; they are learned parame
 
 ---
 
-[← Previous: CNN Architecture Basics](./06-CNN-Architecture-Basics.md) | [Back to Index](./README.md) | [Next: CNN Backpropagation →](./08-CNN-Backpropagation.md)
+[← CNN Architecture Basics](06-CNN-Architecture-Basics.md) | [Back to Index](../README.md) | [Next: CNN Backpropagation →](08-CNN-Backpropagation.md)

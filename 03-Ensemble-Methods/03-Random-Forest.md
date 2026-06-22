@@ -229,4 +229,4 @@ param_distributions = {
 
 ---
 
-[← Bagging](./02-Bagging.md) | [Back to Index](../README.md) | [Next: Extra Trees →](./04-Extra-Trees.md)
+[← Bagging (Bootstrap Aggregating)](02-Bagging.md) | [Back to Index](../README.md) | [Next: Extra Trees (Extremely Randomized Trees) →](04-Extra-Trees.md)

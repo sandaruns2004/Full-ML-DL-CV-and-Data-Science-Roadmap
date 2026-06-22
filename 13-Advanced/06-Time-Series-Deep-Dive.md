@@ -116,4 +116,4 @@ Standard LSTMs struggle to separate these. The TFT handles them perfectly:
 
 ---
 
-[← Recommender Systems](./05-Recommender-Systems.md) | [Back to Index](../README.md) | [Next: Knowledge Distillation →](./07-Knowledge-Distillation.md)
+[← Deep Recommender Systems](05-Recommender-Systems.md) | [Back to Index](../README.md) | [Next: Knowledge Distillation →](07-Knowledge-Distillation.md)

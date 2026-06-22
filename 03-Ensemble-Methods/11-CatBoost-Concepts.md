@@ -68,4 +68,4 @@ print(f"CatBoost Test Accuracy: {model.score(X_test, y_test):.4f}")
 
 ---
 
-[← LightGBM Concepts](./10-LightGBM-Concepts.md) | [Back to Index](../README.md) | [Next: Stacking →](./12-Stacking.md)
+[← LightGBM](10-LightGBM-Concepts.md) | [Back to Index](../README.md) | [Next: Stacking (Stacked Generalization) →](12-Stacking.md)

@@ -353,4 +353,4 @@ plt.show()
 
 ---
 
-[← BERT And Encoder Models](./03-BERT-And-Encoder-Models.md) | [Back to Index](../README.md) | [Next: Vision Transformers ViT →](./05-Vision-Transformers-ViT.md)
+[← BERT & Encoder-Only Models](03-BERT-And-Encoder-Models.md) | [Back to Index](../README.md) | [Next: Vision Transformers (ViT) →](05-Vision-Transformers-ViT.md)

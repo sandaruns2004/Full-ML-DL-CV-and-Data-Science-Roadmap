@@ -1,6 +1,6 @@
 # ⚖️ Inferential Statistics & Hypothesis Testing
 
-> **Prerequisites**: [Probability & Distributions](./07-Probability-and-Distributions.md) | **Difficulty**: ⭐⭐⭐☆☆ Intermediate
+> **Prerequisites**: [Probability & Distributions](./09-Probability-And-Distributions.md) | **Difficulty**: ⭐⭐⭐☆☆ Intermediate
 
 ---
 
@@ -147,8 +147,8 @@ Frequentist statistics (p-values, t-tests) is the standard in science, but it ha
 
 | Next Topic | Why |
 |------------|-----|
-| [Bayesian Statistics](./09-Bayesian-Statistics.md) | Learn how to update your probability estimates as new evidence arrives. |
+| [Bayesian Statistics](./11-Bayesian-Statistics.md) | Learn how to update your probability estimates as new evidence arrives. |
 
 ---
 
-[← Previous: Probability & Distributions](./07-Probability-and-Distributions.md) | [Back to Main Index](../README.md) | [Next: Bayesian Statistics →](./09-Bayesian-Statistics.md)
+[← Probability and Distributions](09-Probability-And-Distributions.md) | [Back to Index](../README.md) | [Next: Bayesian Statistics →](11-Bayesian-Statistics.md)

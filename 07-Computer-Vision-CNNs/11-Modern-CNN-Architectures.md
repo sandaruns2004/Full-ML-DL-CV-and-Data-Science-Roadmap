@@ -93,4 +93,4 @@ Using this method, **EfficientNet** achieved state-of-the-art accuracy on ImageN
 
 ---
 
-[← Previous: VGG-Net](./10-VGG-Net.md) | [Back to Index](./README.md) | [Next: Transfer Learning →](./12-Transfer-Learning.md)
+[← VGG-Net](10-VGG-Net.md) | [Back to Index](../README.md) | [Next: Transfer Learning →](12-Transfer-Learning.md)

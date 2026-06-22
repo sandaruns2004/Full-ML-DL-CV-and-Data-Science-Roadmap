@@ -145,4 +145,4 @@ The original BERT was a massive breakthrough, but researchers quickly optimized 
 
 ---
 
-[← Transformer Architecture](./02-Transformer-Architecture.md) | [Back to Index](../README.md) | [Next: GPT And Decoder Models →](./04-GPT-And-Decoder-Models.md)
+[← The Transformer Architecture](02-Transformer-Architecture.md) | [Back to Index](../README.md) | [Next: GPT & Decoder-Only Models →](04-GPT-And-Decoder-Models.md)

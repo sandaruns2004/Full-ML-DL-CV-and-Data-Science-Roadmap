@@ -112,4 +112,4 @@ When you run `dvc repro` (reproduce), DVC checks the hashes. If the input data a
 
 ---
 
-[← Distributed Training](./07-Distributed-Training.md) | [Back to Index](../README.md) | [Next: Beginner Projects →](../16-Projects/01-Beginner-Projects.md)
+[← Distributed Training](07-Distributed-Training.md) | [Back to Index](../README.md) | [Next: Beginner Projects →](../16-Projects/01-Beginner-Projects.md)

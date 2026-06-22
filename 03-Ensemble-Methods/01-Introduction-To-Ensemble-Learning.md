@@ -84,4 +84,4 @@ Three main ensemble strategies:
 
 ---
 
-[← Model Selection Guide](../02-Supervised-Learning/12-Model-Selection-Guide.md) | [Back to Index](../README.md) | [Next: Bagging →](./02-Bagging.md)
+[← Model Selection Guide](../02-Supervised-Learning/12-Model-Selection-Guide.md) | [Back to Index](../README.md) | [Next: Bagging (Bootstrap Aggregating) →](02-Bagging.md)

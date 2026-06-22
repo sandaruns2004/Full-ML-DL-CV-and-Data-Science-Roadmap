@@ -19,3 +19,7 @@
 **Mathematics**:
 Bayes Theorem: $P(y|X) = \frac{P(X|y)P(y)}{P(X)}$
 Assumption of conditional independence: $P(x_1, \dots, x_n|y) = \prod_{i=1}^n P(x_i|y)$
+
+---
+
+[← Support Vector Machines (SVM)](07-Support-Vector-Machines.md) | [Back to Index](../README.md) | [Next: Feature Engineering for Supervised Learning →](09-Feature-Engineering-For-Supervised-Learning.md)

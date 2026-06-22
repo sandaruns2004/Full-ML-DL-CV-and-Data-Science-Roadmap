@@ -149,4 +149,4 @@ print(model)
 
 ---
 
-[← RNN Fundamentals](./01-RNN-Fundamentals.md) | [Back to Index](../README.md) | [Next: Seq2Seq And Attention →](./03-Seq2Seq-And-Attention.md)
+[← RNN Fundamentals](01-RNN-Fundamentals.md) | [Back to Index](../README.md) | [Next: Seq2Seq & Attention →](03-Seq2Seq-And-Attention.md)

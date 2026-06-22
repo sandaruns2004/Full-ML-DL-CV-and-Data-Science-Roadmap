@@ -21,3 +21,7 @@ Requires two parameters:
 **Complexity & Limitations**: 
 Complexity is $O(n \log n)$ with a spatial index (like a KD-Tree), but $O(n^2)$ without.
 **Limitations**: Struggles heavily with datasets that have *varying densities* because `eps` is global. Extensions like OPTICS or HDBSCAN solve this by using hierarchical density estimates.
+
+---
+
+[← Hierarchical Clustering](03-Hierarchical-Clustering.md) | [Back to Index](../README.md) | [Next: Mean Shift Clustering →](05-Mean-Shift.md)

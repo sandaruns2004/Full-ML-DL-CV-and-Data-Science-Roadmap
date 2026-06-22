@@ -219,3 +219,7 @@ Understanding the ecosystem helps clarify industry job titles:
 - [ ] I can distinguish between the daily tasks of a Data Scientist vs. a Data Engineer.
 
 Next up, we will dive into **[02-Computer-Fundamentals.md](./02-Computer-Fundamentals.md)** to understand the hardware that powers these AI systems!
+
+---
+
+[Back to Index](./README.md) | [Next: 02. Computer & Hardware Fundamentals for AI →](02-Computer-Fundamentals.md)

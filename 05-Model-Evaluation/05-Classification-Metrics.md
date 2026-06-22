@@ -47,3 +47,7 @@ The F1-Score is the Harmonic Mean of Precision and Recall. We use the harmonic m
 $F_1 = 2 \times \frac{Precision \times Recall}{Precision + Recall}$
 
 **Beta Parameter**: The generalized $F_\beta$ score allows you to weigh Recall higher than Precision (or vice versa). $F_2$ weighs recall twice as high as precision.
+
+---
+
+[← Regression Metrics](04-Regression-Metrics.md) | [Back to Index](../README.md) | [Next: The Confusion Matrix →](06-Confusion-Matrix.md)

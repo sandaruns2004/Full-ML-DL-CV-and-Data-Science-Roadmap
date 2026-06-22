@@ -96,4 +96,4 @@ It uses two distinct parallel pathways:
 
 ---
 
-[← Image Generation](./07-Image-Generation.md) | [Back to Index](../README.md) | [Next: 3D Vision →](./09-3D-Vision.md)
+[← Image Generation](07-Image-Generation.md) | [Back to Index](../README.md) | [Next: 3D Vision →](09-3D-Vision.md)

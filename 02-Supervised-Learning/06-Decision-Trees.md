@@ -17,3 +17,7 @@
 Entropy: $H(S) = -\sum_{i=1}^c p_i \log_2(p_i)$
 Gini Impurity: $G(S) = 1 - \sum_{i=1}^c p_i^2$
 The split that maximizes Information Gain (reduction in Entropy) is chosen. Pruning is required to prevent overfitting.
+
+---
+
+[← K-Nearest Neighbors (KNN)](05-KNN.md) | [Back to Index](../README.md) | [Next: Support Vector Machines (SVM) →](07-Support-Vector-Machines.md)

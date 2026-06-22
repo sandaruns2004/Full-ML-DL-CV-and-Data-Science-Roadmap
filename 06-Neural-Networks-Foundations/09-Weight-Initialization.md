@@ -114,4 +114,4 @@ Without this adjustment, the signal variance would drop by $0.5$ at every ReLU l
 
 ---
 
-[← Previous: Multi-Layer Perceptron](./08-Multi-Layer-Perceptron.md) | [Back to Index](./README.md) | [Next: Optimizers →](./10-Optimizers.md)
+[← Multi-Layer Perceptron (MLP)](08-Multi-Layer-Perceptron.md) | [Back to Index](../README.md) | [Next: Optimizers →](10-Optimizers.md)

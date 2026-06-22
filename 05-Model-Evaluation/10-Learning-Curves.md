@@ -48,3 +48,7 @@ plt.legend()
 plt.show()
 ```
 **Industry Context**: Compute costs. If the learning curve has already asymptoted at 50,000 rows, spending $10,000 to acquire and label 500,000 more rows is a waste of money.
+
+---
+
+[← Cross Validation](09-Cross-Validation.md) | [Back to Index](../README.md) | [Next: Validation Curves →](11-Validation-Curves.md)

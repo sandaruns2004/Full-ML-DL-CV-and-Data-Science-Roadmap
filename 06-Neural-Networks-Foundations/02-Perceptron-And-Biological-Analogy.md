@@ -123,4 +123,4 @@ However, this contradicts equation (1), which states that $b < 0$. Thus, no such
 
 ---
 
-[← Previous: Introduction To Neural Networks](./01-Introduction-To-Neural-Networks.md) | [Back to Index](./README.md) | [Next: Activation Functions →](./03-Activation-Functions.md)
+[← Introduction to Neural Networks](01-Introduction-To-Neural-Networks.md) | [Back to Index](../README.md) | [Next: Activation Functions →](03-Activation-Functions.md)

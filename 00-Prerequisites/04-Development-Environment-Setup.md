@@ -140,3 +140,7 @@ git config --global user.email "your.email@example.com"
 - [ ] I have installed Git and configured my global user name and email.
 
 You are fully equipped! In the next module, **[05-Python-Essentials.md](./05-Python-Essentials.md)**, we will dive deep into Python syntax, data structures, and the core scientific libraries.
+
+---
+
+[← 03. Programming Fundamentals](03-Programming-Fundamentals.md) | [Back to Index](./README.md) | [Next: Python Essentials for Machine Learning →](05-Python-Essentials.md)

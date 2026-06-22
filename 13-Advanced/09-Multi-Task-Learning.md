@@ -125,4 +125,4 @@ Advanced MTL systems dynamically adjust $w_1, w_2, w_3$ during training:
 
 ---
 
-[← Semi Supervised Learning](./08-Semi-Supervised-Learning.md) | [Back to Index](../README.md) | [Next: AB Testing →](../14-DS-Advanced/01-AB-Testing.md)
+[← Semi-Supervised Learning](08-Semi-Supervised-Learning.md) | [Back to Index](../README.md) | [Next: A/B Testing →](../14-DS-Advanced/01-AB-Testing.md)

@@ -50,3 +50,7 @@ The AUC is a single number summarizing the ROC curve.
 
 **Statistical Interpretation**: The AUC represents the probability that the classifier will rank a randomly chosen positive instance higher than a randomly chosen negative instance. 
 **Crucial Industry Note**: ROC AUC can be highly misleading when dealing with severely imbalanced datasets. If you have 1,000,000 negatives and 10 positives, a massive change in False Positives barely moves the False Positive Rate on the X-axis. In these cases, Precision-Recall curves are mandatory.
+
+---
+
+[← The Confusion Matrix](06-Confusion-Matrix.md) | [Back to Index](../README.md) | [Next: Precision-Recall Curves →](08-Precision-Recall-Curves.md)

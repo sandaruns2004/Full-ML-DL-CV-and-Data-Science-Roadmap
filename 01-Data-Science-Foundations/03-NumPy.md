@@ -143,4 +143,4 @@ print(f"NumPy is {python_time/numpy_time:.1f}x faster!")
 
 ---
 
-[Back to Main Index](../README.md) | [Next: Pandas →](./04-Pandas.md)
+[← Python for Data Science](02-Python-For-Data-Science.md) | [Back to Index](../README.md) | [Next: Pandas for Data Science →](04-Pandas.md)

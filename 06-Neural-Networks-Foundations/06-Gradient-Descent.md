@@ -111,4 +111,4 @@ If $\eta$ exceeds this bound, the updates will overshoot, and the loss will expl
 
 ---
 
-[← Previous: Loss Functions](./05-Loss-Functions.md) | [Back to Index](./README.md) | [Next: Backpropagation →](./07-Backpropagation.md)
+[← Loss Functions](05-Loss-Functions.md) | [Back to Index](../README.md) | [Next: Backpropagation →](07-Backpropagation.md)

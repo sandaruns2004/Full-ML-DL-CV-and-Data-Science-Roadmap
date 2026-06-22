@@ -171,4 +171,4 @@ Basic GANs use dense layers, which are terrible for generating high-resolution i
 
 ---
 
-[← Variational Autoencoders](./02-Variational-Autoencoders.md) | [Back to Index](../README.md) | [Next: Advanced GANs →](./04-Advanced-GANs.md)
+[← Variational Autoencoders (VAEs)](02-Variational-Autoencoders.md) | [Back to Index](../README.md) | [Next: Advanced GANs →](04-Advanced-GANs.md)

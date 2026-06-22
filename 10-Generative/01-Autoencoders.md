@@ -137,4 +137,4 @@ Autoencoders are great at reconstructing data, but they are **not generative**. 
 
 ---
 
-[← RAG And Vector Databases](../09-Transformers/09-RAG-And-Vector-Databases.md) | [Back to Index](../README.md) | [Next: Variational Autoencoders →](./02-Variational-Autoencoders.md)
+[← LangChain & Agents](../09-Transformers/10-LangChain-And-Agents.md) | [Back to Index](../README.md) | [Next: Variational Autoencoders (VAEs) →](02-Variational-Autoencoders.md)

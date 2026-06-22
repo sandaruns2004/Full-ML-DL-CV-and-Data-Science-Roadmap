@@ -1165,4 +1165,4 @@ flowchart TD
 
 ---
 
-[← Linux Fundamentals](./07-Linux-Fundamentals.md) | [Back to Index](./README.md) | [Next: Probability and Statistics →](./09-Probability-And-Statistics.md)
+[← 07. Linux Fundamentals for ML](07-Linux-Fundamentals.md) | [Back to Index](./README.md) | [Next: Probability & Statistics  The Mathematical Engine of Data Science →](09-Probability-And-Statistics.md)

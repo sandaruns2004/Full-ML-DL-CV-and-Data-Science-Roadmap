@@ -210,4 +210,4 @@ Percentage of trainable params: 0.391%
 
 ---
 
-[← Vision Transformers ViT](./05-Vision-Transformers-ViT.md) | [Back to Index](../README.md) | [Next: Mixture Of Experts →](./07-Mixture-Of-Experts.md)
+[← Vision Transformers (ViT)](05-Vision-Transformers-ViT.md) | [Back to Index](../README.md) | [Next: Mixture of Experts (MoE) →](07-Mixture-Of-Experts.md)

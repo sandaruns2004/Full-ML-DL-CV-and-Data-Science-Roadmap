@@ -65,4 +65,4 @@ where $i \in \{0, \dots, H-1\}$ and $j \in \{0, \dots, W-1\}$ represent index di
 
 ---
 
-[← Back to Index](./README.md) | [Next: Image Representation And Pixels →](./02-Image-Representation-And-Pixels.md)
+[← Neural Network PyTorch Implementation](../06-Neural-Networks-Foundations/14-Neural-Network-PyTorch-Implementation.md) | [Back to Index](../README.md) | [Next: Image Representation and Pixels →](02-Image-Representation-And-Pixels.md)

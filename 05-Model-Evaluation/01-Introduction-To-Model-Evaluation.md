@@ -50,3 +50,7 @@ model.fit(X_train, y_train)
 training_accuracy = accuracy_score(y_train, model.predict(X_train))
 print(f"Training Accuracy: {training_accuracy}")
 ```
+
+---
+
+[← Local Outlier Factor (LOF)](../04-Unsupervised-Learning/14-Local-Outlier-Factor.md) | [Back to Index](../README.md) | [Next: Train, Test, and Validation Split →](02-Train-Test-Validation-Split.md)

@@ -180,4 +180,4 @@ compiled_model = torch.compile(model)
 
 ---
 
-[← Previous: Neural Network From Scratch Numpy](./13-Neural-Network-From-Scratch-Numpy.md) | [Back to Index](./README.md) | [Next: Sequence Models RNNs →](../08-Sequence-Models/01-RNN-Fundamentals.md)
+[← Neural Network from Scratch (NumPy)](13-Neural-Network-From-Scratch-Numpy.md) | [Back to Index](../README.md) | [Next: Introduction to Computer Vision →](../07-Computer-Vision-CNNs/01-Introduction-To-Computer-Vision.md)

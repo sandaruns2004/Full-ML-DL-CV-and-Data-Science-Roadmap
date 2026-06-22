@@ -1,6 +1,6 @@
 # 🐍 Python for Data Science
 
-> **Prerequisites**: [Python Essentials](../00-Prerequisites/01-Python-Essentials.md) | **Difficulty**: ⭐☆☆☆☆ Beginner
+> **Prerequisites**: [Python Essentials](../00-Prerequisites/05-Python-Essentials.md) | **Difficulty**: ⭐☆☆☆☆ Beginner
 
 ---
 
@@ -76,7 +76,7 @@ Tools for production ML environments:
 
 ## 2. Python Refresher for DS
 
-> 💡 *For a full Python basics tutorial, see [00-Prerequisites/01-Python-Essentials.md](../00-Prerequisites/01-Python-Essentials.md).*
+> 💡 *For a full Python basics tutorial, see [00-Prerequisites/05-Python-Essentials.md](../00-Prerequisites/05-Python-Essentials.md).*
 
 ### 🟢 Beginner
 
@@ -219,7 +219,7 @@ else:
 
 ## 4. Introduction to Vectorization (NumPy Core)
 
-> 💡 *For deep math and matrix operations, see [00-Prerequisites/01-Python-Essentials.md](../00-Prerequisites/01-Python-Essentials.md).*
+> 💡 *For deep math and matrix operations, see [00-Prerequisites/05-Python-Essentials.md](../00-Prerequisites/05-Python-Essentials.md).*
 
 ### 🟢 Beginner
 
@@ -271,7 +271,7 @@ print(data[mask])  # [30, 40, 50]
 
 ## 5. Data Tabulation (Pandas Core)
 
-> 💡 *For advanced data manipulation, merges, and groupings, see [00-Prerequisites/01-Python-Essentials.md](../00-Prerequisites/01-Python-Essentials.md).*
+> 💡 *For advanced data manipulation, merges, and groupings, see [00-Prerequisites/05-Python-Essentials.md](../00-Prerequisites/05-Python-Essentials.md).*
 
 ### 🟢 Beginner
 
@@ -348,13 +348,13 @@ print(df[['Clean_Name', 'Category']])
 
 ## 6. What's Next
 
-Now that you understand the environment and basic Python data tools, you need to get some data!
+Now that you understand the environment and basic Python data tools, you're ready to dive into the core computation and data manipulation libraries:
 
 | Next Topic | Why |
 |------------|-----|
-| [Data Collection](./03-Data-Collection.md) | Learn to scrape the web, hit APIs, and query databases to build datasets |
-| [Data Cleaning](./04-Data-Cleaning.md) | Real data is messy. Learn how to handle missing values and outliers |
+| [NumPy](./03-NumPy.md) | Deepen your understanding of vectorized arrays and fast numerical computations |
+| [Pandas](./04-Pandas.md) | Master tabular data manipulation, grouping, and merging |
 
 ---
 
-[← Previous: Introduction to Data Science](./01-Introduction-to-Data-Science.md) | [Back to Main Index](../README.md) | [Next: Data Collection →](./03-Data-Collection.md)
+[← Introduction to Data Science](01-Introduction-To-Data-Science.md) | [Back to Index](../README.md) | [Next: NumPy for Data Science →](03-NumPy.md)

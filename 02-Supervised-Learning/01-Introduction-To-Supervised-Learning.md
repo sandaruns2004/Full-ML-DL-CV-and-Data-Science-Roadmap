@@ -26,3 +26,7 @@ Data (X) + Labels (y) $\rightarrow$ Algorithm $\rightarrow$ Predictive Model
 
 ### 🔴 Advanced
 **Mathematics**: Let $\mathcal{X}$ be the feature space and $\mathcal{Y}$ be the label space. We seek a function $f: \mathcal{X} \rightarrow \mathcal{Y}$ such that the expected risk $R(f) = \mathbb{E}[L(f(X), Y)]$ is minimized for some loss function $L$.
+
+---
+
+[← Handling Imbalanced Data](../01-Data-Science-Foundations/18-Imbalanced-Data.md) | [Back to Index](../README.md) | [Next: Linear Regression →](02-Linear-Regression.md)

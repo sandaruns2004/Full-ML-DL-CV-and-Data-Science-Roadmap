@@ -1,6 +1,6 @@
 # ⚙️ Data Preprocessing for Machine Learning
 
-> **Prerequisites**: [Data Cleaning](./04-Data-Cleaning.md) | **Difficulty**: ⭐⭐☆☆☆ Intermediate
+> **Prerequisites**: [Data Cleaning](./06-Data-Cleaning.md) | **Difficulty**: ⭐⭐☆☆☆ Intermediate
 
 ---
 
@@ -189,8 +189,8 @@ Preprocessing gets the data ready for the model. But to get *great* performance,
 
 | Next Topic | Why |
 |------------|-----|
-| [Feature Engineering](./12-Feature-Engineering.md) | Learn how to combine and transform basic columns into high-signal features that drastically improve model accuracy. |
+| [Feature Engineering](./14-Feature-Engineering.md) | Learn how to combine and transform basic columns into high-signal features that drastically improve model accuracy. |
 
 ---
 
-[← Previous: Data Visualization](./10-Data-Visualization.md) | [Back to Main Index](../README.md) | [Next: Feature Engineering →](./12-Feature-Engineering.md)
+[← Data Visualization](12-Data-Visualization.md) | [Back to Index](../README.md) | [Next: Feature Engineering →](14-Feature-Engineering.md)

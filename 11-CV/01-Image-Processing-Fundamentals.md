@@ -109,4 +109,4 @@ Before Deep Learning took over in 2012, researchers spent decades manually engin
 
 ---
 
-[← Neural Style Transfer](../10-Generative/06-Neural-Style-Transfer.md) | [Back to Index](../README.md) | [Next: OpenCV Masterclass →](./02-OpenCV-Masterclass.md)
+[← Neural Style Transfer](../10-Generative/06-Neural-Style-Transfer.md) | [Back to Index](../README.md) | [Next: OpenCV Masterclass →](02-OpenCV-Masterclass.md)

@@ -87,4 +87,4 @@ print(f"LightGBM Test Accuracy: {model.score(X_test, y_test):.4f}")
 
 ---
 
-[← XGBoost Concepts](./09-XGBoost-Concepts.md) | [Back to Index](../README.md) | [Next: CatBoost →](./11-CatBoost-Concepts.md)
+[← XGBoost (eXtreme Gradient Boosting)](09-XGBoost-Concepts.md) | [Back to Index](../README.md) | [Next: CatBoost →](11-CatBoost-Concepts.md)

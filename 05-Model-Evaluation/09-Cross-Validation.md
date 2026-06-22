@@ -43,3 +43,7 @@ print(f"Average Accuracy: {scores.mean():.2f} +/- {scores.std():.2f}")
 - **Stratified K-Fold**: Ensures that the ratio of classes (e.g., 90% dogs, 10% cats) is exactly preserved in every single fold. Mandatory for imbalanced classification.
 - **Leave-One-Out (LOOCV)**: $K$ is set to the total number of data points $N$. You train on $N-1$ points and test on 1 point. Extremely computationally expensive, but theoretically unbiased.
 - **Time Series Split**: You cannot use K-Fold on Time Series data because you would be predicting the past using the future. You must use expanding window splits.
+
+---
+
+[← Precision-Recall Curves](08-Precision-Recall-Curves.md) | [Back to Index](../README.md) | [Next: Learning Curves →](10-Learning-Curves.md)

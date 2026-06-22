@@ -16,3 +16,7 @@ Builds an ensemble of Random Trees. In each tree, it recursively generates rando
 ### 🔴 Advanced
 **Complexity & Scalability**: 
 Unlike distance-based or density-based methods which are $O(n^2)$, Isolation Forest operates in $O(n \log n)$ time and requires very little memory. It scales beautifully to massive, high-dimensional datasets.
+
+---
+
+[← Anomaly Detection (Outlier Detection)](12-Anomaly-Detection.md) | [Back to Index](../README.md) | [Next: Local Outlier Factor (LOF) →](14-Local-Outlier-Factor.md)

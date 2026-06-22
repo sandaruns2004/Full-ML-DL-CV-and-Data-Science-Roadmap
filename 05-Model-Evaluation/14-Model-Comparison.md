@@ -39,3 +39,7 @@ if p_value < 0.05:
 ### 🔴 Advanced
 **The McNemar's Test**:
 For classification problems, especially deep neural networks where 10-fold cross validation is too computationally expensive, you can use McNemar's Test on the single test-set predictions. It focuses specifically on the cases where the models disagree. If Model A got it right and Model B got it wrong 50 times, but Model B got it right and Model A got it wrong only 5 times, McNemar's test will mathematically prove that the difference is not due to random chance.
+
+---
+
+[← Imbalanced Classification Evaluation](13-Imbalanced-Classification.md) | [Back to Index](../README.md) | [Next: Production Monitoring and Drift →](15-Production-Monitoring.md)

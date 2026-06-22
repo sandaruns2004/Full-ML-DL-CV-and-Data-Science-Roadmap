@@ -110,4 +110,4 @@ To prevent this, we use **Gradient Clipping**. There are two main strategies:
 
 ---
 
-[← Previous: Gradient Descent](./06-Gradient-Descent.md) | [Back to Index](./README.md) | [Next: Multi-Layer Perceptron →](./08-Multi-Layer-Perceptron.md)
+[← Gradient Descent](06-Gradient-Descent.md) | [Back to Index](../README.md) | [Next: Multi-Layer Perceptron (MLP) →](08-Multi-Layer-Perceptron.md)

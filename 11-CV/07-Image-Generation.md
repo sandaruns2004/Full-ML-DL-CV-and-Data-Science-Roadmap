@@ -88,4 +88,4 @@ Because the U-Net is operating on matrices that are 48x smaller, Stable Diffusio
 
 ---
 
-[← Pose Estimation](./06-Pose-Estimation.md) | [Back to Index](../README.md) | [Next: Video Analysis →](./08-Video-Analysis.md)
+[← Pose Estimation](06-Pose-Estimation.md) | [Back to Index](../README.md) | [Next: Video Analysis →](08-Video-Analysis.md)

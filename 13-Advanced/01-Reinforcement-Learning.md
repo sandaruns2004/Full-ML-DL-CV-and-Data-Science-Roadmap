@@ -160,4 +160,4 @@ env.close()
 
 ---
 
-[← Modern NLP With Transformers](../12-NLP/07-Modern-NLP-With-Transformers.md) | [Back to Index](../README.md) | [Next: Graph Neural Networks →](./02-Graph-Neural-Networks.md)
+[← Modern NLP](../12-NLP/07-Modern-NLP-With-Transformers.md) | [Back to Index](../README.md) | [Next: Graph Neural Networks (GNNs) →](02-Graph-Neural-Networks.md)

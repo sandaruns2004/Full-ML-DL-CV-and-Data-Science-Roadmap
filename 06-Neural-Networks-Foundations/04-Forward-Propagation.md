@@ -125,4 +125,4 @@ In high-performance Deep Learning training:
 
 ---
 
-[← Previous: Activation Functions](./03-Activation-Functions.md) | [Back to Index](./README.md) | [Next: Loss Functions →](./05-Loss-Functions.md)
+[← Activation Functions](03-Activation-Functions.md) | [Back to Index](../README.md) | [Next: Loss Functions →](05-Loss-Functions.md)

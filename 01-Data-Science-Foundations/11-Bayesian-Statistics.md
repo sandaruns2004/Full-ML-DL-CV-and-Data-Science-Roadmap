@@ -1,6 +1,6 @@
 # 🔮 Bayesian Statistics
 
-> **Prerequisites**: [Inferential Statistics](./08-Inferential-Statistics.md) | **Difficulty**: ⭐⭐⭐⭐☆ Advanced
+> **Prerequisites**: [Inferential Statistics](./10-Inferential-Statistics.md) | **Difficulty**: ⭐⭐⭐⭐☆ Advanced
 
 ---
 
@@ -169,8 +169,8 @@ We have now covered the core of Data Science mathematics. It is time to move awa
 
 | Next Topic | Why |
 |------------|-----|
-| [Data Visualization](./10-Data-Visualization.md) | Learn how to create compelling visual narratives using Matplotlib, Seaborn, and Plotly. |
+| [Data Visualization](./12-Data-Visualization.md) | Learn how to create compelling visual narratives using Matplotlib, Seaborn, and Plotly. |
 
 ---
 
-[← Previous: Inferential Statistics](./08-Inferential-Statistics.md) | [Back to Main Index](../README.md) | [Next: Data Visualization →](./10-Data-Visualization.md)
+[← Inferential Statistics & Hypothesis Testing](10-Inferential-Statistics.md) | [Back to Index](../README.md) | [Next: Data Visualization →](12-Data-Visualization.md)

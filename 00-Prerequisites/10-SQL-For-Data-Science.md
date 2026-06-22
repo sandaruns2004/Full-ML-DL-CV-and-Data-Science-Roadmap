@@ -234,4 +234,4 @@ Congratulations! You have completed the **Prerequisites** module. You now have t
 
 ---
 
-[← Probability and Statistics](./09-Probability-And-Statistics.md) | [Back to Index](../README.md) | [Next: Introduction to Data Science →](../01-Data-Science-Foundations/01-Introduction-To-Data-Science.md)
+[← Probability & Statistics  The Mathematical Engine of Data Science](09-Probability-And-Statistics.md) | [Back to Index](./README.md) | [Next: Introduction to Data Science →](../01-Data-Science-Foundations/01-Introduction-To-Data-Science.md)

@@ -188,4 +188,4 @@ dvc pull
 
 ---
 
-[← Data Ethics Fairness](../14-DS-Advanced/06-Data-Ethics-Fairness.md) | [Back to Index](../README.md) | [Next: Model Deployment →](./02-Model-Deployment.md)
+[← Data Ethics & Fairness](../14-DS-Advanced/06-Data-Ethics-Fairness.md) | [Back to Index](../README.md) | [Next: Model Deployment →](02-Model-Deployment.md)

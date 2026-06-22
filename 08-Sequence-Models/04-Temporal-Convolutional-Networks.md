@@ -139,4 +139,4 @@ print(f"Layer 2 output shape: {out2.shape}") # Should be [32, 64, 100]
 
 ---
 
-[← Seq2Seq And Attention](./03-Seq2Seq-And-Attention.md) | [Back to Index](../README.md) | [Next: Attention Mechanism →](../09-Transformers/01-Attention-Mechanism.md)
+[← Seq2Seq & Attention](03-Seq2Seq-And-Attention.md) | [Back to Index](../README.md) | [Next: The Attention Mechanism →](../09-Transformers/01-Attention-Mechanism.md)

@@ -117,4 +117,4 @@ plt.show()
 
 ---
 
-[← AdaBoost](./07-AdaBoost.md) | [Back to Index](../README.md) | [Next: XGBoost →](./09-XGBoost-Concepts.md)
+[← AdaBoost (Adaptive Boosting)](07-AdaBoost.md) | [Back to Index](../README.md) | [Next: XGBoost (eXtreme Gradient Boosting) →](09-XGBoost-Concepts.md)

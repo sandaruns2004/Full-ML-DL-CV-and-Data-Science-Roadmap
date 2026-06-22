@@ -57,3 +57,7 @@ $R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}$
 Standard $R^2$ will artificially inflate if you just keep adding useless features to the model. Adjusted $R^2$ penalizes the addition of features that do not improve the model:
 $R^2_{adj} = 1 - \left[ \frac{(1 - R^2)(n - 1)}{n - k - 1} \right]$
 Where $n$ is sample size and $k$ is number of predictors.
+
+---
+
+[← The Bias-Variance Tradeoff](03-Bias-Variance-Tradeoff.md) | [Back to Index](../README.md) | [Next: Classification Metrics →](05-Classification-Metrics.md)

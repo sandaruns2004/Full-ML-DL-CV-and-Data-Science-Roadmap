@@ -180,4 +180,4 @@ print(weights[0, 0].detach().numpy())
 
 ---
 
-[← Temporal Convolutional Networks](../08-Sequence-Models/04-Temporal-Convolutional-Networks.md) | [Back to Index](../README.md) | [Next: Transformer Architecture →](./02-Transformer-Architecture.md)
+[← TCNs](../08-Sequence-Models/04-Temporal-Convolutional-Networks.md) | [Back to Index](../README.md) | [Next: The Transformer Architecture →](02-Transformer-Architecture.md)

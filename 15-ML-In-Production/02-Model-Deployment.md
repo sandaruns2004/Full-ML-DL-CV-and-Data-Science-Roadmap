@@ -158,4 +158,4 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 ---
 
-[← ML Pipeline](./01-ML-Pipeline.md) | [Back to Index](../README.md) | [Next: MLOps →](./03-MLOps.md)
+[← ML Pipeline](01-ML-Pipeline.md) | [Back to Index](../README.md) | [Next: MLOps →](03-MLOps.md)

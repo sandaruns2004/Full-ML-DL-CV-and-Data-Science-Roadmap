@@ -101,4 +101,4 @@ plt.show()
 
 ---
 
-[← Boosting Introduction](./06-Boosting-Introduction.md) | [Back to Index](../README.md) | [Next: Gradient Boosting →](./08-Gradient-Boosting.md)
+[← Introduction to Boosting](06-Boosting-Introduction.md) | [Back to Index](../README.md) | [Next: Gradient Boosting (GBM) →](08-Gradient-Boosting.md)

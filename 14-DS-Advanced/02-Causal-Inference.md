@@ -143,4 +143,4 @@ print(impact.summary())
 
 ---
 
-[← AB Testing](./01-AB-Testing.md) | [Back to Index](../README.md) | [Next: Survival Analysis →](./03-Survival-Analysis.md)
+[← A/B Testing](01-AB-Testing.md) | [Back to Index](../README.md) | [Next: Survival Analysis →](03-Survival-Analysis.md)

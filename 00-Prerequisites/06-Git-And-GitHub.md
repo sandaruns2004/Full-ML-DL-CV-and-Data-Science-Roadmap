@@ -213,3 +213,7 @@ If you *must* track data versions (e.g., you need to know exactly which dataset 
 - [ ] I understand the workflow of a GitHub Pull Request.
 
 Next up, we will leave the GUI behind and master the terminal in **[07-Linux-Fundamentals.md](./07-Linux-Fundamentals.md)**!
+
+---
+
+[← Python Essentials for Machine Learning](05-Python-Essentials.md) | [Back to Index](./README.md) | [Next: 07. Linux Fundamentals for ML →](07-Linux-Fundamentals.md)

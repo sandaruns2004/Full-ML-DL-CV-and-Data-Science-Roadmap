@@ -90,4 +90,4 @@ When applying these transformations, the mapped coordinates $(x', y')$ may not l
 
 ---
 
-[← Previous: Transfer Learning](./12-Transfer-Learning.md) | [Back to Index](./README.md) | [Next: Object Detection Introduction →](./14-Object-Detection-Introduction.md)
+[← Transfer Learning](12-Transfer-Learning.md) | [Back to Index](../README.md) | [Next: Object Detection Introduction →](14-Object-Detection-Introduction.md)

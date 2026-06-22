@@ -1,6 +1,6 @@
 # 📊 Exploratory Data Analysis (EDA)
 
-> **Prerequisites**: [Data Cleaning](./04-Data-Cleaning.md) | **Difficulty**: ⭐⭐☆☆☆ Intermediate
+> **Prerequisites**: [Data Cleaning](./06-Data-Cleaning.md) | **Difficulty**: ⭐⭐☆☆☆ Intermediate
 
 ---
 
@@ -215,14 +215,13 @@ EDA requires a solid understanding of statistical metrics. To truly understand d
 
 | Next Topic | Why |
 |------------|-----|
-| [Descriptive Statistics](./06-Descriptive-Statistics.md) | Understand the mathematics behind the mean, median, standard deviation, and skewness that we just visualized. |
-
----
-
-[← Previous: Data Cleaning](./04-Data-Cleaning.md) | [Back to Main Index](../README.md) | [Next: Descriptive Statistics →](./06-Descriptive-Statistics.md)
-
+| [Descriptive Statistics](./08-Descriptive-Statistics.md) | Understand the mathematics behind the mean, median, standard deviation, and skewness that we just visualized. |
 
 ### 🟢 Visual Examples
 
 ![Correlation Heatmap](assets/heatmap.png)
 ![Pairplot](assets/pairplot.png)
+
+---
+
+[← Data Cleaning](06-Data-Cleaning.md) | [Back to Index](../README.md) | [Next: Descriptive Statistics →](08-Descriptive-Statistics.md)

@@ -136,4 +136,4 @@ label_prop_model.fit(X_train, y_train)
 
 ---
 
-[← Knowledge Distillation](./07-Knowledge-Distillation.md) | [Back to Index](../README.md) | [Next: Multi Task Learning →](./09-Multi-Task-Learning.md)
+[← Knowledge Distillation](07-Knowledge-Distillation.md) | [Back to Index](../README.md) | [Next: Multi-Task Learning →](09-Multi-Task-Learning.md)

@@ -147,4 +147,4 @@ Now that our text is cleaned and split into root tokens, we need to convert thes
 
 ---
 
-[← Foundation Models CV](../11-CV/11-Foundation-Models-CV.md) | [Back to Index](../README.md) | [Next: Classical NLP →](./02-Classical-NLP.md)
+[← Foundation Models CV](../11-CV/11-Foundation-Models-CV.md) | [Back to Index](../README.md) | [Next: Classical NLP (Bag of Words & TF-IDF) →](02-Classical-NLP.md)

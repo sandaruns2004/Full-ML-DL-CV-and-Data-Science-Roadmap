@@ -99,4 +99,4 @@ You are now ready to tackle the other half of the Deep Learning revolution: Sequ
 
 ---
 
-[← 3D Vision](./09-3D-Vision.md) | [Back to Index](../README.md) | [Next: Foundation Models CV →](./11-Foundation-Models-CV.md)
+[← 3D Vision](09-3D-Vision.md) | [Back to Index](../README.md) | [Next: Foundation Models CV →](11-Foundation-Models-CV.md)

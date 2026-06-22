@@ -192,4 +192,4 @@ for param in model.parameters():
 
 ---
 
-[← Diffusion Models](./05-Diffusion-Models.md) | [Back to Index](../README.md) | [Next: Image Processing Fundamentals →](../11-CV/01-Image-Processing-Fundamentals.md)
+[← Diffusion Models](05-Diffusion-Models.md) | [Back to Index](../README.md) | [Next: Image Processing Fundamentals →](../11-CV/01-Image-Processing-Fundamentals.md)

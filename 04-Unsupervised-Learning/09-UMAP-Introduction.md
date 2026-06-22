@@ -18,3 +18,7 @@
 ### 🔴 Advanced
 **Mathematics**: 
 UMAP builds on Riemannian geometry and algebraic topology. It constructs a fuzzy simplicial complex representation of the data and optimizes the low-dimensional embedding to have as similar a fuzzy topological structure as possible using cross-entropy loss instead of KL-divergence.
+
+---
+
+[← t-SNE (t-Distributed Stochastic Neighbor Embedding)](08-tSNE.md) | [Back to Index](../README.md) | [Next: Association Rule Mining →](10-Association-Rule-Mining.md)

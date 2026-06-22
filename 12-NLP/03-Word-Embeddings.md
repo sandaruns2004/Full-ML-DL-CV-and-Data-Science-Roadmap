@@ -163,4 +163,4 @@ print(result) # Should output something like [('queen', 0.85)]
 
 ---
 
-[← Classical NLP](./02-Classical-NLP.md) | [Back to Index](../README.md) | [Next: Text Classification →](./04-Text-Classification.md)
+[← Classical NLP (Bag of Words & TF-IDF)](02-Classical-NLP.md) | [Back to Index](../README.md) | [Next: Text Classification Pipelines →](04-Text-Classification.md)

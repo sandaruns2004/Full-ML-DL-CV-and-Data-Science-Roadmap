@@ -20,3 +20,7 @@ GMM uses the **Expectation-Maximization (EM)** algorithm:
 A GMM represents the probability of $x$ as a weighted sum of $K$ Gaussian densities:
 $p(x) = \sum_{k=1}^K \pi_k \mathcal{N}(x | \mu_k, \Sigma_k)$
 Where $\pi_k$ are the mixing coefficients, and $\Sigma_k$ is the covariance matrix. The covariance matrix allows GMMs to model elliptical (stretched) clusters, unlike the strictly spherical clusters of K-Means.
+
+---
+
+[← Mean Shift Clustering](05-Mean-Shift.md) | [Back to Index](../README.md) | [Next: Principal Component Analysis (PCA) →](07-Principal-Component-Analysis.md)

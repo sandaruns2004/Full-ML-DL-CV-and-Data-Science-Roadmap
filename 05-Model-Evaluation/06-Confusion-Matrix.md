@@ -50,3 +50,7 @@ plt.show()
 ### 🔴 Advanced
 **Multi-Class Confusion Matrices**:
 In multi-class problems (e.g., predicting 10 different types of animals), the confusion matrix becomes a $10 \times 10$ matrix. The diagonal represents correct predictions. Off-diagonal elements immediately show you which classes the model is confusing with each other (e.g., confusing "Dog" with "Wolf" 50 times, but never with "Cat"). This pinpoints exactly where feature engineering is required.
+
+---
+
+[← Classification Metrics](05-Classification-Metrics.md) | [Back to Index](../README.md) | [Next: ROC Curves and AUC →](07-ROC-And-AUC.md)

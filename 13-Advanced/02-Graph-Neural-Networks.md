@@ -178,4 +178,4 @@ print(f'Test Accuracy: {acc:.4f}') # Should be ~81%
 
 ---
 
-[← Reinforcement Learning](./01-Reinforcement-Learning.md) | [Back to Index](../README.md) | [Next: Self Supervised Learning →](./03-Self-Supervised-Learning.md)
+[← Deep Reinforcement Learning (DRL)](01-Reinforcement-Learning.md) | [Back to Index](../README.md) | [Next: Self-Supervised Learning →](03-Self-Supervised-Learning.md)

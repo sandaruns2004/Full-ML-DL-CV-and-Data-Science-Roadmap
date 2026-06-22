@@ -21,3 +21,7 @@
 ### 🔴 Advanced
 **Complexity Analysis**: 
 Time complexity is extremely high: $O(n^3)$ for standard agglomerative algorithms, making it unsuitable for massive datasets (millions of rows) without optimizations like BIRCH or approximate nearest neighbors.
+
+---
+
+[← K-Means Clustering](02-K-Means-Clustering.md) | [Back to Index](../README.md) | [Next: DBSCAN (Density-Based Spatial Clustering) →](04-DBSCAN.md)

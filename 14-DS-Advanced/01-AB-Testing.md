@@ -148,4 +148,4 @@ else:
 
 ---
 
-[← Multi Task Learning](../13-Advanced/09-Multi-Task-Learning.md) | [Back to Index](../README.md) | [Next: Causal Inference →](./02-Causal-Inference.md)
+[← Multi-Task Learning](../13-Advanced/09-Multi-Task-Learning.md) | [Back to Index](../README.md) | [Next: Causal Inference →](02-Causal-Inference.md)

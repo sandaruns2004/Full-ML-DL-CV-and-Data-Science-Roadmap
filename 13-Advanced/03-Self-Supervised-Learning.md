@@ -124,4 +124,4 @@ Once pre-trained, you throw away the Decoder, keep the Encoder, and fine-tune it
 
 ---
 
-[← Graph Neural Networks](./02-Graph-Neural-Networks.md) | [Back to Index](../README.md) | [Next: Meta Learning →](./04-Meta-Learning.md)
+[← Graph Neural Networks (GNNs)](02-Graph-Neural-Networks.md) | [Back to Index](../README.md) | [Next: Meta-Learning →](04-Meta-Learning.md)

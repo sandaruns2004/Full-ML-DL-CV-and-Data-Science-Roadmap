@@ -120,4 +120,4 @@ print("Report generated! Open 'data_drift_report.html' in your browser.")
 
 ---
 
-[← MLOps](./03-MLOps.md) | [Back to Index](../README.md) | [Next: Edge ML And Optimization →](./05-Edge-ML-And-Optimization.md)
+[← MLOps](03-MLOps.md) | [Back to Index](../README.md) | [Next: Edge ML & Optimization →](05-Edge-ML-And-Optimization.md)

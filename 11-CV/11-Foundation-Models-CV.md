@@ -119,4 +119,4 @@ Because foundation models have already learned excellent representations of the 
 
 ---
 
-[← CV Real World Projects](./10-CV-Real-World-Projects.md) | [Back to Index](../README.md) | [Next: Text Preprocessing →](../12-NLP/01-Text-Preprocessing.md)
+[← CV Projects](10-CV-Real-World-Projects.md) | [Back to Index](../README.md) | [Next: Text Preprocessing →](../12-NLP/01-Text-Preprocessing.md)

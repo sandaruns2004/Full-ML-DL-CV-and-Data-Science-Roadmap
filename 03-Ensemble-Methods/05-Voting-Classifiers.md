@@ -83,4 +83,4 @@ for name, model in estimators + [('Hard Voting', hard_voting), ('Soft Voting', s
 
 ---
 
-[← Extra Trees](./04-Extra-Trees.md) | [Back to Index](../README.md) | [Next: Boosting Introduction →](./06-Boosting-Introduction.md)
+[← Extra Trees (Extremely Randomized Trees)](04-Extra-Trees.md) | [Back to Index](../README.md) | [Next: Introduction to Boosting →](06-Boosting-Introduction.md)

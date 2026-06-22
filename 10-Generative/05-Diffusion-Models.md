@@ -142,4 +142,4 @@ This reduced the computational cost by 99%, allowing state-of-the-art image gene
 
 ---
 
-[← Advanced GANs](./04-Advanced-GANs.md) | [Back to Index](../README.md) | [Next: Neural Style Transfer →](./06-Neural-Style-Transfer.md)
+[← Advanced GANs](04-Advanced-GANs.md) | [Back to Index](../README.md) | [Next: Neural Style Transfer →](06-Neural-Style-Transfer.md)

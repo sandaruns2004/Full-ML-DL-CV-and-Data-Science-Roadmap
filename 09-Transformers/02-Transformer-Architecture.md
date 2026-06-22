@@ -269,4 +269,4 @@ print("Output shape:", output.shape) # Expected: (2, 10, 1000) -> (Batch, Seq_Le
 
 ---
 
-[← Attention Mechanism](./01-Attention-Mechanism.md) | [Back to Index](../README.md) | [Next: BERT And Encoder Models →](./03-BERT-And-Encoder-Models.md)
+[← The Attention Mechanism](01-Attention-Mechanism.md) | [Back to Index](../README.md) | [Next: BERT & Encoder-Only Models →](03-BERT-And-Encoder-Models.md)

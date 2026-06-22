@@ -102,4 +102,4 @@ Because $K$ is typically small (e.g. 3) and independent of image height or width
 
 ---
 
-[← Previous: Pooling Layers](./05-Pooling-Layers.md) | [Back to Index](./README.md) | [Next: Edge Detection And Feature Maps →](./07-Edge-Detection-And-Feature-Maps.md)
+[← Pooling Layers](05-Pooling-Layers.md) | [Back to Index](../README.md) | [Next: Edge Detection & Feature Maps →](07-Edge-Detection-And-Feature-Maps.md)

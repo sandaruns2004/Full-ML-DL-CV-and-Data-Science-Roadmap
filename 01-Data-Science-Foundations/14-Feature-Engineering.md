@@ -179,4 +179,4 @@ Having too many features causes the "Curse of Dimensionality" (slower training, 
 
 ---
 
-[← Previous: Data Preprocessing](./11-Data-Preprocessing.md) | [Back to Main Index](../README.md) | [Next: Feature Selection →](./13-Feature-Selection.md)
+[← Data Preprocessing for Machine Learning](13-Data-Preprocessing.md) | [Back to Index](../README.md) | [Next: SQL for Data Science →](15-SQL-For-Data-Science.md)

@@ -179,4 +179,4 @@ MoE achieves the seemingly impossible: decoupling model parameter count from inf
 
 ---
 
-[← LLM Fine Tuning And RLHF](./06-LLM-Fine-Tuning-And-RLHF.md) | [Back to Index](../README.md) | [Next: Multi Modal Models →](./08-Multi-Modal-Models.md)
+[← LLM Fine-Tuning & RLHF](06-LLM-Fine-Tuning-And-RLHF.md) | [Back to Index](../README.md) | [Next: Multi-Modal Models →](08-Multi-Modal-Models.md)

@@ -1,6 +1,6 @@
 # ✂️ Feature Selection Methods
 
-> **Prerequisites**: [Feature Engineering](./12-Feature-Engineering.md) | **Difficulty**: ⭐⭐⭐☆☆ Intermediate
+> **Prerequisites**: [Data Ethics](./16-Data-Ethics.md) | **Difficulty**: ⭐⭐⭐☆☆ Intermediate
 
 ---
 
@@ -173,8 +173,8 @@ Feature Selection handles datasets with too many columns. But what do you do whe
 
 | Next Topic | Why |
 |------------|-----|
-| [Imbalanced Data](./14-Imbalanced-Data.md) | Learn how to fix datasets where one class severely outnumbers the other, preventing your model from just guessing the majority class 100% of the time. |
+| [Imbalanced Data](./18-Imbalanced-Data.md) | Learn how to fix datasets where one class severely outnumbers the other, preventing your model from just guessing the majority class 100% of the time. |
 
 ---
 
-[← Previous: Feature Engineering](./12-Feature-Engineering.md) | [Back to Main Index](../README.md) | [Next: Imbalanced Data →](./14-Imbalanced-Data.md)
+[← Data Ethics and Responsible AI](16-Data-Ethics.md) | [Back to Index](../README.md) | [Next: Handling Imbalanced Data →](18-Imbalanced-Data.md)

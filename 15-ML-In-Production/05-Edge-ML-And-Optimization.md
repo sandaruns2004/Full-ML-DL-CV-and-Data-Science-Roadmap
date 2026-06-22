@@ -152,4 +152,4 @@ print(f"Speedup: {time_fp32 / time_int8:.2f}x")
 
 ---
 
-[← Model Monitoring](./04-Model-Monitoring.md) | [Back to Index](../README.md) | [Next: Experiment Tracking →](./06-Experiment-Tracking.md)
+[← Model Monitoring](04-Model-Monitoring.md) | [Back to Index](../README.md) | [Next: Experiment Tracking →](06-Experiment-Tracking.md)

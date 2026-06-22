@@ -111,4 +111,4 @@ This allows you to train massive models just by throwing more GPUs at the proble
 
 ---
 
-[← Experiment Tracking](./06-Experiment-Tracking.md) | [Back to Index](../README.md) | [Next: Data Versioning DVC →](./08-Data-Versioning-DVC.md)
+[← Experiment Tracking](06-Experiment-Tracking.md) | [Back to Index](../README.md) | [Next: Data Versioning (DVC) →](08-Data-Versioning-DVC.md)

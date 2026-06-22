@@ -136,4 +136,4 @@ agent.run("What year was Albert Einstein born, and what is that year multiplied 
 
 ---
 
-[← RAG & Vector Databases](./09-RAG-And-Vector-Databases.md) | [Back to Index](../README.md) | [Next: ML Pipeline →](../15-ML-In-Production/01-ML-Pipeline.md)
+[← RAG & Vector Databases](09-RAG-And-Vector-Databases.md) | [Back to Index](../README.md) | [Next: Autoencoders →](../10-Generative/01-Autoencoders.md)

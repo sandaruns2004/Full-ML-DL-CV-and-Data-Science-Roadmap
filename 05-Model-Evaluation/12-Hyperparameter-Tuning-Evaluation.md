@@ -45,3 +45,7 @@ random_search = RandomizedSearchCV(model, param_dist, n_iter=10, cv=5)
 **Bayesian Optimization**:
 Grid and Random search are "dumb"—they do not learn from their previous attempts. Bayesian Optimization (e.g., using Hyperopt or Optuna) uses a probabilistic model (usually a Gaussian Process) to model the mapping from hyperparameters to the evaluation score. 
 It balances **Exploration** (trying entirely new areas of the hyperparameter space) with **Exploitation** (fine-tuning near the best parameters found so far). In industry scale deep-learning models where training takes weeks, Bayesian Optimization is mandatory.
+
+---
+
+[← Validation Curves](11-Validation-Curves.md) | [Back to Index](../README.md) | [Next: Imbalanced Classification Evaluation →](13-Imbalanced-Classification.md)

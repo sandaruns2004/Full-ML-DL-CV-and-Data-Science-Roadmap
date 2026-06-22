@@ -157,4 +157,4 @@ for topic_idx, topic in enumerate(lda.components_):
 
 ---
 
-[← Text Preprocessing](./01-Text-Preprocessing.md) | [Back to Index](../README.md) | [Next: Word Embeddings →](./03-Word-Embeddings.md)
+[← Text Preprocessing](01-Text-Preprocessing.md) | [Back to Index](../README.md) | [Next: Word Embeddings (Word2Vec & GloVe) →](03-Word-Embeddings.md)

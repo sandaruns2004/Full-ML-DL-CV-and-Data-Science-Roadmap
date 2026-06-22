@@ -104,4 +104,4 @@ if __name__ == "__main__":
 
 ---
 
-[← Previous: Image Segmentation Introduction](./15-Image-Segmentation-Introduction.md) | [Back to Index](./README.md) | [Next: Sequence Models RNNs →](../08-Sequence-Models/01-RNN-Fundamentals.md)
+[← Image Segmentation Introduction](15-Image-Segmentation-Introduction.md) | [Back to Index](../README.md) | [Next: RNN Fundamentals →](../08-Sequence-Models/01-RNN-Fundamentals.md)

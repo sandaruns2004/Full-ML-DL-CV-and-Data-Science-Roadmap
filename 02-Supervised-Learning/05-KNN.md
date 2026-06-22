@@ -16,3 +16,7 @@
 **Mathematics**:
 Euclidean Distance: $d(x, y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}$
 Curse of Dimensionality: In high dimensions, all points become almost equidistant, rendering KNN useless unless dimensionality reduction is applied first.
+
+---
+
+[← Logistic Regression](04-Logistic-Regression.md) | [Back to Index](../README.md) | [Next: Decision Trees →](06-Decision-Trees.md)

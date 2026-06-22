@@ -52,3 +52,7 @@ Where:
 
 **Industry Reality**: 
 Modern deep learning sometimes defies the classical tradeoff. In the "Double Descent" phenomenon, massively over-parameterized neural networks can achieve near-zero training error (interpolating the data) while simultaneously decreasing test error, challenging classical statistical mechanics.
+
+---
+
+[← Train, Test, and Validation Split](02-Train-Test-Validation-Split.md) | [Back to Index](../README.md) | [Next: Regression Metrics →](04-Regression-Metrics.md)

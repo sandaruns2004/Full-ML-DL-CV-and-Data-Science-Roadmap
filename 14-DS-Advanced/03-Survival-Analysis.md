@@ -138,4 +138,4 @@ If the `MonthlyCharges` coefficient is positive, it means higher monthly charges
 
 ---
 
-[← Causal Inference](./02-Causal-Inference.md) | [Back to Index](../README.md) | [Next: Geospatial Analysis →](./04-Geospatial-Analysis.md)
+[← Causal Inference](02-Causal-Inference.md) | [Back to Index](../README.md) | [Next: Geospatial Analysis & Mapping →](04-Geospatial-Analysis.md)

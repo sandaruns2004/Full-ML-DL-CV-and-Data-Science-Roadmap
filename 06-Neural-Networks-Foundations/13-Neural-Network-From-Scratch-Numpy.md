@@ -205,4 +205,4 @@ for epoch in range(epochs):
 
 ---
 
-[← Previous: Computational Graphs](./12-Computational-Graphs.md) | [Back to Index](./README.md) | [Next: Neural Network PyTorch Implementation →](./14-Neural-Network-PyTorch-Implementation.md)
+[← Computational Graphs & Autograd](12-Computational-Graphs.md) | [Back to Index](../README.md) | [Next: Neural Network PyTorch Implementation →](14-Neural-Network-PyTorch-Implementation.md)

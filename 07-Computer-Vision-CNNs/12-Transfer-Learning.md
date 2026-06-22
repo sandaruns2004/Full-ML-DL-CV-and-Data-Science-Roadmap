@@ -92,4 +92,4 @@ optimizer = optim.AdamW([
 
 ---
 
-[← Previous: Modern CNN Architectures](./11-Modern-CNN-Architectures.md) | [Back to Index](./README.md) | [Next: Data Augmentation →](./13-Data-Augmentation.md)
+[← Modern CNN Architectures](11-Modern-CNN-Architectures.md) | [Back to Index](../README.md) | [Next: Data Augmentation →](13-Data-Augmentation.md)

@@ -148,4 +148,4 @@ for entity in results:
 
 ---
 
-[← Text Classification](./04-Text-Classification.md) | [Back to Index](../README.md) | [Next: Machine Translation →](./06-Machine-Translation.md)
+[← Text Classification Pipelines](04-Text-Classification.md) | [Back to Index](../README.md) | [Next: Machine Translation →](06-Machine-Translation.md)

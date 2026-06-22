@@ -63,4 +63,4 @@ A non-learnable interpolation step followed by a standard convolution layer.
 
 ---
 
-[← Previous: Object Detection Introduction](./14-Object-Detection-Introduction.md) | [Back to Index](./README.md) | [Next: CNN From Scratch PyTorch →](./16-CNN-From-Scratch-PyTorch.md)
+[← Object Detection Introduction](14-Object-Detection-Introduction.md) | [Back to Index](../README.md) | [Next: CNN from Scratch (PyTorch) →](16-CNN-From-Scratch-PyTorch.md)

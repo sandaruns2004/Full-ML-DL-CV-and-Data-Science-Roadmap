@@ -23,3 +23,7 @@
 Objective Function (Inertia): $\min_{\mu} \sum_{i=1}^K \sum_{x \in C_i} ||x - \mu_i||^2$
 **Complexity**: $O(n \cdot K \cdot I \cdot d)$ where $n$ is data points, $I$ is iterations, $d$ is dimensions.
 **Limitations**: Assumes spherical clusters of similar size. Fails on elongated or crescent-shaped data.
+
+---
+
+[← Introduction To Unsupervised Learning](01-Introduction-To-Unsupervised-Learning.md) | [Back to Index](../README.md) | [Next: Hierarchical Clustering →](03-Hierarchical-Clustering.md)

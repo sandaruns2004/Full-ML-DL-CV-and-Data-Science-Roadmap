@@ -21,3 +21,7 @@
 ### 🔴 Advanced
 **Mathematics & Industry context**:
 Using `TargetEncoding` for high-cardinality categorical variables incorporates label smoothing to prevent data leakage. Selecting features using L1 Regularization (Lasso) or Recursive Feature Elimination (RFE) is vital for high-dimensional genomics or finance data.
+
+---
+
+[← Naive Bayes](08-Naive-Bayes.md) | [Back to Index](../README.md) | [Next: Regularization (Ridge, Lasso, ElasticNet) →](10-Regularization.md)

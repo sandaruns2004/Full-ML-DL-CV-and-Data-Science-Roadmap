@@ -124,4 +124,4 @@ This ensures all weights are regularized equally, which is why AdamW is the defa
 
 ---
 
-[← Previous: Weight Initialization](./09-Weight-Initialization.md) | [Back to Index](./README.md) | [Next: Vanishing And Exploding Gradients →](./11-Vanishing-And-Exploding-Gradients.md)
+[← Weight Initialization](09-Weight-Initialization.md) | [Back to Index](../README.md) | [Next: Vanishing and Exploding Gradients →](11-Vanishing-And-Exploding-Gradients.md)

@@ -218,4 +218,4 @@ By heavily punishing the KL divergence (e.g., $\beta=4$), the model is forced to
 
 ---
 
-[← Autoencoders](./01-Autoencoders.md) | [Back to Index](../README.md) | [Next: GAN Fundamentals →](./03-GAN-Fundamentals.md)
+[← Autoencoders](01-Autoencoders.md) | [Back to Index](../README.md) | [Next: GAN Fundamentals →](03-GAN-Fundamentals.md)

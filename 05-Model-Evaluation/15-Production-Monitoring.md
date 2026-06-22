@@ -44,3 +44,7 @@ def detect_drift(reference_data, live_data, threshold=0.05):
     return "Status: Normal"
 ```
 When drift is detected, an automated CI/CD pipeline triggers the model to retrain on the newest data, evaluate itself against a holdout set, and deploy the new version (Shadow Deployment or Canary Release) if the metrics improve.
+
+---
+
+[← Model Comparison and Statistical Significance](14-Model-Comparison.md) | [Back to Index](../README.md) | [Next: Introduction to Neural Networks →](../06-Neural-Networks-Foundations/01-Introduction-To-Neural-Networks.md)

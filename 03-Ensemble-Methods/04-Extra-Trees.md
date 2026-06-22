@@ -25,3 +25,7 @@
 ### 🔴 Advanced
 **Mathematics**: 
 Because of the random thresholds, the computational complexity drops significantly from $O(n \log(n))$ at each node to $O(n)$. This makes Extra Trees vastly superior in high-dimensional datasets where calculating optimal splits is expensive.
+
+---
+
+[← Random Forest](03-Random-Forest.md) | [Back to Index](../README.md) | [Next: Voting Classifiers →](05-Voting-Classifiers.md)

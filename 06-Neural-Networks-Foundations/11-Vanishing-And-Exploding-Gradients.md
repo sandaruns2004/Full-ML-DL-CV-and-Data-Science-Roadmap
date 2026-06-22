@@ -140,4 +140,4 @@ This acts as a "gradient highway," allowing gradients to flow back to the first 
 
 ---
 
-[← Previous: Optimizers](./10-Optimizers.md) | [Back to Index](./README.md) | [Next: Computational Graphs →](./12-Computational-Graphs.md)
+[← Optimizers](10-Optimizers.md) | [Back to Index](../README.md) | [Next: Computational Graphs & Autograd →](12-Computational-Graphs.md)

@@ -150,4 +150,4 @@ Standard RAG ("Naive RAG") often fails on complex questions. Advanced techniques
 
 ---
 
-[← Multi Modal Models](./08-Multi-Modal-Models.md) | [Back to Index](../README.md) | [Next: LangChain And Agents →](./10-LangChain-And-Agents.md)
+[← Multi-Modal Models](08-Multi-Modal-Models.md) | [Back to Index](../README.md) | [Next: LangChain & Agents →](10-LangChain-And-Agents.md)

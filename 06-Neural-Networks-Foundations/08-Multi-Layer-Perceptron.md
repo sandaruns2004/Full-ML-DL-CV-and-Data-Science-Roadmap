@@ -124,4 +124,4 @@ Instead of using one extremely wide layer, modern neural networks use **many dee
 
 ---
 
-[← Previous: Backpropagation](./07-Backpropagation.md) | [Back to Index](./README.md) | [Next: Weight Initialization →](./09-Weight-Initialization.md)
+[← Backpropagation](07-Backpropagation.md) | [Back to Index](../README.md) | [Next: Weight Initialization →](09-Weight-Initialization.md)

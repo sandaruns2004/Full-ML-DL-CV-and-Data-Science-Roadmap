@@ -50,3 +50,7 @@ plt.legend()
 plt.show()
 ```
 **Statistical Significance**: When plotting validation curves, always plot the variance band (`plt.fill_between` using standard deviation) to ensure the peak is statistically significant and not just a random artifact of the cross-validation folds.
+
+---
+
+[← Learning Curves](10-Learning-Curves.md) | [Back to Index](../README.md) | [Next: Hyperparameter Evaluation →](12-Hyperparameter-Tuning-Evaluation.md)

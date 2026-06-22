@@ -219,3 +219,7 @@ Test your understanding before moving forward to Python specific libraries. Crea
 - [ ] I understand the high-level concept of Classes, Objects, Attributes, and Methods (OOP).
 
 Next up, we will set up your professional **[04-Development-Environment-Setup.md](./04-Development-Environment-Setup.md)**!
+
+---
+
+[← 02. Computer & Hardware Fundamentals for AI](02-Computer-Fundamentals.md) | [Back to Index](./README.md) | [Next: 04. Development Environment Setup →](04-Development-Environment-Setup.md)

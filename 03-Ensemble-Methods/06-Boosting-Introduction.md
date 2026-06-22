@@ -76,4 +76,4 @@ We iteratively add a new weak learner $h_m \in \mathcal{H}$ that points in the d
 
 ---
 
-[← Voting Classifiers](./05-Voting-Classifiers.md) | [Back to Index](../README.md) | [Next: AdaBoost →](./07-AdaBoost.md)
+[← Voting Classifiers](05-Voting-Classifiers.md) | [Back to Index](../README.md) | [Next: AdaBoost (Adaptive Boosting) →](07-AdaBoost.md)

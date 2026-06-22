@@ -143,4 +143,4 @@ $$\text{Dice Coefficient} = \frac{2 \times |X \cap Y|}{|X| + |Y|}$$
 
 ---
 
-[← Object Detection](./04-Object-Detection.md) | [Back to Index](../README.md) | [Next: Pose Estimation →](./06-Pose-Estimation.md)
+[← Object Detection](04-Object-Detection.md) | [Back to Index](../README.md) | [Next: Pose Estimation →](06-Pose-Estimation.md)

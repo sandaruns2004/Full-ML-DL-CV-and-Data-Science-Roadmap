@@ -91,4 +91,4 @@ plt.show()
 
 ---
 
-[← Gradient Boosting](./08-Gradient-Boosting.md) | [Back to Index](../README.md) | [Next: LightGBM →](./10-LightGBM-Concepts.md)
+[← Gradient Boosting (GBM)](08-Gradient-Boosting.md) | [Back to Index](../README.md) | [Next: LightGBM →](10-LightGBM-Concepts.md)

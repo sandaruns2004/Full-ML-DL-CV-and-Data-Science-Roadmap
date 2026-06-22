@@ -58,4 +58,4 @@ If you can build one of these, you have the skills of a practicing Machine Learn
 
 ---
 
-[← Advanced Projects](./03-Advanced-Projects.md) | [Back to Index](../README.md) | [Next: Research Paper Reading Guide →](./05-Research-Paper-Reading-Guide.md)
+[← Advanced Projects](03-Advanced-Projects.md) | [Back to Index](../README.md) | [Next: Research Paper Reading Guide →](05-Research-Paper-Reading-Guide.md)

@@ -19,3 +19,7 @@ Mean Shift is a sliding-window algorithm that attempts to find dense areas of da
 Mean Shift builds upon KDE. Let $K(x)$ be a kernel function (like a Gaussian). The multivariate kernel density estimate is:
 $f(x) = \frac{1}{n h^d} \sum_{i=1}^n K\left(\frac{x - x_i}{h}\right)$
 The algorithm computes the gradient of this density and shifts the points towards the mode (peak) via gradient ascent.
+
+---
+
+[← DBSCAN (Density-Based Spatial Clustering)](04-DBSCAN.md) | [Back to Index](../README.md) | [Next: Gaussian Mixture Models (GMM) →](06-Gaussian-Mixture-Models.md)

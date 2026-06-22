@@ -172,4 +172,4 @@ print(predictions.detach().numpy())
 
 ---
 
-[← Meta Learning](./04-Meta-Learning.md) | [Back to Index](../README.md) | [Next: Time Series Deep Dive →](./06-Time-Series-Deep-Dive.md)
+[← Meta-Learning](04-Meta-Learning.md) | [Back to Index](../README.md) | [Next: Time Series →](06-Time-Series-Deep-Dive.md)

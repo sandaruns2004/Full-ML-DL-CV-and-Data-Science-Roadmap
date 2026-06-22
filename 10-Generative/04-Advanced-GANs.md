@@ -143,4 +143,4 @@ By controlling which layers receive which $w$ vectors, you get **Scale-Specific 
 
 ---
 
-[← GAN Fundamentals](./03-GAN-Fundamentals.md) | [Back to Index](../README.md) | [Next: Diffusion Models →](./05-Diffusion-Models.md)
+[← GAN Fundamentals](03-GAN-Fundamentals.md) | [Back to Index](../README.md) | [Next: Diffusion Models →](05-Diffusion-Models.md)
