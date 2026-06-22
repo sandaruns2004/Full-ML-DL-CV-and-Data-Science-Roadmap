@@ -39,3 +39,28 @@ Welcome to the ultimate Unsupervised Learning module!
 pip install -r requirements.txt
 jupyter notebook
 ```
+
+## 📂 Directory Structure
+
+Below is the file layout of this module:
+
+- 📄 [01 Introduction To Unsupervised Learning](./01-Introduction-To-Unsupervised-Learning.md)
+- 📄 [02 K Means Clustering](./02-K-Means-Clustering.md)
+- 📄 [03 Hierarchical Clustering](./03-Hierarchical-Clustering.md)
+- 📄 [04 DBSCAN](./04-DBSCAN.md)
+- 📄 [05 Mean Shift](./05-Mean-Shift.md)
+- 📄 [06 Gaussian Mixture Models](./06-Gaussian-Mixture-Models.md)
+- 📄 [07 Principal Component Analysis](./07-Principal-Component-Analysis.md)
+- 📄 [08 tSNE](./08-tSNE.md)
+- 📄 [09 UMAP Introduction](./09-UMAP-Introduction.md)
+- 📄 [10 Association Rule Mining](./10-Association-Rule-Mining.md)
+- 📄 [11 Apriori Algorithm](./11-Apriori-Algorithm.md)
+- 📄 [12 Anomaly Detection](./12-Anomaly-Detection.md)
+- 📄 [13 Isolation Forest](./13-Isolation-Forest.md)
+- 📄 [14 Local Outlier Factor](./14-Local-Outlier-Factor.md)
+- 📂 [notebooks/](./notebooks/)
+- 📂 [projects/](./projects/)
+
+---
+
+[← Return to Root Index](../README.md)

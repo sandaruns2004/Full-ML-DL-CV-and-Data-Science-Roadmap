@@ -39,3 +39,29 @@ Welcome to the comprehensive Model Evaluation module!
 pip install -r requirements.txt
 jupyter notebook
 ```
+
+## 📂 Directory Structure
+
+Below is the file layout of this module:
+
+- 📄 [01 Introduction To Model Evaluation](./01-Introduction-To-Model-Evaluation.md)
+- 📄 [02 Train Test Validation Split](./02-Train-Test-Validation-Split.md)
+- 📄 [03 Bias Variance Tradeoff](./03-Bias-Variance-Tradeoff.md)
+- 📄 [04 Regression Metrics](./04-Regression-Metrics.md)
+- 📄 [05 Classification Metrics](./05-Classification-Metrics.md)
+- 📄 [06 Confusion Matrix](./06-Confusion-Matrix.md)
+- 📄 [07 ROC And AUC](./07-ROC-And-AUC.md)
+- 📄 [08 Precision Recall Curves](./08-Precision-Recall-Curves.md)
+- 📄 [09 Cross Validation](./09-Cross-Validation.md)
+- 📄 [10 Learning Curves](./10-Learning-Curves.md)
+- 📄 [11 Validation Curves](./11-Validation-Curves.md)
+- 📄 [12 Hyperparameter Tuning Evaluation](./12-Hyperparameter-Tuning-Evaluation.md)
+- 📄 [13 Imbalanced Classification](./13-Imbalanced-Classification.md)
+- 📄 [14 Model Comparison](./14-Model-Comparison.md)
+- 📄 [15 Production Monitoring](./15-Production-Monitoring.md)
+- 📂 [notebooks/](./notebooks/)
+- 📂 [projects/](./projects/)
+
+---
+
+[← Return to Root Index](../README.md)

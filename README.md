@@ -72,7 +72,7 @@ A structured progression estimating **~500 Hours** of total learning.
 
 Here is an in-depth look at our newly upgraded modules, such as the Data Science Foundations and Unsupervised Learning sections:
 
-### 00-Prerequisites (Absolute Beginner)
+### [00-Prerequisites](./00-Prerequisites/README.md) (Absolute Beginner)
 A world-class beginner-to-professional bridge course covering all core foundations before writing machine learning algorithms:
 *   `01-Introduction-To-AI-Ecosystem.md` (AI vs ML vs DL vs DS, MLOps)
 *   `02-Computer-Fundamentals.md` (CPU, GPU, RAM, VRAM, Filesystems, OS)
@@ -86,7 +86,7 @@ A world-class beginner-to-professional bridge course covering all core foundatio
 *   `10-SQL-For-Data-Science.md` (Basic queries, Aggregations)
 *   `projects/` (Data Analysis Starter Notebook, Git Workflow Simulation, Env Validation Script, Linux Command Toolkit)
 
-### 01-Data-Science-Foundations (Beginner → Advanced)
+### [01-Data-Science-Foundations](./01-Data-Science-Foundations/README.md) (Beginner → Advanced)
 A complete, 16-part curriculum covering the entire data science lifecycle, from data collection to ethics:
 *   `01-Introduction-To-Data-Science.md` (Lifecycle, CRISP-DM, Roles)
 *   `02-Python-For-Data-Science.md` (Environments, Generators, Vectorization)
@@ -109,7 +109,7 @@ A complete, 16-part curriculum covering the entire data science lifecycle, from 
 *   `notebooks/` (Interactive Jupyter notebooks for hands-on theory application)
 *   `projects/` (5 mandatory hands-on projects including Sales Data Analysis and End-to-End EDA)
 
-### 02-Supervised-Learning (Beginner → Advanced)
+### [02-Supervised-Learning](./02-Supervised-Learning/README.md) (Beginner → Advanced)
 A complete, math-heavy, and code-rich breakdown of Supervised Machine Learning algorithms:
 *   `01-Introduction-To-Supervised-Learning.md` (Workflow, Regression vs Classification)
 *   `02-Linear-Regression.md` (Cost Function, Gradient Descent)
@@ -126,7 +126,7 @@ A complete, math-heavy, and code-rich breakdown of Supervised Machine Learning a
 *   `notebooks/` (Interactive Jupyter notebooks for hands-on application)
 *   `projects/` (6 mandatory projects including House Price and Customer Churn Prediction)
 
-### 03-Ensemble-Methods (Beginner → Advanced)
+### [03-Ensemble-Methods](./03-Ensemble-Methods/README.md) (Beginner → Advanced)
 A complete, math-heavy, and code-rich breakdown of Ensemble Learning algorithms:
 *   `01-Introduction-To-Ensemble-Learning.md` (Wisdom of Crowds, Bias-Variance)
 *   `02-Bagging.md` (Bootstrap Sampling, Parallel Learning)
@@ -145,7 +145,7 @@ A complete, math-heavy, and code-rich breakdown of Ensemble Learning algorithms:
 *   `notebooks/` (Interactive Jupyter notebooks for hands-on application)
 *   `projects/` (5 mandatory projects including Customer Churn and House Price Prediction)
 
-### 04-Unsupervised-Learning (Beginner → Advanced)
+### [04-Unsupervised-Learning](./04-Unsupervised-Learning/README.md) (Beginner → Advanced)
 A complete, math-heavy, and code-rich breakdown of Unsupervised techniques:
 *   `01-Introduction-To-Unsupervised-Learning.md` (Hidden Patterns, Dimensionality)
 *   `02-K-Means-Clustering.md` (Centroids, Elbow Method, Silhouette Score)
@@ -164,7 +164,7 @@ A complete, math-heavy, and code-rich breakdown of Unsupervised techniques:
 *   `notebooks/` (Interactive Jupyter notebooks for clustering and embeddings)
 *   `projects/` (6 mandatory projects including Customer Segmentation and Market Basket Analysis)
 
-### 05-Model-Evaluation (Beginner → Advanced)
+### [05-Model-Evaluation](./05-Model-Evaluation/README.md) (Beginner → Advanced)
 A complete, math-heavy, and code-rich breakdown of Model Evaluation and MLOps metrics:
 *   `01-Introduction-To-Model-Evaluation.md` (Why evaluate, Data Leakage)
 *   `02-Train-Test-Validation-Split.md` (Holdout sets, Statistical Independence)
@@ -185,7 +185,7 @@ A complete, math-heavy, and code-rich breakdown of Model Evaluation and MLOps me
 *   `notebooks/` (Interactive Jupyter notebooks with runnable evaluation metrics)
 *   `projects/` (5 mandatory projects including Hyperparameter Labs and Production Monitoring Simulators)
 
-### 06-Neural-Networks-Foundations (Beginner → Advanced)
+### [06-Neural-Networks-Foundations](./06-Neural-Networks-Foundations/README.md) (Beginner → Advanced)
 A world-class, math-rich, visualization-heavy Neural Networks module covering first principles to production pipelines:
 *   `01-Introduction-To-Neural-Networks.md` (Fundamental concepts, biological inspiration)
 *   `02-Perceptron-And-Biological-Analogy.md` (Rosenblatt's Perceptron, step functions, XOR proof)
@@ -204,7 +204,7 @@ A world-class, math-rich, visualization-heavy Neural Networks module covering fi
 *   `notebooks/` (Activation Functions Explorer, Backpropagation Visualizer, NN from Scratch)
 *   `projects/` (Modular NumPy NN, PyTorch MLP Classifier, Activation Study, Gradient Simulator, XOR Solver)
 
-### 07-Computer-Vision-CNNs (Beginner → Advanced)
+### [07-Computer-Vision-CNNs](./07-Computer-Vision-CNNs/README.md) (Beginner → Advanced)
 A world-class, math-rich, visualization-heavy Computer Vision & CNN module covering pixel structures to advanced detection/segmentation tasks:
 *   `01-Introduction-To-Computer-Vision.md` (Human vision systems, early visual features)
 *   `02-Image-Representation-And-Pixels.md` (Grayscale, RGB, color channels, tensor shapes)

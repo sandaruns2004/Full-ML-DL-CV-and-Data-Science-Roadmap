@@ -36,3 +36,28 @@ Welcome to the ultimate Ensemble Learning module!
 pip install -r requirements.txt
 jupyter notebook
 ```
+
+## 📂 Directory Structure
+
+Below is the file layout of this module:
+
+- 📄 [01 Introduction To Ensemble Learning](./01-Introduction-To-Ensemble-Learning.md)
+- 📄 [02 Bagging](./02-Bagging.md)
+- 📄 [03 Random Forest](./03-Random-Forest.md)
+- 📄 [04 Extra Trees](./04-Extra-Trees.md)
+- 📄 [05 Voting Classifiers](./05-Voting-Classifiers.md)
+- 📄 [06 Boosting Introduction](./06-Boosting-Introduction.md)
+- 📄 [07 AdaBoost](./07-AdaBoost.md)
+- 📄 [08 Gradient Boosting](./08-Gradient-Boosting.md)
+- 📄 [09 XGBoost Concepts](./09-XGBoost-Concepts.md)
+- 📄 [10 LightGBM Concepts](./10-LightGBM-Concepts.md)
+- 📄 [11 CatBoost Concepts](./11-CatBoost-Concepts.md)
+- 📄 [12 Stacking](./12-Stacking.md)
+- 📄 [13 Blending](./13-Blending.md)
+- 📄 [14 Model Selection For Ensembles](./14-Model-Selection-For-Ensembles.md)
+- 📂 [notebooks/](./notebooks/)
+- 📂 [projects/](./projects/)
+
+---
+
+[← Return to Root Index](../README.md)

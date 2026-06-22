@@ -33,33 +33,33 @@ graph TD
 
 Below is the file layout of this module:
 
-- 📄 [01-Introduction-To-Computer-Vision.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/01-Introduction-To-Computer-Vision.md) — Human vision systems, camera models, and early features.
-- 📄 [02-Image-Representation-And-Pixels.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/02-Image-Representation-And-Pixels.md) — Grayscale, RGB, channels, and tensor shapes.
-- 📄 [03-Convolution-Operation.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/03-Convolution-Operation.md) — Math of sliding filters, cross-correlation, and features.
-- 📄 [04-Padding-And-Strides.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/04-Padding-And-Strides.md) — Dimensions calculations, boundary padding, and striding.
-- 📄 [05-Pooling-Layers.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/05-Pooling-Layers.md) — Max, average pooling, and backprop routes.
-- 📄 [06-CNN-Architecture-Basics.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/06-CNN-Architecture-Basics.md) — Stacking convolutional blocks and fully connected outputs.
-- 📄 [07-Edge-Detection-And-Feature-Maps.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/07-Edge-Detection-And-Feature-Maps.md) — Sobel operators, gradients, and layer-wise maps.
-- 📄 [08-CNN-Backpropagation.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/08-CNN-Backpropagation.md) — Math of gradients through convolutions and weight sharing.
-- 📄 [09-LeNet-And-AlexNet.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/09-LeNet-And-AlexNet.md) — Historical milestone networks.
-- 📄 [10-VGG-Net.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/10-VGG-Net.md) — Architecture of stacked 3x3 convolutions.
-- 📄 [11-Modern-CNN-Architectures.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/11-Modern-CNN-Architectures.md) — ResNet skip connections, DenseNet, and EfficientNet.
-- 📄 [12-Transfer-Learning.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/12-Transfer-Learning.md) — Fine-tuning vs. Feature Extraction, layer freezing.
-- 📄 [13-Data-Augmentation.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/13-Data-Augmentation.md) — Regularizing vision networks with spatial and color transformations.
-- 📄 [14-Object-Detection-Introduction.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/14-Object-Detection-Introduction.md) — Bounding boxes, IoU, and detection frameworks.
-- 📄 [15-Image-Segmentation-Introduction.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/15-Image-Segmentation-Introduction.md) — Pixel-wise classification, semantic vs. instance segmentation.
-- 📄 [16-CNN-From-Scratch-PyTorch.md](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/16-CNN-From-Scratch-PyTorch.md) — Implementation pipeline from scratch.
+- 📄 [01-Introduction-To-Computer-Vision.md](./01-Introduction-To-Computer-Vision.md) — Human vision systems, camera models, and early features.
+- 📄 [02-Image-Representation-And-Pixels.md](./02-Image-Representation-And-Pixels.md) — Grayscale, RGB, channels, and tensor shapes.
+- 📄 [03-Convolution-Operation.md](./03-Convolution-Operation.md) — Math of sliding filters, cross-correlation, and features.
+- 📄 [04-Padding-And-Strides.md](./04-Padding-And-Strides.md) — Dimensions calculations, boundary padding, and striding.
+- 📄 [05-Pooling-Layers.md](./05-Pooling-Layers.md) — Max, average pooling, and backprop routes.
+- 📄 [06-CNN-Architecture-Basics.md](./06-CNN-Architecture-Basics.md) — Stacking convolutional blocks and fully connected outputs.
+- 📄 [07-Edge-Detection-And-Feature-Maps.md](./07-Edge-Detection-And-Feature-Maps.md) — Sobel operators, gradients, and layer-wise maps.
+- 📄 [08-CNN-Backpropagation.md](./08-CNN-Backpropagation.md) — Math of gradients through convolutions and weight sharing.
+- 📄 [09-LeNet-And-AlexNet.md](./09-LeNet-And-AlexNet.md) — Historical milestone networks.
+- 📄 [10-VGG-Net.md](./10-VGG-Net.md) — Architecture of stacked 3x3 convolutions.
+- 📄 [11-Modern-CNN-Architectures.md](./11-Modern-CNN-Architectures.md) — ResNet skip connections, DenseNet, and EfficientNet.
+- 📄 [12-Transfer-Learning.md](./12-Transfer-Learning.md) — Fine-tuning vs. Feature Extraction, layer freezing.
+- 📄 [13-Data-Augmentation.md](./13-Data-Augmentation.md) — Regularizing vision networks with spatial and color transformations.
+- 📄 [14-Object-Detection-Introduction.md](./14-Object-Detection-Introduction.md) — Bounding boxes, IoU, and detection frameworks.
+- 📄 [15-Image-Segmentation-Introduction.md](./15-Image-Segmentation-Introduction.md) — Pixel-wise classification, semantic vs. instance segmentation.
+- 📄 [16-CNN-From-Scratch-PyTorch.md](./16-CNN-From-Scratch-PyTorch.md) — Implementation pipeline from scratch.
 
 ### 📓 Interactive Notebooks (`notebooks/`)
-1. 📓 [CNN_Basics_From_Scratch.ipynb](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/notebooks/CNN_Basics_From_Scratch.ipynb)
-2. 📓 [Image_Classification_CNN.ipynb](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/notebooks/Image_Classification_CNN.ipynb)
-3. 📓 [Transfer_Learning_Exploration.ipynb](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/notebooks/Transfer_Learning_Exploration.ipynb)
+1. 📓 [CNN_Basics_From_Scratch.ipynb](./notebooks/CNN_Basics_From_Scratch.ipynb)
+2. 📓 [Image_Classification_CNN.ipynb](./notebooks/Image_Classification_CNN.ipynb)
+3. 📓 [Transfer_Learning_Exploration.ipynb](./notebooks/Transfer_Learning_Exploration.ipynb)
 
 ### 🛠️ Mini Projects (`projects/`)
-1. 📂 [01-CIFAR10-Classifier](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/projects/01-CIFAR10-Classifier/) — CNN image classification in PyTorch vs. MLP performance.
-2. 📂 [02-Transfer-Learning-Project](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/projects/02-Transfer-Learning-Project/) — Fine-tuning ResNet/VGG on custom datasets.
-3. 📂 [03-Data-Augmentation-Study](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/projects/03-Data-Augmentation-Study/) — Comparative convergence study of models trained with and without augmentations.
-4. 📂 [04-Edge-Detection-Visualizer](file:///c:/Users/ADMIN/Desktop/Full-ML-DL-CV-and-Data-Science-Roadmap/07-Computer-Vision-CNNs/projects/04-Edge-Detection-Visualizer/) — Implementing manual Sobel filter operations and visualizing convolution output maps.
+1. 📂 [01-CIFAR10-Classifier](./projects/01-CIFAR10-Classifier/) — CNN image classification in PyTorch vs. MLP performance.
+2. 📂 [02-Transfer-Learning-Project](./projects/02-Transfer-Learning-Project/) — Fine-tuning ResNet/VGG on custom datasets.
+3. 📂 [03-Data-Augmentation-Study](./projects/03-Data-Augmentation-Study/) — Comparative convergence study of models trained with and without augmentations.
+4. 📂 [04-Edge-Detection-Visualizer](./projects/04-Edge-Detection-Visualizer/) — Implementing manual Sobel filter operations and visualizing convolution output maps.
 
 ---
 

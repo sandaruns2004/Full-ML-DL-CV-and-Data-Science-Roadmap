@@ -36,3 +36,26 @@ Welcome to the Supervised Learning module!
 pip install -r requirements.txt
 jupyter notebook
 ```
+
+## 📂 Directory Structure
+
+Below is the file layout of this module:
+
+- 📄 [01 Introduction To Supervised Learning](./01-Introduction-To-Supervised-Learning.md)
+- 📄 [02 Linear Regression](./02-Linear-Regression.md)
+- 📄 [03 Polynomial Regression](./03-Polynomial-Regression.md)
+- 📄 [04 Logistic Regression](./04-Logistic-Regression.md)
+- 📄 [05 KNN](./05-KNN.md)
+- 📄 [06 Decision Trees](./06-Decision-Trees.md)
+- 📄 [07 Support Vector Machines](./07-Support-Vector-Machines.md)
+- 📄 [08 Naive Bayes](./08-Naive-Bayes.md)
+- 📄 [09 Feature Engineering For Supervised Learning](./09-Feature-Engineering-For-Supervised-Learning.md)
+- 📄 [10 Regularization](./10-Regularization.md)
+- 📄 [11 Model Building Pipeline](./11-Model-Building-Pipeline.md)
+- 📄 [12 Model Selection Guide](./12-Model-Selection-Guide.md)
+- 📂 [notebooks/](./notebooks/)
+- 📂 [projects/](./projects/)
+
+---
+
+[← Return to Root Index](../README.md)

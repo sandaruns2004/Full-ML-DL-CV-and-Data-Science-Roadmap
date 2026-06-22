@@ -69,3 +69,23 @@ Once you have reviewed the content, test your skills with these practical mini-p
    python projects/03-Environment-Setup-Validation.py
    ```
 5. If everything passes, you are ready to begin the **Prerequisites Module**!
+
+## 📂 Directory Structure
+
+Below is the file layout of this module:
+
+- 📄 [01 Introduction To AI Ecosystem](./01-Introduction-To-AI-Ecosystem.md)
+- 📄 [02 Computer Fundamentals](./02-Computer-Fundamentals.md)
+- 📄 [03 Programming Fundamentals](./03-Programming-Fundamentals.md)
+- 📄 [04 Development Environment Setup](./04-Development-Environment-Setup.md)
+- 📄 [05 Python Essentials](./05-Python-Essentials.md)
+- 📄 [06 Git And GitHub](./06-Git-And-GitHub.md)
+- 📄 [07 Linux Fundamentals](./07-Linux-Fundamentals.md)
+- 📄 [08 Mathematical Foundations](./08-Mathematical-Foundations.md)
+- 📄 [09 Probability And Statistics](./09-Probability-And-Statistics.md)
+- 📄 [10 SQL For Data Science](./10-SQL-For-Data-Science.md)
+- 📂 [projects/](./projects/)
+
+---
+
+[← Return to Root Index](../README.md)
