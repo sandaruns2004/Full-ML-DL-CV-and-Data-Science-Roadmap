@@ -1148,14 +1148,15 @@ Implement SVD, eigendecomposition, and QR factorization from scratch.
 | [Probability and Statistics](./09-Probability-And-Statistics.md) | Continue the prerequisites by mastering probability and statistics |
 
 ### 🛤️ Learning Pathway
-```
-You are here: Mathematical Foundations
-                    │
-                    ▼
-           Probability and Statistics
-                    │
-                    ▼
-           SQL For Data Science
+```mermaid
+flowchart TD
+    A["📍 You are here: Mathematical Foundations"] --> B["Probability and Statistics"] --> C["SQL For Data Science"]
+    
+    linkStyle 0,1 stroke:#6366f1,stroke-width:2px;
+    
+    style A fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,color:#1e40af,font-weight:bold
+    style B fill:#f8fafc,stroke:#cbd5e1,stroke-width:1px,color:#475569
+    style C fill:#f8fafc,stroke:#cbd5e1,stroke-width:1px,color:#475569
 ```
 
 ---

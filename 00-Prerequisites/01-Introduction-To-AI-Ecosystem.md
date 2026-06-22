@@ -24,16 +24,25 @@ Welcome to the **AI Ecosystem**. Before writing any code, building data pipeline
 It is incredibly common for beginners and even industry professionals to interchangeably use terms like AI, ML, DL, and Data Science. Let's establish a precise visual taxonomy.
 
 ```mermaid
-venn
+venn-beta
     title The AI and Data Science Universe
-    "Artificial Intelligence (AI)" : 100
-    "Machine Learning (ML)" : 60
-    "Deep Learning (DL)" : 25
-    "Data Science (DS)" : 55
-    "AI" overlaps "DS" : 20
-    "ML" overlaps "DS" : 20
-    "DL" overlaps "DS" : 10
+    set AI ["Artificial Intelligence (AI)"] : 100
+    set ML ["Machine Learning (ML)"] : 60
+    set DL ["Deep Learning (DL)"] : 25
+    set DS ["Data Science (DS)"] : 55
+    union AI,ML : 60
+    union ML,DL : 25
+    union AI,DL : 25
+    union AI,DS ["AI & DS"] : 20
+    union ML,DS ["ML & DS"] : 20
+    union DL,DS ["DL & DS"] : 10
+    
+    style AI fill:#3b82f6,fill-opacity:0.3,stroke:#3b82f6,stroke-width:2px
+    style ML fill:#6366f1,fill-opacity:0.3,stroke:#6366f1,stroke-width:2px
+    style DL fill:#ec4899,fill-opacity:0.3,stroke:#ec4899,stroke-width:2px
+    style DS fill:#14b8a6,fill-opacity:0.3,stroke:#14b8a6,stroke-width:2px
 ```
+
 
 *   **AI** is the overarching goal: creating machines capable of intelligent behavior.
 *   **ML** is the method: a subset of AI achieving intelligence by learning patterns from data.
@@ -144,16 +153,27 @@ Teaching machines to process, understand, interpret, and generate human language
 
 ```mermaid
 flowchart LR
-    subgraph Input
-        A[Prompt: "A cyberpunk city at night"] 
+    subgraph SG1 ["Input"]
+        A["Prompt: 'A cyberpunk city at night'"] 
     end
-    subgraph Generative Engine
-        B(Diffusion Model / LLM)
+    subgraph SG2 ["Generative Engine"]
+        B("Diffusion Model / LLM")
     end
-    subgraph Output
-        C[New Image, Text, or Code]
+    subgraph SG3 ["Output"]
+        C["New Image, Text, or Code"]
     end
+    
     A --> B --> C
+
+    linkStyle 0,1 stroke:#6366f1,stroke-width:2px;
+
+    style SG1 fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,stroke-dasharray: 5 5
+    style SG2 fill:#faf5ff,stroke:#a855f7,stroke-width:2px,stroke-dasharray: 5 5
+    style SG3 fill:#f0fdf4,stroke:#22c55e,stroke-width:2px,stroke-dasharray: 5 5
+    
+    style A fill:#3b82f6,color:#fff,stroke:#1d4ed8,stroke-width:2px
+    style B fill:#a855f7,color:#fff,stroke:#7e22ce,stroke-width:2px
+    style C fill:#22c55e,color:#fff,stroke:#15803d,stroke-width:2px
 ```
 
 *   **Large Language Models (LLMs)**: Massive transformer-based models trained on terabytes of text (e.g., GPT-4, Llama 3, Claude). At their core, they predict the next token (word) in a sequence, but at scale, they demonstrate emergent reasoning, logic, and conversational capabilities.

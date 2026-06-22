@@ -42,35 +42,61 @@ Let's visualize the architectural difference.
 
 ```mermaid
 flowchart TD
-    subgraph "CPU (Low Latency, High Complexity)"
+    %% CPU Subgraph
+    subgraph CPU ["CPU (Low Latency, High Complexity)"]
         direction TB
-        subgraph Core 1
-            ALU1[ALU]
-            Ctrl1[Control]
+        subgraph Core1 ["Core 1"]
+            direction TB
+            ALU1["ALU"]
+            Ctrl1["Control"]
         end
-        subgraph Core 2
-            ALU2[ALU]
-            Ctrl2[Control]
+        subgraph Core2 ["Core 2"]
+            direction TB
+            ALU2["ALU"]
+            Ctrl2["Control"]
         end
-        Cache[Large L3 Cache]
-        Core 1 --> Cache
-        Core 2 --> Cache
+        Cache["Large L3 Cache"]
+        Core1 --> Cache
+        Core2 --> Cache
     end
     
-    subgraph "GPU (High Throughput, Low Complexity)"
+    %% GPU Subgraph
+    subgraph GPU ["GPU (High Throughput, Low Complexity)"]
         direction TB
-        Ctrl[Shared Control]
-        subgraph Core Array
-            A1[ALU] --- A2[ALU] --- A3[ALU] --- A4[ALU]
-            A5[ALU] --- A6[ALU] --- A7[ALU] --- A8[ALU]
+        Ctrl["Shared Control"]
+        subgraph CoreArray ["Core Array"]
+            direction TB
+            A1["ALU"] --- A2["ALU"] --- A3["ALU"] --- A4["ALU"]
+            A5["ALU"] --- A6["ALU"] --- A7["ALU"] --- A8["ALU"]
         end
-        Ctrl --> Core Array
-        Mem[Small Cache / High Bandwidth Memory]
-        Core Array --> Mem
+        Ctrl --> CoreArray
+        Mem["Small Cache / High Bandwidth Memory"]
+        CoreArray --> Mem
     end
     
-    style "CPU (Low Latency, High Complexity)" fill:#f9d0c4,stroke:#333,stroke-width:2px
-    style "GPU (High Throughput, Low Complexity)" fill:#d4f1f9,stroke:#333,stroke-width:2px
+    %% CPU Styling
+    style CPU fill:#fee2e2,stroke:#f87171,stroke-width:2px
+    style Core1 fill:#fff1f2,stroke:#fda4af,stroke-width:1px
+    style Core2 fill:#fff1f2,stroke:#fda4af,stroke-width:1px
+    style ALU1 fill:#ef4444,color:#fff,stroke:#dc2626
+    style Ctrl1 fill:#f87171,color:#fff,stroke:#ef4444
+    style ALU2 fill:#ef4444,color:#fff,stroke:#dc2626
+    style Ctrl2 fill:#f87171,color:#fff,stroke:#ef4444
+    style Cache fill:#ea580c,color:#fff,stroke:#c2410c
+    
+    %% GPU Styling
+    style GPU fill:#e0f2fe,stroke:#38bdf8,stroke-width:2px
+    style Ctrl fill:#0284c7,color:#fff,stroke:#0369a1
+    style CoreArray fill:#f0fdf4,stroke:#86efac,stroke-width:1px
+    style A1 fill:#10b981,color:#fff,stroke:#059669
+    style A2 fill:#10b981,color:#fff,stroke:#059669
+    style A3 fill:#10b981,color:#fff,stroke:#059669
+    style A4 fill:#10b981,color:#fff,stroke:#059669
+    style A5 fill:#10b981,color:#fff,stroke:#059669
+    style A6 fill:#10b981,color:#fff,stroke:#059669
+    style A7 fill:#10b981,color:#fff,stroke:#059669
+    style A8 fill:#10b981,color:#fff,stroke:#059669
+    style Mem fill:#0d9488,color:#fff,stroke:#0f766e
 ```
 
 *   **Parallelism**: If you need to multiply a vector of 10,000 numbers by a matrix, a CPU might do it in chunks of 8. A GPU will do all 10,000 operations in a single clock cycle.

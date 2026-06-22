@@ -230,8 +230,8 @@ Congratulations! You have completed the **Prerequisites** module. You now have t
 
 | Next Topic | Why |
 |------------|-----|
-| [What Is Data Science And ML](../01-Data-Science-Foundations/01-What-Is-Data-Science-And-ML.md) | Begin the core Data Science module |
+| [Introduction to Data Science](../01-Data-Science-Foundations/01-Introduction-To-Data-Science.md) | Begin the core Data Science module |
 
 ---
 
-[← Probability and Statistics](./09-Probability-And-Statistics.md) | [Back to Index](../README.md) | [Next: What Is Data Science And ML →](../01-Data-Science-Foundations/01-What-Is-Data-Science-And-ML.md)
+[← Probability and Statistics](./09-Probability-And-Statistics.md) | [Back to Index](../README.md) | [Next: Introduction to Data Science →](../01-Data-Science-Foundations/01-Introduction-To-Data-Science.md)

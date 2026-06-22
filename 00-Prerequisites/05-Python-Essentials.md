@@ -31,22 +31,77 @@ Python dominates Machine Learning for several reasons:
 
 ### The ML Python Stack
 
-```
-┌─────────────────────────────────────────┐
-│         Applications Layer              │
-│   scikit-learn │ TensorFlow │ PyTorch   │
-├─────────────────────────────────────────┤
-│         Data Layer                      │
-│   Pandas │ Polars │ SQL Alchemy         │
-├─────────────────────────────────────────┤
-│         Computation Layer               │
-│   NumPy │ SciPy │ CuPy (GPU)           │
-├─────────────────────────────────────────┤
-│         Visualization Layer             │
-│   Matplotlib │ Seaborn │ Plotly         │
-├─────────────────────────────────────────┤
-│         Python Core                     │
-└─────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    %% Nodes
+    subgraph App ["Applications Layer"]
+        sklearn["scikit-learn"]
+        tf["TensorFlow"]
+        pytorch["PyTorch"]
+    end
+    
+    subgraph Data ["Data Layer"]
+        pandas["Pandas"]
+        polars["Polars"]
+        sql["SQLAlchemy"]
+    end
+    
+    subgraph Comp ["Computation Layer"]
+        numpy["NumPy"]
+        scipy["SciPy"]
+        cupy["CuPy (GPU)"]
+    end
+    
+    subgraph Vis ["Visualization Layer"]
+        plt["Matplotlib"]
+        sns["Seaborn"]
+        plotly["Plotly"]
+    end
+    
+    subgraph Core ["Python Core"]
+        py["Python Standard Library"]
+    end
+
+    %% Dependency Arrows
+    App --> Data
+    App --> Comp
+    Data --> Comp
+    Vis --> Data
+    Vis --> Comp
+    Comp --> Core
+
+    %% Link Styling
+    linkStyle default stroke:#94a3b8,stroke-width:2px;
+
+    %% Subgraph Styling
+    style App fill:#fff1f2,stroke:#fda4af,stroke-width:2px
+    style Data fill:#faf5ff,stroke:#d8b4fe,stroke-width:2px
+    style Comp fill:#eff6ff,stroke:#93c5fd,stroke-width:2px
+    style Vis fill:#f0fdf4,stroke:#86efac,stroke-width:2px
+    style Core fill:#fffbeb,stroke:#fde047,stroke-width:2px
+    
+    %% App Nodes
+    style sklearn fill:#f43f5e,color:#fff,stroke:#e11d48
+    style tf fill:#f43f5e,color:#fff,stroke:#e11d48
+    style pytorch fill:#f43f5e,color:#fff,stroke:#e11d48
+    
+    %% Data Nodes
+    style pandas fill:#a855f7,color:#fff,stroke:#9333ea
+    style polars fill:#a855f7,color:#fff,stroke:#9333ea
+    style sql fill:#a855f7,color:#fff,stroke:#9333ea
+    
+    %% Comp Nodes
+    style numpy fill:#3b82f6,color:#fff,stroke:#2563eb
+    style scipy fill:#3b82f6,color:#fff,stroke:#2563eb
+    style cupy fill:#3b82f6,color:#fff,stroke:#2563eb
+    
+    %% Vis Nodes
+    style plt fill:#10b981,color:#fff,stroke:#059669
+    style sns fill:#10b981,color:#fff,stroke:#059669
+    style plotly fill:#10b981,color:#fff,stroke:#059669
+    
+    %% Core Node
+    style py fill:#eab308,color:#fff,stroke:#ca8a04
 ```
 
 ---
@@ -988,14 +1043,15 @@ After mastering these Python tools, you're ready to learn how to version control
 
 ### 🛤️ Learning Pathway
 
-```
-You are here: Python Essentials
-                    │
-                    ▼
-          Git and GitHub
-                    │
-                    ▼
-          Linux Fundamentals
+```mermaid
+flowchart TD
+    A["📍 You are here: Python Essentials"] --> B["Git and GitHub"] --> C["Linux Fundamentals"]
+    
+    linkStyle 0,1 stroke:#6366f1,stroke-width:2px;
+    
+    style A fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,color:#1e40af,font-weight:bold
+    style B fill:#f8fafc,stroke:#cbd5e1,stroke-width:1px,color:#475569
+    style C fill:#f8fafc,stroke:#cbd5e1,stroke-width:1px,color:#475569
 ```
 
 ---
