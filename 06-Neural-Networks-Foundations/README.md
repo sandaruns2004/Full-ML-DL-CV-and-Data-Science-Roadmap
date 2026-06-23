@@ -1,80 +1,105 @@
-# 🧠 Neural Networks Foundations
+# 🧠 Module 06: Neural Networks Foundations
 
-Welcome to the **Neural Networks Foundations** module. This module provides a complete, mathematically rigorous, and code-rich journey from the absolute first principles (the Perceptron) to production-grade Deep Neural Networks built in NumPy and PyTorch.
+Welcome to **Neural Networks Foundations**. This module bridges the gap between traditional machine learning and modern deep learning. Here, you will learn exactly how neural networks learn, why they are so powerful, and how to build them from the absolute fundamentals.
+
+---
+
+## 🌟 Module Overview
+
+For decades, traditional machine learning models (like linear regression and random forests) ruled the data world. But as data became unstructured—images, audio, and raw text—these models hit a ceiling. Deep Learning emerged to shatter that ceiling. 
+
+In this module, we strip away the magic of PyTorch and TensorFlow. You will look under the hood of deep learning, learning the pure mathematics and intuition that powers AI today.
+
+**How this module connects to your journey:**
+`Supervised Learning` ➡️ `Model Evaluation` ➡️ **`Neural Networks`** ➡️ `Computer Vision` ➡️ `NLP`
 
 ---
 
 ## 🗺️ Learning Roadmap
 
-This module is structured logically to build intuition first, back it up with mathematical rigor, implement it in pure NumPy, and finally transition to production-ready PyTorch.
-
 ```mermaid
 graph TD
-    A[01. Intro to NNs] --> B[02. Perceptron & Analogy]
-    B --> C[03. Activation Functions]
-    C --> D[04. Forward Propagation]
-    D --> E[05. Loss Functions]
-    E --> F[06. Gradient Descent]
-    F --> G[07. Backpropagation]
-    G --> H[08. Multi-Layer Perceptron]
-    H --> I[09. Weight Initialization]
-    I --> J[10. Optimizers]
-    J --> K[11. Vanishing/Exploding Gradients]
-    K --> L[12. Computational Graphs]
-    L --> M[13. NN from Scratch - NumPy]
-    M --> N[14. NN PyTorch Implementation]
+    A[Linear Models] --> B[Perceptrons]
+    B --> C[Neural Networks]
+    C --> D[Deep Networks]
+    D --> E[Optimization]
+    E --> F[Regularization]
+    F --> G[Modern Deep Learning]
+    
+    classDef default fill:#1f2937,stroke:#3b82f6,stroke-width:2px,color:#f8fafc;
 ```
 
 ---
 
-## 📂 Directory Structure
+## 🎯 Learning Outcomes
 
-Below is the file layout of this module:
-
-- 📄 [01-Introduction-To-Neural-Networks.md](./01-Introduction-To-Neural-Networks.md) — Fundamental concepts and biological inspiration.
-- 📄 [02-Perceptron-And-Biological-Analogy.md](./02-Perceptron-And-Biological-Analogy.md) — The biological neuron vs. Rosenblatt's Perceptron, convergence, and XOR.
-- 📄 [03-Activation-Functions.md](./03-Activation-Functions.md) — Sigmoid, Tanh, ReLU, Leaky ReLU, Softmax and their derivatives.
-- 📄 [04-Forward-Propagation.md](./04-Forward-Propagation.md) — Matrix forms, layer computations, and dimensional alignment.
-- 📄 [05-Loss-Functions.md](./05-Loss-Functions.md) — MSE, MAE, BCE, CCE, and their probabilistic interpretations (MLE).
-- 📄 [06-Gradient-Descent.md](./06-Gradient-Descent.md) — Batch, Mini-batch, Stochastic Gradient Descent, and learning rate effects.
-- 📄 [07-Backpropagation.md](./07-Backpropagation.md) — The Chain Rule, vector/matrix derivatives, and computational paths.
-- 📄 [08-Multi-Layer-Perceptron.md](./08-Multi-Layer-Perceptron.md) — Architecture design, stacking layers, Universal Approximation Theorem.
-- 📄 [09-Weight-Initialization.md](./09-Weight-Initialization.md) — Xavier, He, zero-init failure, and variance propagation.
-- 📄 [10-Optimizers.md](./10-Optimizers.md) — SGD, Momentum, RMSProp, and Adam algorithms from scratch.
-- 📄 [11-Vanishing-And-Exploding-Gradients.md](./11-Vanishing-And-Exploding-Gradients.md) — Saturation problems, ReLU fixes, and gradient scaling/clipping.
-- 📄 [12-Computational-Graphs.md](./12-Computational-Graphs.md) — Autograd node logic, topological sorting, forward/backward graphs.
-- 📄 [13-Neural-Network-From-Scratch-Numpy.md](./13-Neural-Network-From-Scratch-Numpy.md) — Fully modular neural network framework implemented in pure NumPy.
-- 📄 [14-Neural-Network-PyTorch-Implementation.md](./14-Neural-Network-PyTorch-Implementation.md) — Clean PyTorch equivalents, training pipelines, and evaluation routines.
-
-### 📓 Interactive Notebooks (`notebooks/`)
-1. 📓 [NN_From_Scratch.ipynb](./notebooks/NN_From_Scratch.ipynb)
-2. 📓 [Backpropagation_Visualizer.ipynb](./notebooks/Backpropagation_Visualizer.ipynb)
-3. 📓 [Activation_Functions_Explorer.ipynb](./notebooks/Activation_Functions_Explorer.ipynb)
-
-### 🛠️ Mini Projects (`projects/`)
-1. 📂 [01-NN-From-Scratch-NumPy](./projects/01-NN-From-Scratch-NumPy/) — Multi-layer perceptron built completely from scratch using NumPy.
-2. 📂 [02-PyTorch-MLP-Classifier](./projects/02-PyTorch-MLP-Classifier/) — Industry-standard classifier with PyTorch datasets and training modules.
-3. 📂 [03-Activation-Function-Comparison-Study](./projects/03-Activation-Function-Comparison-Study/) — Visual analysis of convergence rates using Sigmoid, Tanh, ReLU, and Leaky ReLU.
-4. 📂 [04-Gradient-Explosion-Simulator](./projects/04-Gradient-Explosion-Simulator/) — Experiment documenting how initialization and deep layers lead to vanishing/exploding gradients.
-5. 📂 [05-XOR-Problem-Solver](./projects/05-XOR-Problem-Solver/) — A step-by-step visual training solution to the classical XOR separation task.
+After completing this module, you will deeply understand:
+- **Neural Network Fundamentals:** The architecture of artificial neurons, layers, and deep networks.
+- **The Training Process:** How forward propagation computes predictions and loss functions measure error.
+- **Backpropagation:** The engine of deep learning. How the chain rule calculates gradients.
+- **Optimization:** How algorithms like SGD, Momentum, and Adam update weights to minimize loss.
+- **Regularization:** Techniques like Dropout, L2, and Early Stopping to prevent overfitting.
+- **Practical Implementation:** How to build a complete neural network from scratch using pure NumPy.
 
 ---
 
-## 🚀 Setup & Installation
+## 📚 Topic Navigation
 
-To run the interactive notebooks and project files locally, setup your virtual environment and install the required dependencies:
+### 🟢 Beginner (Fundamentals)
+1. [Introduction to Neural Networks](./01-Introduction-To-Neural-Networks.md)
+2. [Artificial Neurons](./02-Artificial-Neurons.md)
+3. [The Perceptron](./03-Perceptron.md)
+4. [From Perceptrons to Neural Networks](./04-From-Perceptrons-To-Neural-Networks.md)
 
-```bash
-# Create virtual environment
-python -m venv venv
+### 🟡 Intermediate (Training Mechanics)
+5. [Activation Functions](./05-Activation-Functions.md)
+6. [Forward Propagation](./06-Forward-Propagation.md)
+7. [Loss Functions](./07-Loss-Functions.md)
+8. [Gradient Descent](./08-Gradient-Descent.md)
 
-# Activate virtual environment (Windows)
-.\venv\Scripts\activate
+### 🔴 Advanced (Learning & Optimization)
+9. [Backpropagation](./09-Backpropagation.md)
+10. [Optimization Algorithms](./10-Optimization-Algorithms.md)
+11. [Weight Initialization](./11-Weight-Initialization.md)
+12. [Vanishing and Exploding Gradients](./12-Vanishing-And-Exploding-Gradients.md)
+13. [Regularization Techniques](./13-Regularization-Techniques.md)
+14. [Batch Normalization](./14-Batch-Normalization.md)
 
-# Install required dependencies
-pip install numpy matplotlib torch torchvision
-```
+### 🛠️ Practical Application
+15. [Hyperparameter Tuning](./15-Hyperparameter-Tuning.md)
+16. [Building a Neural Network From Scratch](./16-Building-A-Neural-Network-From-Scratch.md)
 
 ---
 
-[← Return to Root Index](../README.md) | [Next: Introduction To Neural Networks →](./01-Introduction-To-Neural-Networks.md)
+## 💻 Project Showcase
+
+Knowledge is best solidified through practice. This module includes the following projects:
+
+1. **[Handwritten Digit Classifier](./projects/01-Handwritten-Digit-Classifier/)**: Implement an MNIST classifier in NumPy, TensorFlow, and PyTorch.
+2. **[Customer Churn Prediction](./projects/02-Customer-Churn-Prediction/)**: A business-focused neural network project predicting customer retention.
+3. **[Neural Network Playground](./projects/03-Neural-Network-Playground/)**: An interactive Streamlit app to visualize training in real-time.
+4. **[Activation Function Explorer](./projects/04-Activation-Function-Visualizer/)**: An educational tool to explore non-linearities and their derivatives.
+5. **[Optimization Algorithm Visualizer](./projects/05-Optimization-Algorithm-Comparison/)**: A visual comparison of how different optimizers traverse loss landscapes.
+6. **[Mini Deep Learning Framework](./projects/06-Neural-Network-From-Scratch-Framework/)**: Build your own lightweight deep learning framework using NumPy.
+
+---
+
+## 🚀 Skills Gained
+
+| Category | Skills Acquired |
+|----------|----------------|
+| **Technical** | Forward/Backward Propagation, Matrix Calculus, Optimization Algorithms, Regularization |
+| **Industry** | Debugging unstable training, hyperparameter tuning, GPU utilization awareness |
+| **Interview** | Explaining backpropagation step-by-step, comparing optimizers mathematically |
+| **Portfolio** | A custom deep learning framework built entirely from scratch |
+
+---
+
+## ⏱️ Study Guide & Tips
+
+- **Difficulty:** Moderate to Hard (Math Heavy)
+- **Estimated Study Time:** 3-4 Weeks (assuming 10-15 hours/week)
+- **Philosophy:** Focus heavily on the visual and conceptual intuition before diving into the formulas. Build a strong mental model of how gradients flow backward through a network.
+- **Do Not Skip:** Lesson 09 (Backpropagation) and Lesson 16 (NN From Scratch). These are the most critical components of the entire module.
+
+[Start the Module: Introduction to Neural Networks →](./01-Introduction-To-Neural-Networks.md)
