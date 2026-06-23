@@ -6,7 +6,7 @@ Welcome to the newly upgraded Ensemble Methods module! This curriculum represent
 The Markdown files in this directory are deep, textbook-style chapters explaining the intuition, mathematics, and industry applications of each algorithm.
 
 1. [Introduction to Ensemble Learning](./01-Introduction-To-Ensemble-Learning.md)
-2. [Bagging](./02-Bagging.md)
+2. **[Bagging](./02-Bagging.md)** *(Premium Benchmark Chapter)*
 3. **[Random Forest](./03-Random-Forest.md)** *(Premium Benchmark Chapter)*
 4. **[Extra Trees (Extremely Randomized Trees)](./04-Extra-Trees.md)** *(Premium Benchmark Chapter)*
 5. [Voting Classifiers](./05-Voting-Classifiers.md)
@@ -23,6 +23,7 @@ The Markdown files in this directory are deep, textbook-style chapters explainin
 ## 💻 Phase 2: Implementation Workshops
 The `notebooks/` directory contains hands-on Python workshops perfectly mapped to the conceptual chapters above. Each notebook is scaffolded with a premium workshop structure including From Scratch models, NumPy implementation, Hyperparameter Tuning, and Visualizations.
 
+- `bagging_lab.ipynb`
 - `01_Random_Forest_Lab.ipynb`
 - `02_Extra_Trees_Lab.ipynb`
 - `03_AdaBoost_Lab.ipynb`
@@ -34,7 +35,9 @@ The `notebooks/` directory contains hands-on Python workshops perfectly mapped t
 ## 🏭 Phase 3: Industry Portfolio Projects
 The `projects/` directory contains scaffolded architectures for complete end-to-end industry case studies following standard professional folder structures (`data/`, `notebooks/`, `src/`, `models/`, `reports/`, `images/`).
 
-1. **[Fraud Detection](./projects/01-Fraud-Detection/README.md)** (Random Forest)
+1. **[Customer Retention Prediction](./projects/01-Customer-Retention-Prediction/README.md)** (Bagging)
+2. **[Loan Approval Classification](./projects/02-Loan-Approval-Classification/README.md)** (Bagging)
+3. **[Fraud Detection](./projects/01-Fraud-Detection/README.md)** (Random Forest)
 2. **[Insurance Claim Prediction](./projects/02-Insurance-Claim-Prediction/README.md)** (Extra Trees)
 3. **[Marketing Response Prediction](./projects/03-Marketing-Response-Prediction/README.md)** (AdaBoost)
 4. **[Customer Lifetime Value Prediction](./projects/04-Customer-Lifetime-Value-Prediction/README.md)** (Gradient Boosting)
