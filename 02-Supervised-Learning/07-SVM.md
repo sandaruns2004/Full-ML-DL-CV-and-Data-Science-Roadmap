@@ -1,10 +1,6 @@
 # 🛣️ Support Vector Machines (SVM)
 
-> **Prerequisites:** Linear Algebra, Logistic Regression
->
-> **Difficulty:** ⭐⭐⭐⭐☆
->
-> **Estimated Reading Time:** 30 minutes
+> **Difficulty:** ⭐⭐⭐⭐☆ Advanced | **Prerequisites:** Linear Algebra, Logistic Regression | **Estimated Reading Time:** 30 minutes
 
 ---
 
@@ -12,22 +8,15 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Mathematics](#3-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-
-14. [Exercises](#14-exercises)
-
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [Scikit-Learn Implementation](#5-scikit-learn-implementation)
+6. [Hyperparameter Deep Dive](#6-hyperparameter-deep-dive)
+7. [Failure Cases](#7-failure-cases)
+8. [Industry Applications](#8-industry-applications)
 
 ---
 
-# 1. What Problem Does This Solve?
+## 1. What Problem Does This Solve?
 
 ### 🟢 Beginner
 Imagine you have a table with red apples on the left and green apples on the right. You need to put a straight stick on the table to separate them. You could put the stick right next to the red apples, or right next to the green apples. Both technically separate them. But an SVM places the stick exactly in the middle, creating the widest possible "street" between the two groups. It solves the problem of finding the *safest* dividing line.
@@ -42,7 +31,7 @@ SVMs solve two massive mathematical problems elegantly:
 
 ---
 
-# 2. Intuition
+## 2. Intuition
 
 ### The Street Analogy
 Think of the decision boundary as a multi-lane highway. The two classes are sitting on the sidewalks on opposite sides of the highway. 
@@ -57,7 +46,7 @@ The Kernel Trick mathematically warps the 2D paper into 3D space so a flat cut c
 
 ---
 
-# 3. Mathematics
+## 3. Mathematics
 
 ### 3.1 The Hyperplane and Margin
 The decision boundary is defined by weights $w$ and bias $b$:
@@ -80,7 +69,7 @@ $$ K(x, y) = e^{-\gamma ||x - y||^2} $$
 
 ---
 
-# 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 flowchart TD
@@ -96,10 +85,6 @@ flowchart TD
     Support --> Final[🏆 Optimal Decision Boundary]
 ```
 
----
-
-# 5. Algorithm Workflow
-
 1. **Scale Data**: Distance calculations will be destroyed by unscaled features.
 2. **Choose Kernel**: Decide if you need a linear or non-linear boundary.
 3. **Set Hyperparameters**: Choose $C$ (regularization) and $\gamma$ (for non-linear kernels).
@@ -108,56 +93,7 @@ flowchart TD
 
 ---
 
-# 6. From Scratch Implementation
-
-*Note: True SVMs use complex Quadratic Programming solvers (like SMO). This is a simplified Gradient Descent implementation for a Linear SVM using Hinge Loss.*
-
-```python
-import numpy as np
-
-class LinearSVMScratch:
-    def __init__(self, learning_rate=0.001, lambda_param=0.01, epochs=1000):
-        self.lr = learning_rate
-        self.lambda_param = lambda_param # Regularization strength (1/C)
-        self.epochs = epochs
-        self.w = None
-        self.b = None
-        
-    def fit(self, X, y):
-        # SVM requires labels to be -1 and 1
-        y_ = np.where(y <= 0, -1, 1)
-        
-        n_samples, n_features = X.shape
-        self.w = np.zeros(n_features)
-        self.b = 0
-        
-        for _ in range(self.epochs):
-            for idx, x_i in enumerate(X):
-                # Check if point satisfies the margin constraint
-                condition = y_[idx] * (np.dot(x_i, self.w) - self.b) >= 1
-                
-                if condition:
-                    # Point is correct and outside margin -> Update only weights for regularization
-                    self.w -= self.lr * (2 * self.lambda_param * self.w)
-                else:
-                    # Point violates margin -> Update weights and bias based on error
-                    self.w -= self.lr * (2 * self.lambda_param * self.w - np.dot(x_i, y_[idx]))
-                    self.b -= self.lr * y_[idx]
-                    
-    def predict(self, X):
-        approx = np.dot(X, self.w) - self.b
-        return np.sign(approx) # Returns -1 or 1
-```
-
----
-
-# 7. NumPy Implementation
-
-*(See section 6. Production implementations of non-linear SVMs never use Gradient Descent; they use highly optimized C libraries like `LIBSVM` via Scikit-Learn).*
-
----
-
-# 8. Scikit-Learn Implementation
+## 5. Scikit-Learn Implementation
 
 ```python
 from sklearn.svm import SVC
@@ -189,7 +125,7 @@ print(f"Number of Support Vectors: {len(model.support_vectors_)}")
 
 ---
 
-# 9. Hyperparameter Deep Dive
+## 6. Hyperparameter Deep Dive
 
 - **`kernel`**: `linear` (straight line), `poly` (polynomial curves), or `rbf` (complex blobs).
 - **`C`**: The regularization parameter. It acts inversely.
@@ -201,39 +137,7 @@ print(f"Number of Support Vectors: {len(model.support_vectors_)}")
 
 ---
 
-# 10. Visualization Lab
-
-*Visualizing how $C$ and $\gamma$ affect the RBF decision boundary.*
-
-```python
-import matplotlib.pyplot as plt
-from sklearn.svm import SVC
-from sklearn.datasets import make_moons
-from mlxtend.plotting import plot_decision_regions
-
-X, y = make_moons(n_samples=100, noise=0.15, random_state=42)
-
-# Model 1: Good generalizations
-svm_good = SVC(kernel='rbf', C=1, gamma=1).fit(X, y)
-
-# Model 2: Massive Overfitting
-svm_overfit = SVC(kernel='rbf', C=1000, gamma=100).fit(X, y)
-
-fig, ax = plt.subplots(1, 2, figsize=(12, 5))
-
-plot_decision_regions(X, y, clf=svm_good, ax=ax[0])
-ax[0].set_title("Good Fit (C=1, Gamma=1)")
-
-plot_decision_regions(X, y, clf=svm_overfit, ax=ax[1])
-ax[1].set_title("Overfit Islands (C=1000, Gamma=100)")
-
-plt.tight_layout()
-plt.show()
-```
-
----
-
-# 11. Failure Cases
+## 7. Failure Cases
 
 ### Large Datasets (> 100,000 rows)
 The mathematical complexity of the SVM solver is roughly $O(N^2)$ to $O(N^3)$. If you feed an SVM 500,000 rows, it will literally freeze your computer and never finish training.
@@ -247,25 +151,12 @@ If the data is a massive cloud of overlapping red and blue dots, the RBF kernel 
 
 ---
 
-# 12. Industry Applications
+## 8. Industry Applications
 
 Before the Deep Learning era (pre-2012), SVMs were the state-of-the-art for almost everything.
 - **Bioinformatics**: Protein classification and cancer detection. SVMs are incredibly powerful when you have more features than samples (e.g., 100 patients, but 10,000 gene expressions per patient).
 - **Handwriting Recognition**: The original algorithms for reading postal zip codes.
 - **Text Classification**: Document categorization using TF-IDF features.
-
----
-
-# 14. Exercises
-
-### Easy
-Train an `SVC(kernel='linear')` on the Iris dataset. Use the `.support_vectors_` attribute to find exactly how many data points are acting as support vectors.
-
-### Medium
-Use `GridSearchCV` to find the optimal $C \in [0.1, 1, 10, 100]$ and $\gamma \in [0.01, 0.1, 1, 10]$ on a noisy dataset. Plot the best estimator.
-
-### Hard
-The Hinge Loss function is defined as $\max(0, 1 - y_i(w^T x_i + b))$. Plot this function on a graph where the x-axis is the raw model output $y_i(w^T x_i + b)$ and the y-axis is the loss. Compare it visually to the Log Loss curve used in Logistic Regression.
 
 ---
 

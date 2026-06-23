@@ -133,15 +133,15 @@ gantt
 Combines every single local explanation into one massive global chart.
 
 ```mermaid
-scatter-chart
-    title "SHAP Summary Plot (Conceptual)"
-    x-axis "SHAP Value (Impact on Model Output)"
-    y-axis "Feature"
-    point [0.8, 1]
-    point [0.6, 1]
-    point [-0.5, 1]
-    point [0.4, 2]
-    point [-0.2, 2]
+quadrantChart
+    title SHAP Summary Plot (Conceptual)
+    x-axis Negative Impact --> Positive Impact
+    y-axis Feature B --> Feature A
+    P1: [0.9, 0.8]
+    P2: [0.8, 0.8]
+    P3: [0.2, 0.8]
+    P4: [0.7, 0.2]
+    P5: [0.4, 0.2]
 ```
 *(In an actual SHAP summary plot, every dot is a patient/customer. Red dots mean the feature value was high, Blue means low. It instantly shows you if high blood pressure increases or decreases the risk of a heart attack).*
 

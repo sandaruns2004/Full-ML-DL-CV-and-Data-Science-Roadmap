@@ -94,24 +94,24 @@ Instead of duplicating exact copies of minority rows, SMOTE uses K-Nearest Neigh
 
 ### Visualizing SMOTE vs Normal Oversampling
 ```mermaid
-scatter-chart
-    title "Random Oversampling (Exact Duplicates)"
-    x-axis "Feature 1"
-    y-axis "Feature 2"
-    point [1, 1]
-    point [1, 1]
-    point [1.5, 1.5]
-    point [1.5, 1.5]
+quadrantChart
+    title Random Oversampling (Exact Duplicates)
+    x-axis Low Feature 1 --> High Feature 1
+    y-axis Low Feature 2 --> High Feature 2
+    P1: [0.2, 0.2]
+    P1 Duplicate: [0.2, 0.2]
+    P2: [0.8, 0.8]
+    P2 Duplicate: [0.8, 0.8]
 ```
 
 ```mermaid
-scatter-chart
-    title "SMOTE (Synthetic Interpolation)"
-    x-axis "Feature 1"
-    y-axis "Feature 2"
-    point [1, 1]
-    point [1.25, 1.25] 
-    point [1.5, 1.5]
+quadrantChart
+    title SMOTE (Synthetic Interpolation)
+    x-axis Low Feature 1 --> High Feature 1
+    y-axis Low Feature 2 --> High Feature 2
+    P1 Original: [0.2, 0.2]
+    Synthetic Point: [0.5, 0.5]
+    P2 Original: [0.8, 0.8]
 ```
 *(Notice how SMOTE creates a new point at [1.25, 1.25] that connects the two original points).*
 

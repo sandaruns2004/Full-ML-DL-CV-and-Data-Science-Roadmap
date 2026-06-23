@@ -1,10 +1,6 @@
 # 🎲 Naive Bayes
 
-> **Prerequisites:** Probability Theory (Bayes' Theorem)
->
-> **Difficulty:** ⭐⭐⭐☆☆
->
-> **Estimated Reading Time:** 20 minutes
+> **Difficulty:** ⭐⭐⭐☆☆ Intermediate | **Prerequisites:** Probability Theory (Bayes' Theorem) | **Estimated Reading Time:** 20 minutes
 
 ---
 
@@ -12,22 +8,16 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Mathematics](#3-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-
-14. [Exercises](#14-exercises)
-
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [From Scratch Implementation](#5-from-scratch-implementation)
+6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
+7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
+8. [Failure Cases](#8-failure-cases)
+9. [Industry Applications](#9-industry-applications)
 
 ---
 
-# 1. What Problem Does This Solve?
+## 1. What Problem Does This Solve?
 
 ### 🟢 Beginner
 You receive an email that says: *"WINNER! Click here for free money!"* How does your email provider know it's spam? It looks at history. It says, "In the past, the word 'WINNER' appeared in spam emails 99% of the time, and 'free money' appeared 95% of the time." By combining these probabilities, it calculates the overall chance that this specific email is spam. This is Naive Bayes.
@@ -40,7 +30,7 @@ While discriminative models (like Logistic Regression) attempt to learn the boun
 
 ---
 
-# 2. Intuition
+## 2. Intuition
 
 ### The Medical Test
 Imagine a disease affects 1% of the population. There is a test for it that is 99% accurate. You take the test, and it comes back positive.
@@ -51,7 +41,7 @@ Naive Bayes extends this logic to multiple features. It calculates the probabili
 
 ---
 
-# 3. Mathematics
+## 3. Mathematics
 
 ### 3.1 Bayes' Theorem
 $$ P(y | X) = \frac{P(X | y) \cdot P(y)}{P(X)} $$
@@ -71,7 +61,7 @@ $$ \hat{y} = \arg\max_y P(y) \prod_{i=1}^n P(x_i | y) $$
 
 ---
 
-# 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 flowchart TD
@@ -92,10 +82,6 @@ flowchart TD
     end
 ```
 
----
-
-# 5. Algorithm Workflow
-
 1. **Calculate Priors**: Count what percentage of the training data belongs to each class.
 2. **Calculate Likelihoods**: For every feature, calculate its probability distribution within each class. (e.g., How often does "Free" appear in Spam vs Ham?)
 3. **Log Trick**: When predicting, multiplying dozens of tiny probabilities (like $0.001 \times 0.001$) will cause computer memory to round down to $0$ (Underflow). Instead, we take the `log()` of the probabilities and **add** them together!
@@ -103,7 +89,7 @@ flowchart TD
 
 ---
 
-# 6. From Scratch Implementation
+## 5. From Scratch Implementation
 
 *Implementing Gaussian Naive Bayes for continuous numerical features.*
 
@@ -153,13 +139,7 @@ class GaussianNaiveBayesScratch:
 
 ---
 
-# 7. NumPy Implementation
-
-*(See section 6. The above implementation relies heavily on NumPy's vectorized mathematical operations).*
-
----
-
-# 8. Scikit-Learn Implementation
+## 6. Scikit-Learn Implementation
 
 *Using MultinomialNB, which is the industry standard for Text/Word-Count data.*
 
@@ -192,7 +172,7 @@ print("Prediction:", "Spam" if pred[0] == 1 else "Ham")
 
 ---
 
-# 9. Hyperparameter Deep Dive
+## 7. Hyperparameter Deep Dive
 
 - **`alpha` (Laplace Smoothing)**: The most critical hyperparameter. 
   - *The Problem*: If a new email contains the word "Bitcoin", and "Bitcoin" never appeared in your training data, $P(\text{Bitcoin}|\text{Spam}) = 0$. Because Naive Bayes multiplies everything, the entire probability becomes $0$.
@@ -204,32 +184,7 @@ print("Prediction:", "Spam" if pred[0] == 1 else "Ham")
 
 ---
 
-# 10. Visualization Lab
-
-*Visualizing Gaussian Naive Bayes decision boundaries on continuous data.*
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.naive_bayes import GaussianNB
-from sklearn.datasets import make_classification
-from mlxtend.plotting import plot_decision_regions
-
-# Generate distinct blobs of data
-X, y = make_classification(n_samples=200, n_features=2, n_informative=2, 
-                           n_redundant=0, n_clusters_per_class=1, random_state=42)
-
-model = GaussianNB().fit(X, y)
-
-plt.figure(figsize=(8, 6))
-plot_decision_regions(X, y, clf=model)
-plt.title("Gaussian Naive Bayes Decision Boundary")
-plt.show()
-```
-
----
-
-# 11. Failure Cases
+## 8. Failure Cases
 
 ### Correlated Features
 The "Naive" assumption is that features are independent. If you have two highly correlated features (like "City" and "Zip Code"), Naive Bayes will double-count their evidence. If it strongly points to Class A, the model will become irrationally overconfident in Class A.
@@ -239,24 +194,11 @@ The "Naive" assumption is that features are independent. If you have two highly 
 
 ---
 
-# 12. Industry Applications
+## 9. Industry Applications
 
 - **Spam Filtering**: The absolute classic use-case.
 - **Sentiment Analysis**: Classifying Tweets or Reviews as Positive or Negative. Naive Bayes is often used as a fast, highly scalable baseline before deploying heavy Transformers like BERT.
 - **Recommendation Systems**: Used in collaborative filtering to calculate the probability that a user will like an item.
-
----
-
-# 14. Exercises
-
-### Easy
-Read the `MultinomialNB` Scikit-Learn code block above. Run it yourself. What happens if you change `alpha=0.0`?
-
-### Medium
-Implement Laplace smoothing in the from-scratch algorithm. 
-
-### Hard
-Write a script that scrapes 100 Wikipedia articles from two different categories (e.g., "Machine Learning" and "Ancient History"). Use `CountVectorizer` and `MultinomialNB` to build a classifier that predicts the category of a newly pasted paragraph.
 
 ---
 

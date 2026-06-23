@@ -9,13 +9,9 @@
 2. [Intuition](#2-intuition)
 3. [Core Mathematics](#3-core-mathematics)
 4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [Python Implementation (MLxtend)](#6-python-implementation)
-7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
-8. [Visualization Lab](#8-visualization-lab)
-9. [Failure Cases](#9-failure-cases)
-10. [Industry Applications](#10-industry-applications)
-11. [What's Next?](#11-whats-next)
+5. [Failure Cases](#5-failure-cases)
+6. [Industry Applications](#6-industry-applications)
+7. [What's Next?](#7-whats-next)
 
 ---
 
@@ -94,75 +90,14 @@ graph LR
 
 ---
 
-## 5. Algorithm Workflow
-
-1.  **Generate Frequent Itemsets**: Find all combinations of items that have a Support greater than a user-defined `min_support` threshold. (This is the computationally heavy part).
-2.  **Generate Rules**: From those frequent itemsets, generate rules $X \rightarrow Y$.
-3.  **Filter by Confidence/Lift**: Keep only the rules that meet a user-defined `min_confidence` or `min_lift` threshold.
-
----
-
-## 6. Python Implementation
-
-Scikit-Learn does *not* support Association Rule Mining. We use the specialized library `mlxtend`.
-
-```python
-# pip install mlxtend
-import pandas as pd
-from mlxtend.frequent_patterns import apriori, association_rules
-
-# Data must be One-Hot Encoded (a boolean matrix)
-dataset = {'Milk': [1, 0, 1, 1],
-           'Bread': [1, 1, 1, 0],
-           'Butter': [0, 1, 1, 0]}
-df = pd.DataFrame(dataset)
-
-# 1. Find Frequent Itemsets (Support > 0.4)
-frequent_itemsets = apriori(df, min_support=0.4, use_colnames=True)
-
-# 2. Generate Rules (Confidence > 0.6)
-rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.6)
-
-print(rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']])
-```
-
----
-
-## 7. Hyperparameter Deep Dive
-
-*   **`min_support`**: The most critical parameter for performance. Setting this too low (e.g., 0.001) will cause the algorithm to evaluate millions of obscure combinations, crashing your RAM. Always start high (e.g., 0.1) and work your way down.
-*   **`min_confidence`**: Controls the "reliability" of the rule. A confidence of 0.8 means the rule is right 80% of the time.
-
----
-
-## 8. Visualization Lab
-
-> **Note**: For interactive Network Graphs of product relationships, see `notebooks/07-Association-Rules-Lab.ipynb`.
-
-### The Lift Heatmap
-A powerful way to visualize rules is to plot the Antecedents on the Y-axis, Consequents on the X-axis, and color the squares based on the `Lift` value. 
-
-```python
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-# Pivot the rules dataframe
-# pivot = rules.pivot(index='antecedents', columns='consequents', values='lift')
-
-# sns.heatmap(pivot, annot=True, cmap="YlGnBu")
-# plt.title("Lift Matrix of Association Rules")
-```
-
----
-
-## 9. Failure Cases
+## 5. Failure Cases
 
 1.  **The "Water" Problem**: If almost everyone buys water, the rule `{Any Item} -> {Water}` will have massive Support and Massive Confidence. But the Lift will be exactly 1.0. High confidence does not equal a meaningful relationship. Always check Lift!
-2.  **Sparsity**: In huge e-commerce sites (Amazon), user purchases are incredibly sparse. `min_support` must be set astronomically low to find combinations, making traditional ARM computationally impossible without advanced big data variants (like FP-Growth on Spark).
+2.  **Sparsity**: In huge e-commerce sites (Amazon), user purchases are incredibly sparse. The `min_support` threshold must be set astronomically low to find combinations, making traditional ARM computationally impossible without advanced big data variants (like FP-Growth on Spark).
 
 ---
 
-## 10. Industry Applications
+## 6. Industry Applications
 
 *   **Retail / E-Commerce**: "Frequently Bought Together" sections on Amazon.
 *   **Healthcare**: Finding symptom or comorbidity co-occurrences. (If Patient has Diabetes and Hypertension $\rightarrow$ 80% likelihood of X).
@@ -170,7 +105,7 @@ import matplotlib.pyplot as plt
 
 ---
 
-## 11. What's Next?
+## 7. What's Next?
 
 ### Summary
 Association Rule Mining escapes the world of continuous vectors and enters the world of probabilities and categorical sets. We use Support to find popularity, Confidence to find reliability, and Lift to find true correlation. 

@@ -10,16 +10,10 @@
 3. [Core Mathematics](#3-core-mathematics)
 4. [Visual Explanation](#4-visual-explanation)
 5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-13. [Interview Preparation](#13-interview-preparation)
-14. [Hands-On Exercises](#14-hands-on-exercises)
-15. [Further Reading](#15-further-reading)
+6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
+7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
+8. [Failure Cases](#8-failure-cases)
+9. [Industry Applications](#9-industry-applications)
 
 ---
 
@@ -106,19 +100,7 @@ flowchart LR
 
 ---
 
-## 6. From Scratch Implementation
-
-*Due to the extreme complexity of EFB, GOSS, and Histogram binning in C++, LightGBM cannot be trivially implemented in pure Python. The magic relies on C++ pointer manipulation and memory caching.*
-
----
-
-## 7. NumPy Implementation
-
-*(See section 6).*
-
----
-
-## 8. LightGBM Implementation
+## 6. Scikit-Learn Implementation
 
 *Note: You must `pip install lightgbm`*
 
@@ -154,7 +136,7 @@ print(f"ROC-AUC: {roc_auc_score(y_test, preds):.4f}")
 
 ---
 
-## 9. Hyperparameter Deep Dive
+## 7. Hyperparameter Deep Dive
 
 Because LightGBM grows leaf-wise, it is very easy to overfit. 
 - **`num_leaves`**: The most important parameter. It controls the complexity of the tree model. Theoretically, `num_leaves` = $2^{\text{max\_depth}}$, but because LightGBM is asymmetrical, you should set it strictly smaller than $2^{\text{max\_depth}}$ to avoid overfitting. (e.g., if max depth is 7, set num_leaves to ~70, not 128).
@@ -166,63 +148,17 @@ Because LightGBM grows leaf-wise, it is very easy to overfit.
 
 ---
 
-## 10. Visualization Lab
-
-```python
-import lightgbm as lgb
-import matplotlib.pyplot as plt
-
-# Assuming 'model' is trained
-plt.figure(figsize=(20, 10))
-lgb.plot_tree(model, tree_index=0, figsize=(20, 10), show_info=['split_gain'])
-plt.title("LightGBM Asymmetrical Leaf-Wise Tree")
-plt.show()
-```
-
----
-
-## 11. Failure Cases
+## 8. Failure Cases
 
 **Small Datasets (< 10,000 rows)**
 LightGBM's leaf-wise growth will obliterate a small dataset, overfitting it almost instantly. Use Random Forest or standard XGBoost with level-wise growth for small data. 
 
 ---
 
-## 12. Industry Applications
+## 9. Industry Applications
 
 - **Click-Through Rate (CTR) Prediction**: Handling massive streams of sparse user data in ad-tech.
 - **High-Frequency Bidding**: Extremely fast inference time.
-
----
-
-## 13. Interview Preparation
-
-### Beginner
-**Q: What makes LightGBM faster than standard XGBoost?**
-> A: Histogram binning reduces the split search space, and Leaf-wise growth converges faster than level-wise growth. (Note: XGBoost now also supports hist and leaf-wise, but LightGBM pioneered it for production).
-
-### Intermediate
-**Q: How do you prevent LightGBM from overfitting?**
-> A: Because it grows leaf-wise, you MUST strictly tune `num_leaves` and `min_data_in_leaf`. Do not rely solely on `max_depth`.
-
-### Advanced
-**Q: Explain Gradient-based One-Side Sampling (GOSS).**
-> A: Data points with small gradients have already been learned well. GOSS drops a large random percentage of these easy points to save computation, but scales up the weights of the ones it keeps to ensure the expected value of the information gain remains mathematically unbiased.
-
----
-
-## 14. Hands-On Exercises
-
-**Easy**: Compare the training time of `RandomForestClassifier` vs `LGBMClassifier` on a dataset with 500,000 rows.
-**Medium**: Train two LightGBM models: one with `boosting_type='gbdt'` and one with `'goss'`. Compare their validation metrics and training times.
-**Hard**: Use `num_leaves`. Show mathematically and empirically why setting `num_leaves` to $2^D$ (where $D$ is max depth) causes LightGBM to overfit much worse than a level-wise tree of the exact same depth.
-
----
-
-## 15. Further Reading
-
-- [LightGBM: A Highly Efficient Gradient Boosting Decision Tree (Microsoft, 2017)](https://papers.nips.cc/paper/6907-lightgbm-a-highly-efficient-gradient-boosting-decision-tree)
-- [Official LightGBM Documentation](https://lightgbm.readthedocs.io/en/latest/)
 
 ---
 

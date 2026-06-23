@@ -8,14 +8,12 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Core Mathematics](#3-core-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
-7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
-8. [Visualization Lab](#8-visualization-lab)
-9. [Failure Cases](#9-failure-cases)
-10. [Industry Applications](#10-industry-applications)
-11. [What's Next?](#11-whats-next)
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [Scikit-Learn Implementation](#5-scikit-learn-implementation)
+6. [Hyperparameter Deep Dive](#6-hyperparameter-deep-dive)
+7. [Failure Cases](#7-failure-cases)
+8. [Industry Applications](#8-industry-applications)
+9. [What's Next?](#9-whats-next)
 
 ---
 
@@ -64,7 +62,7 @@ The gradient used to update the 2D points $y_i$ is akin to an N-body physics sim
 
 ---
 
-## 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 graph TD
@@ -83,10 +81,6 @@ graph TD
     style F fill:#88c0d0,color:#2e3440
 ```
 
----
-
-## 5. Algorithm Workflow
-
 1.  **Pre-processing (Optional but recommended)**: If you have >50 dimensions, use PCA to reduce the data to ~50 dimensions first. This suppresses noise and massively speeds up t-SNE.
 2.  **Calculate $P$**: Calculate pairwise distances in the high-dimensional space.
 3.  **Optimize**: Use gradient descent to arrange the points in 2D space until the map $Q$ perfectly mimics $P$.
@@ -95,7 +89,7 @@ graph TD
 
 ---
 
-## 6. Scikit-Learn Implementation
+## 5. Scikit-Learn Implementation
 
 ```python
 from sklearn.manifold import TSNE
@@ -125,7 +119,7 @@ print(f"t-SNE shape: {X_tsne.shape}")
 
 ---
 
-## 7. Hyperparameter Deep Dive
+## 6. Hyperparameter Deep Dive
 
 t-SNE is **extremely** sensitive to hyperparameters. Changing them completely alters the resulting plot.
 
@@ -138,30 +132,7 @@ t-SNE is **extremely** sensitive to hyperparameters. Changing them completely al
 
 ---
 
-## 8. Visualization Lab
-
-> **Note**: For incredible, animated visualizations of t-SNE unrolling the MNIST dataset, see `notebooks/06-tSNE-UMAP-Lab.ipynb`.
-
-### The MNIST Dataset (Handwritten Digits)
-When PCA is applied to the 784-pixel MNIST dataset, the digits form a massive overlapping cloud. When t-SNE is applied, it magically separates the digits into 10 perfectly distinct islands, without ever knowing the labels!
-
-```python
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-# sns.scatterplot(
-#     x=X_tsne[:, 0], y=X_tsne[:, 1],
-#     hue=y_labels,
-#     palette=sns.color_palette("hls", 10),
-#     legend="full",
-#     alpha=0.6
-# )
-# plt.title("t-SNE Projection of MNIST Digits")
-```
-
----
-
-## 9. Failure Cases
+## 7. Failure Cases
 
 t-SNE is a visualization tool, NOT a general-purpose dimensionality reduction tool.
 
@@ -172,7 +143,7 @@ t-SNE is a visualization tool, NOT a general-purpose dimensionality reduction to
 
 ---
 
-## 10. Industry Applications
+## 8. Industry Applications
 
 *   **Genomics (Single-Cell RNA Sequencing)**: Visualizing millions of cells to identify distinct cell types. t-SNE revolutionized modern biology.
 *   **NLP Word Embeddings**: Taking 300-dimensional Word2Vec or GloVe vectors and mapping them to 2D to see how words cluster by semantic meaning.
@@ -180,7 +151,7 @@ t-SNE is a visualization tool, NOT a general-purpose dimensionality reduction to
 
 ---
 
-## 11. What's Next?
+## 9. What's Next?
 
 ### Summary
 t-SNE is a masterpiece of non-linear visualization. It uses probability distributions to pull similar points together and push dissimilar points apart, generating stunning 2D islands of data.

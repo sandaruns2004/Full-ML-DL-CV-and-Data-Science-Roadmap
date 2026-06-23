@@ -1,10 +1,6 @@
 # 📊 Logistic Regression
 
-> **Prerequisites:** Linear Regression, Probabilities
->
-> **Difficulty:** ⭐⭐☆☆☆
->
-> **Estimated Reading Time:** 20 minutes
+> **Difficulty:** ⭐⭐☆☆☆ Beginner | **Prerequisites:** Linear Regression, Probabilities | **Estimated Reading Time:** 20 minutes
 
 ---
 
@@ -12,22 +8,16 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Mathematics](#3-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-
-14. [Exercises](#14-exercises)
-
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [From Scratch Implementation](#5-from-scratch-implementation)
+6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
+7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
+8. [Failure Cases](#8-failure-cases)
+9. [Industry Applications](#9-industry-applications)
 
 ---
 
-# 1. What Problem Does This Solve?
+## 1. What Problem Does This Solve?
 
 ### 🟢 Beginner
 Linear Regression predicts a number (e.g., house price = \$450,000). But what if you want to predict a **Yes or No** question? Will this patient survive? Will this email be marked as spam? Will this customer click on the ad?
@@ -41,7 +31,7 @@ Logistic Regression serves as the fundamental unit (a single neuron/perceptron) 
 
 ---
 
-# 2. Intuition
+## 2. Intuition
 
 Imagine you try to use Linear Regression to classify Malignant (1) vs Benign (0) tumors based on tumor size. 
 You draw a straight line through the data. For a while, it works: tumors smaller than 2cm output a number $< 0.5$ (Benign), and tumors $> 2$cm output a number $> 0.5$ (Malignant).
@@ -52,7 +42,7 @@ Logistic Regression solves this by putting a "ceiling" at 1 and a "floor" at 0. 
 
 ---
 
-# 3. Mathematics
+## 3. Mathematics
 
 ### 3.1 The Sigmoid Function
 How do we squash a linear line $z = \theta^T X$ into the range $(0, 1)$? We pass it through the **Sigmoid (Logistic) Function**:
@@ -76,7 +66,7 @@ $$ \theta_j = \theta_j - \alpha \frac{1}{m} \sum_{i=1}^{m} (\hat{y}^{(i)} - y^{(
 
 ---
 
-# 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 flowchart TD
@@ -92,10 +82,6 @@ flowchart TD
     Cost --> Backprop[Gradient Descent Updates Theta]
 ```
 
----
-
-# 5. Algorithm Workflow
-
 1. **Calculate Linear Equation**: Multiply inputs by weights.
 2. **Squash**: Pass the result through the sigmoid function to get a probability.
 3. **Threshold**: Convert the probability to a discrete class label (usually using 0.5 as the cutoff).
@@ -104,7 +90,7 @@ flowchart TD
 
 ---
 
-# 6. From Scratch Implementation
+## 5. From Scratch Implementation
 
 ```python
 import math
@@ -145,39 +131,7 @@ class SimpleLogisticRegression:
 
 ---
 
-# 7. NumPy Implementation
-
-```python
-import numpy as np
-
-class VectorizedLogisticRegression:
-    def __init__(self, lr=0.01, epochs=1000):
-        self.lr = lr
-        self.epochs = epochs
-        
-    def fit(self, X, y):
-        X_b = np.c_[np.ones((len(X), 1)), X]
-        self.weights = np.zeros((X_b.shape[1], 1))
-        m = len(X)
-        y = y.reshape(-1, 1)
-        
-        for _ in range(self.epochs):
-            z = X_b.dot(self.weights)
-            y_pred = 1 / (1 + np.exp(-z)) # Vectorized Sigmoid
-            
-            gradients = (1/m) * X_b.T.dot(y_pred - y)
-            self.weights -= self.lr * gradients
-            
-    def predict(self, X):
-        X_b = np.c_[np.ones((len(X), 1)), X]
-        z = X_b.dot(self.weights)
-        probs = 1 / (1 + np.exp(-z))
-        return (probs >= 0.5).astype(int)
-```
-
----
-
-# 8. Scikit-Learn Implementation
+## 6. Scikit-Learn Implementation
 
 ```python
 from sklearn.linear_model import LogisticRegression
@@ -205,7 +159,7 @@ print(f"Confusion Matrix:\n{confusion_matrix(y, preds)}")
 
 ---
 
-# 9. Hyperparameter Deep Dive
+## 7. Hyperparameter Deep Dive
 
 - **`penalty`**: Logistic Regression mathematically risks pushing weights to infinity to perfectly separate classes (if the data is perfectly separable). Scikit-Learn applies `l2` regularization by default to prevent this.
 - **`C`**: The inverse of regularization strength (just like SVMs). 
@@ -216,69 +170,22 @@ print(f"Confusion Matrix:\n{confusion_matrix(y, preds)}")
 
 ---
 
-# 10. Visualization Lab
-
-*Visualizing the S-Curve.*
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.linear_model import LogisticRegression
-
-X = np.linspace(-5, 5, 100).reshape(-1, 1)
-y = (X > 0).astype(int).ravel() # Step function
-
-model = LogisticRegression().fit(X, y)
-probs = model.predict_proba(X)[:, 1]
-
-plt.figure(figsize=(8, 5))
-plt.scatter(X, y, color='blue', alpha=0.3, label='Actual Data (0 or 1)')
-plt.plot(X, probs, color='red', linewidth=3, label='Sigmoid Probability Curve')
-plt.axhline(0.5, color='black', linestyle='--', label='Decision Threshold')
-plt.title("Logistic Regression S-Curve")
-plt.xlabel("Feature Value")
-plt.ylabel("Probability of Class 1")
-plt.legend()
-plt.grid(True)
-plt.show()
-```
-
----
-
-# 11. Failure Cases
+## 8. Failure Cases
 
 ### Non-Linear Boundaries
-Logistic regression draws a strictly straight decision boundary (a hyperplane) across the feature space. If the classes form a circle or a donut shape, Logistic Regression will fail completely.
-*Fix: Use Polynomial feature expansion before passing to Logistic Regression, or use a non-linear model like Random Forest.*
+Just like Linear Regression, Logistic Regression creates a straight decision boundary (a hyperplane). If your data requires a circular or complex curvy boundary (like a donut shape), Logistic Regression will fail entirely unless you use Polynomial Features.
 
-### Outliers with L1/None Regularization
-While the sigmoid function handles outliers better than Linear Regression, extreme outliers can still heavily distort the probability curve if regularization is turned off.
-
----
-
-# 12. Industry Applications
-
-- **Credit Scoring**: Predicting the probability that a user will default on a loan. Used universally because the output is a literal calibrated probability, not just a binary label.
-- **Medicine**: Predicting disease presence given a set of biomarkers.
-- **Marketing**: Click-through rate (CTR) prediction for online advertisements.
+### Imbalanced Data
+If 99% of your data is Class 0, the model will just learn to always predict 0 to achieve 99% accuracy. It will never learn the pattern for Class 1. 
+*Fix: Use `class_weight='balanced'` or techniques like SMOTE.*
 
 ---
 
-# 14. Exercises
+## 9. Industry Applications
 
-### Easy
-Use the `predict_proba` method to find out what probability the model outputs for an input of exactly `0.0` in the Visualization Lab above.
-
-### Medium
-Plot the ROC Curve (Receiver Operating Characteristic) for a Logistic Regression model trained on the breast cancer dataset, and calculate the AUC.
-
-### Hard
-Implement **Softmax Regression** (Multinomial Logistic Regression) from scratch to handle more than 2 classes. Hint: The sigmoid function is replaced by the Softmax function $e^{z_i} / \sum e^{z_j}$.
-
----
-
-
-[Return to Root Index](../README.md)
+- **Credit Scoring**: Predicting if a user will default on a loan (1) or not (0). Highly favored in finance because the coefficients are fully interpretable by regulators.
+- **Medical Diagnostics**: Predicting the probability of a disease based on patient vitals.
+- **Marketing**: Predicting the Probability of Click (CTR) for online advertisements.
 
 ---
 

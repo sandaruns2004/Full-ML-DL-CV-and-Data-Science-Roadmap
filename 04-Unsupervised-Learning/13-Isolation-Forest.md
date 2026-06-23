@@ -8,14 +8,12 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Core Mathematics](#3-core-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
-7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
-8. [Visualization Lab](#8-visualization-lab)
-9. [Failure Cases](#9-failure-cases)
-10. [Industry Applications](#10-industry-applications)
-11. [What's Next?](#11-whats-next)
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [Scikit-Learn Implementation](#5-scikit-learn-implementation)
+6. [Hyperparameter Deep Dive](#6-hyperparameter-deep-dive)
+7. [Failure Cases](#7-failure-cases)
+8. [Industry Applications](#8-industry-applications)
+9. [What's Next?](#9-whats-next)
 
 ---
 
@@ -65,7 +63,7 @@ Where $E(h(x))$ is the average path length of $x$ across all isolation trees in 
 
 ---
 
-## 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 graph TD
@@ -85,10 +83,6 @@ graph TD
     style G fill:#a3be8c,color:#2e3440
 ```
 
----
-
-## 5. Algorithm Workflow
-
 **Training Phase:**
 1.  **Sub-sampling**: Randomly select a small sub-sample (e.g., 256 records) from the dataset.
 2.  **Tree Building**: Build an iTree by recursively selecting a random feature and a random split value between the min and max of that feature. Stop when every point is isolated or a max depth limit is reached.
@@ -101,7 +95,7 @@ graph TD
 
 ---
 
-## 6. Scikit-Learn Implementation
+## 5. Scikit-Learn Implementation
 
 ```python
 from sklearn.ensemble import IsolationForest
@@ -129,7 +123,7 @@ print(f"Found {len(anomalies)} anomalies out of {len(X)} records.")
 
 ---
 
-## 7. Hyperparameter Deep Dive
+## 6. Hyperparameter Deep Dive
 
 *   **`contamination`**: Extremely important. This is the proportion of outliers in the dataset. If you set it to 0.1, the algorithm will literally flag the top 10% of points with the shortest path lengths as anomalies. If you don't know the exact proportion, set it to `'auto'`.
 *   **`n_estimators`**: Number of trees. 100 is usually sufficient because the path lengths converge very quickly.
@@ -137,35 +131,14 @@ print(f"Found {len(anomalies)} anomalies out of {len(X)} records.")
 
 ---
 
-## 8. Visualization Lab
-
-> **Note**: For interactive decision boundary plots and path length histograms, see `notebooks/08-Anomaly-Detection-Lab.ipynb`.
-
-### Visualizing the Decision Surface
-In 2D space, the decision surface of an Isolation Forest looks like a topographical heat map, where the deep "valleys" (dense regions) are normal, and the high "plateaus" (sparse edges) are anomalous.
-
-```python
-import matplotlib.pyplot as plt
-
-# Assuming a fitted iso_forest and a meshgrid xx, yy
-# Z = iso_forest.decision_function(np.c_[xx.ravel(), yy.ravel()])
-# Z = Z.reshape(xx.shape)
-
-# plt.contourf(xx, yy, Z, cmap=plt.cm.Blues_r)
-# plt.scatter(X[:, 0], X[:, 1], c='white', edgecolor='k')
-# plt.title("Isolation Forest Anomaly Scores")
-```
-
----
-
-## 9. Failure Cases
+## 7. Failure Cases
 
 1.  **Axis-Parallel Splits**: Because iTrees use standard decision tree splits (one feature at a time), they can only draw axis-parallel boxes. They struggle with anomalies that exist on diagonal manifolds. (This is solved by *Extended Isolation Forest*, which draws random hyperplanes at any angle).
 2.  **High-Density Anomalies**: If a hacker injects 5,000 identical fraudulent transactions into a system, those transactions will form a dense micro-cluster. Isolation Forest might view this dense cluster as "normal" because it takes many splits to isolate them. (This is why the `max_samples` sub-sampling limit is strictly enforced).
 
 ---
 
-## 10. Industry Applications
+## 8. Industry Applications
 
 *   **Fraud Detection at Scale**: The default algorithm for credit card and e-commerce fraud because it can process millions of transactions linearly without collapsing RAM.
 *   **Server Log Monitoring**: Analyzing millions of server requests per minute to find anomalous IP behaviors or DDOS vectors.
@@ -173,7 +146,7 @@ import matplotlib.pyplot as plt
 
 ---
 
-## 11. What's Next?
+## 9. What's Next?
 
 ### Summary
 Isolation Forest flips the paradigm of anomaly detection. Instead of profiling normal data, it explicitly hunts anomalies by seeing how fast a point gets isolated by random geometric cuts. By utilizing sub-sampling and tree ensembles, it operates with staggering speed and accuracy in high dimensions.

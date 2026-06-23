@@ -67,17 +67,17 @@ Below is a conceptual visualization of how a model fits a curved dataset (like a
 
 ```mermaid
 graph TD
-    subgraph Underfitting (High Bias)
+    subgraph SG1 [Underfitting - High Bias]
     A1((Data)) --- A2((Line))
     style A2 stroke:#bf616a,stroke-width:4px
     end
     
-    subgraph Good Fit (Optimal)
+    subgraph SG2 [Good Fit - Optimal]
     B1((Data)) ~~~ B2((Smooth Curve))
     style B2 stroke:#a3be8c,stroke-width:4px
     end
     
-    subgraph Overfitting (High Variance)
+    subgraph SG3 [Overfitting - High Variance]
     C1((Data)) === C2((Jagged Curve))
     style C2 stroke:#ebcb8b,stroke-width:4px
     end

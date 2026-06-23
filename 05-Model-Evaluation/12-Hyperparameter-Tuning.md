@@ -54,35 +54,35 @@ If `max_depth` drastically changes performance, but `min_samples_split` barely d
 
 ### Search Space Visualization
 ```mermaid
-scatter-chart
-    title "Grid Search (Wastes time on unimportant parameters)"
-    x-axis "Important Parameter (e.g., max_depth)"
-    y-axis "Unimportant Parameter"
-    point [1, 1]
-    point [1, 2]
-    point [1, 3]
-    point [2, 1]
-    point [2, 2]
-    point [2, 3]
-    point [3, 1]
-    point [3, 2]
-    point [3, 3]
+quadrantChart
+    title Grid Search (Wastes time on unimportant parameters)
+    x-axis Low Important Param --> High Important Param
+    y-axis Low Unimportant Param --> High Unimportant Param
+    1: [0.2, 0.2]
+    2: [0.2, 0.5]
+    3: [0.2, 0.8]
+    4: [0.5, 0.2]
+    5: [0.5, 0.5]
+    6: [0.5, 0.8]
+    7: [0.8, 0.2]
+    8: [0.8, 0.5]
+    9: [0.8, 0.8]
 ```
 
 ```mermaid
-scatter-chart
-    title "Random Search (Explores the important parameter thoroughly)"
-    x-axis "Important Parameter (e.g., max_depth)"
-    y-axis "Unimportant Parameter"
-    point [1.2, 2.5]
-    point [1.8, 1.1]
-    point [2.1, 3.0]
-    point [2.9, 1.5]
-    point [3.5, 2.8]
-    point [1.5, 1.8]
-    point [2.5, 2.2]
-    point [3.2, 1.2]
-    point [3.8, 3.2]
+quadrantChart
+    title Random Search (Explores the important parameter thoroughly)
+    x-axis Low Important Param --> High Important Param
+    y-axis Low Unimportant Param --> High Unimportant Param
+    1: [0.24, 0.65]
+    2: [0.38, 0.11]
+    3: [0.42, 0.80]
+    4: [0.59, 0.45]
+    5: [0.75, 0.78]
+    6: [0.35, 0.58]
+    7: [0.55, 0.62]
+    8: [0.62, 0.32]
+    9: [0.88, 0.82]
 ```
 
 ---

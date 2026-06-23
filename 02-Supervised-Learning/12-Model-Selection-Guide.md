@@ -1,10 +1,6 @@
 # 🧭 Model Selection Guide
 
-> **Prerequisites:** All Supervised Algorithms
->
-> **Difficulty:** ⭐⭐☆☆☆
->
-> **Estimated Reading Time:** 15 minutes
+> **Difficulty:** ⭐⭐☆☆☆ Beginner | **Prerequisites:** All Supervised Algorithms | **Estimated Reading Time:** 15 minutes
 
 "Which algorithm should I use?" is the most common question in Data Science. The disappointing answer is: "It depends." The practical answer is this guide.
 
@@ -18,11 +14,10 @@
 5. [The Bias-Variance Tradeoff](#5-the-bias-variance-tradeoff)
 6. [Model Evaluation Metrics](#6-model-evaluation-metrics)
 7. [Industry Applications](#7-industry-applications)
-8. [Exercises](#8-exercises)
 
 ---
 
-# 1. What Problem Does This Solve?
+## 1. What Problem Does This Solve?
 
 ### 🟢 Beginner
 When you have a dataset, there are dozens of different algorithms you could use (like Linear Regression, Random Forest, or Neural Networks). Model Selection solves the problem of figuring out which one to use. It helps you choose the right tool for the job, rather than just guessing.
@@ -35,7 +30,7 @@ At an advanced level, model selection is empirical optimization. It involves sys
 
 ---
 
-# 2. Intuition
+## 2. Intuition
 
 ### Real-World Example
 Imagine you need to commute to work.
@@ -47,7 +42,7 @@ Your choice depends on the constraints: How far is the commute? What is your bud
 
 ---
 
-# 3. General Workflow
+## 3. General Workflow
 
 The standard industry approach to model selection is not guessing; it is empirical testing.
 
@@ -65,7 +60,7 @@ The standard industry approach to model selection is not guessing; it is empiric
 
 ---
 
-# 4. Algorithm Cheat Sheet
+## 4. Algorithm Cheat Sheet
 
 ### Linear / Logistic Regression
 - **Pros**: Fast, highly interpretable, great baseline.
@@ -94,7 +89,7 @@ The standard industry approach to model selection is not guessing; it is empiric
 
 ---
 
-# 5. The Bias-Variance Tradeoff
+## 5. The Bias-Variance Tradeoff
 
 Model selection is ultimately a balancing act between Bias and Variance.
 
@@ -105,7 +100,7 @@ Model selection is ultimately a balancing act between Bias and Variance.
 
 ---
 
-# 6. Model Evaluation Metrics
+## 6. Model Evaluation Metrics
 
 Choosing the algorithm is only half the battle; choosing how to evaluate it is just as important.
 
@@ -123,24 +118,11 @@ Choosing the algorithm is only half the battle; choosing how to evaluate it is j
 
 ---
 
-# 7. Industry Applications
+## 7. Industry Applications
 
 - **Healthcare**: Often restricted to Logistic Regression or single Decision Trees due to strict FDA/regulatory requirements for interpretability.
 - **High-Frequency Trading**: Often use highly optimized linear models or custom C++ implementations because predictions must happen in microseconds (KNN is too slow).
 - **Kaggle**: Almost exclusively dominated by Tree Ensembles (XGBoost, LightGBM) for tabular data, and Neural Networks for unstructured data.
-
----
-
-# 8. Exercises
-
-### Easy
-- **Scenario matching**: Read 3 Kaggle competition descriptions. Based on the data size and problem type, hypothesize which 2 algorithms you would try first.
-
-### Medium
-- **Spot Check Script**: Write a Python script that takes a dataset, splits it, and loops through a list of `[LogisticRegression(), DecisionTreeClassifier(), KNeighborsClassifier(), GaussianNB()]`. Print the cross-validation accuracy of each.
-
-### Hard
-- **Metric Implementation**: Write a python function from scratch that takes two arrays (`y_true` and `y_pred`) and calculates Precision, Recall, and F1-Score without using Scikit-Learn.
 
 ---
 

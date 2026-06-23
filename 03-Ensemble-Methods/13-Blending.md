@@ -1,38 +1,62 @@
 # 🎛️ Blending
 
-> **Prerequisites**: Stacking | **Difficulty**: ⭐⭐⭐☆☆ Advanced
+> **Difficulty**: ⭐⭐⭐☆☆ Advanced | **Prerequisites**: Stacking
 
 ---
 
 ## 📋 Table of Contents
-1. [Holdout-Based Ensembling](#1-holdout-based-ensembling)
-2. [Stacking vs Blending](#2-stacking-vs-blending)
-3. [Python Implementation](#3-python-implementation)
+1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
+2. [Intuition](#2-intuition)
+3. [Stacking vs Blending](#3-stacking-vs-blending)
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [Python Implementation](#5-python-implementation)
 
 ---
 
-## 1. Holdout-Based Ensembling
+## 1. What Problem Does This Solve?
 
 ### 🟢 Beginner
-**Simple Explanation**: Blending is very similar to Stacking, but simpler. Instead of running complex, slow cross-validation folds to get predictions for the meta-learner, we just split the training data once. We train our base models on part of the data, make predictions on a "validation set" (which the models haven't seen), and train the meta-learner on those validation predictions.
-
----
-
-## 2. Stacking vs Blending
+Stacking is very powerful, but doing Cross-Validation (training every model 5 times) is extremely slow and requires a lot of code. Blending is a shortcut to Stacking that gets you 90% of the performance with 10% of the computational cost.
 
 ### 🟡 Intermediate
-- **Stacking**: Uses Out-of-Fold predictions via $K$-Fold cross-validation.
-  - *Pros*: Uses data very efficiently (every point is used both to train base models and as a validation point for the meta-learner).
-  - *Cons*: Slow and computationally expensive (must train each base model $K$ times).
-- **Blending**: Uses a single holdout validation set.
-  - *Pros*: Much faster and simpler to implement.
-  - *Cons*: Wastes data because the base models are trained on a smaller portion of the dataset, and predictions are only made on a subset.
+Blending replaces the complex Out-of-Fold (OOF) prediction strategy of Stacking with a simple hold-out validation set. You train the base models once, make predictions on the validation set once, and train the meta-learner on those validation predictions.
+
+### 🔴 Advanced
+By avoiding K-Fold CV, Blending significantly reduces the risk of information leak into the meta-learner. However, it requires a large dataset, because you must sacrifice a portion of your training data purely for the hold-out validation set.
 
 ---
 
-## 3. Python Implementation
+## 2. Intuition
 
-Here is an end-to-end classification example of Blending:
+Instead of making the students take 5 practice tests and averaging their results (Stacking), we just give them one giant mid-term exam (the hold-out set) to figure out who is best at what subject, and use that knowledge for the final exam.
+
+---
+
+## 3. Stacking vs Blending
+
+| Feature | Stacking | Blending |
+| :--- | :--- | :--- |
+| **Validation Strategy** | Out-of-Fold (K-Fold CV) | Single Hold-Out Set |
+| **Data Efficiency** | High (uses all data for training) | Low (must sacrifice a validation set) |
+| **Computational Cost** | High (trains base models $K$ times) | Low (trains base models 1 time) |
+| **Leakage Risk** | Moderate (if CV isn't perfect) | Very Low |
+| **Best Used When...** | Dataset is small to medium | Dataset is massive |
+
+---
+
+## 4. Algorithm Workflow
+
+1. Split the dataset into three parts: **Train**, **Validation (Blend)**, and **Test**.
+2. Train all base models (Layer 0) on the **Train** set.
+3. Have the base models make predictions on the **Validation (Blend)** set.
+4. Train the meta-learner (Layer 1) using the true labels of the Validation set and the predictions from step 3 as features.
+5. For final inference on the **Test** set: have base models predict on the Test set, and pass those predictions to the meta-learner.
+
+---
+
+## 5. Python Implementation
+
+Here is an end-to-end classification example of Blending using standard Scikit-Learn:
 
 ```python
 import numpy as np
@@ -74,4 +98,4 @@ print(f"Blending Test Accuracy: {meta.score(test_features, y_test):.4f}")
 
 ---
 
-[← Stacking (Stacked Generalization)](12-Stacking.md) | [Back to Index](../README.md) | [Next: Ensemble Selection Strategies →](14-Model-Selection-For-Ensembles.md)
+[← Stacking](12-Stacking.md) | [Back to Index](../README.md) | [Next: Model Selection For Ensembles →](14-Model-Selection-For-Ensembles.md)

@@ -8,18 +8,11 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Core Mathematics](#3-core-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-13. [Hands-On Exercises](#13-hands-on-exercises)
-14. [Further Reading](#14-further-reading)
-15. [What's Next?](#15-whats-next)
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [SciPy & Scikit-Learn Implementation](#5-scipy--scikit-learn-implementation)
+6. [Understanding Dendrograms](#6-understanding-dendrograms)
+7. [Failure Cases](#7-failure-cases)
+8. [What's Next?](#8-whats-next)
 
 ---
 
@@ -71,7 +64,7 @@ When we have two clusters $A$ and $B$, how do we define the distance $D(A, B)$ b
 
 ---
 
-## 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 graph TD
@@ -97,12 +90,6 @@ graph TD
     Iteration 1 --> Iteration 2 --> Iteration 3 --> Final
 ```
 
-*Agglomerative merging process (Bottom-Up).*
-
----
-
-## 5. Algorithm Workflow (Agglomerative)
-
 1.  **Initialize**: Treat each of the $N$ data points as an individual cluster.
 2.  **Compute Distances**: Calculate the distance matrix between all clusters.
 3.  **Merge**: Find the two clusters with the smallest distance based on the chosen Linkage criterion and merge them into a single cluster.
@@ -112,65 +99,7 @@ graph TD
 
 ---
 
-## 6. From Scratch Implementation
-
-```python
-import numpy as np
-
-def single_linkage_scratch(X):
-    n = len(X)
-    clusters = [[i] for i in range(n)]
-    
-    # Precompute pairwise distances
-    dist_matrix = np.zeros((n, n))
-    for i in range(n):
-        for j in range(n):
-            if i != j:
-                dist_matrix[i, j] = np.linalg.norm(X[i] - X[j])
-            else:
-                dist_matrix[i, j] = np.inf # Ignore self-distance
-                
-    # Iteratively merge
-    history = []
-    while len(clusters) > 1:
-        # Find minimum distance between any two clusters
-        min_dist = np.inf
-        merge_pair = (-1, -1)
-        
-        for i in range(len(clusters)):
-            for j in range(i + 1, len(clusters)):
-                # Single linkage distance
-                d = min([dist_matrix[c1, c2] for c1 in clusters[i] for c2 in clusters[j]])
-                if d < min_dist:
-                    min_dist = d
-                    merge_pair = (i, j)
-                    
-        # Merge
-        i, j = merge_pair
-        history.append((clusters[i], clusters[j], min_dist))
-        clusters[i] = clusters[i] + clusters[j]
-        del clusters[j]
-        
-    return history
-```
-
----
-
-## 7. NumPy Implementation
-
-While writing the loops from scratch is highly inefficient $O(N^3)$, `SciPy` utilizes optimized C routines for hierarchical clustering. We typically skip direct NumPy logic here in favor of `scipy.cluster.hierarchy`.
-
-```python
-from scipy.spatial.distance import pdist
-
-# pdist computes the condensed distance matrix (upper triangle)
-# This is much faster and uses less memory
-condensed_dist = pdist(X, metric='euclidean')
-```
-
----
-
-## 8. Scikit-Learn / SciPy Implementation
+## 5. SciPy & Scikit-Learn Implementation
 
 In practice, we use `SciPy` to generate the Dendrogram, and `Scikit-Learn` for pipeline integration.
 
@@ -198,22 +127,8 @@ y_hc = hc.fit_predict(X)
 
 ---
 
-## 9. Hyperparameter Deep Dive
+## 6. Understanding Dendrograms
 
-*   **`n_clusters` vs `distance_threshold`**: In Scikit-Learn, you can either explicitly ask for $K$ clusters (`n_clusters=3`), OR you can ask the algorithm to cut the dendrogram at a specific distance (`distance_threshold=1.5`). You cannot use both simultaneously.
-*   **`linkage`**: 
-    *   `ward`: Minimizes variance (similar to K-Means). Usually the best default.
-    *   `single`: Good for non-spherical data but susceptible to chaining.
-    *   `complete` / `average`: Good compromises that yield compact clusters.
-*   **`metric`**: Usually `euclidean`, but `cosine` or `manhattan` can be used (note: `ward` strictly requires `euclidean`).
-
----
-
-## 10. Visualization Lab
-
-> **Note**: For interactive Dendrograms and Linkage comparisons, see `notebooks/02-Hierarchical-Clustering-Lab.ipynb`.
-
-### The Dendrogram
 The Dendrogram is the defining feature of Hierarchical Clustering. 
 *   **X-axis**: Individual data points (or clusters of points).
 *   **Y-axis**: The distance metric. The height of the vertical line connecting two clusters represents the mathematical distance between them when they merged.
@@ -221,38 +136,14 @@ The Dendrogram is the defining feature of Hierarchical Clustering.
 
 ---
 
-## 11. Failure Cases
+## 7. Failure Cases
 
 1.  **Big Data (Computational Complexity)**: Agglomerative clustering requires computing an $N \times N$ distance matrix. Time complexity is $O(N^3)$ (or $O(N^2 \log N)$ optimally), and memory complexity is $O(N^2)$. It will crash your RAM on datasets larger than 30,000-50,000 rows.
 2.  **No Backtracking**: Once two clusters are merged, they can never be split again later in the algorithm, even if it turns out to have been a poor choice globally.
 
 ---
 
-## 12. Industry Applications
-
-*   **Bioinformatics**: Building phylogenetic trees to trace evolutionary ancestry based on genetic distances.
-*   **Taxonomy & NLP**: Creating hierarchies of documents or words based on semantic similarity.
-*   **Finance**: Hierarchical Risk Parity (HRP) for portfolio allocation, which uses hierarchical clustering of stock correlations to distribute risk evenly.
-
----
-
-## 13. Hands-On Exercises
-
-**Easy**: Generate a small 10-point dataset. Use SciPy to plot the Dendrogram using `single` linkage. Then, change it to `ward` linkage and observe how the tree changes.
-**Medium**: Train an `AgglomerativeClustering` model and a `KMeans` model on the `make_moons` dataset from Scikit-Learn. Use `single` linkage for the hierarchical model. Plot both. Which one captures the moons better?
-**Hard**: Implement a function that takes the `Z` linkage matrix from SciPy and automatically finds the "longest vertical jump" to return the optimal suggested $K$.
-
----
-
-## 14. Further Reading
-
-*   *Elements of Statistical Learning* - Chapter 14.3 (Cluster Analysis)
-*   SciPy Documentation: `scipy.cluster.hierarchy.linkage`
-*   Scikit-Learn Documentation: `sklearn.cluster.AgglomerativeClustering`
-
----
-
-## 15. What's Next?
+## 8. What's Next?
 
 ### Summary
 Hierarchical clustering builds a beautiful, interpretable tree of relationships without forcing us to guess $K$ upfront. We learned that the Linkage criterion entirely dictates how the space is merged, with Ward's method acting similarly to K-Means variance reduction. 

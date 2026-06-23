@@ -8,17 +8,12 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Core Mathematics](#3-core-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [Scikit-Learn Implementation](#7-scikit-learn-implementation)
-8. [Hyperparameter Deep Dive](#8-hyperparameter-deep-dive)
-9. [Visualization Lab](#9-visualization-lab)
-10. [Failure Cases](#10-failure-cases)
-11. [Industry Applications](#11-industry-applications)
-12. [Hands-On Exercises](#12-hands-on-exercises)
-13. [Further Reading](#13-further-reading)
-14. [What's Next?](#14-whats-next)
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [Scikit-Learn Implementation](#5-scikit-learn-implementation)
+6. [Hyperparameter Deep Dive](#6-hyperparameter-deep-dive)
+7. [Failure Cases](#7-failure-cases)
+8. [Industry Applications](#8-industry-applications)
+9. [What's Next?](#9-whats-next)
 
 ---
 
@@ -76,7 +71,7 @@ $$ \text{Explained Variance of } PC_i = \frac{\lambda_i}{\sum_{j=1}^d \lambda_j}
 
 ---
 
-## 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 flowchart TD
@@ -93,12 +88,6 @@ flowchart TD
     style G fill:#a3be8c,color:#2e3440
 ```
 
-*The mathematical pipeline of PCA.*
-
----
-
-## 5. Algorithm Workflow
-
 1.  **Standardization**: YOU MUST SCALE YOUR DATA. PCA is highly sensitive to the scale of the features. If Feature A is measured in kilometers and Feature B in millimeters, PCA will mistakenly think Feature B has more variance. Use `StandardScaler`.
 2.  **Covariance / SVD**: Compute the covariance matrix and its eigenvectors. (In practice, Truncated Singular Value Decomposition (SVD) is used because it is numerically more stable than computing the covariance matrix directly).
 3.  **Select Components**: Choose $k$ by looking at a Scree Plot and deciding how much cumulative variance you want to retain (usually 90-95%).
@@ -106,38 +95,7 @@ flowchart TD
 
 ---
 
-## 6. From Scratch Implementation
-
-```python
-import numpy as np
-
-def pca_scratch(X, n_components):
-    # 1. Center the data
-    X_centered = X - np.mean(X, axis=0)
-    
-    # 2. Compute Covariance Matrix
-    cov_matrix = np.cov(X_centered, rowvar=False)
-    
-    # 3. Compute Eigenvalues and Eigenvectors
-    eigenvalues, eigenvectors = np.linalg.eigh(cov_matrix)
-    
-    # 4. Sort in descending order
-    sorted_index = np.argsort(eigenvalues)[::-1]
-    sorted_eigenvectors = eigenvectors[:, sorted_index]
-    sorted_eigenvalues = eigenvalues[sorted_index]
-    
-    # 5. Select top k components
-    eigenvector_subset = sorted_eigenvectors[:, 0:n_components]
-    
-    # 6. Project Data
-    X_reduced = np.dot(X_centered, eigenvector_subset)
-    
-    return X_reduced, sorted_eigenvalues
-```
-
----
-
-## 7. Scikit-Learn Implementation
+## 5. Scikit-Learn Implementation
 
 ```python
 from sklearn.decomposition import PCA
@@ -159,12 +117,11 @@ X_pca = pca.fit_transform(X_scaled)
 print(f"Original shape: {X.shape}")
 print(f"Reduced shape: {X_pca.shape}")
 print(f"Number of components kept: {pca.n_components_}")
-print(f"Cumulative Variance Explained: {np.sum(pca.explained_variance_ratio_):.4f}")
 ```
 
 ---
 
-## 8. Hyperparameter Deep Dive
+## 6. Hyperparameter Deep Dive
 
 *   **`n_components`**:
     *   `int`: Keep exactly $K$ dimensions (e.g., 2 or 3 for visualization).
@@ -176,31 +133,7 @@ print(f"Cumulative Variance Explained: {np.sum(pca.explained_variance_ratio_):.4
 
 ---
 
-## 9. Visualization Lab
-
-> **Note**: For interactive Scree Plots and MNIST Image Compression visualizations, see `notebooks/05-PCA-Lab.ipynb`.
-
-### The Scree Plot & Cumulative Variance
-A Scree Plot shows the fraction of total variance explained by each principal component.
-
-```python
-import matplotlib.pyplot as plt
-
-# Assume pca is fitted with n_components=None (all components)
-exp_var = pca.explained_variance_ratio_
-cum_var = np.cumsum(exp_var)
-
-# plt.bar(range(1, len(exp_var)+1), exp_var, alpha=0.5, align='center', label='Individual variance')
-# plt.step(range(1, len(cum_var)+1), cum_var, where='mid', label='Cumulative variance')
-# plt.axhline(y=0.95, color='r', linestyle='--')
-# plt.ylabel('Explained variance ratio')
-# plt.xlabel('Principal component index')
-# plt.legend(loc='best')
-```
-
----
-
-## 10. Failure Cases
+## 7. Failure Cases
 
 1.  **Non-Linear Relationships**: PCA only captures *linear* correlations. If your data lies on a non-linear manifold (like a Swiss Roll), PCA will completely crush and destroy the structure. You must use Kernel PCA, t-SNE, or UMAP instead.
 2.  **Outliers**: Because PCA maximizes variance (squared distances), it is heavily influenced by extreme outliers.
@@ -208,7 +141,7 @@ cum_var = np.cumsum(exp_var)
 
 ---
 
-## 11. Industry Applications
+## 8. Industry Applications
 
 *   **Image Compression**: Reducing high-res images down to a fraction of their size while retaining structural integrity (Eigenfaces in facial recognition).
 *   **Genomics**: Visualizing genetic distance. PCA on DNA sequences often perfectly clusters individuals by their geographical continent of origin.
@@ -216,23 +149,7 @@ cum_var = np.cumsum(exp_var)
 
 ---
 
-## 12. Hands-On Exercises
-
-**Easy**: Take the breast cancer dataset. Scale it. Run PCA with `n_components=2`. Scatter plot the two components, colored by malignant vs benign. See how well they separate linearly!
-**Medium**: Take the MNIST digits dataset (784 features). How many PCA components are required to explain 95% of the variance? How many to explain 99%?
-**Hard**: Use `pca.inverse_transform()` on the compressed MNIST images to project them back to 784 dimensions. Plot the original image side-by-side with the reconstructed image. Notice the blurriness (the 5% variance that was lost).
-
----
-
-## 13. Further Reading
-
-*   *Pattern Recognition and Machine Learning* by Christopher Bishop (Chapter 12: Continuous Latent Variables)
-*   *Linear Algebra and Its Applications* by Gilbert Strang (For SVD intuition)
-*   [Scikit-Learn Documentation on PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)
-
----
-
-## 14. What's Next?
+## 9. What's Next?
 
 ### Summary
 PCA is a linear transformation that finds the axes of maximum variance via Eigen Decomposition. It allows us to compress thousands of features into a handful of Principal Components, destroying noise and capturing the true essence of the dataset.

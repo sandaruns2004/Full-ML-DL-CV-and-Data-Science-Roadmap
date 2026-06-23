@@ -8,15 +8,12 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Core Mathematics](#3-core-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [Scikit-Learn Implementation](#7-scikit-learn-implementation)
-8. [Hyperparameter Deep Dive](#8-hyperparameter-deep-dive)
-9. [Visualization Lab](#9-visualization-lab)
-10. [Failure Cases](#10-failure-cases)
-11. [Industry Applications](#11-industry-applications)
-12. [What's Next?](#12-whats-next)
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [Scikit-Learn Implementation](#5-scikit-learn-implementation)
+6. [Hyperparameter Deep Dive](#6-hyperparameter-deep-dive)
+7. [Failure Cases](#7-failure-cases)
+8. [Industry Applications](#8-industry-applications)
+9. [What's Next?](#9-whats-next)
 
 ---
 
@@ -62,7 +59,7 @@ $$ x \leftarrow x + m(x) $$
 
 ---
 
-## 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 graph TD
@@ -78,12 +75,6 @@ graph TD
     style E fill:#a3be8c,color:#2e3440
 ```
 
-*The shifting window logic. Points that converge to the same mode belong to the same cluster.*
-
----
-
-## 5. Algorithm Workflow
-
 1.  **Initialize**: Every data point is initially considered a "cluster center" (a window).
 2.  **Calculate Shift**: For each window, compute the mean of all points residing within its bandwidth $h$.
 3.  **Update**: Move the window to this newly calculated mean.
@@ -92,46 +83,7 @@ graph TD
 
 ---
 
-## 6. From Scratch Implementation
-
-```python
-import numpy as np
-
-def mean_shift_scratch(X, bandwidth=2.0, max_iters=100):
-    # Initialize all points as moving centroids
-    centroids = np.copy(X)
-    
-    for _ in range(max_iters):
-        new_centroids = []
-        for i, c in enumerate(centroids):
-            # 1. Find all points within the bandwidth (Flat Kernel)
-            distances = np.linalg.norm(X - c, axis=1)
-            in_bandwidth = X[distances < bandwidth]
-            
-            # 2. Calculate new mean
-            new_c = np.mean(in_bandwidth, axis=0)
-            new_centroids.append(new_c)
-            
-        new_centroids = np.array(new_centroids)
-        
-        # 3. Check convergence
-        if np.allclose(centroids, new_centroids, atol=1e-3):
-            break
-        centroids = new_centroids
-        
-    # 4. Merge identical centroids to find unique clusters
-    unique_centroids = np.unique(np.round(centroids, decimals=2), axis=0)
-    
-    # Optional: Assign points to nearest unique centroid
-    distances = np.linalg.norm(X[:, np.newaxis] - unique_centroids, axis=2)
-    labels = np.argmin(distances, axis=1)
-    
-    return unique_centroids, labels
-```
-
----
-
-## 7. Scikit-Learn Implementation
+## 5. Scikit-Learn Implementation
 
 Scikit-Learn makes Mean Shift highly efficient by utilizing `estimate_bandwidth` to automatically guess the best window size based on pairwise distances.
 
@@ -161,7 +113,7 @@ print(f"Number of discovered clusters: {n_clusters_}")
 
 ---
 
-## 8. Hyperparameter Deep Dive
+## 6. Hyperparameter Deep Dive
 
 *   **`bandwidth`**: The most critical parameter. 
     *   *Too small*: Every data point becomes its own cluster (overfitting).
@@ -171,26 +123,7 @@ print(f"Number of discovered clusters: {n_clusters_}")
 
 ---
 
-## 9. Visualization Lab
-
-> **Note**: For KDE topography visualizations and shifting animations, see `notebooks/04-GMM-Lab.ipynb` (Combined with Mean Shift).
-
-### Visualizing KDE Contours
-In 2D space, the Kernel Density Estimate looks like a topographical map. Mean shift draws orthogonal vectors intersecting the contour lines, pointing straight to the peaks.
-
-```python
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-# The KDE Plot is the exact surface Mean Shift climbs
-# sns.kdeplot(x=X[:, 0], y=X[:, 1], cmap="Blues", fill=True, thresh=0.05)
-# plt.scatter(cluster_centers[:, 0], cluster_centers[:, 1], color='red', marker='x', s=100)
-# plt.title("Mean Shift Peaks on KDE Surface")
-```
-
----
-
-## 10. Failure Cases
+## 7. Failure Cases
 
 1.  **Computationally Expensive**: Standard Mean Shift is $O(N^2)$ per iteration because it calculates distances between the shifting window and *every other point*. It scales terribly for massive datasets unless `bin_seeding` is used.
 2.  **High Dimensions**: KDE degrades severely in high dimensions (Curse of Dimensionality). The concept of density becomes mathematically unstable.
@@ -198,14 +131,14 @@ import matplotlib.pyplot as plt
 
 ---
 
-## 11. Industry Applications
+## 8. Industry Applications
 
 *   **Computer Vision (Object Tracking)**: The CAMShift (Continuously Adaptive Mean Shift) algorithm is famous in video tracking. It uses Mean Shift to track a color histogram bounding box frame-by-frame.
 *   **Image Segmentation**: Smoothing images by clustering pixels in RGB space, famously used in early image filtering algorithms to create "cartoon-like" effects.
 
 ---
 
-## 12. What's Next?
+## 9. What's Next?
 
 ### Summary
 Mean Shift is an elegant gradient-ascent algorithm that autonomously discovers clusters by climbing the topographical hills generated by Kernel Density Estimation. It does not require $K$ and does not force geometric shapes.

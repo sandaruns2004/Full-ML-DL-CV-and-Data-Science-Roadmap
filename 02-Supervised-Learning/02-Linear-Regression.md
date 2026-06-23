@@ -1,10 +1,6 @@
 # 🎯 Linear Regression
 
-> **Prerequisites:** Algebra, Basic Calculus (Derivatives)
->
-> **Difficulty:** ⭐☆☆☆☆
->
-> **Estimated Reading Time:** 20 minutes
+> **Difficulty:** ⭐☆☆☆☆ Beginner | **Prerequisites:** Algebra, Basic Calculus (Derivatives) | **Estimated Reading Time:** 20 minutes
 
 ---
 
@@ -12,22 +8,16 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Mathematics](#3-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-
-14. [Exercises](#14-exercises)
-
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [From Scratch Implementation](#5-from-scratch-implementation)
+6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
+7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
+8. [Failure Cases](#8-failure-cases)
+9. [Industry Applications](#9-industry-applications)
 
 ---
 
-# 1. What Problem Does This Solve?
+## 1. What Problem Does This Solve?
 
 ### 🟢 Beginner
 You want to sell your house. You know that larger houses sell for more money. You look at the recent sales of 5 houses in your neighborhood and their square footage. Linear Regression is the tool that lets you say: *"If my house is exactly 2,100 square feet, I should list it for exactly \$435,000."* It draws a "line of best fit" through historical data so you can predict future numbers.
@@ -40,7 +30,7 @@ While simple, Linear Regression is an incredibly robust, high-bias/low-variance 
 
 ---
 
-# 2. Intuition
+## 2. Intuition
 
 Imagine stretching a large rubber band across a pegboard. There are dozens of pegs scattered across the board, moving diagonally upwards from left to right. 
 
@@ -50,7 +40,7 @@ Linear Regression works the exact same way. It draws a line through the data and
 
 ---
 
-# 3. Mathematics
+## 3. Mathematics
 
 ### 3.1 The Hypothesis Function
 The prediction $\hat{y}$ is a linear combination of the input features $x$.
@@ -72,7 +62,7 @@ $$ \theta_j = \theta_j - \alpha \frac{1}{m} \sum_{i=1}^{m} (\hat{y}^{(i)} - y^{(
 
 ---
 
-# 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 flowchart TD
@@ -87,10 +77,6 @@ flowchart TD
 
 > **Note:** The Cost Function $J(\theta)$ for Linear Regression is always a perfectly convex bowl. This means Gradient Descent is guaranteed to find the global minimum!
 
----
-
-# 5. Algorithm Workflow
-
 1. **Initialize Parameters**: Start with random weights ($\theta$) or all zeros.
 2. **Forward Pass**: Multiply the input features $X$ by the weights $\theta$ to get predictions $\hat{y}$.
 3. **Calculate Loss**: Compare predictions $\hat{y}$ to true targets $y$ using Mean Squared Error.
@@ -100,7 +86,7 @@ flowchart TD
 
 ---
 
-# 6. From Scratch Implementation
+## 5. From Scratch Implementation
 
 ```python
 import random
@@ -132,43 +118,7 @@ class SimpleLinearRegression:
 
 ---
 
-# 7. NumPy Implementation
-
-*The pure Python implementation is slow because of `for` loops. NumPy vectorizes the math, allowing C-level execution speeds over massive matrices.*
-
-```python
-import numpy as np
-
-class VectorizedLinearRegression:
-    def __init__(self, learning_rate=0.01, epochs=1000):
-        self.lr = learning_rate
-        self.epochs = epochs
-        self.weights = None
-        
-    def fit(self, X, y):
-        # Insert a column of 1s for the bias term
-        X_b = np.c_[np.ones((len(X), 1)), X]
-        self.weights = np.zeros((X_b.shape[1], 1))
-        m = len(X)
-        y = y.reshape(-1, 1)
-        
-        for _ in range(self.epochs):
-            # Dot product replaces the for loop!
-            y_pred = X_b.dot(self.weights)
-            
-            # Vectorized gradient calculation
-            gradients = (1/m) * X_b.T.dot(y_pred - y)
-            
-            self.weights -= self.lr * gradients
-            
-    def predict(self, X):
-        X_b = np.c_[np.ones((len(X), 1)), X]
-        return X_b.dot(self.weights)
-```
-
----
-
-# 8. Scikit-Learn Implementation
+## 6. Scikit-Learn Implementation
 
 *Industry standard workflow using the Normal Equation (Closed-form solution) instead of iterative Gradient Descent.*
 
@@ -197,7 +147,7 @@ print(f"Learned Bias: {model.intercept_[0]}")
 
 ---
 
-# 9. Hyperparameter Deep Dive
+## 7. Hyperparameter Deep Dive
 
 Standard Scikit-Learn `LinearRegression` uses the Normal Equation, so it doesn't have learning rates or epochs. However, if using `SGDRegressor` (Gradient Descent):
 
@@ -209,38 +159,7 @@ Standard Scikit-Learn `LinearRegression` uses the Normal Equation, so it doesn't
 
 ---
 
-# 10. Visualization Lab
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
-
-# Generate synthetic data with noise
-np.random.seed(42)
-X = 2 * np.random.rand(100, 1)
-y = 4 + 3 * X + np.random.randn(100, 1) # y = 3x + 4 + noise
-
-model = LinearRegression()
-model.fit(X, y)
-
-X_new = np.array([[0], [2]])
-y_predict = model.predict(X_new)
-
-plt.figure(figsize=(8, 5))
-plt.scatter(X, y, color='blue', alpha=0.5, label='Actual Data')
-plt.plot(X_new, y_predict, color='red', linewidth=3, label='Linear Regression Line')
-plt.xlabel("Feature (X)")
-plt.ylabel("Target (y)")
-plt.title("Linear Regression Line of Best Fit")
-plt.legend()
-plt.grid(True)
-plt.show()
-```
-
----
-
-# 11. Failure Cases
+## 8. Failure Cases
 
 ### Outliers
 Because MSE squares the errors, a single massive outlier will act like a magnet and drag the entire line of best fit towards it. 
@@ -255,27 +174,11 @@ If two features are highly correlated (e.g., "House Area in Sq Ft" and "House Ar
 
 ---
 
-# 12. Industry Applications
+## 9. Industry Applications
 
 - **Real Estate**: Automated Valuation Models (AVMs) like Zestimate use heavily regularized linear models at their core.
 - **Sales Forecasting**: Predicting next quarter's revenue based on ad spend.
 - **Capital Asset Pricing Model (CAPM)**: Used globally in finance to determine the relationship between expected return and market risk.
-
----
-
-# 14. Exercises
-
-### Easy
-Run the Scikit-Learn code block above. Print out the `mean_squared_error` for the predictions.
-
-### Medium
-Modify the NumPy Vectorized implementation to use **Mean Absolute Error (MAE)** instead of MSE. Hint: The derivative of $|x|$ is `np.sign(x)`.
-
-### Hard
-What happens to the weights $\theta$ in Multiple Linear Regression if you do not scale your features (e.g., one feature is measured in millions, another in decimals)? Prove your theory in code.
-
-### Challenge
-Derive the Normal Equation $\theta = (X^T X)^{-1} X^T y$ by taking the matrix derivative of the MSE cost function and setting it to 0.
 
 ---
 

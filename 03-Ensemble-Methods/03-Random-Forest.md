@@ -10,16 +10,10 @@
 3. [Core Mathematics](#3-core-mathematics)
 4. [Visual Explanation](#4-visual-explanation)
 5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-13. [Interview Preparation](#13-interview-preparation)
-14. [Hands-On Exercises](#14-hands-on-exercises)
-15. [Further Reading](#15-further-reading)
+6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
+7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
+8. [Failure Cases](#8-failure-cases)
+9. [Industry Applications](#9-industry-applications)
 
 ---
 
@@ -59,9 +53,6 @@ Feature randomness reduces $\rho$, which pulls down the overall variance dramati
 ---
 
 ## 3. Core Mathematics
-
-### Variance Reduction
-The core mathematical driver of Random Forest is the reduction in variance. 
 
 ### Splitting Criteria (Gini Impurity)
 Even inside a Random Forest, individual trees must decide how to split. For classification, the standard metric is Gini Impurity:
@@ -114,64 +105,7 @@ flowchart TD
 
 ---
 
-## 6. From Scratch Implementation
-
-*Educational Python implementation highlighting the logic.*
-
-```python
-import numpy as np
-from collections import Counter
-
-class RandomForestScratch:
-    def __init__(self, n_estimators=10, max_features='sqrt'):
-        self.n_estimators = n_estimators
-        self.max_features = max_features
-        self.trees = []
-    
-    def fit(self, X, y):
-        n_samples, n_features = X.shape
-        if self.max_features == 'sqrt':
-            max_feat = int(np.sqrt(n_features))
-        else:
-            max_feat = n_features
-            
-        self.trees = []
-        for _ in range(self.n_estimators):
-            # 1. Bootstrapping
-            indices = np.random.choice(n_samples, n_samples, replace=True)
-            X_boot, y_boot = X[indices], y[indices]
-            
-            # 2. Train Tree (Pseudo-code for Tree builder)
-            # tree = DecisionTree(max_features=max_feat)
-            # tree.fit(X_boot, y_boot)
-            # self.trees.append(tree)
-        return self
-
-    def predict(self, X):
-        # Aggregate predictions (Majority Vote)
-        # tree_preds = np.array([tree.predict(X) for tree in self.trees])
-        # return mode(tree_preds, axis=0)
-        pass
-```
-
----
-
-## 7. NumPy Implementation
-
-Vectorized feature selection during tree building:
-
-```python
-# During the node split evaluation:
-feature_indices = np.random.choice(total_features, max_feat_subset, replace=False)
-best_gain = 0
-for feat in feature_indices:
-    # Compute Gini/Entropy gain purely on this subset of features
-    pass
-```
-
----
-
-## 8. Scikit-Learn Implementation
+## 6. Scikit-Learn Implementation
 
 The industry standard workflow.
 
@@ -203,7 +137,7 @@ print(f"OOB Score: {rf.oob_score_:.4f}")
 
 ---
 
-## 9. Hyperparameter Deep Dive
+## 7. Hyperparameter Deep Dive
 
 - **`n_estimators`**: Number of trees. More is usually better, but returns diminish. (Start: 100-500)
 - **`max_depth`**: Maximum depth of each tree. Leave as `None` usually, but limit it if overfitting heavily.
@@ -215,34 +149,10 @@ print(f"OOB Score: {rf.oob_score_:.4f}")
 
 ---
 
-## 10. Visualization Lab
-
-Runnable snippet to visualize Feature Importances:
-
-```python
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# Assuming 'rf' is trained and 'feature_names' exists
-importances = rf.feature_importances_
-df_imp = pd.DataFrame({'Feature': feature_names, 'Importance': importances})
-df_imp = df_imp.sort_values(by='Importance', ascending=False)
-
-plt.figure(figsize=(10, 6))
-sns.barplot(x='Importance', y='Feature', data=df_imp, palette='viridis')
-plt.title('Random Forest Feature Importance (MDI)')
-plt.tight_layout()
-plt.show()
-```
-
----
-
-## 11. Failure Cases
+## 8. Failure Cases
 
 **The Danger of Correlated Features**
 If two features A and B are identical, Random Forest will split its importance randomly between them. This dilutes the perceived importance of both features, misleading the Data Scientist. 
-
 *Fix:* Use Permutation Importance instead of Mean Decrease in Impurity (MDI) for feature ranking.
 
 **Extrapolation Failures**
@@ -250,42 +160,10 @@ Random Forest is a set of step-functions. It **cannot extrapolate** beyond the b
 
 ---
 
-## 12. Industry Applications
+## 9. Industry Applications
 
 - **Credit Scoring**: High interpretability via feature importance combined with excellent default resistance to outliers.
 - **E-Commerce**: Product recommendation engines and customer segmentation based on purchase behavior.
-
----
-
-## 13. Interview Preparation
-
-### Beginner
-**Q: Why is it called a "Random" Forest?**
-> A: Because it introduces randomness in two places: bootstrapping the data rows, and randomly subsampling the features at each node split.
-
-### Intermediate
-**Q: Does increasing `n_estimators` cause overfitting?**
-> A: No. Adding more trees simply averages out the variance. However, adding more trees takes more memory and computational time with diminishing returns.
-
-### Advanced
-**Q: How does Random Forest calculate Feature Importance (MDI)?**
-> A: It calculates the total decrease in node impurity (e.g., Gini impurity) weighted by the probability of reaching that node (proportional to sample size at that node), averaged over all trees.
-
----
-
-## 14. Hands-On Exercises
-
-**Easy**: Train a Random Forest on the Titanic dataset and output the OOB score.
-**Medium**: Plot the `validation curve` showing how `max_depth` affects training vs testing accuracy.
-**Hard**: Implement permutation importance manually and compare the top features to the built-in `feature_importances_` attribute.
-
----
-
-## 15. Further Reading
-
-- *Hands-On Machine Learning* - Chapter 7 (Ensemble Learning and Random Forests)
-- *Elements of Statistical Learning* - Chapter 15 (Random Forests)
-- Scikit-Learn Documentation: `sklearn.ensemble.RandomForestClassifier`
 
 ---
 

@@ -9,13 +9,11 @@
 2. [Intuition](#2-intuition)
 3. [Core Mathematics](#3-core-mathematics)
 4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow (EM Step)](#5-algorithm-workflow-em-step)
-6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
-7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
-8. [Visualization Lab](#8-visualization-lab)
-9. [Failure Cases](#9-failure-cases)
-10. [Industry Applications](#10-industry-applications)
-11. [What's Next?](#11-whats-next)
+5. [Scikit-Learn Implementation](#5-scikit-learn-implementation)
+6. [Hyperparameter Deep Dive](#6-hyperparameter-deep-dive)
+7. [Failure Cases](#7-failure-cases)
+8. [Industry Applications](#8-industry-applications)
+9. [What's Next?](#9-whats-next)
 
 ---
 
@@ -132,38 +130,7 @@ The most crucial parameter in GMM besides `n_components` ($K$) is `covariance_ty
 
 ---
 
-## 7. Visualization Lab
-
-> **Note**: For interactive Probability Heatmaps and Elliptical Contour plots, see `notebooks/04-GMM-Lab.ipynb`.
-
-### Visualizing Gaussian Contours
-When a GMM is fitted with `covariance_type='full'`, the clusters are visualized as elliptical contour lines spreading outward from the mean.
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib.patches import Ellipse
-
-# Function to draw an ellipse based on the Covariance matrix
-def draw_ellipse(position, covariance, ax=None, **kwargs):
-    ax = ax or plt.gca()
-    # Convert covariance to principal axes
-    if covariance.shape == (2, 2):
-        U, s, Vt = np.linalg.svd(covariance)
-        angle = np.degrees(np.arctan2(U[1, 0], U[0, 0]))
-        width, height = 2 * np.sqrt(s)
-    else:
-        angle = 0
-        width, height = 2 * np.sqrt(covariance)
-    
-    # Draw the Ellipse
-    for nsig in range(1, 4):
-        ax.add_patch(Ellipse(position, nsig * width, nsig * height, angle, **kwargs))
-```
-
----
-
-## 8. Failure Cases
+## 7. Failure Cases
 
 1.  **Overfitting (Singularities)**: If `covariance_type='full'` is used on a dataset with very few points per cluster, a cluster might "collapse" onto a single data point, causing the variance to approach zero and the likelihood to shoot to infinity. (Fixed by adding a small value to the diagonal, `reg_covar`).
 2.  **Local Minima**: Like K-Means, EM is not guaranteed to find the global maximum likelihood. It depends entirely on initialization. (Scikit-learn initializes GMM using K-Means under the hood to prevent this).
@@ -171,7 +138,7 @@ def draw_ellipse(position, covariance, ax=None, **kwargs):
 
 ---
 
-## 9. Industry Applications
+## 8. Industry Applications
 
 *   **Speech Recognition**: Historically, GMMs were combined with Hidden Markov Models (HMMs) to recognize human speech, as vocal phonemes follow complex probability distributions.
 *   **Anomaly Detection**: Since GMM estimates the exact probability density $p(x)$ of the data, any new point with a log-likelihood lower than a specific threshold is instantly flagged as an anomaly.
@@ -179,7 +146,7 @@ def draw_ellipse(position, covariance, ax=None, **kwargs):
 
 ---
 
-## 10. What's Next?
+## 9. What's Next?
 
 ### Summary
 Gaussian Mixture Models upgrade the hard boundaries of K-Means into soft, probabilistic assignments. By utilizing Covariance matrices, GMMs allow clusters to take on dynamic elliptical shapes. The Expectation-Maximization loop iteratively finds the maximum likelihood for these overlapping bell curves.

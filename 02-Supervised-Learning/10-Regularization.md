@@ -1,10 +1,6 @@
 # 🎛️ Regularization
 
-> **Prerequisites:** Linear Regression, Cost Functions
->
-> **Difficulty:** ⭐⭐⭐☆☆
->
-> **Estimated Reading Time:** 15 minutes
+> **Difficulty:** ⭐⭐⭐☆☆ Intermediate | **Prerequisites:** Linear Regression, Cost Functions | **Estimated Reading Time:** 15 minutes
 
 If your machine learning model is a high-performance sports car, Regularization is the braking system. It prevents the model from driving too fast, losing control, and crashing into the wall of Overfitting.
 
@@ -18,11 +14,10 @@ If your machine learning model is a high-performance sports car, Regularization 
 5. [Advantages & Limitations](#5-advantages--limitations)
 6. [Hyperparameters](#6-hyperparameters)
 7. [Industry Applications](#7-industry-applications)
-8. [Exercises](#8-exercises)
 
 ---
 
-# 1. What Problem Does This Solve?
+## 1. What Problem Does This Solve?
 
 ### 🟢 Beginner
 When a model tries too hard to perfectly fit every single data point in the training set, it "memorizes" the noise rather than learning the actual pattern. This is called Overfitting. Regularization solves this by artificially penalizing the model for becoming too complex, ensuring it remains simple enough to generalize well to new, unseen data.
@@ -35,7 +30,7 @@ Mathematically, regularization works by adding a penalty term to the cost functi
 
 ---
 
-# 2. Intuition
+## 2. Intuition
 
 ### Real-World Example
 Imagine you are a teacher giving a student a math test. 
@@ -47,7 +42,7 @@ In Linear Regression, a model overfits by assigning massive, extreme weights to 
 
 ---
 
-# 3. Mathematical Foundations
+## 3. Mathematical Foundations
 
 Recall the standard Mean Squared Error (MSE) cost function for Linear Regression:
 $$ J(\theta) = \frac{1}{m} \sum_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)})^2 $$
@@ -73,7 +68,7 @@ $$ J_{ElasticNet}(\theta) = \text{MSE} + r \alpha \sum_{j=1}^{n} |\theta_j| + \f
 
 ---
 
-# 4. Algorithm Workflow
+## 4. Algorithm Workflow
 
 1. **Feature Scaling**: You **MUST** standardize your features before applying regularization. If a feature is on a large scale, its corresponding weight will naturally be tiny, and the regularization penalty won't affect it fairly.
 2. **Choose Alpha**: Select a value for the regularization strength $\alpha$ (often called `C` or `lambda` in other contexts).
@@ -82,7 +77,7 @@ $$ J_{ElasticNet}(\theta) = \text{MSE} + r \alpha \sum_{j=1}^{n} |\theta_j| + \f
 
 ---
 
-# 5. Advantages & Limitations
+## 5. Advantages & Limitations
 
 ### Advantages
 - **Prevents Overfitting**: The absolute best defense against high variance.
@@ -96,7 +91,7 @@ $$ J_{ElasticNet}(\theta) = \text{MSE} + r \alpha \sum_{j=1}^{n} |\theta_j| + \f
 
 ---
 
-# 6. Hyperparameters
+## 6. Hyperparameters
 
 - **$\alpha$ (Alpha) / $\lambda$ (Lambda)**: The overall strength of the penalty.
   - $\alpha = 0$: Standard un-regularized model (Overfitting risk).
@@ -107,24 +102,11 @@ $$ J_{ElasticNet}(\theta) = \text{MSE} + r \alpha \sum_{j=1}^{n} |\theta_j| + \f
 
 ---
 
-# 7. Industry Applications
+## 7. Industry Applications
 
 - **Genomics**: Predicting diseases based on gene expression where you have 100 patients but 20,000 genes (features). Lasso regression is perfect here to zero out the 19,900 irrelevant genes.
 - **Finance**: Building stable risk models where macroeconomic indicators are highly correlated (using Ridge).
 - **Text Classification**: Logistic Regression combined with L2 regularization is the standard baseline for NLP tasks with huge sparse matrices.
-
----
-
-# 8. Exercises
-
-### Easy
-- **Scaling Demonstration**: Train a `Ridge` model on unscaled data, then on scaled data. Use `model.coef_` to print the weights. Observe how the unscaled model's weights are chaotic.
-
-### Medium
-- **Feature Selection**: Train a `LinearRegression` model and a `Lasso` model on the Boston/California Housing dataset. Count how many coefficients are exactly `0.0` in the Lasso model compared to the standard model.
-
-### Hard
-- **Validation Curve**: Write a script that trains a `Ridge` regression model using 50 different values of $\alpha$ (from 0.001 to 1000). Plot the Training Error vs. Testing Error on a graph to visualize the Bias-Variance tradeoff as $\alpha$ increases.
 
 ---
 

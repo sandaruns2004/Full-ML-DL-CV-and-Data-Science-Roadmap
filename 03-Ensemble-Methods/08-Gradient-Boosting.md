@@ -10,16 +10,10 @@
 3. [Core Mathematics](#3-core-mathematics)
 4. [Visual Explanation](#4-visual-explanation)
 5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-13. [Interview Preparation](#13-interview-preparation)
-14. [Hands-On Exercises](#14-hands-on-exercises)
-15. [Further Reading](#15-further-reading)
+6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
+7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
+8. [Failure Cases](#8-failure-cases)
+9. [Industry Applications](#9-industry-applications)
 
 ---
 
@@ -105,56 +99,7 @@ flowchart TD
 
 ---
 
-## 6. From Scratch Implementation
-
-*Educational MSE Regression Implementation.*
-
-```python
-import numpy as np
-from sklearn.tree import DecisionTreeRegressor
-
-class GradientBoostingScratch:
-    def __init__(self, n_estimators=100, learning_rate=0.1, max_depth=3):
-        self.n_estimators = n_estimators
-        self.learning_rate = learning_rate
-        self.max_depth = max_depth
-        self.trees = []
-        self.F0 = None
-        
-    def fit(self, X, y):
-        # 1. Initialize with mean
-        self.F0 = np.mean(y)
-        F_m = np.full(len(y), self.F0)
-        
-        for _ in range(self.n_estimators):
-            # 2. Compute Pseudo-Residuals (Negative Gradient for MSE)
-            residuals = y - F_m
-            
-            # 3. Fit tree to residuals
-            tree = DecisionTreeRegressor(max_depth=self.max_depth)
-            tree.fit(X, residuals)
-            
-            # 4. Update model
-            F_m += self.learning_rate * tree.predict(X)
-            
-            self.trees.append(tree)
-
-    def predict(self, X):
-        F_m = np.full(X.shape[0], self.F0)
-        for tree in self.trees:
-            F_m += self.learning_rate * tree.predict(X)
-        return F_m
-```
-
----
-
-## 7. NumPy Implementation
-
-*(See section 6. The core of Gradient Boosting relies heavily on building trees, so we leverage `DecisionTreeRegressor` for the tree building phase while managing the gradient loop in Python/NumPy).*
-
----
-
-## 8. Scikit-Learn Implementation
+## 6. Scikit-Learn Implementation
 
 ```python
 from sklearn.ensemble import GradientBoostingClassifier
@@ -175,7 +120,7 @@ print(f"Log Loss: {log_loss(y_test, probs):.4f}")
 
 ---
 
-## 9. Hyperparameter Deep Dive
+## 7. Hyperparameter Deep Dive
 
 - **`learning_rate`**: The most critical parameter. Lower is better, but requires more `n_estimators`. (0.01 to 0.1 is standard).
 - **`n_estimators`**: Number of trees. Must be tuned in tandem with `learning_rate` via Early Stopping to prevent overfitting.
@@ -184,36 +129,7 @@ print(f"Log Loss: {log_loss(y_test, probs):.4f}")
 
 ---
 
-## 10. Visualization Lab
-
-*Visualizing how the loss decreases as we add trees.*
-
-```python
-import matplotlib.pyplot as plt
-import numpy as np
-from sklearn.datasets import make_regression
-from sklearn.ensemble import GradientBoostingRegressor
-
-X, y = make_regression(n_samples=500, n_features=10, noise=50, random_state=42)
-
-gb = GradientBoostingRegressor(n_estimators=100, learning_rate=0.1, random_state=42)
-gb.fit(X, y)
-
-# Get the loss at each stage (iteration)
-train_errors = gb.train_score_
-
-plt.figure(figsize=(8, 5))
-plt.plot(np.arange(1, 101), train_errors, label='Training Loss (MSE)')
-plt.title('Gradient Boosting Loss Optimization')
-plt.xlabel('Number of Trees (Boosting Stages)')
-plt.ylabel('Loss')
-plt.legend()
-plt.show()
-```
-
----
-
-## 11. Failure Cases
+## 8. Failure Cases
 
 **Overfitting via Too Many Trees**
 Unlike Random Forest, Gradient Boosting *will* overfit if you add too many trees. It will eventually start modeling the absolute pure noise in the dataset perfectly. 
@@ -222,41 +138,10 @@ Unlike Random Forest, Gradient Boosting *will* overfit if you add too many trees
 
 ---
 
-## 12. Industry Applications
+## 9. Industry Applications
 
 - **Any highly competitive tabular data task**: Before deep learning got good at tabular data, Gradient Boosting (and its variants) won almost every single Kaggle competition.
 - **Anomaly Detection**: By switching the loss function to Huber Loss, the model becomes robust against anomalies while still learning the main distribution.
-
----
-
-## 13. Interview Preparation
-
-### Beginner
-**Q: What does a tree in a Gradient Boosting model predict?**
-> A: It predicts the errors (residuals) made by all the previous trees combined.
-
-### Intermediate
-**Q: What is the relationship between `learning_rate` and `n_estimators`?**
-> A: They are inversely proportional. If you cut the learning rate in half, you generally need to double the number of estimators to achieve the same model complexity.
-
-### Advanced
-**Q: How does Gradient Boosting differ from AdaBoost mathematically?**
-> A: AdaBoost explicitly updates sample weights based on classification errors to minimize Exponential Loss. Gradient Boosting calculates the negative gradient (derivatives) of *any* given loss function with respect to the model's predictions, and fits the next tree to those gradients.
-
----
-
-## 14. Hands-On Exercises
-
-**Easy**: Train a `GradientBoostingRegressor` and plot the Feature Importances.
-**Medium**: Implement Early Stopping manually by iterating through `gb.staged_predict(X_test)` and finding the tree index that minimizes MSE.
-**Hard**: Modify the scratch implementation to optimize the Absolute Error (MAE) instead of MSE. Hint: The negative gradient of MAE is the `sign()` of the residual, not the residual itself!
-
----
-
-## 15. Further Reading
-
-- *Elements of Statistical Learning* - Chapter 10 (Boosting and Additive Trees)
-- [Greedy Function Approximation: A Gradient Boosting Machine (Friedman, 2001)](https://statweb.stanford.edu/~jhf/ftp/trebst.pdf)
 
 ---
 

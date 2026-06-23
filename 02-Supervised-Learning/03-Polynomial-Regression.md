@@ -1,10 +1,6 @@
 # 📈 Polynomial Regression
 
-> **Prerequisites:** Linear Regression
->
-> **Difficulty:** ⭐⭐☆☆☆
->
-> **Estimated Reading Time:** 15 minutes
+> **Difficulty:** ⭐⭐☆☆☆ Intermediate | **Prerequisites:** Linear Regression | **Estimated Reading Time:** 15 minutes
 
 ---
 
@@ -12,22 +8,15 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Mathematics](#3-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-
-14. [Exercises](#14-exercises)
-
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [Scikit-Learn Implementation](#5-scikit-learn-implementation)
+6. [Hyperparameter Deep Dive](#6-hyperparameter-deep-dive)
+7. [Failure Cases](#7-failure-cases)
+8. [Industry Applications](#8-industry-applications)
 
 ---
 
-# 1. What Problem Does This Solve?
+## 1. What Problem Does This Solve?
 
 ### 🟢 Beginner
 Linear Regression draws a straight line. But what if your data curves? For example, human height grows rapidly from ages 0-15, slows down from 15-20, and then stops completely. If you draw a straight line through that, it will predict that a 90-year-old is 15 feet tall! Polynomial Regression allows you to bend the line to fit curves.
@@ -40,7 +29,7 @@ Polynomial expansion is a fundamental technique for increasing the dimensionalit
 
 ---
 
-# 2. Intuition
+## 2. Intuition
 
 Imagine you have a single slider variable: $x$. A straight line can only ever be a straight line: $y = mx + b$.
 
@@ -50,7 +39,7 @@ Because the model doesn't know that $z$ is secretly $x^2$, it just treats it lik
 
 ---
 
-# 3. Mathematics
+## 3. Mathematics
 
 ### 3.1 Feature Expansion
 To fit a $d$-degree polynomial on a single feature $x$, we create a matrix of expanded features:
@@ -69,7 +58,7 @@ The number of features explodes factorially!
 
 ---
 
-# 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 flowchart LR
@@ -84,10 +73,6 @@ flowchart LR
     Reg --> Final[🏆 Curved Decision Boundary]
 ```
 
----
-
-# 5. Algorithm Workflow
-
 1. **Input Data**: You have an input matrix $X$.
 2. **Transform**: Pass $X$ through a Polynomial feature transformer to generate new columns of squared, cubed, and interaction terms.
 3. **Scale**: **CRITICAL STEP**. Because $10^3 = 1000$, the new features will have wildly different scales. You MUST apply standard scaling.
@@ -96,37 +81,7 @@ flowchart LR
 
 ---
 
-# 6. From Scratch Implementation
-
-```python
-import numpy as np
-
-class PolynomialFeatureTransformer:
-    def __init__(self, degree=2):
-        self.degree = degree
-        
-    def transform(self, X):
-        # Taking a 1D array and expanding it
-        X_poly = [X]
-        for d in range(2, self.degree + 1):
-            X_poly.append(X ** d)
-        # Stack them horizontally
-        return np.column_stack(X_poly)
-
-# Assume SimpleLinearRegression from Chapter 2 is available
-# X_poly = PolynomialFeatureTransformer(degree=2).transform(X)
-# model.fit(X_poly, y)
-```
-
----
-
-# 7. NumPy Implementation
-
-Vectorized polynomial expansion for multiple features is tricky from scratch because of the interaction terms. This is why we almost always rely on Scikit-Learn's `PolynomialFeatures`.
-
----
-
-# 8. Scikit-Learn Implementation
+## 5. Scikit-Learn Implementation
 
 ```python
 from sklearn.preprocessing import PolynomialFeatures, StandardScaler
@@ -154,7 +109,7 @@ print(f"Prediction for 6: {poly_model.predict([[6]])[0][0]:.2f}") # Should be ~3
 
 ---
 
-# 9. Hyperparameter Deep Dive
+## 6. Hyperparameter Deep Dive
 
 - **`degree`**: The highest power to raise your features to.
   - *Degree 1*: Standard straight line.
@@ -165,47 +120,7 @@ print(f"Prediction for 6: {poly_model.predict([[6]])[0][0]:.2f}") # Should be ~3
 
 ---
 
-# 10. Visualization Lab
-
-*See how changing the degree changes the fit.*
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-
-np.random.seed(42)
-X = 6 * np.random.rand(100, 1) - 3
-y = 0.5 * X**2 + X + 2 + np.random.randn(100, 1) # Non-linear data
-
-plt.figure(figsize=(10, 6))
-plt.scatter(X, y, color='blue', alpha=0.5, label='Data')
-
-# Plot Degree 1 (Underfit)
-model_1 = LinearRegression().fit(X, y)
-X_plot = np.linspace(-3, 3, 100).reshape(-1, 1)
-plt.plot(X_plot, model_1.predict(X_plot), color='red', label='Degree 1')
-
-# Plot Degree 2 (Perfect fit)
-poly_2 = PolynomialFeatures(degree=2, include_bias=False)
-model_2 = LinearRegression().fit(poly_2.fit_transform(X), y)
-plt.plot(X_plot, model_2.predict(poly_2.transform(X_plot)), color='green', linewidth=3, label='Degree 2')
-
-# Plot Degree 300 (Overfit)
-poly_300 = PolynomialFeatures(degree=300, include_bias=False)
-model_300 = LinearRegression().fit(poly_300.fit_transform(X), y)
-plt.plot(X_plot, model_300.predict(poly_300.transform(X_plot)), color='purple', label='Degree 300 (Overfit)')
-
-plt.ylim(0, 10)
-plt.legend()
-plt.title("Polynomial Regression Degrees")
-plt.show()
-```
-
----
-
-# 11. Failure Cases
+## 7. Failure Cases
 
 ### Runge's Phenomenon (Extreme Overfitting)
 If you set the `degree` too high (e.g., 20), the model will force the curve to snake up and down violently to perfectly hit every single training data point. When given new data, the curve will output numbers in the millions or billions. 
@@ -213,24 +128,11 @@ If you set the `degree` too high (e.g., 20), the model will force the curve to s
 
 ---
 
-# 12. Industry Applications
+## 8. Industry Applications
 
 - **Physics & Engineering**: Modeling trajectories (which are inherently parabolic due to gravity).
 - **Economics**: Yield curve modeling.
 - **Epidemiology**: Early stages of viral spread can often be modeled effectively with low-degree polynomial curves before exponential growth kicks in.
-
----
-
-# 14. Exercises
-
-### Easy
-Run the visualization code above. Change the `degree=300` to `degree=3` and watch how the purple line behaves.
-
-### Medium
-Using a dataset of Housing Prices, apply a `PolynomialFeatures(degree=2)` transformation. Before applying standard scaling, print out the `.head()` of the dataset to see how large the squared "Square Footage" column has become.
-
-### Hard
-Polynomial expansion is actually a manual version of the **Kernel Trick**. Explain mathematically how a Support Vector Machine with a Polynomial Kernel achieves the exact same result as Polynomial Regression without ever actually calculating the expanded $X_{poly}$ matrix.
 
 ---
 

@@ -1,10 +1,6 @@
 # 🏗️ Model Building Pipeline
 
-> **Prerequisites:** All Supervised Algorithms, Feature Engineering
->
-> **Difficulty:** ⭐⭐⭐☆☆
->
-> **Estimated Reading Time:** 15 minutes
+> **Difficulty:** ⭐⭐⭐☆☆ Intermediate | **Prerequisites:** All Supervised Algorithms, Feature Engineering | **Estimated Reading Time:** 15 minutes
 
 In the real world, Machine Learning is not just calling `model.fit(X, y)`. It is a complex sequence of data transformations, handling missing values, scaling, and training. If any step is done out of order, you leak data and ruin your model.
 
@@ -18,26 +14,18 @@ In the real world, Machine Learning is not just calling `model.fit(X, y)`. It is
 5. [Advantages & Limitations](#5-advantages--limitations)
 6. [Hyperparameters](#6-hyperparameters)
 7. [Industry Applications](#7-industry-applications)
-8. [Exercises](#8-exercises)
 
 ---
 
-# 1. What Problem Does This Solve?
+## 1. What Problem Does This Solve?
 
-### 🟢 Beginner
 When building a machine learning model, you have to do many things before training: fill in missing data, scale numbers, encode text, etc. If you do these steps manually one by one, it's very easy to mess up the order or accidentally cheat by looking at the test data. A Pipeline solves this by automatically locking all these steps together in the exact right order.
 
-### 🟡 Intermediate
-A Machine Learning Pipeline is a systematic, automated workflow that chains together multiple data processing steps and an estimator (model) into a single, cohesive object. In Scikit-Learn, this is handled by the `Pipeline` class. You should ALWAYS use it in professional environments, especially during Cross-Validation or when deploying to production. You may only avoid it during initial, messy Exploratory Data Analysis (EDA).
-
-### 🔴 Advanced
-Pipelines primarily solve the problem of Data Leakage during model evaluation. By encapsulating preprocessing logic within the cross-validation loops, pipelines guarantee that statistics (like $\mu$ and $\sigma$ for scaling) are calculated strictly on the training folds and applied identically to the validation folds. This prevents optimistic bias in performance metrics and ensures deployment-ready code logic.
-
 ---
 
-# 2. Intuition
+## 2. Intuition
 
-### Real-World Example
+### 🟢 Beginner
 Imagine a car assembly line.
 1. Station 1: Weld the frame.
 2. Station 2: Install the engine.
@@ -47,9 +35,15 @@ Imagine a car assembly line.
 If you don't have an automated pipeline, a worker might accidentally paint the car *before* welding the frame, ruining the paint job.
 In Machine Learning, if you accidentally Standardize your data *before* splitting your Train/Test sets, you ruin the test set by leaking the global mean into the training data. A Pipeline forces the assembly line to operate in strict, secure order.
 
+### 🟡 Intermediate
+A Machine Learning Pipeline is a systematic, automated workflow that chains together multiple data processing steps and an estimator (model) into a single, cohesive object. In Scikit-Learn, this is handled by the `Pipeline` class. You should ALWAYS use it in professional environments, especially during Cross-Validation or when deploying to production. You may only avoid it during initial, messy Exploratory Data Analysis (EDA).
+
+### 🔴 Advanced
+Pipelines primarily solve the problem of Data Leakage during model evaluation. By encapsulating preprocessing logic within the cross-validation loops, pipelines guarantee that statistics (like $\mu$ and $\sigma$ for scaling) are calculated strictly on the training folds and applied identically to the validation folds. This prevents optimistic bias in performance metrics and ensures deployment-ready code logic.
+
 ---
 
-# 3. Mathematical Foundations
+## 3. Mathematical Foundations
 
 ### The Problem of Data Leakage
 Suppose you use `StandardScaler` to normalize your data: $z = \frac{x - \mu}{\sigma}$.
@@ -59,7 +53,7 @@ A Pipeline mathematically prevents this. During Cross-Validation, it automatical
 
 ---
 
-# 4. General Workflow
+## 4. General Workflow
 
 1. **Define Transformers**: Create objects for specific tasks (e.g., `SimpleImputer` for missing values, `StandardScaler` for numerical data, `OneHotEncoder` for categoricals).
 2. **Combine via ColumnTransformer**: In modern Scikit-Learn, you use a `ColumnTransformer` to apply specific transformations to specific columns (e.g., Scale columns A and B, One-Hot Encode column C).
@@ -69,7 +63,7 @@ A Pipeline mathematically prevents this. During Cross-Validation, it automatical
 
 ---
 
-# 5. Advantages & Limitations
+## 5. Advantages & Limitations
 
 ### Advantages
 - **Eliminates Data Leakage**: Safe for Cross-Validation and Grid Search.
@@ -84,7 +78,7 @@ A Pipeline mathematically prevents this. During Cross-Validation, it automatical
 
 ---
 
-# 6. Hyperparameters
+## 6. Hyperparameters
 
 Pipelines don't have their own hyperparameters, but they allow you to access and tune the hyperparameters of every component inside them using a double-underscore syntax.
 
@@ -92,23 +86,10 @@ For example, if your pipeline step is named `rf` (Random Forest), you can tune i
 
 ---
 
-# 7. Industry Applications
+## 7. Industry Applications
 
 - **MLOps**: The foundation of Machine Learning Operations. Cloud platforms like AWS SageMaker or Azure ML expect models to be packaged as pipelines so they can be exposed as API endpoints.
 - **Kaggle Competitions**: Grandmasters use complex nested pipelines to ensure their features are perfectly synchronized and immune to leakage.
-
----
-
-# 8. Exercises
-
-### Easy
-- **Basic Pipeline**: Create a `Pipeline` containing a `StandardScaler` and a `LogisticRegression`. Fit it on `X_train` and predict on `X_test`.
-
-### Medium
-- **ColumnTransformer**: Load a dataset containing both text categories and numbers (e.g., the Titanic dataset). Build a `ColumnTransformer` that scales the numbers and One-Hot Encodes the categories.
-
-### Hard
-- **Nested Grid Search**: Build the pipeline from the Medium exercise, and cap it with a `RandomForestClassifier`. Pass the entire pipeline into a `GridSearchCV` to simultaneously find the best imputation strategy (`mean` vs `median`) AND the best Random Forest `max_depth` (3 vs 5).
 
 ---
 

@@ -98,34 +98,22 @@ Metrics are just numbers. A good Data Scientist always visualizes the errors.
 
 ### 1. Actual vs Predicted Plot
 ```mermaid
-scatter-chart
+xychart-beta
     title "Actual vs Predicted (Perfect Model is the Diagonal)"
-    x-axis "Actual True Value"
-    y-axis "Predicted Value"
-    point [10, 11]
-    point [20, 19]
-    point [30, 32]
-    point [40, 38]
-    point [50, 52]
-    point [60, 58]
-    point [70, 75]
+    x-axis "Actual True Value" [10, 20, 30, 40, 50, 60, 70]
+    y-axis "Predicted Value" 0 --> 80
+    line "Predictions" [11, 19, 32, 38, 52, 58, 75]
 ```
 *   **How to read**: Points should hug the 45-degree diagonal line. If they curve away at the high end, your model systematically underpredicts high values.
 
 ### 2. Residual Plot
 A residual is the difference between the true value and the prediction ($y - \hat{y}$).
 ```mermaid
-scatter-chart
+xychart-beta
     title "Residual Plot (Errors vs Predictions)"
-    x-axis "Predicted Value"
-    y-axis "Residual (Error)"
-    point [10, 1]
-    point [20, -1]
-    point [30, 2]
-    point [40, -2]
-    point [50, 2]
-    point [60, -2]
-    point [70, 5]
+    x-axis "Predicted Value" [10, 20, 30, 40, 50, 60, 70]
+    y-axis "Residual (Error)" -6 --> 6
+    line "Residuals" [1, -1, 2, -2, 2, -2, 5]
 ```
 *   **How to read**: The points should look like a random cloud of white noise scattered around the $y=0$ line. If you see a pattern (like a funnel shape or a U-shape), your model is fundamentally missing a non-linear relationship in the data.
 
@@ -133,7 +121,7 @@ scatter-chart
 ```mermaid
 xychart-beta
     title "Distribution of Errors (Residuals)"
-    x-axis "Error Magnitude" [-3, -2, -1, 0, 1, 2, 3]
+    x-axis "Error Magnitude" ["-3", "-2", "-1", "0", "1", "2", "3"]
     y-axis "Frequency" 0 --> 100
     bar [5, 15, 60, 95, 62, 18, 4]
 ```

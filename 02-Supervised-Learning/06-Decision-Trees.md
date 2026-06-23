@@ -1,10 +1,6 @@
 # 🌳 Decision Trees
 
-> **Prerequisites:** Basic Probability
->
-> **Difficulty:** ⭐⭐☆☆☆
->
-> **Estimated Reading Time:** 25 minutes
+> **Difficulty:** ⭐⭐☆☆☆ Beginner | **Prerequisites:** Basic Probability | **Estimated Reading Time:** 25 minutes
 
 ---
 
@@ -12,22 +8,15 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Mathematics](#3-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-
-14. [Exercises](#14-exercises)
-
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [Scikit-Learn Implementation](#5-scikit-learn-implementation)
+6. [Hyperparameter Deep Dive](#6-hyperparameter-deep-dive)
+7. [Failure Cases](#7-failure-cases)
+8. [Industry Applications](#8-industry-applications)
 
 ---
 
-# 1. What Problem Does This Solve?
+## 1. What Problem Does This Solve?
 
 ### 🟢 Beginner
 You are trying to decide if you should play tennis today. You look outside. Is it raining? If yes, you stay inside. If no, is it too windy? If yes, you stay inside. If no, you play! 
@@ -41,7 +30,7 @@ Decision Trees are high-variance, low-bias algorithms. By themselves, they are e
 
 ---
 
-# 2. Intuition
+## 2. Intuition
 
 Imagine you have a messy room full of Red and Blue balls. You want to sort them into two perfectly pure piles. 
 You can only ask Yes/No questions. 
@@ -55,7 +44,7 @@ The algorithm continuously asks the single mathematically best question at every
 
 ---
 
-# 3. Mathematics
+## 3. Mathematics
 
 To know which "question" is the best to ask, the algorithm must quantify "messiness" (impurity).
 
@@ -76,7 +65,7 @@ $$ \text{Gain} = \text{Impurity(Parent)} - \left( \frac{N_{left}}{N_{total}} \te
 
 ---
 
-# 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 flowchart TD
@@ -87,10 +76,6 @@ flowchart TD
     Left1 -->|No| R_Leaf["Leaf\nCook Ramen\nGini = 0.0"]
 ```
 
----
-
-# 5. Algorithm Workflow
-
 1. Start with the entire dataset at the Root Node.
 2. For every single feature, and for every single value in that feature, calculate what the Information Gain would be if you split the data there.
 3. Choose the feature and value that yields the **highest Information Gain**.
@@ -100,72 +85,7 @@ flowchart TD
 
 ---
 
-# 6. From Scratch Implementation
-
-```python
-import numpy as np
-from collections import Counter
-
-class SimpleDecisionTree:
-    def __init__(self, max_depth=5):
-        self.max_depth = max_depth
-        self.tree = None
-        
-    def _gini(self, y):
-        counts = np.bincount(y)
-        probs = counts / len(y)
-        return 1 - np.sum(probs ** 2)
-        
-    def _best_split(self, X, y):
-        best_gain, best_feat, best_thresh = -1, None, None
-        parent_gini = self._gini(y)
-        
-        for feat in range(X.shape[1]):
-            thresholds = np.unique(X[:, feat])
-            for thresh in thresholds:
-                left = y[X[:, feat] <= thresh]
-                right = y[X[:, feat] > thresh]
-                
-                if len(left) == 0 or len(right) == 0:
-                    continue
-                    
-                # Weighted Gini of children
-                child_gini = (len(left)/len(y))*self._gini(left) + (len(right)/len(y))*self._gini(right)
-                gain = parent_gini - child_gini
-                
-                if gain > best_gain:
-                    best_gain, best_feat, best_thresh = gain, feat, thresh
-                    
-        return best_feat, best_thresh
-        
-    def fit(self, X, y, depth=0):
-        # Stopping criteria
-        if depth == self.max_depth or len(np.unique(y)) == 1:
-            return Counter(y).most_common(1)[0][0]
-            
-        feat, thresh = self._best_split(X, y)
-        if feat is None:
-            return Counter(y).most_common(1)[0][0]
-            
-        # Recursive building
-        left_mask = X[:, feat] <= thresh
-        return {
-            'feature': feat,
-            'threshold': thresh,
-            'left': self.fit(X[left_mask], y[left_mask], depth+1),
-            'right': self.fit(X[~left_mask], y[~left_mask], depth+1)
-        }
-```
-
----
-
-# 7. NumPy Implementation
-
-*(See section 6 for the NumPy vectorization of the node splits).*
-
----
-
-# 8. Scikit-Learn Implementation
+## 5. Scikit-Learn Implementation
 
 ```python
 from sklearn.tree import DecisionTreeClassifier, plot_tree
@@ -195,7 +115,7 @@ plt.show()
 
 ---
 
-# 9. Hyperparameter Deep Dive
+## 6. Hyperparameter Deep Dive
 
 A Decision Tree left to its own devices will grow until every leaf is 100% pure, resulting in a tree with millions of nodes that perfectly memorizes the training data (Massive Overfitting). We must prune it:
 
@@ -206,40 +126,7 @@ A Decision Tree left to its own devices will grow until every leaf is 100% pure,
 
 ---
 
-# 10. Visualization Lab
-
-*Visualizing the non-linear, rectangular decision boundaries.*
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.datasets import make_moons
-from mlxtend.plotting import plot_decision_regions
-
-X, y = make_moons(n_samples=200, noise=0.2, random_state=42)
-
-# Unrestricted Tree (Overfit)
-dt_unrestricted = DecisionTreeClassifier(random_state=42).fit(X, y)
-
-# Pruned Tree (Good Fit)
-dt_pruned = DecisionTreeClassifier(max_depth=3, random_state=42).fit(X, y)
-
-fig, ax = plt.subplots(1, 2, figsize=(12, 5))
-
-plot_decision_regions(X, y, clf=dt_unrestricted, ax=ax[0])
-ax[0].set_title("Unrestricted (Massive Overfitting)")
-
-plot_decision_regions(X, y, clf=dt_pruned, ax=ax[1])
-ax[1].set_title("max_depth=3 (Smooth Boundary)")
-
-plt.tight_layout()
-plt.show()
-```
-
----
-
-# 11. Failure Cases
+## 7. Failure Cases
 
 ### Extrapolation
 If you train a Decision Tree on people aged 10 to 50, and then ask it to predict something for an 80-year-old, it will just follow the rule "Is Age > 50? Yes -> Go to Leaf X". It cannot extrapolate trends linearly. It just outputs the constant value of the final leaf.
@@ -249,23 +136,10 @@ Decision Trees can only split data with vertical or horizontal lines (orthogonal
 
 ---
 
-# 12. Industry Applications
+## 8. Industry Applications
 
 - **Medicine**: A highly pruned, shallow decision tree is completely interpretable. A doctor can look at a 3-deep tree and legally justify why a patient was denied coverage based on exact threshold values.
 - **Credit Approval**: Heavily regulated industries require "White Box" models where the logic can be printed on paper and audited.
-
----
-
-# 14. Exercises
-
-### Easy
-Run the Scikit-Learn code block above. Look at the plotted tree and manually trace the logic for a flower with `petal length = 2.0` and `petal width = 0.5`.
-
-### Medium
-Plot the feature importances (`dt.feature_importances_`). How does the tree mathematically calculate which feature was most important? (Hint: It relates to Information Gain).
-
-### Hard
-Decision trees are inherently unstable. Write a script that trains a tree, calculates accuracy, then changes a *single* random data point's label, and retrains. Observe how drastically the tree structure and accuracy change from a tiny perturbation.
 
 ---
 

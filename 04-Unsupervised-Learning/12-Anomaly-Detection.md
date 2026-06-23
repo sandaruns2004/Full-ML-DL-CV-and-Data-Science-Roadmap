@@ -7,15 +7,11 @@
 ## 📋 Table of Contents
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
-3. [Core Mathematics (Statistical Outliers)](#3-core-mathematics-statistical-outliers)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [Python Implementation (Z-Score & IQR)](#6-python-implementation)
-7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
-8. [Visualization Lab](#8-visualization-lab)
-9. [Failure Cases](#9-failure-cases)
-10. [Industry Applications](#10-industry-applications)
-11. [What's Next?](#11-whats-next)
+3. [Statistical Foundations](#3-statistical-foundations)
+4. [Visual Taxonomy](#4-visual-taxonomy)
+5. [Failure Cases of 1D Statistics](#5-failure-cases-of-1d-statistics)
+6. [Industry Applications](#6-industry-applications)
+7. [What's Next?](#7-whats-next)
 
 ---
 
@@ -44,9 +40,9 @@ Anomalies are broadly categorized into three types:
 
 ---
 
-## 3. Core Mathematics (Statistical Outliers)
+## 3. Statistical Foundations
 
-Before jumping into complex machine learning models, we must understand the foundational statistical methods for finding outliers in 1-Dimensional data.
+Before jumping into complex machine learning models, we must understand the foundational statistical methods for finding outliers in simple 1-Dimensional data.
 
 ### 1. Z-Score Method (Parametric)
 Assumes the data follows a Gaussian (Normal) Distribution. The Z-score measures how many standard deviations $\sigma$ a data point $x_i$ is away from the mean $\mu$.
@@ -64,15 +60,15 @@ Does not assume a normal distribution. It relies on the median and percentiles, 
 
 ---
 
-## 4. Visual Explanation
+## 4. Visual Taxonomy
 
 ```mermaid
 graph TD
     A[Unlabeled Data Stream] --> B{Is the distribution known?}
-    B -->|Yes| C[Statistical Methods \n Z-Score, IQR]
+    B -->|Yes| C[Statistical Methods <br/> Z-Score, IQR]
     B -->|No / Multi-dimensional| D{Is the data density uniform?}
-    D -->|Yes| E[Distance-based / Tree-based \n KNN, Isolation Forest]
-    D -->|No / Varying Density| F[Density-based \n LOF, DBSCAN]
+    D -->|Yes| E[Distance-based / Tree-based <br/> KNN, Isolation Forest]
+    D -->|No / Varying Density| F[Density-based <br/> LOF, DBSCAN]
     
     style A fill:#4c566a,color:#eceff4
     style C fill:#81a1c1,color:#2e3440
@@ -84,76 +80,7 @@ graph TD
 
 ---
 
-## 5. Algorithm Workflow
-
-1.  **Define Normal**: Analyze the data to understand the baseline normal behavior. (Is it normally distributed? Multi-modal?)
-2.  **Select Method**: 
-    *   1D Data: Use Z-Score or IQR.
-    *   High-D Data: Use Isolation Forest or Local Outlier Factor (LOF).
-3.  **Set Threshold**: Choose the cut-off point. This is a tradeoff between False Positives (annoying alerts) and False Negatives (missing a real fraud event).
-4.  **Investigate**: Anomalies flagged by the system are usually passed to a human expert (like a fraud analyst) for manual review.
-
----
-
-## 6. Python Implementation (Z-Score & IQR)
-
-For simple 1D arrays (like analyzing the daily revenue of a single store).
-
-```python
-import numpy as np
-
-data = np.array([10, 12, 11, 14, 13, 15, 12, 1000, 11, 10])
-
-# --- Z-Score Method ---
-mean = np.mean(data)
-std = np.std(data)
-z_scores = (data - mean) / std
-
-threshold = 3
-anomalies_z = data[np.abs(z_scores) > threshold]
-print("Z-Score Anomalies:", anomalies_z)
-
-# --- IQR Method ---
-q1 = np.percentile(data, 25)
-q3 = np.percentile(data, 75)
-iqr = q3 - q1
-
-lower_bound = q1 - 1.5 * iqr
-upper_bound = q3 + 1.5 * iqr
-
-anomalies_iqr = data[(data < lower_bound) | (data > upper_bound)]
-print("IQR Anomalies:", anomalies_iqr)
-```
-
----
-
-## 7. Hyperparameter Deep Dive
-
-*   **Z-Score Threshold (e.g., 3)**: In pure statistics, 3 standard deviations cover 99.7% of the data. If your data is massive (millions of rows), you will naturally have thousands of points beyond 3 standard deviations just by chance. You may need to raise this to 4 or 5.
-*   **IQR Multiplier (e.g., 1.5)**: 1.5 is the standard convention established by John Tukey. Changing it to 3.0 finds "extreme" outliers.
-
----
-
-## 8. Visualization Lab
-
-> **Note**: For interactive outlier dashboards and multi-dimensional highlighting, see `notebooks/08-Anomaly-Detection-Lab.ipynb`.
-
-### The Box Plot
-The Box Plot is the visual representation of the IQR method. The "box" represents the IQR (Q1 to Q3). The "whiskers" extend to the bounds. The "dots" outside the whiskers are the anomalies.
-
-```python
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-# data = [10, 12, 14, 15, 11, 100, 13, 12, 11]
-# sns.boxplot(x=data, color="skyblue")
-# plt.title("Box Plot Highlighting Outliers")
-# plt.show()
-```
-
----
-
-## 9. Failure Cases
+## 5. Failure Cases of 1D Statistics
 
 1.  **Multi-dimensional Data**: Z-Score and IQR completely fail when looking at multiple features simultaneously. A person who is 6 feet tall is normal. A person who weighs 100 lbs is normal. But a person who is 6 feet tall AND weighs 100 lbs might be an outlier. 1D methods cannot see this.
 2.  **Non-Gaussian Distributions**: If the data follows a power-law distribution (like wealth distribution), the Z-score method will flag 20% of your data as anomalies.
@@ -161,7 +88,7 @@ import matplotlib.pyplot as plt
 
 ---
 
-## 10. Industry Applications
+## 6. Industry Applications
 
 *   **Cybersecurity**: Detecting network intrusions, DDOS attacks, or unusual lateral movement within a corporate network.
 *   **Manufacturing (Predictive Maintenance)**: Sensors on a factory motor measure vibration. A sudden, sustained spike in vibration is an anomaly that indicates the bearing is about to fail.
@@ -170,7 +97,7 @@ import matplotlib.pyplot as plt
 
 ---
 
-## 11. What's Next?
+## 7. What's Next?
 
 ### Summary
 Anomaly Detection focuses on finding the rare, the strange, and the suspicious. For simple 1-dimensional data, classical statistical methods like the Z-Score and the Interquartile Range (IQR) provide robust mathematical boundaries to flag outliers.

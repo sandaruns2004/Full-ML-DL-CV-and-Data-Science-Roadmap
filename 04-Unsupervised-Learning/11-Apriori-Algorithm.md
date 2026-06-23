@@ -8,14 +8,13 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Core Mathematics (The Apriori Principle)](#3-core-mathematics-the-apriori-principle)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [Python Implementation (MLxtend)](#7-python-implementation)
-8. [Hyperparameter Deep Dive](#8-hyperparameter-deep-dive)
-9. [Failure Cases](#9-failure-cases)
-10. [Industry Applications](#10-industry-applications)
-11. [What's Next?](#11-whats-next)
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [From Scratch Implementation](#5-from-scratch-implementation)
+6. [Python Implementation (MLxtend)](#6-python-implementation-mlxtend)
+7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
+8. [Failure Cases](#8-failure-cases)
+9. [Industry Applications](#9-industry-applications)
+10. [What's Next?](#10-whats-next)
 
 ---
 
@@ -61,7 +60,7 @@ If $\text{Support}(\{A\}) < \text{min\_support}$, then $\text{Support}(\{A, B\})
 
 ---
 
-## 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 graph TD
@@ -81,12 +80,6 @@ graph TD
     style I fill:#a3be8c,color:#2e3440
 ```
 
-*The Join-Prune-Scan loop of the Apriori algorithm.*
-
----
-
-## 5. Algorithm Workflow
-
 Let `min_support` = 3.
 
 1.  **Iteration $k=1$**: Count the support of all single items `{A}, {B}, {C}, {D}`. 
@@ -101,7 +94,7 @@ Let `min_support` = 3.
 
 ---
 
-## 6. From Scratch Implementation
+## 5. From Scratch Implementation
 
 *(Pseudo-code demonstrating the Join and Prune logic)*
 
@@ -134,7 +127,7 @@ def apriori_gen(Lk_minus_1, k):
 
 ---
 
-## 7. Python Implementation (MLxtend)
+## 6. Python Implementation (MLxtend)
 
 ```python
 import pandas as pd
@@ -156,7 +149,7 @@ print(multi_itemsets)
 
 ---
 
-## 8. Hyperparameter Deep Dive
+## 7. Hyperparameter Deep Dive
 
 *   **`min_support`**: The only true hyperparameter of Apriori.
     *   If `min_support` is too high, you only find obvious rules (e.g., Milk $\rightarrow$ Bread).
@@ -164,7 +157,7 @@ print(multi_itemsets)
 
 ---
 
-## 9. Failure Cases
+## 8. Failure Cases
 
 1.  **Multiple Database Scans**: Apriori must scan the ENTIRE database on every single iteration $k$. If you have 100 million transactions on disk, reading it 10 times (to find 10-itemsets) is incredibly slow.
 2.  **Massive Candidate Generation**: If the frequent 1-itemsets are very large (e.g., 10,000 frequent items), the join step to create 2-itemsets will generate $\approx 50,000,000$ candidates that must be held in memory.
@@ -172,7 +165,7 @@ print(multi_itemsets)
 
 ---
 
-## 10. Industry Applications
+## 9. Industry Applications
 
 *   **Market Basket Analysis**: Retailers use it to plan store layouts and cross-selling campaigns.
 *   **Auto-Complete & Search**: Analyzing sequences of typed words to suggest the next word.
@@ -180,7 +173,7 @@ print(multi_itemsets)
 
 ---
 
-## 11. What's Next?
+## 10. What's Next?
 
 ### Summary
 The Apriori Algorithm makes Association Rule Mining computationally possible by leveraging the anti-monotone property of support. By generating candidates bottom-up and pruning any candidate that contains an infrequent subset, it avoids searching the infinite powerset of items.

@@ -8,14 +8,12 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Core Mathematics](#3-core-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [Python Implementation](#6-python-implementation)
-7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
-8. [Visualization Lab](#8-visualization-lab)
-9. [Failure Cases](#9-failure-cases)
-10. [Industry Applications](#10-industry-applications)
-11. [What's Next?](#11-whats-next)
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [Python Implementation](#5-python-implementation)
+6. [Hyperparameter Deep Dive](#6-hyperparameter-deep-dive)
+7. [Failure Cases](#7-failure-cases)
+8. [Industry Applications](#8-industry-applications)
+9. [What's Next?](#9-whats-next)
 
 ---
 
@@ -73,7 +71,7 @@ The second term is the magic. It explicitly penalizes the algorithm if points th
 
 ---
 
-## 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 graph TD
@@ -90,17 +88,13 @@ graph TD
     style F fill:#bf616a,color:#eceff4
 ```
 
----
-
-## 5. Algorithm Workflow
-
 1.  **Graph Construction**: Find the $k$-nearest neighbors for each point. Compute the fuzzy edge weights.
 2.  **Initialization**: Use Spectral Embedding (a fast graph layout algorithm) to initially place the points in 2D. (This is much better than t-SNE's random initialization).
 3.  **Optimization**: Use Stochastic Gradient Descent (SGD) to minimize the cross-entropy, applying attractive forces along edges and repulsive forces between randomly sampled non-edges.
 
 ---
 
-## 6. Python Implementation
+## 5. Python Implementation
 
 UMAP is not built into Scikit-Learn. It is maintained as an independent library: `pip install umap-learn`.
 
@@ -129,7 +123,7 @@ X_umap = reducer.fit_transform(X_scaled)
 
 ---
 
-## 7. Hyperparameter Deep Dive
+## 6. Hyperparameter Deep Dive
 
 *   **`n_neighbors`**: The number of nearest neighbors used to construct the initial graph. 
     *   *Low values (e.g., 5)*: Focuses heavily on local, fine-grained structure (lots of tiny clusters).
@@ -141,26 +135,14 @@ X_umap = reducer.fit_transform(X_scaled)
 
 ---
 
-## 8. Visualization Lab
-
-> **Note**: For runtime comparisons and topological graphs, see `notebooks/06-tSNE-UMAP-Lab.ipynb`.
-
-### PCA vs t-SNE vs UMAP
-If you run all three on the Fashion-MNIST dataset:
-1.  **PCA**: A blurry, overlapping mess of colors.
-2.  **t-SNE**: Distinct islands of clothing types, but a T-shirt cluster might randomly end up next to the Sneaker cluster. (Took 15 minutes to run).
-3.  **UMAP**: Distinct islands, BUT the T-shirt, Coat, and Shirt clusters will be grouped together globally, while Sneakers and Boots will form a separate macro-cluster. (Took 2 minutes to run).
-
----
-
-## 9. Failure Cases
+## 7. Failure Cases
 
 1.  **Over-interpretation**: Like t-SNE, the sizes of the clusters and the vast empty spaces between them in a UMAP plot do not necessarily correlate to true variance or true distances in the high-D space.
 2.  **Hyperparameter Sensitivity**: While more robust than t-SNE, a bad choice of `n_neighbors` can still yield a misleading map.
 
 ---
 
-## 10. Industry Applications
+## 8. Industry Applications
 
 *   **Machine Learning Pipelines**: Because UMAP has a `.transform()` method and is fast, it is heavily used to reduce 10,000 dimensions down to 50 dimensions *before* feeding the data into an XGBoost classifier.
 *   **Bioinformatics**: Replaced t-SNE as the industry standard for clustering Single-Cell RNA data.
@@ -168,7 +150,7 @@ If you run all three on the Fashion-MNIST dataset:
 
 ---
 
-## 11. What's Next?
+## 9. What's Next?
 
 ### Summary
 UMAP is the state-of-the-art in dimensionality reduction. By utilizing algebraic topology and cross-entropy, it delivers stunning 2D visualizations that preserve both local neighborhoods and global structures, while executing exponentially faster than t-SNE.

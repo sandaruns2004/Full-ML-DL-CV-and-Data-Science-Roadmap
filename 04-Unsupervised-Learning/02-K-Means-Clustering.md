@@ -8,18 +8,12 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Core Mathematics](#3-core-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-13. [Hands-On Exercises](#13-hands-on-exercises)
-14. [Further Reading](#14-further-reading)
-15. [What's Next?](#15-whats-next)
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [From Scratch Implementation](#5-from-scratch-implementation)
+6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
+7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
+8. [Failure Cases](#8-failure-cases)
+9. [What's Next?](#9-whats-next)
 
 ---
 
@@ -65,7 +59,7 @@ Where:
 
 ---
 
-## 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 flowchart TD
@@ -84,12 +78,6 @@ flowchart TD
     style Done fill:#a3be8c,stroke:#eceff4,color:#2e3440
 ```
 
-*The iterative expectation-maximization loop of K-Means.*
-
----
-
-## 5. Algorithm Workflow
-
 1.  **Scale Data**: K-Means is isotropic (assumes spherical clusters) and uses Euclidean distance. Standardization (Z-score) is absolutely required.
 2.  **Choose $K$**: Determine the number of clusters using the Elbow Method or Silhouette Score.
 3.  **Initialize**: Use K-Means++ to strategically place initial centroids.
@@ -98,7 +86,7 @@ flowchart TD
 
 ---
 
-## 6. From Scratch Implementation
+## 5. From Scratch Implementation
 
 ```python
 import numpy as np
@@ -132,20 +120,7 @@ class KMeansScratch:
 
 ---
 
-## 7. NumPy Implementation
-
-Vectorization over Euclidean distance is the key to fast K-Means:
-
-```python
-# Assuming X is shape (N, d) and centroids is shape (K, d)
-# Broadcasting trick to compute pairwise distances
-distances = np.sqrt(((X[:, np.newaxis, :] - centroids[np.newaxis, :, :]) ** 2).sum(axis=2))
-labels = np.argmin(distances, axis=1)
-```
-
----
-
-## 8. Scikit-Learn Implementation
+## 6. Scikit-Learn Implementation
 
 ```python
 from sklearn.cluster import KMeans
@@ -173,43 +148,15 @@ inertia = kmeans.inertia_ # The final WCSS
 
 ---
 
-## 9. Hyperparameter Deep Dive
+## 7. Hyperparameter Deep Dive
 
-*   **`n_clusters` ($K$)**: The most critical parameter. Set via domain knowledge or algorithmic tuning (Elbow method).
+*   **`n_clusters` ($K$)**: The most critical parameter. Set via domain knowledge or algorithmic tuning (Elbow method, Silhouette score).
 *   **`init`**: Always use `k-means++`. It selects initial cluster centers for k-mean clustering in a smart way to speed up convergence.
 *   **`n_init`**: Number of times the algorithm will be run with different centroid seeds. The final results will be the best output of `n_init` consecutive runs in terms of inertia.
 
 ---
 
-## 10. Visualization Lab
-
-> **Note**: For interactive Elbow Method, Silhouette Score heatmaps, and animated Centroid movements, see `notebooks/01-K-Means-Lab.ipynb`.
-
-### The Elbow Method
-To find optimal $K$, plot $K$ against WCSS (Inertia). The point where the reduction in variance starts to diminish sharply (the elbow) is the optimal $K$.
-
-```python
-inertias = []
-K_range = range(1, 10)
-for k in K_range:
-    model = KMeans(n_clusters=k)
-    model.fit(X_scaled)
-    inertias.append(model.inertia_)
-
-# plt.plot(K_range, inertias, marker='o')
-# plt.title("The Elbow Method")
-# plt.xlabel("Number of Clusters (K)")
-# plt.ylabel("WCSS (Inertia)")
-```
-
-### The Silhouette Score
-Measures how similar an object is to its own cluster compared to other clusters. Values range from -1 to 1. Higher is better.
-$$ s = \frac{b - a}{\max(a, b)} $$
-Where $a$ is mean intra-cluster distance and $b$ is mean nearest-cluster distance.
-
----
-
-## 11. Failure Cases
+## 8. Failure Cases
 
 K-Means fails dramatically under specific geometrical conditions because it assumes **spherical, equally-sized** clusters.
 
@@ -220,32 +167,7 @@ K-Means fails dramatically under specific geometrical conditions because it assu
 
 ---
 
-## 12. Industry Applications
-
-*   **Customer Segmentation**: Grouping users by purchasing behavior and frequency.
-*   **Document Clustering**: Grouping news articles by topic based on word embeddings.
-*   **Image Compression**: Vector Quantization. Reducing the colors in an image down to $K$ colors (where the $K$ colors are the centroids in RGB space).
-*   **Sensor Data**: Grouping acoustic emissions to find failure states in machinery.
-
----
-
-## 13. Hands-On Exercises
-
-**Easy**: Use Scikit-Learn to apply K-Means to the Iris dataset with $K=3$. Plot a scatter plot of Petal Length vs Petal Width, coloring the points by their cluster label.
-**Medium**: Implement the "Elbow Method" from scratch by writing a loop that records the WCSS for $K=1$ to $10$, and plot the result using matplotlib.
-**Hard**: Implement the `K-Means++` initialization logic from scratch in NumPy, calculating the probability distribution for selecting subsequent centroids based on squared distances.
-
----
-
-## 14. Further Reading
-
-*   *Pattern Recognition and Machine Learning* by Christopher Bishop (Chapter 9: Mixture Models and EM)
-*   *Scikit-Learn Documentation*: [K-Means](https://scikit-learn.org/stable/modules/clustering.html#k-means)
-*   *Paper*: "k-means++: The Advantages of Careful Seeding" by Arthur and Vassilvitskii (2007).
-
----
-
-## 15. What's Next?
+## 9. What's Next?
 
 ### Summary
 We have mastered K-Means Clustering, the most famous partitioning algorithm. We learned how it leverages Euclidean distance and an Expectation-Maximization loop to minimize intra-cluster variance, and we explored how to find $K$ using the Elbow Method and Silhouette scores.

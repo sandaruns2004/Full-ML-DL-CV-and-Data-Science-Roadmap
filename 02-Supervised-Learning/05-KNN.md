@@ -1,10 +1,6 @@
 # 📍 K-Nearest Neighbors (KNN)
 
-> **Prerequisites:** Basic Geometry, Distance Metrics
->
-> **Difficulty:** ⭐☆☆☆☆
->
-> **Estimated Reading Time:** 15 minutes
+> **Difficulty:** ⭐☆☆☆☆ Beginner | **Prerequisites:** Basic Geometry, Distance Metrics | **Estimated Reading Time:** 15 minutes
 
 ---
 
@@ -12,22 +8,16 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Mathematics](#3-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-
-14. [Exercises](#14-exercises)
-
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [From Scratch Implementation](#5-from-scratch-implementation)
+6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
+7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
+8. [Failure Cases](#8-failure-cases)
+9. [Industry Applications](#9-industry-applications)
 
 ---
 
-# 1. What Problem Does This Solve?
+## 1. What Problem Does This Solve?
 
 ### 🟢 Beginner
 If you want to know how much a 3-bedroom house in a specific neighborhood will sell for, what do you do? You look at the prices of the 3 or 4 houses physically closest to it that recently sold, and you average their prices. That is exactly what K-Nearest Neighbors does. It predicts the future by finding the most similar examples from the past.
@@ -40,7 +30,7 @@ KNN is highly prone to the **Curse of Dimensionality**. Because it relies on cal
 
 ---
 
-# 2. Intuition
+## 2. Intuition
 
 Imagine you are dropped into a foreign city and want to know what political party controls the neighborhood you are standing in. You look around and ask the 5 people physically closest to you. 
 - If 4 are Democrats and 1 is Republican, you predict the neighborhood is Democrat. 
@@ -53,7 +43,7 @@ The algorithm is based purely on the principle that similar data points exist in
 
 ---
 
-# 3. Mathematics
+## 3. Mathematics
 
 ### Distance Metrics
 To find the "nearest" neighbors, we must define what distance means.
@@ -72,7 +62,7 @@ $$ d(x, y) = \left( \sum_{i=1}^n |x_i - y_i|^p \right)^{1/p} $$
 
 ---
 
-# 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 flowchart TD
@@ -89,10 +79,6 @@ flowchart TD
     Avg --> FinalR["🏆 Predicted Value"]
 ```
 
----
-
-# 5. Algorithm Workflow
-
 1. **Store Data**: Literally just save the $X$ and $y$ arrays. There is no actual "training" phase.
 2. **Predict**: For a new input vector $x$:
    - Calculate the distance between $x$ and every single row in $X_{train}$.
@@ -103,7 +89,7 @@ flowchart TD
 
 ---
 
-# 6. From Scratch Implementation
+## 5. From Scratch Implementation
 
 ```python
 import math
@@ -142,41 +128,7 @@ class KNNScratch:
 
 ---
 
-# 7. NumPy Implementation
-
-*Using NumPy broadcasting to calculate distances across the whole matrix at once.*
-
-```python
-import numpy as np
-from collections import Counter
-
-class KNNVectorized:
-    def __init__(self, k=3):
-        self.k = k
-        
-    def fit(self, X, y):
-        self.X_train = np.array(X)
-        self.y_train = np.array(y)
-        
-    def predict(self, X):
-        X = np.array(X)
-        predictions = []
-        for x in X:
-            # Broadcasting subtraction and distance calc
-            distances = np.linalg.norm(self.X_train - x, axis=1)
-            
-            # np.argsort returns the INDICES that would sort the array
-            nearest_indices = np.argsort(distances)[:self.k]
-            nearest_labels = self.y_train[nearest_indices]
-            
-            most_common = Counter(nearest_labels).most_common(1)[0][0]
-            predictions.append(most_common)
-        return np.array(predictions)
-```
-
----
-
-# 8. Scikit-Learn Implementation
+## 6. Scikit-Learn Implementation
 
 ```python
 from sklearn.neighbors import KNeighborsClassifier
@@ -205,7 +157,7 @@ print(f"Predicted Class: {pred[0]}")
 
 ---
 
-# 9. Hyperparameter Deep Dive
+## 7. Hyperparameter Deep Dive
 
 - **`n_neighbors` ($K$)**: The number of neighbors to vote.
   - *Too small (e.g., $K=1$)*: Captures massive noise. Extreme overfitting (High Variance).
@@ -220,36 +172,7 @@ print(f"Predicted Class: {pred[0]}")
 
 ---
 
-# 10. Visualization Lab
-
-*Visualizing how different values of K create completely different decision boundaries.*
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.datasets import make_moons
-from mlxtend.plotting import plot_decision_regions
-
-X, y = make_moons(n_samples=200, noise=0.3, random_state=42)
-
-fig, axes = plt.subplots(1, 3, figsize=(15, 4))
-k_values = [1, 15, 100]
-
-for i, k in enumerate(k_values):
-    knn = KNeighborsClassifier(n_neighbors=k)
-    knn.fit(X, y)
-    
-    plot_decision_regions(X, y, clf=knn, ax=axes[i])
-    axes[i].set_title(f"KNN Boundary (K={k})")
-
-plt.tight_layout()
-plt.show()
-```
-
----
-
-# 11. Failure Cases
+## 8. Failure Cases
 
 ### Unscaled Data
 Because KNN relies entirely on geometric distance, features with larger scales will dominate. If Feature A is "Age" (0-100) and Feature B is "Salary" (0-150,000), the distance calculation will effectively ignore Age completely. 
@@ -263,23 +186,10 @@ In spaces with hundreds of dimensions, the distance between any two points conve
 
 ---
 
-# 12. Industry Applications
+## 9. Industry Applications
 
 - **Recommender Systems**: Identifying users who gave similar ratings to movies and recommending what those neighbors liked (User-Based Collaborative Filtering).
 - **Imputation**: Filling in missing data points in a dataset by finding the nearest neighbors and averaging their values (`KNNImputer`).
-
----
-
-# 14. Exercises
-
-### Easy
-Create a `StandardScaler` and apply it to a dataset of Height (cm) and Weight (kg). Compare a KNN model trained on the unscaled data vs the scaled data.
-
-### Medium
-Use `GridSearchCV` to find the optimal $K$ value for the breast cancer dataset, searching `range(1, 31, 2)`.
-
-### Hard
-Implement the `'distance'` weight functionality in the from-scratch implementation. Instead of simple majority voting, weight each neighbor's vote by $1 / d$, where $d$ is their distance to the test point.
 
 ---
 

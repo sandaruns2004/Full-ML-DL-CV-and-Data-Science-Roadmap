@@ -8,14 +8,12 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Core Mathematics](#3-core-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
-7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
-8. [Visualization Lab](#8-visualization-lab)
-9. [Failure Cases](#9-failure-cases)
-10. [Industry Applications](#10-industry-applications)
-11. [What's Next?](#11-whats-next)
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [Scikit-Learn Implementation](#5-scikit-learn-implementation)
+6. [Hyperparameter Deep Dive](#6-hyperparameter-deep-dive)
+7. [Failure Cases](#7-failure-cases)
+8. [Industry Applications](#8-industry-applications)
+9. [What's Next?](#9-whats-next)
 
 ---
 
@@ -69,7 +67,7 @@ $$ \text{LOF}_k(A) = \frac{\sum_{B \in N_k(A)} \frac{\text{lrd}_k(B)}{\text{lrd}
 
 ---
 
-## 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 graph TD
@@ -87,10 +85,6 @@ graph TD
     style H fill:#a3be8c,color:#2e3440
 ```
 
----
-
-## 5. Algorithm Workflow
-
 1.  Choose hyperparameter $k$ (number of neighbors).
 2.  Compute pairwise distances between all points.
 3.  Find the $k$-nearest neighbors for every point.
@@ -100,7 +94,7 @@ graph TD
 
 ---
 
-## 6. Scikit-Learn Implementation
+## 5. Scikit-Learn Implementation
 
 ```python
 from sklearn.neighbors import LocalOutlierFactor
@@ -129,7 +123,7 @@ print(f"Found {len(anomalies)} anomalies.")
 
 ---
 
-## 7. Hyperparameter Deep Dive
+## 6. Hyperparameter Deep Dive
 
 *   **`n_neighbors` ($k$)**: The most important parameter. 
     *   It determines the size of the local neighborhood.
@@ -140,30 +134,7 @@ print(f"Found {len(anomalies)} anomalies.")
 
 ---
 
-## 8. Visualization Lab
-
-> **Note**: For interactive LOF radius comparisons and density anomaly graphs, see `notebooks/08-Anomaly-Detection-Lab.ipynb`.
-
-### Visualizing LOF Scores
-A great way to visualize LOF is to draw a circle around every data point where the radius of the circle is proportional to the point's LOF score.
-
-```python
-import matplotlib.pyplot as plt
-
-# Get the positive LOF scores
-# lof_scores = -lof.negative_outlier_factor_
-
-# Plot the points
-# plt.scatter(X[:, 0], X[:, 1], color='k', s=3., label='Data points')
-
-# Plot circles with radius proportional to the outlier scores
-# radius = (lof_scores - lof_scores.min()) / (lof_scores.max() - lof_scores.min())
-# plt.scatter(X[:, 0], X[:, 1], s=1000 * radius, edgecolors='r', facecolors='none', label='Outlier scores')
-```
-
----
-
-## 9. Failure Cases
+## 7. Failure Cases
 
 1.  **Computational Complexity**: LOF requires computing pairwise distances and sorting them to find the $k$-nearest neighbors. This is $O(N^2)$ time complexity. It cannot scale to datasets with millions of rows without advanced approximations or indexing (like KD-Trees).
 2.  **No Clear Threshold**: While LOF $\approx 1$ is normal, what is an anomaly? Is it 1.2? 1.5? 3.0? The threshold is highly dataset-dependent and often requires manual tuning.
@@ -171,14 +142,14 @@ import matplotlib.pyplot as plt
 
 ---
 
-## 10. Industry Applications
+## 8. Industry Applications
 
 *   **Medical Diagnosis**: Identifying rare physiological patterns in patient data that might be masked if compared globally against the entire hospital population, but clearly anomalous when compared to similar patients.
 *   **Sensor Networks**: Finding a malfunctioning temperature sensor in a server rack. It might be reporting 30°C. 30°C is globally normal for the data center, but if all the neighboring sensors in that specific rack are reporting 15°C, it's a local anomaly.
 
 ---
 
-## 11. What's Next?
+## 9. What's Next?
 
 ### Summary
 Local Outlier Factor (LOF) is a brilliant, density-based solution for finding contextual anomalies. By comparing the density of a point against the density of its neighbors, it elegantly handles datasets where clusters have vastly different sizes and spreads.

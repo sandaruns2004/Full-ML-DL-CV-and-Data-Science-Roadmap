@@ -8,18 +8,12 @@
 1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
 2. [Intuition](#2-intuition)
 3. [Core Mathematics](#3-core-mathematics)
-4. [Visual Explanation](#4-visual-explanation)
-5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-13. [Hands-On Exercises](#13-hands-on-exercises)
-14. [Further Reading](#14-further-reading)
-15. [What's Next?](#15-whats-next)
+4. [Algorithm Workflow](#4-algorithm-workflow)
+5. [Scikit-Learn Implementation](#5-scikit-learn-implementation)
+6. [Hyperparameter Deep Dive](#6-hyperparameter-deep-dive)
+7. [Failure Cases](#7-failure-cases)
+8. [Industry Applications](#8-industry-applications)
+9. [What's Next?](#9-whats-next)
 
 ---
 
@@ -68,7 +62,7 @@ Given a threshold `min_pts`:
 
 ---
 
-## 4. Visual Explanation
+## 4. Algorithm Workflow
 
 ```mermaid
 graph TD
@@ -88,12 +82,6 @@ graph TD
     style H fill:#bf616a,color:#eceff4
 ```
 
-*The recursive cluster expansion logic of DBSCAN.*
-
----
-
-## 5. Algorithm Workflow
-
 1.  Pick an arbitrary unvisited data point $p$.
 2.  Retrieve all points density-reachable from $p$ w.r.t. $\epsilon$ and `min_pts`.
 3.  If $p$ is a core point, a cluster is formed. Recursively expand the cluster by evaluating the $\epsilon$-neighborhood of every newly added point.
@@ -102,70 +90,7 @@ graph TD
 
 ---
 
-## 6. From Scratch Implementation
-
-```python
-import numpy as np
-
-def dbscan_scratch(X, eps, min_pts):
-    labels = np.full(X.shape[0], -1) # -1 implies Noise
-    cluster_id = 0
-    
-    # Precompute pairwise distances
-    distances = np.linalg.norm(X[:, np.newaxis] - X, axis=2)
-    
-    for p in range(X.shape[0]):
-        if labels[p] != -1: # Already visited
-            continue
-            
-        neighbors = np.where(distances[p] <= eps)[0]
-        
-        if len(neighbors) < min_pts:
-            labels[p] = -1 # Noise
-        else:
-            # Found a core point, start new cluster
-            labels[p] = cluster_id
-            
-            # Use a list as a queue to expand cluster
-            i = 0
-            neighbors = list(neighbors)
-            while i < len(neighbors):
-                q = neighbors[i]
-                if labels[q] == -1: # Was noise, now border
-                    labels[q] = cluster_id
-                elif labels[q] == -1 or labels[q] == cluster_id: 
-                    # Note: Scikit-Learn handles this slightly differently via visited arrays
-                    labels[q] = cluster_id
-                    
-                    # If q is also a core point, expand neighbors
-                    q_neighbors = np.where(distances[q] <= eps)[0]
-                    if len(q_neighbors) >= min_pts:
-                        for n in q_neighbors:
-                            if n not in neighbors:
-                                neighbors.append(n)
-                i += 1
-            cluster_id += 1
-            
-    return labels
-```
-
----
-
-## 7. NumPy Implementation
-
-Vectorized distance checks heavily speed up the core point discovery.
-
-```python
-# Finding all core points instantly using NumPy broadcasting
-distances = np.linalg.norm(X[:, np.newaxis] - X, axis=2)
-# Count how many points are within eps for each point
-neighbor_counts = np.sum(distances <= eps, axis=1)
-core_points_mask = neighbor_counts >= min_pts
-```
-
----
-
-## 8. Scikit-Learn Implementation
+## 5. Scikit-Learn Implementation
 
 ```python
 from sklearn.cluster import DBSCAN
@@ -192,7 +117,7 @@ print(f"Estimated number of noise points: {n_noise}")
 
 ---
 
-## 9. Hyperparameter Deep Dive
+## 6. Hyperparameter Deep Dive
 
 DBSCAN is famously difficult to tune because $\epsilon$ acts as a hard boundary.
 
@@ -205,37 +130,14 @@ DBSCAN is famously difficult to tune because $\epsilon$ acts as a hard boundary.
 
 ---
 
-## 10. Visualization Lab
-
-> **Note**: For interactive comparisons between K-Means and DBSCAN on complex shapes, see `notebooks/03-DBSCAN-Lab.ipynb`.
-
-### K-Means vs DBSCAN on the "Moons" Dataset
-Imagine a dataset forming two interlocking semi-circles.
-
-```python
-import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.datasets import make_moons
-
-# X, y = make_moons(n_samples=500, noise=0.05)
-
-# KMeans result: Slices the moons in half vertically!
-# sns.scatterplot(x=X[:,0], y=X[:,1], hue=kmeans.labels_)
-
-# DBSCAN result: Perfectly separates the two intertwined moons.
-# sns.scatterplot(x=X[:,0], y=X[:,1], hue=dbscan.labels_)
-```
-
----
-
-## 11. Failure Cases
+## 7. Failure Cases
 
 1.  **Varying Densities**: This is DBSCAN's Achilles heel. If Cluster A is highly dense and Cluster B is very sparse, no single $\epsilon$ value will work. (To fix this, you must use **HDBSCAN** or **OPTICS**).
 2.  **High Dimensionality**: The Curse of Dimensionality destroys DBSCAN because the concept of "density" and $\epsilon$-neighborhoods becomes meaningless as all points become equidistant.
 
 ---
 
-## 12. Industry Applications
+## 8. Industry Applications
 
 *   **Geospatial Analysis**: Grouping Uber pickup locations or clustering GPS coordinates of crime incidents to identify hotspots.
 *   **Anomaly Detection**: Since DBSCAN explicitly labels points as `-1` (Noise), it is frequently used as an outlier detection system for server traffic or sensor data.
@@ -243,23 +145,7 @@ from sklearn.datasets import make_moons
 
 ---
 
-## 13. Hands-On Exercises
-
-**Easy**: Generate a dataset using `make_circles(factor=0.5, noise=0.05)`. Fit K-Means and DBSCAN on it. Plot both and explain why K-Means fails completely.
-**Medium**: Implement the "k-distance graph" method to programmatically find the optimal $\epsilon$. Use `sklearn.neighbors.NearestNeighbors` to find the distance to the $4$th nearest neighbor for all points, sort the distances, and plot them to find the elbow.
-**Hard**: Modify the From-Scratch implementation to keep track of the *types* of points (Core, Border, Noise) and create a scatter plot where Core points are large and opaque, Border points are small, and Noise points are red X's.
-
----
-
-## 14. Further Reading
-
-*   *Scikit-Learn Documentation*: [DBSCAN](https://scikit-learn.org/stable/modules/clustering.html#dbscan)
-*   *Original Paper*: "A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise" (Ester et al., 1996)
-*   HDBSCAN: The modern, hierarchical successor to DBSCAN.
-
----
-
-## 15. What's Next?
+## 9. What's Next?
 
 ### Summary
 We have conquered DBSCAN, a powerful density-based algorithm. We learned how it uses $\epsilon$-neighborhoods and core points to organically grow clusters into any arbitrary shape, while mathematically rejecting sparse anomalies as noise (`-1`).

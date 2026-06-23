@@ -36,11 +36,11 @@ Here is how data flows through a typical Holdout Validation pipeline:
 
 ```mermaid
 graph TD
-    A[Original Dataset] -->|80%| B[Development Set]
-    A -->|20%| C[Test Set \n LOCKED VAULT]
+    A[Original Dataset] -->|"80%"| B[Development Set]
+    A -->|"20%"| C["Test Set <br/> LOCKED VAULT"]
     
-    B -->|75%| D[Training Set]
-    B -->|25%| E[Validation Set]
+    B -->|"75%"| D[Training Set]
+    B -->|"25%"| E[Validation Set]
     
     D -->|Learn Weights| F[Train Model]
     F -->|Evaluate| E
@@ -49,7 +49,7 @@ graph TD
     E -->|Select Best Model| G[Final Model]
     
     C -->|Evaluate ONE TIME| G
-    G --> H((Production Readiness Score))
+    G --> H(("Production Readiness Score"))
     
     style A fill:#4c566a,color:#eceff4
     style C fill:#bf616a,color:#eceff4

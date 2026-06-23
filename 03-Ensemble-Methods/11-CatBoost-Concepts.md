@@ -10,16 +10,10 @@
 3. [Core Mathematics](#3-core-mathematics)
 4. [Visual Explanation](#4-visual-explanation)
 5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-13. [Interview Preparation](#13-interview-preparation)
-14. [Hands-On Exercises](#14-hands-on-exercises)
-15. [Further Reading](#15-further-reading)
+6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
+7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
+8. [Failure Cases](#8-failure-cases)
+9. [Industry Applications](#9-industry-applications)
 
 ---
 
@@ -104,19 +98,7 @@ flowchart TD
 
 ---
 
-## 6. From Scratch Implementation
-
-*Like LightGBM, CatBoost's magic relies on complex C++ data structures for permutation hashing and bitwise tree evaluation.*
-
----
-
-## 7. NumPy Implementation
-
-*(See section 6).*
-
----
-
-## 8. CatBoost Implementation
+## 6. Scikit-Learn Implementation
 
 *Note: You must `pip install catboost`*
 
@@ -153,7 +135,7 @@ print(f"Accuracy: {accuracy_score(y_test, preds):.4f}")
 
 ---
 
-## 9. Hyperparameter Deep Dive
+## 7. Hyperparameter Deep Dive
 
 One of CatBoost's biggest selling points is that it requires almost no tuning. However, if you must:
 - **`iterations`**: Number of trees. Set high and use early stopping.
@@ -163,22 +145,7 @@ One of CatBoost's biggest selling points is that it requires almost no tuning. H
 
 ---
 
-## 10. Visualization Lab
-
-*CatBoost has incredible built-in plotting.*
-
-```python
-# Assuming 'model' is trained as above, in a Jupyter Notebook:
-model.plot_tree(tree_idx=0)
-
-# To view feature importances:
-importances = model.get_feature_importance()
-print(importances)
-```
-
----
-
-## 11. Failure Cases
+## 8. Failure Cases
 
 **Sparse Data (Text TF-IDF)**
 CatBoost is designed for dense, tabular data with many categorical columns. It performs poorly (and very slowly) on massive, sparse numerical matrices (like word counts). Use LightGBM for that.
@@ -188,41 +155,10 @@ If your dataset has zero categorical features, CatBoost's overhead from Ordered 
 
 ---
 
-## 12. Industry Applications
+## 9. Industry Applications
 
 - **Weather Forecasting**: Yandex heavily uses CatBoost for its weather prediction services, which involve massive amounts of categorical sensor and location data.
 - **Ride-Sharing ETA**: Predicting travel times using categorical features like Day of Week, Weather Status, and Road ID.
-
----
-
-## 13. Interview Preparation
-
-### Beginner
-**Q: Why use CatBoost over XGBoost?**
-> A: If the dataset has many categorical features, CatBoost handles them natively and beautifully without requiring you to manually One-Hot Encode or Target Encode them. It also yields better out-of-the-box performance without hyperparameter tuning.
-
-### Intermediate
-**Q: What is an Oblivious Tree?**
-> A: A perfectly balanced decision tree where the exact same splitting rule is applied to all nodes at a specific depth level. 
-
-### Advanced
-**Q: Explain how CatBoost prevents Target Leakage.**
-> A: It uses "Ordered Boosting" and "Ordered Target Encoding". By randomly shuffling the data and ensuring that row $i$ only ever uses information from rows $1$ through $i-1$, it prevents the model from "seeing into the future" or utilizing its own label during training.
-
----
-
-## 14. Hands-On Exercises
-
-**Easy**: Find a dataset with categorical features. Train a RandomForest using One-Hot Encoding, and a CatBoost using native `cat_features`. Compare the lines of code required and the final accuracy.
-**Medium**: Test CatBoost's default performance. Run CatBoost with default parameters vs XGBoost with default parameters on 3 different tabular datasets. Record the results.
-**Hard**: Implement a rudimentary "Ordered Target Encoder" in pure Pandas for a single categorical column. Shuffle the dataframe, iterate through it, and calculate the mean target of the category using *only* the rows that appeared before the current row.
-
----
-
-## 15. Further Reading
-
-- [CatBoost: unbiased boosting with categorical features (Prokhorenkova et al., 2018)](https://arxiv.org/abs/1706.09516)
-- [Official CatBoost Documentation](https://catboost.ai/en/docs/)
 
 ---
 

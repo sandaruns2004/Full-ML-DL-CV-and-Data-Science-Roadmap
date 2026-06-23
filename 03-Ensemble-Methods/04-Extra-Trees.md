@@ -10,16 +10,10 @@
 3. [Core Mathematics](#3-core-mathematics)
 4. [Visual Explanation](#4-visual-explanation)
 5. [Algorithm Workflow](#5-algorithm-workflow)
-6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn Implementation](#8-scikit-learn-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-13. [Interview Preparation](#13-interview-preparation)
-14. [Hands-On Exercises](#14-hands-on-exercises)
-15. [Further Reading](#15-further-reading)
+6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
+7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
+8. [Failure Cases](#8-failure-cases)
+9. [Industry Applications](#9-industry-applications)
 
 ---
 
@@ -96,50 +90,7 @@ flowchart TD
 
 ---
 
-## 6. From Scratch Implementation
-
-```python
-import numpy as np
-
-class ExtraTreeScratch:
-    def _best_split(self, X, y, features):
-        best_gain, best_feat, best_thresh = -1, None, None
-        parent_gini = self._gini(y)
-        
-        for feat in features:
-            # Random Forest would loop over all thresholds. Extra Trees picks ONE random threshold!
-            f_min, f_max = np.min(X[:, feat]), np.max(X[:, feat])
-            if f_min == f_max: continue
-                
-            thresh = np.random.uniform(f_min, f_max)
-            
-            # Evaluate this random threshold
-            left = y[X[:, feat] <= thresh]
-            right = y[X[:, feat] > thresh]
-            gain = parent_gini - (len(left)/len(y)*self._gini(left) + len(right)/len(y)*self._gini(right))
-            
-            if gain > best_gain:
-                best_gain, best_feat, best_thresh = gain, feat, thresh
-                
-        return best_feat, best_thresh
-```
-
----
-
-## 7. NumPy Implementation
-
-Vectorizing the uniform threshold generation:
-
-```python
-# Assuming X_subset contains only the randomly selected features for a node
-mins = np.min(X_subset, axis=0)
-maxs = np.max(X_subset, axis=0)
-random_thresholds = np.random.uniform(low=mins, high=maxs)
-```
-
----
-
-## 8. Scikit-Learn Implementation
+## 6. Scikit-Learn Implementation
 
 ```python
 from sklearn.ensemble import ExtraTreesClassifier
@@ -159,7 +110,7 @@ print(f"Mean Accuracy: {scores.mean():.4f}")
 
 ---
 
-## 9. Hyperparameter Deep Dive
+## 7. Hyperparameter Deep Dive
 
 - **`bootstrap`**: By default `False`. If set to `True`, it behaves closer to a Random Forest but with random splits.
 - **`max_features`**: Controls variance. Lower values = more variance reduction.
@@ -167,74 +118,17 @@ print(f"Mean Accuracy: {scores.mean():.4f}")
 
 ---
 
-## 10. Visualization Lab
-
-*Run this to compare Random Forest vs Extra Trees decision boundaries.*
-
-```python
-import matplotlib.pyplot as plt
-from sklearn.datasets import make_moons
-from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
-from mlxtend.plotting import plot_decision_regions
-
-X, y = make_moons(n_samples=200, noise=0.25, random_state=42)
-
-rf = RandomForestClassifier(n_estimators=100, random_state=42).fit(X, y)
-et = ExtraTreesClassifier(n_estimators=100, random_state=42).fit(X, y)
-
-fig, ax = plt.subplots(1, 2, figsize=(12, 5))
-plot_decision_regions(X, y, clf=rf, ax=ax[0])
-ax[0].set_title("Random Forest Boundary")
-
-plot_decision_regions(X, y, clf=et, ax=ax[1])
-ax[1].set_title("Extra Trees Boundary (Smoother)")
-plt.show()
-```
-
----
-
-## 11. Failure Cases
+## 8. Failure Cases
 
 **High Bias Scenarios:**
 Because Extra Trees adds so much randomization, it increases bias. If you have an extremely complex deterministic relationship with very little noise, the random thresholds might fail to capture the precise, sharp boundaries needed, leading to underfitting compared to a heavily tuned XGBoost model.
 
 ---
 
-## 12. Industry Applications
+## 9. Industry Applications
 
 - **Insurance Claim Prediction**: Works well on extremely noisy, tabular data with lots of features where strict splits lead to overfitting.
 - **Image Pixel Classification**: Used heavily in early computer vision (e.g., Microsoft Kinect body tracking) because of its blazing fast evaluation speed compared to Random Forest.
-
----
-
-## 13. Interview Preparation
-
-### Beginner
-**Q: What is the main difference between Random Forest and Extra Trees?**
-> A: Random Forest finds the *best* threshold for a split. Extra Trees picks a *random* threshold. 
-
-### Intermediate
-**Q: Why does Extra Trees train faster than Random Forest?**
-> A: Sorting the values of a continuous feature to find the optimal split is computationally expensive. Extra Trees skips the sorting entirely and just rolls a random number between the min and max.
-
-### Advanced
-**Q: Does Extra Trees use bootstrapping?**
-> A: No. By default, it trains every tree on the entire original dataset. Because it uses random thresholds, the trees are naturally uncorrelated, so bootstrapping is unnecessary and would only discard valuable training data.
-
----
-
-## 14. Hands-On Exercises
-
-**Easy**: Train an `ExtraTreesRegressor` and `RandomForestRegressor` on the Boston Housing dataset. Print out the `time` it takes to train both.
-**Medium**: Tune `min_samples_split` for Extra Trees and observe its effect on the testing set.
-**Hard**: Plot the MDI Feature Importances of Extra Trees vs Random Forest. You will notice Extra Trees distributes importance more evenly. Explain why mathematically.
-
----
-
-## 15. Further Reading
-
-- [Original Paper: Extremely randomized trees (Geurts, Ernst, Wehenkel, 2006)](https://link.springer.com/article/10.1007/s10994-006-6226-1)
-- Scikit-Learn Documentation: `sklearn.ensemble.ExtraTreesClassifier`
 
 ---
 

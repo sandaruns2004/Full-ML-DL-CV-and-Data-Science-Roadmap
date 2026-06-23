@@ -63,10 +63,10 @@ Data Leakage occurs when information from outside the training dataset is used t
 ### Visual Explanation
 ```mermaid
 graph LR
-    A[Future Knowledge] -.->|Leaks into| B[Training Data]
+    A[Future Knowledge] -. Leaks into .-> B[Training Data]
     B --> C[Model Training]
-    C --> D[100% Evaluation Accuracy!]
-    D --> E((Catastrophic Production Failure))
+    C --> D["100% Evaluation Accuracy!"]
+    D --> E(("Catastrophic Production Failure"))
     
     style A fill:#bf616a,color:#eceff4
     style E fill:#bf616a,color:#eceff4

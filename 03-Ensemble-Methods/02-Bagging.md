@@ -1,10 +1,6 @@
 # 🎒 Bagging (Bootstrap Aggregating)
 
-> **Prerequisites:** Decision Trees, Bias-Variance Tradeoff, Basic Probability
->
-> **Difficulty:** ⭐⭐☆☆☆
->
-> **Estimated Reading Time:** 25 minutes
+> **Difficulty:** ⭐⭐☆☆☆ Beginner | **Prerequisites:** Decision Trees, Bias-Variance Tradeoff | **Estimated Reading Time:** 25 minutes
 
 ---
 
@@ -16,15 +12,10 @@
 4. [Visual Explanation](#4-visual-explanation)
 5. [Algorithm Workflow](#5-algorithm-workflow)
 6. [From Scratch Implementation](#6-from-scratch-implementation)
-7. [NumPy Implementation](#7-numpy-implementation)
-8. [Scikit-Learn / Library Implementation](#8-scikit-learn--library-implementation)
-9. [Hyperparameter Deep Dive](#9-hyperparameter-deep-dive)
-10. [Visualization Lab](#10-visualization-lab)
-11. [Failure Cases](#11-failure-cases)
-12. [Industry Applications](#12-industry-applications)
-13. [Interview Preparation](#13-interview-preparation)
-14. [Exercises](#14-exercises)
-15. [Further Reading](#15-further-reading)
+7. [Scikit-Learn Implementation](#7-scikit-learn-implementation)
+8. [Hyperparameter Deep Dive](#8-hyperparameter-deep-dive)
+9. [Failure Cases](#9-failure-cases)
+10. [Industry Applications](#10-industry-applications)
 
 ---
 
@@ -67,7 +58,7 @@ However, in Bagging, the models are trained on variations of the same dataset, s
 
 $$\text{Var}_{bagging} = \rho\sigma^2 + \frac{1-\rho}{B}\sigma^2$$
 
-As the number of models $B \to \infty$, the second term approaches 0, leaving the variance bounded by $\rho\sigma^2$. This shows why minimizing correlation between models (which Random Forests take even further) is critical.
+As the number of models $B \to \infty$, the second term approaches 0, leaving the variance bounded by $\rho\sigma^2$. This shows why minimizing correlation between models is critical.
 
 ### Out-of-Bag (OOB) Estimation
 Because we sample *with replacement*, some rows of data are picked multiple times, and some are never picked. 
@@ -165,43 +156,7 @@ class BaggingClassifierFromScratch:
 
 ---
 
-## 7. NumPy Implementation
-
-To optimize the sampling process and predictions for performance using vectorized operations:
-
-```python
-import numpy as np
-from sklearn.tree import DecisionTreeClassifier
-
-class VectorizedBagging:
-    def __init__(self, n_estimators=50):
-        self.n_estimators = n_estimators
-        self.trees = []
-        
-    def fit(self, X, y):
-        n_samples = len(X)
-        
-        # Generate all bootstrap indices at once (Vectorized)
-        bootstrap_indices = np.random.randint(0, n_samples, size=(self.n_estimators, n_samples))
-        
-        for idx in bootstrap_indices:
-            tree = DecisionTreeClassifier(max_depth=None) # Unpruned tree
-            tree.fit(X[idx], y[idx])
-            self.trees.append(tree)
-            
-    def predict(self, X):
-        # Get predictions for all trees (n_estimators x n_samples)
-        tree_preds = np.array([tree.predict(X) for tree in self.trees])
-        
-        # Scipy mode is fast for finding the most frequent value along an axis
-        from scipy.stats import mode
-        final_preds, _ = mode(tree_preds, axis=0, keepdims=False)
-        return final_preds
-```
-
----
-
-## 8. Scikit-Learn / Library Implementation
+## 7. Scikit-Learn Implementation
 
 In production, you should rely on `sklearn.ensemble.BaggingClassifier` or `BaggingRegressor`.
 
@@ -240,7 +195,7 @@ print(f"Test Accuracy: {accuracy_score(y_test, y_pred):.4f}")
 
 ---
 
-## 9. Hyperparameter Deep Dive
+## 8. Hyperparameter Deep Dive
 
 | Parameter | What it does | Default | Best Practices |
 |-----------|--------------|---------|----------------|
@@ -253,49 +208,7 @@ print(f"Test Accuracy: {accuracy_score(y_test, y_pred):.4f}")
 
 ---
 
-## 10. Visualization Lab
-
-Visualizing the difference in Decision Boundaries between a Single Tree and Bagging.
-
-```python
-import matplotlib.pyplot as plt
-from sklearn.datasets import make_moons
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import BaggingClassifier
-from matplotlib.colors import ListedColormap
-
-# Generate complex, noisy data
-X, y = make_moons(n_samples=300, noise=0.3, random_state=42)
-
-# Train models
-tree = DecisionTreeClassifier(random_state=42).fit(X, y)
-bag = BaggingClassifier(estimator=DecisionTreeClassifier(), n_estimators=100, random_state=42).fit(X, y)
-
-# Plotting function
-def plot_boundary(clf, X, y, ax, title):
-    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.01),
-                         np.arange(y_min, y_max, 0.01))
-    
-    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
-    Z = Z.reshape(xx.shape)
-    
-    cmap = ListedColormap(['#FFAAAA', '#AAAAFF'])
-    ax.contourf(xx, yy, Z, alpha=0.3, cmap=cmap)
-    ax.scatter(X[:, 0], X[:, 1], c=y, edgecolors='k', cmap=ListedColormap(['red', 'blue']), s=20)
-    ax.set_title(title)
-
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-plot_boundary(tree, X, y, axes[0], "Single Decision Tree (Overfitting, jagged)")
-plot_boundary(bag, X, y, axes[1], "Bagging Classifier (Smoother, generalized)")
-plt.tight_layout()
-plt.show()
-```
-
----
-
-## 11. Failure Cases
+## 9. Failure Cases
 
 Bagging is powerful, but it has specific scenarios where it fails:
 
@@ -305,52 +218,13 @@ Bagging is powerful, but it has specific scenarios where it fails:
 
 ---
 
-## 12. Industry Applications
+## 10. Industry Applications
 
 While standard Bagging is often superseded by Random Forests or Boosting in modern applications, its principles are still widely used:
 
 * **Customer Retention:** Aggregating predictions from different subsets of customer history to predict churn likelihood with high stability.
 * **Credit Scoring:** Using Bagging to ensure that small fluctuations in a user's financial data don't lead to wild swings in their credit approval status.
 * **Medical Diagnosis:** Reducing the variance of diagnostic models on small clinical trial datasets where standard hold-out testing is impossible (using OOB evaluations instead).
-
----
-
-## 13. Interview Preparation
-
-### Beginner Questions
-* **What does "Bagging" stand for?** 
-  * *Answer:* Bootstrap Aggregating.
-* **Does Bagging reduce Bias or Variance?** 
-  * *Answer:* It primarily reduces Variance by averaging multiple independent predictions.
-
-### Intermediate Questions
-* **What is Bootstrap Sampling?**
-  * *Answer:* Randomly selecting samples from a dataset with replacement, meaning the same data point can be chosen multiple times.
-* **What is the Out-of-Bag (OOB) error?**
-  * *Answer:* Because bootstrap uses replacement, about 36.8% of the data is left out of each model's training set. These left-out samples are passed through the model to calculate a built-in validation error called OOB error.
-
-### Advanced Questions
-* **Why do we use unpruned decision trees in Bagging?**
-  * *Answer:* Unpruned trees have low bias but high variance. Since Bagging's mechanism explicitly reduces variance, combining high-variance/low-bias models results in an ensemble with both low bias and low variance.
-* **If Bagging is so good, why do we need Random Forests?**
-  * *Answer:* In standard Bagging, if there's a very strong feature in the dataset, most trees will use it as the top split, causing the trees to be highly correlated. The variance reduction formula ($\rho\sigma^2$) shows that correlated trees ($\rho > 0$) limit the effectiveness of the ensemble. Random Forests add feature subsetting to force trees to be decorrelated.
-
----
-
-## 14. Exercises
-
-* **Easy:** Load the Iris dataset. Train a single Decision Tree and a Bagging Classifier. Compare their accuracies using `train_test_split`.
-* **Medium:** Recreate the OOB error calculation manually without using the `oob_score=True` flag in sklearn.
-* **Hard:** Modify the "From Scratch" implementation to handle regression tasks instead of classification. 
-* **Challenge:** Prove empirically (via a Python simulation) that exactly ~36.8% of data is left out in a bootstrap sample as $N$ grows large.
-
----
-
-## 15. Further Reading
-
-* [Scikit-Learn Bagging Documentation](https://scikit-learn.org/stable/modules/ensemble.html#bagging)
-* *The Elements of Statistical Learning* (Hastie, Tibshirani, Friedman) - Chapter 8.7 (Bagging)
-* Breiman, L. (1996). Bagging predictors. *Machine Learning*, 24(2), 123-140.
 
 ---
 
