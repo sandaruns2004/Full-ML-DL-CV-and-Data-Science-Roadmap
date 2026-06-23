@@ -110,8 +110,7 @@ A complete, 16-part curriculum covering the entire data science lifecycle, from 
 *   `projects/` (5 mandatory hands-on projects including Sales Data Analysis and End-to-End EDA)
 
 ### [02-Supervised-Learning](./02-Supervised-Learning/README.md) (Beginner → Advanced)
-A world-class, math-heavy, and code-rich breakdown of Supervised Machine Learning algorithms, divided into three phases:
-**Phase 1: Conceptual Mini-Books**
+A world-class, math-heavy, and code-rich breakdown of Supervised Machine Learning algorithms:
 *   `01-Introduction-To-Supervised-Learning.md` (Workflow, Regression vs Classification)
 *   `02-Linear-Regression.md` (Intuition, Math, Cost Function, Workflow)
 *   `03-Polynomial-Regression.md` (Non-linear Relationships, Feature Expansion)
@@ -124,14 +123,8 @@ A world-class, math-heavy, and code-rich breakdown of Supervised Machine Learnin
 *   `10-Regularization.md` (Ridge, Lasso, ElasticNet, Overfitting)
 *   `11-Model-Building-Pipeline.md` (Scikit-Learn Pipelines, Data Leakage Prevention)
 *   `12-Model-Selection-Guide.md` (Algorithm selection heuristics, Bias-Variance Tradeoff)
-
-**Phase 2: Implementation Workshops (`notebooks/`)**
-*   Interactive Jupyter notebooks featuring From-Scratch, NumPy, and Scikit-Learn implementations, complete with visualization labs and hyperparameter experiments.
-
-**Phase 3: Industry Portfolio Projects (`projects/`)**
-*   `01-House-Price-Prediction` (Regression end-to-end architecture)
-*   `02-Customer-Churn-Prediction` (Classification business problem)
-*   `03-Spam-Detection-System` (NLP text classification)
+*   `notebooks/` (Interactive Jupyter notebooks featuring From-Scratch, NumPy, and Scikit-Learn implementations)
+*   `projects/` (5 hands-on projects including House Price Prediction and Spam Detection System)
 
 ### [03-Ensemble-Methods](./03-Ensemble-Methods/README.md) (Beginner → Advanced)
 A complete, math-heavy, and code-rich breakdown of Ensemble Learning algorithms:

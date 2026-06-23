@@ -21,9 +21,9 @@
 10. [Visualization Lab](#10-visualization-lab)
 11. [Failure Cases](#11-failure-cases)
 12. [Industry Applications](#12-industry-applications)
-13. [Interview Preparation](#13-interview-preparation)
+
 14. [Exercises](#14-exercises)
-15. [Further Reading](#15-further-reading)
+
 
 ---
 
@@ -264,22 +264,6 @@ While the sigmoid function handles outliers better than Linear Regression, extre
 
 ---
 
-# 13. Interview Preparation
-
-### Beginner Questions
-**Q: Why do we call it Logistic Regression if it's used for Classification?**
-> A: Because underneath the hood, it is still calculating a continuous regression line ($y = mx + b$), it just squashes that continuous line into a bounded curve (the Logistic function) and thresholds it to make a class prediction.
-
-### Intermediate Questions
-**Q: Why don't we use Mean Squared Error (MSE) for Logistic Regression?**
-> A: Because plugging the non-linear Sigmoid function into the MSE formula results in a "wavy", non-convex cost function with multiple local minimums. Gradient Descent would get stuck. Log Loss guarantees a perfectly convex bowl.
-
-### Advanced Questions
-**Q: What happens to the weights of a Logistic Regression model if the data is *perfectly* linearly separable and there is no regularization?**
-> A: The weights will grow to infinity! To maximize the probability of correct classes to exactly 1.0 and 0.0, the Sigmoid curve needs to become a perfect step-function. The only way to make Sigmoid a perfect step-function is to multiply the inputs by infinitely large weights. This is why Scikit-learn forces L2 regularization (`C=1.0`) by default.
-
----
-
 # 14. Exercises
 
 ### Easy
@@ -293,14 +277,9 @@ Implement **Softmax Regression** (Multinomial Logistic Regression) from scratch 
 
 ---
 
-# 15. Further Reading
 
-- *Pattern Recognition and Machine Learning (Bishop)* - Chapter 4
-- *Hands-On Machine Learning* - Chapter 4 (Logistic Regression section)
-- Scikit-Learn Documentation: `sklearn.linear_model.LogisticRegression`
+[Return to Root Index](../README.md)
 
 ---
 
-[← Previous Chapter (Polynomial Regression)](./03-Polynomial-Regression.md) | [Next Chapter (KNN) →](./05-KNN.md)
-
-[Return to Root Index](../README.md)
+[← Polynomial Regression](03-Polynomial-Regression.md) | [Back to Index](../README.md) | [Next: K-Nearest Neighbors (KNN) →](05-KNN.md)

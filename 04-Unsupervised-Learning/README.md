@@ -2,23 +2,23 @@
 
 Welcome to the ultimate Unsupervised Learning module!
 
-## 📋 Learning Roadmap & Algorithms Covered
+## 📋 Learning Roadmap
 1. Introduction to Unsupervised Learning
 2. K-Means Clustering
 3. Hierarchical Clustering
 4. DBSCAN
 5. Mean Shift
-6. Gaussian Mixture Models (GMM)
-7. Principal Component Analysis (PCA)
+6. Gaussian Mixture Models
+7. Principal Component Analysis
 8. t-SNE
 9. UMAP Introduction
 10. Association Rule Mining
 11. Apriori Algorithm
-12. Anomaly Detection Concepts
+12. Anomaly Detection
 13. Isolation Forest
-14. Local Outlier Factor (LOF)
+14. Local Outlier Factor
 
-## 📊 Visualizations Included (in Notebooks)
+## 📊 Visualizations Included
 - Cluster Scatter Plots & Decision Boundaries
 - Elbow Curves and Silhouette Plots for K-Means
 - Agglomerative Dendrograms
@@ -58,7 +58,6 @@ Below is the file layout of this module:
 - 📄 [12 Anomaly Detection](./12-Anomaly-Detection.md)
 - 📄 [13 Isolation Forest](./13-Isolation-Forest.md)
 - 📄 [14 Local Outlier Factor](./14-Local-Outlier-Factor.md)
-- 📂 [assets/](./assets/)
 - 📂 [notebooks/](./notebooks/)
 - 📂 [projects/](./projects/)
 

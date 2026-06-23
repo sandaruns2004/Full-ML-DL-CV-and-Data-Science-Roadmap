@@ -21,9 +21,9 @@
 10. [Visualization Lab](#10-visualization-lab)
 11. [Failure Cases](#11-failure-cases)
 12. [Industry Applications](#12-industry-applications)
-13. [Interview Preparation](#13-interview-preparation)
+
 14. [Exercises](#14-exercises)
-15. [Further Reading](#15-further-reading)
+
 
 ---
 
@@ -263,22 +263,6 @@ If two features are highly correlated (e.g., "House Area in Sq Ft" and "House Ar
 
 ---
 
-# 13. Interview Preparation
-
-### Beginner Questions
-**Q: What is the difference between Simple and Multiple Linear Regression?**
-> Simple has 1 feature ($y = mx + b$). Multiple has 2 or more features ($y = w_1x_1 + w_2x_2 + b$).
-
-### Intermediate Questions
-**Q: What does an $R^2$ score of 0.85 mean?**
-> It means 85% of the variance in the target variable can be explained by the input features. The remaining 15% is noise or unexplained factors.
-
-### Advanced Questions
-**Q: Why would you ever use Gradient Descent when the Normal Equation gives the exact mathematical answer instantly?**
-> The Normal Equation requires computing the inverse of the matrix $X^T X$, which has a time complexity of roughly $O(n^3)$. If you have 100,000 features, computing the inverse will crash your computer. Gradient descent scales easily to millions of features.
-
----
-
 # 14. Exercises
 
 ### Easy
@@ -295,8 +279,4 @@ Derive the Normal Equation $\theta = (X^T X)^{-1} X^T y$ by taking the matrix de
 
 ---
 
-# 15. Further Reading
-
-- *Hands-On Machine Learning* - Chapter 4
-- *An Introduction to Statistical Learning (ISLR)* - Chapter 3
-- [Andrew Ng's Machine Learning Course (Coursera)](https://www.coursera.org/specializations/machine-learning-introduction)
+[← Introduction to Supervised Learning](01-Introduction-To-Supervised-Learning.md) | [Back to Index](../README.md) | [Next: Polynomial Regression →](03-Polynomial-Regression.md)

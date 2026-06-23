@@ -1,98 +1,194 @@
-# 🗺️ t-SNE (t-Distributed Stochastic Neighbor Embedding)
+# 🌌 t-Distributed Stochastic Neighbor Embedding (t-SNE)
 
-> **Prerequisites**: PCA | **Difficulty**: ⭐⭐⭐⭐☆ Advanced
+> **Difficulty**: ⭐⭐⭐⭐⭐ Expert | **Prerequisites**: PCA, Probability Distributions | **Estimated Reading Time**: 35 Minutes
 
 ---
 
 ## 📋 Table of Contents
-1. [t-SNE Intuition](#1-t-sne-intuition)
-2. [How t-SNE Works (The Mathematics)](#2-how-t-sne-works-the-mathematics)
-3. [Comparing PCA vs t-SNE](#3-comparing-pca-vs-t-sne)
-4. [Mini-Project: PCA + t-SNE Pipeline](#4-mini-project-pca--t-sne-pipeline)
+1. [What Problem Does This Solve?](#1-what-problem-does-this-solve)
+2. [Intuition](#2-intuition)
+3. [Core Mathematics](#3-core-mathematics)
+4. [Visual Explanation](#4-visual-explanation)
+5. [Algorithm Workflow](#5-algorithm-workflow)
+6. [Scikit-Learn Implementation](#6-scikit-learn-implementation)
+7. [Hyperparameter Deep Dive](#7-hyperparameter-deep-dive)
+8. [Visualization Lab](#8-visualization-lab)
+9. [Failure Cases](#9-failure-cases)
+10. [Industry Applications](#10-industry-applications)
+11. [What's Next?](#11-whats-next)
 
 ---
 
-## 1. t-SNE Intuition
+## 1. What Problem Does This Solve?
+
+PCA is a linear algorithm. If your high-dimensional data is twisted up like a ball of yarn, PCA will just squash it flat. It preserves *global* structure (the overall spread of the data) but completely destroys *local* structure (which specific points are close to each other).
+
+**t-SNE** solves the problem of non-linear dimensionality reduction. It takes unbelievably complex, twisted, high-dimensional datasets and maps them down to 2D or 3D while flawlessly preserving local neighborhoods. It is arguably the best algorithm in the world for data visualization.
+
+---
+
+## 2. Intuition
 
 ### 🟢 Beginner
-PCA is a linear technique, meaning it fails on complex, curved structures (like a Swiss Roll). 
-**t-SNE** is non-linear and acts like untangling a crumpled up ball of string. Imagine you have a map of USA cities. You know the driving distance between every pair of cities. t-SNE acts like an artist drawing this map on a flat piece of paper, trying to make sure that cities close in high-dimensional space are close in 2D, and cities far away remain far away, focusing heavily on preserving local neighborhoods.
+Imagine you have a map of the world drawn on a 3D globe. You want to draw it on a flat 2D piece of paper. If you just squash the globe flat (PCA), continents will overlap and tear. 
+Instead, imagine connecting every city on the globe with a rubber band. Close cities have thick, tight rubber bands. Far cities have thin, loose rubber bands. You take all these cities and throw them randomly onto a flat 2D floor. The rubber bands will pull the close cities together and push the far cities apart until they reach a stable, flat map that respects the original relationships.
 
----
-
-## 2. How t-SNE Works (The Mathematics)
+### 🟡 Intermediate
+t-SNE stands for t-Distributed Stochastic Neighbor Embedding. 
+*   **Stochastic Neighbor**: It calculates the probability that point A would pick point B as its neighbor. 
+*   **Embedding**: It tries to find a lower-dimensional embedding (2D/3D map) that has the exact same neighborhood probabilities.
+*   **t-Distributed**: It uses a Student's t-distribution in the low-dimensional space to solve the "Crowding Problem" (preventing points from collapsing into a single dense dot).
 
 ### 🔴 Advanced
-
-#### 2.1 High-Dimensional Commensurate Affinities
-t-SNE converts Euclidean distances between data points $x_i$ and $x_j$ into conditional probabilities $p_{j|i}$ that represent similarity:
-
-$$p_{j|i} = \frac{\exp(-||x_i - x_j||^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-||x_i - x_k||^2 / 2\sigma_i^2)}$$
-
-where $\sigma_i$ is the variance of the Gaussian centered on $x_i$, determined by a user-defined **perplexity** parameter. To handle outliers, we define symmetric joint probabilities:
-
-$$p_{ij} = \frac{p_{j|i} + p_{i|j}}{2N}$$
-
-#### 2.2 Low-Dimensional Student's t-Distribution
-In the low-dimensional map $y_i, y_j$, we compute similarities $q_{ij}$. Instead of a Gaussian, t-SNE uses a **Student's t-distribution** with 1 degree of freedom (equivalent to a Cauchy distribution):
-
-$$q_{ij} = \frac{(1 + ||y_i - y_j||^2)^{-1}}{\sum_{k \neq l} (1 + ||y_k - y_l||^2)^{-1}}$$
-
-*Why Cauchy?* In high dimensions, space volume scales exponentially, causing points to get crowded when projected to 2D (the "crowding problem"). The heavy tails of the Student's t-distribution allow moderately distant points to be mapped much further apart in the 2D space without blowing up the gradients.
-
-#### 2.3 Optimization via KL Divergence
-We position the low-dimensional points $y$ by minimizing the Kullback-Leibler (KL) divergence between $P$ and $Q$ using gradient descent:
-
-$$KL(P || Q) = \sum_{i \neq j} p_{ij} \log \left(\frac{p_{ij}}{q_{ij}}\right)$$
+t-SNE minimizes the Kullback-Leibler (KL) divergence between two probability distributions over pairs of points. $P$ measures pairwise similarities in the high-dimensional space using a Gaussian distribution. $Q$ measures pairwise similarities in the low-dimensional space using a heavy-tailed Student's t-distribution. It uses gradient descent to move the points in the low-dimensional space to minimize this KL divergence.
 
 ---
 
-## 3. Comparing PCA vs t-SNE
+## 3. Core Mathematics
 
-| Feature | PCA | t-SNE |
-| :--- | :--- | :--- |
-| **Type** | Linear | Non-linear |
-| **Preserves** | Global Variance / Distance | Local structure (neighborhoods) |
-| **Speed** | Extremely Fast ($O(D^3)$) | Very Slow ($O(N \log N)$ or $O(N^2)$) |
-| **Transform New Data?**| Yes (`pca.transform(X_new)`) | No (must retrain entirely) |
+### 1. High-Dimensional Affinities (P)
+We define the conditional probability $p_{j|i}$ that point $x_i$ would pick $x_j$ as its neighbor based on a Gaussian centered at $x_i$:
+$$ p_{j|i} = \frac{\exp(-||x_i - x_j||^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-||x_i - x_k||^2 / 2\sigma_i^2)} $$
+We symmetrize this to get the joint probability $p_{ij}$:
+$$ p_{ij} = \frac{p_{j|i} + p_{i|j}}{2N} $$
+
+### 2. Low-Dimensional Affinities (Q)
+In the 2D/3D space, we map $x_i$ to $y_i$. Instead of a Gaussian, we use a Student's t-distribution with 1 degree of freedom (which has heavy tails) to calculate $q_{ij}$:
+$$ q_{ij} = \frac{(1 + ||y_i - y_j||^2)^{-1}}{\sum_{k \neq l} (1 + ||y_k - y_l||^2)^{-1}} $$
+*The heavy tail allows moderately distant points in high-dimensional space to be pushed much further apart in low-dimensional space, solving the crowding problem.*
+
+### 3. Gradient Descent (KL Divergence)
+We minimize the KL Divergence between $P$ and $Q$:
+$$ C = KL(P || Q) = \sum_{i} \sum_{j} p_{ij} \log \frac{p_{ij}}{q_{ij}} $$
+The gradient used to update the 2D points $y_i$ is akin to an N-body physics simulation (attractive and repulsive forces).
 
 ---
 
-## 4. Mini-Project: PCA + t-SNE Pipeline
+## 4. Visual Explanation
 
-t-SNE is computationally expensive for high dimensions. The industry standard pipeline is to **first use PCA to reduce dimensions to ~30-50, and then apply t-SNE to reduce to 2 for visualization**.
-
-```python
-import matplotlib.pyplot as plt
-from sklearn.datasets import load_digits
-from sklearn.decomposition import PCA
-from sklearn.manifold import TSNE
-import time
-
-# 1. Load Digits Dataset (64 dimensions)
-digits = load_digits()
-X, y = digits.data, digits.target
-
-# 2. Step 1: PCA to 30 dimensions
-pca = PCA(n_components=30, random_state=42)
-X_pca = pca.fit_transform(X)
-
-# 3. Step 2: t-SNE down to 2 dimensions
-tsne = TSNE(n_components=2, perplexity=30, n_iter=1000, random_state=42)
-t0 = time.time()
-X_tsne = tsne.fit_transform(X_pca) # We feed it the PCA output
-print(f"t-SNE finished in {time.time() - t0:.2f} seconds.")
-
-# 4. Visualization
-plt.figure(figsize=(10, 8))
-scatter = plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=y, cmap='tab10', s=15, alpha=0.8)
-plt.legend(*scatter.legend_elements(), title="Digits")
-plt.title("PCA + t-SNE Pipeline on Digits", fontsize=14, fontweight='bold')
-plt.axis('off')
-plt.tight_layout()
-plt.show()
+```mermaid
+graph TD
+    A[Compute High-D Probabilities P \n using Gaussian] --> B[Initialize Low-D Points Y randomly]
+    B --> C[Compute Low-D Probabilities Q \n using t-Distribution]
+    C --> D[Calculate KL Divergence between P and Q]
+    D --> E[Compute Gradients]
+    E --> F[Update positions Y \n using Gradient Descent]
+    F --> G{Converged?}
+    G -->|No| C
+    G -->|Yes| H[Final 2D Embedding]
+    
+    style A fill:#4c566a,color:#eceff4
+    style D fill:#bf616a,color:#eceff4
+    style E fill:#81a1c1,color:#2e3440
+    style F fill:#88c0d0,color:#2e3440
 ```
 
 ---
 
-[← Principal Component Analysis (PCA)](07-Principal-Component-Analysis.md) | [Back to Index](../README.md) | [Next: UMAP (Uniform Manifold Approximation and Projection) →](09-UMAP-Introduction.md)
+## 5. Algorithm Workflow
+
+1.  **Pre-processing (Optional but recommended)**: If you have >50 dimensions, use PCA to reduce the data to ~50 dimensions first. This suppresses noise and massively speeds up t-SNE.
+2.  **Calculate $P$**: Calculate pairwise distances in the high-dimensional space.
+3.  **Optimize**: Use gradient descent to arrange the points in 2D space until the map $Q$ perfectly mimics $P$.
+
+*(Note: Because t-SNE relies on complex N-body force gradients, writing it from scratch in pure Python is extremely slow and requires Barnes-Hut approximations ($O(N \log N)$). Therefore, we skip the from-scratch implementation and rely on Scikit-Learn's highly optimized C++ backend).*
+
+---
+
+## 6. Scikit-Learn Implementation
+
+```python
+from sklearn.manifold import TSNE
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+
+# 1. Scale Data
+X_scaled = StandardScaler().fit_transform(X)
+
+# 2. (Optional but Best Practice) PCA down to 50 dimensions first
+pca = PCA(n_components=50)
+X_pca = pca.fit_transform(X_scaled)
+
+# 3. Initialize and Fit t-SNE
+tsne = TSNE(
+    n_components=2, 
+    perplexity=30,      # Balance between local/global structure
+    learning_rate=200, 
+    n_iter=1000, 
+    random_state=42
+)
+X_tsne = tsne.fit_transform(X_pca) # Note: t-SNE does NOT have a .transform() method
+
+print(f"Original shape: {X.shape}")
+print(f"t-SNE shape: {X_tsne.shape}")
+```
+
+---
+
+## 7. Hyperparameter Deep Dive
+
+t-SNE is **extremely** sensitive to hyperparameters. Changing them completely alters the resulting plot.
+
+*   **`perplexity`**: Think of this as a smooth measure of the effective number of neighbors. 
+    *   Typical values: 5 to 50. 
+    *   *Too low (e.g., 2)*: The plot will look like random speckles of tiny clusters. 
+    *   *Too high*: The plot merges into one giant, unstructured blob.
+*   **`n_iter`**: Number of iterations for gradient descent. If the clusters look "pinched" or dense in the center, it probably hasn't converged. Increase to 2000-5000.
+*   **`learning_rate`**: Typically between 10 and 1000. If too high, data looks like a uniform ball. If too low, data is compressed into a tight, dense cloud with few outliers.
+
+---
+
+## 8. Visualization Lab
+
+> **Note**: For incredible, animated visualizations of t-SNE unrolling the MNIST dataset, see `notebooks/06-tSNE-UMAP-Lab.ipynb`.
+
+### The MNIST Dataset (Handwritten Digits)
+When PCA is applied to the 784-pixel MNIST dataset, the digits form a massive overlapping cloud. When t-SNE is applied, it magically separates the digits into 10 perfectly distinct islands, without ever knowing the labels!
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# sns.scatterplot(
+#     x=X_tsne[:, 0], y=X_tsne[:, 1],
+#     hue=y_labels,
+#     palette=sns.color_palette("hls", 10),
+#     legend="full",
+#     alpha=0.6
+# )
+# plt.title("t-SNE Projection of MNIST Digits")
+```
+
+---
+
+## 9. Failure Cases
+
+t-SNE is a visualization tool, NOT a general-purpose dimensionality reduction tool.
+
+1.  **No `transform` method**: You cannot train a t-SNE model on training data and then apply it to test data. It learns an embedding specifically for the points it is given.
+2.  **Distance is Meaningless**: The distance between two distinct clusters in a t-SNE plot means *nothing*. Cluster A might be right next to Cluster B, but in reality, they could be millions of miles apart. t-SNE only guarantees that points *inside* a cluster are close.
+3.  **Size is Meaningless**: A large, spread-out cluster in t-SNE does not mean it has high variance in the original space. t-SNE expands dense clusters and shrinks sparse ones.
+4.  **Computational Complexity**: Even with approximations, it scales terribly beyond 100,000 records.
+
+---
+
+## 10. Industry Applications
+
+*   **Genomics (Single-Cell RNA Sequencing)**: Visualizing millions of cells to identify distinct cell types. t-SNE revolutionized modern biology.
+*   **NLP Word Embeddings**: Taking 300-dimensional Word2Vec or GloVe vectors and mapping them to 2D to see how words cluster by semantic meaning.
+*   **Computer Vision**: Visualizing the internal hidden layers of a Convolutional Neural Network (CNN) to see what features the network is learning.
+
+---
+
+## 11. What's Next?
+
+### Summary
+t-SNE is a masterpiece of non-linear visualization. It uses probability distributions to pull similar points together and push dissimilar points apart, generating stunning 2D islands of data.
+
+### Why it matters
+Before t-SNE, visualizing anything beyond linear PCA was nearly impossible. It allows humans to actually "see" the structure of complex datasets like MNIST, word vectors, and gene sequences.
+
+### Next Topic
+t-SNE is brilliant, but it is slow, it destroys global distances, and it cannot be applied to new test data. What if we could fix all three of these flaws? We will look at **UMAP** (Uniform Manifold Approximation and Projection), the modern successor that has largely dethroned t-SNE in the data science community.
+
+[← Principal Component Analysis](07-Principal-Component-Analysis.md) | [Return to Unsupervised Index](../README.md) | [Next: UMAP →](09-UMAP-Introduction.md)

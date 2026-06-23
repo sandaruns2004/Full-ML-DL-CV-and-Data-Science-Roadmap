@@ -21,9 +21,9 @@
 10. [Visualization Lab](#10-visualization-lab)
 11. [Failure Cases](#11-failure-cases)
 12. [Industry Applications](#12-industry-applications)
-13. [Interview Preparation](#13-interview-preparation)
+
 14. [Exercises](#14-exercises)
-15. [Further Reading](#15-further-reading)
+
 
 ---
 
@@ -256,22 +256,6 @@ Before the Deep Learning era (pre-2012), SVMs were the state-of-the-art for almo
 
 ---
 
-# 13. Interview Preparation
-
-### Beginner Questions
-**Q: Do you need to scale data before using an SVM?**
-> A: YES. It is absolutely mandatory because SVMs calculate geometric distance to define the margin.
-
-### Intermediate Questions
-**Q: Explain the Kernel Trick.**
-> A: It allows the SVM to implicitly calculate the dot product of data points in a highly complex, higher-dimensional space without ever actually transforming the raw data into that space. This saves immense computational power while allowing for non-linear boundaries.
-
-### Advanced Questions
-**Q: Why are SVMs so effective on high-dimensional data (where $P > N$)?**
-> A: Because the decision boundary is determined strictly by the Support Vectors. Even if you have 10,000 features and only 100 samples, the optimization algorithm focuses only on the points lying on the margin, providing inherent regularization against the curse of dimensionality.
-
----
-
 # 14. Exercises
 
 ### Easy
@@ -285,8 +269,4 @@ The Hinge Loss function is defined as $\max(0, 1 - y_i(w^T x_i + b))$. Plot this
 
 ---
 
-# 15. Further Reading
-
-- *Hands-On Machine Learning* - Chapter 5 (Support Vector Machines)
-- *Pattern Recognition and Machine Learning* - Chapter 7 (Sparse Kernel Machines)
-- Scikit-Learn Documentation: `sklearn.svm.SVC`
+[← Decision Trees](06-Decision-Trees.md) | [Back to Index](../README.md) | [Next: Naive Bayes →](08-Naive-Bayes.md)

@@ -21,9 +21,9 @@
 10. [Visualization Lab](#10-visualization-lab)
 11. [Failure Cases](#11-failure-cases)
 12. [Industry Applications](#12-industry-applications)
-13. [Interview Preparation](#13-interview-preparation)
+
 14. [Exercises](#14-exercises)
-15. [Further Reading](#15-further-reading)
+
 
 ---
 
@@ -256,22 +256,6 @@ Decision Trees can only split data with vertical or horizontal lines (orthogonal
 
 ---
 
-# 13. Interview Preparation
-
-### Beginner Questions
-**Q: Do Decision Trees require Feature Scaling (Standardization)?**
-> A: NO! This is a huge advantage. Because they just split on raw values (e.g., `Age > 30`), they don't care about geometric distance or gradient descent. Scaling has zero impact on a Decision Tree.
-
-### Intermediate Questions
-**Q: What is Information Gain?**
-> A: It is the mathematical reduction in impurity (Gini or Entropy) achieved by splitting a node into two children. The algorithm greedily chooses the split with the maximum Information Gain.
-
-### Advanced Questions
-**Q: Explain the difference between pre-pruning and post-pruning.**
-> A: Pre-pruning involves setting hyperparameters like `max_depth` to stop the tree from growing during training. Post-pruning (like Cost Complexity Pruning) lets the tree grow fully, and then iteratively collapses leaves back into branches if they don't provide a statistically significant reduction in error.
-
----
-
 # 14. Exercises
 
 ### Easy
@@ -285,8 +269,4 @@ Decision trees are inherently unstable. Write a script that trains a tree, calcu
 
 ---
 
-# 15. Further Reading
-
-- *Hands-On Machine Learning* - Chapter 6 (Decision Trees)
-- [A Visual Introduction to Machine Learning (R2D3)](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/)
-- Scikit-Learn Documentation: `sklearn.tree.DecisionTreeClassifier`
+[← K-Nearest Neighbors (KNN)](05-KNN.md) | [Back to Index](../README.md) | [Next: Support Vector Machines (SVM) →](07-SVM.md)

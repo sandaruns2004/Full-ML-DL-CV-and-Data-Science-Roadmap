@@ -21,9 +21,9 @@
 10. [Visualization Lab](#10-visualization-lab)
 11. [Failure Cases](#11-failure-cases)
 12. [Industry Applications](#12-industry-applications)
-13. [Interview Preparation](#13-interview-preparation)
+
 14. [Exercises](#14-exercises)
-15. [Further Reading](#15-further-reading)
+
 
 ---
 
@@ -247,22 +247,6 @@ The "Naive" assumption is that features are independent. If you have two highly 
 
 ---
 
-# 13. Interview Preparation
-
-### Beginner Questions
-**Q: Why is it called "Naive"?**
-> A: Because it makes the mathematically "naive" assumption that every single feature is completely independent of every other feature. In reality, words like "San" and "Francisco" are highly dependent.
-
-### Intermediate Questions
-**Q: What is the Zero-Frequency problem and how is it solved?**
-> A: If a feature value did not occur in the training data for a specific class, its probability is 0, which wipes out the entire calculation. It is solved using Laplace Smoothing (adding 1 to all counts).
-
-### Advanced Questions
-**Q: Why do we use the sum of Log Probabilities instead of multiplying the raw probabilities?**
-> A: Multiplying many probabilities (numbers between 0 and 1) results in extremely small numbers. A computer's floating-point architecture will quickly round these to exactly $0.0$ (Underflow). By taking the log, we transform tiny decimals into negative numbers and sum them, preserving the math perfectly.
-
----
-
 # 14. Exercises
 
 ### Easy
@@ -276,7 +260,4 @@ Write a script that scrapes 100 Wikipedia articles from two different categories
 
 ---
 
-# 15. Further Reading
-
-- *Speech and Language Processing (Jurafsky & Martin)* - Chapter 4 (Naive Bayes and Sentiment Classification)
-- Scikit-Learn Documentation: `sklearn.naive_bayes`
+[← Support Vector Machines (SVM)](07-SVM.md) | [Back to Index](../README.md) | [Next: Feature Engineering for Supervised Learning →](09-Feature-Engineering-For-Supervised-Learning.md)

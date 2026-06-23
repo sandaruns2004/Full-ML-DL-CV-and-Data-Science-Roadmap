@@ -21,9 +21,9 @@
 10. [Visualization Lab](#10-visualization-lab)
 11. [Failure Cases](#11-failure-cases)
 12. [Industry Applications](#12-industry-applications)
-13. [Interview Preparation](#13-interview-preparation)
+
 14. [Exercises](#14-exercises)
-15. [Further Reading](#15-further-reading)
+
 
 ---
 
@@ -270,22 +270,6 @@ In spaces with hundreds of dimensions, the distance between any two points conve
 
 ---
 
-# 13. Interview Preparation
-
-### Beginner Questions
-**Q: Why is KNN called a "lazy" algorithm?**
-> A: Because it does absolutely no work during the `.fit()` stage. It simply stores the data in memory. All the heavy computational lifting happens during the `.predict()` stage.
-
-### Intermediate Questions
-**Q: How do you choose the right value for K?**
-> A: You must use Cross-Validation (e.g., `GridSearchCV`) testing various odd numbers. Plotting a Validation Curve will show an elbow where the balance between bias and variance is optimal.
-
-### Advanced Questions
-**Q: How do KD-Trees optimize KNN?**
-> A: Instead of calculating the distance to every single point ($O(N)$), a KD-Tree partitions the feature space into geometric boxes during the `.fit()` phase. During prediction, it traverses the tree to find the correct box in $O(\log N)$ time, bypassing calculations for points in far-away boxes.
-
----
-
 # 14. Exercises
 
 ### Easy
@@ -299,7 +283,4 @@ Implement the `'distance'` weight functionality in the from-scratch implementati
 
 ---
 
-# 15. Further Reading
-
-- *Elements of Statistical Learning* - Chapter 13 (Prototype Methods and Nearest-Neighbors)
-- Scikit-Learn Documentation: `sklearn.neighbors.KNeighborsClassifier`
+[← Logistic Regression](04-Logistic-Regression.md) | [Back to Index](../README.md) | [Next: Decision Trees →](06-Decision-Trees.md)

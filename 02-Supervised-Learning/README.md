@@ -1,48 +1,61 @@
-# 🎯 02: Supervised Learning (World-Class Module)
+# 🎯 02: Supervised Learning
 
-Welcome to the newly upgraded Supervised Learning module! This curriculum is designed to take you from zero knowledge to industry-ready supervised learning skills, matching the rigor of top-tier courses like Stanford CS229 and Andrew Ng's Machine Learning Specialization.
+Welcome to the ultimate Supervised Learning module!
 
-## 📖 Phase 1: Conceptual Mini-Books
-The Markdown files in this directory are deep, textbook-style chapters explaining the intuition, mathematics, and industry applications of each algorithm.
+## 📋 Learning Roadmap
+1. Introduction to Supervised Learning
+2. Linear Regression
+3. Polynomial Regression
+4. Logistic Regression
+5. K-Nearest Neighbors (KNN)
+6. Decision Trees
+7. Support Vector Machines (SVM)
+8. Naive Bayes
+9. Feature Engineering
+10. Regularization
+11. Model Building Pipelines
+12. Model Selection Guide
 
-1. [Introduction to Supervised Learning](./01-Introduction-To-Supervised-Learning.md)
-2. [Linear Regression](./02-Linear-Regression.md)
-3. [Polynomial Regression](./03-Polynomial-Regression.md)
-4. [Logistic Regression](./04-Logistic-Regression.md)
-5. [K-Nearest Neighbors (KNN)](./05-KNN.md)
-6. [Decision Trees](./06-Decision-Trees.md)
-7. [Support Vector Machines (SVM)](./07-Support-Vector-Machines.md)
-8. [Naive Bayes](./08-Naive-Bayes.md)
-9. [Feature Engineering](./09-Feature-Engineering-For-Supervised-Learning.md)
-10. [Regularization](./10-Regularization.md)
-11. [Model Building Pipelines](./11-Model-Building-Pipeline.md)
-12. [Model Selection Guide](./12-Model-Selection-Guide.md)
+## 📊 Visualizations Included
+- Regression Lines & Polynomial Curves
+- Decision Boundaries (KNN, Trees, SVM)
+- Confusion Matrices & ROC Curves
+- Loss & Cost Function Optimization Graphs
+- Model Error Evaluation Plots
 
-## 💻 Phase 2: Implementation Workshops
-The `notebooks/` directory contains hands-on Python workshops. Each notebook contains:
-- Pure Python/NumPy implementations from scratch.
-- Scikit-Learn industry standard workflows.
-- Extensive visualizations of decision boundaries and error curves.
-- Hyperparameter tuning labs.
+## 💻 Mini-Projects Included
+1. **House Price Prediction**: Linear Regression evaluating continuous targets
+2. **Customer Churn Prediction**: Logistic Regression business classification
+3. **Spam Detection System**: Naive Bayes text classification
+4. **Loan Default Prediction**: Logistic Regression financial risk modeling
+5. **Disease Prediction**: Logistic Regression medical screening tool
 
-- `01_Linear_Regression.ipynb`
-- `02_Polynomial_Regression.ipynb`
-- `03_Logistic_Regression.ipynb`
-- `04_Decision_Trees.ipynb`
-- `05_KNN.ipynb`
-- `06_Support_Vector_Machines.ipynb`
-- `07_Naive_Bayes.ipynb`
-- `08_Feature_Engineering.ipynb`
-- `09_Regularization.ipynb`
+## 🛠️ Setup Instructions
+```bash
+pip install -r requirements.txt
+jupyter notebook
+```
 
-## 🏭 Phase 3: Industry Portfolio Projects
-The `projects/` directory contains complete end-to-end industry case studies. Some follow complex standard professional folder structures, while others are condensed into comprehensive standalone `.ipynb` notebooks for easier sharing.
+## 📂 Directory Structure
 
-1. **[House Price Prediction](./projects/01_House_Price_Prediction.ipynb)**: Linear Regression evaluating continuous targets.
-2. **[Customer Churn Prediction](./projects/02_Customer_Churn_Prediction.ipynb)**: Logistic Regression business classification.
-3. **[Spam Detection System](./projects/03_Spam_Detection_System.ipynb)**: Naive Bayes text classification.
-4. **[Loan Default Prediction](./projects/04_Loan_Default_Prediction.ipynb)**: Logistic Regression financial risk modeling.
-5. **[Disease Prediction](./projects/05_Disease_Prediction.ipynb)**: Logistic Regression medical screening tool.
+Below is the file layout of this module:
+
+- 📄 [01 Introduction To Supervised Learning](./01-Introduction-To-Supervised-Learning.md)
+- 📄 [02 Linear Regression](./02-Linear-Regression.md)
+- 📄 [03 Polynomial Regression](./03-Polynomial-Regression.md)
+- 📄 [04 Logistic Regression](./04-Logistic-Regression.md)
+- 📄 [05 KNN](./05-KNN.md)
+- 📄 [06 Decision Trees](./06-Decision-Trees.md)
+- 📄 [07 SVM](./07-SVM.md)
+- 📄 [08 Naive Bayes](./08-Naive-Bayes.md)
+- 📄 [09 Feature Engineering For Supervised Learning](./09-Feature-Engineering-For-Supervised-Learning.md)
+- 📄 [10 Regularization](./10-Regularization.md)
+- 📄 [11 Model Building Pipeline](./11-Model-Building-Pipeline.md)
+- 📄 [12 Model Selection Guide](./12-Model-Selection-Guide.md)
+- 📂 [assets/](./assets/)
+- 📂 [notebooks/](./notebooks/)
+- 📂 [projects/](./projects/)
+
 ---
 
 [← Return to Root Index](../README.md)
