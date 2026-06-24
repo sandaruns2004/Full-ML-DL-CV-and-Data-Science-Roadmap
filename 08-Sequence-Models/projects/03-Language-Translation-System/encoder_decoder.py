@@ -1,0 +1,1 @@
+import torch.nn as nn\n\nclass Encoder(nn.Module):\n    pass\n\nclass AttentionDecoder(nn.Module):\n    pass

@@ -22,11 +22,11 @@ When you test it on a new picture of a dog with a different background, it compl
 ```mermaid
 graph TD
     subgraph The Goal
-        GoodModel[High Training Accuracy + High Testing Accuracy]
+        GoodModel["High Training Accuracy + High Testing Accuracy"]
     end
     
-    subgraph The Reality (Overfitting)
-        BadModel[99.9% Training Accuracy + 40% Testing Accuracy]
+    subgraph "The Reality (Overfitting)"
+        BadModel["99.9% Training Accuracy + 40% Testing Accuracy"]
     end
     
     style GoodModel fill:#10b981,stroke:#047857,color:#fff
@@ -77,7 +77,7 @@ graph LR
         H3 --> Y
     end
     
-    subgraph Network with Dropout (Training Pass 1)
+    subgraph "Network with Dropout (Training Pass 1)"
         X1_d((X₁)) --> H1_d((H₁)) & H3_d((H₃))
         X2_d((X₂)) --> H1_d & H3_d
         H1_d --> Y_d((Y))

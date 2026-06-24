@@ -1,25 +1,28 @@
-# Project 01: Handwritten Digit Recognition
+# 01 - Handwritten Digit Recognition (CNN vs MLP)
 
-> [!NOTE]  
-> Welcome to the "Hello World" of Computer Vision! In this project, you will build your very first Convolutional Neural Network to recognize handwritten digits.
+## 🎯 Objective
+Understand the practical benefits of replacing a standard Multi-Layer Perceptron (MLP) with a Convolutional Neural Network (CNN) when dealing with image data like the MNIST dataset.
 
-## The Goal
-The MNIST dataset contains 70,000 images of handwritten digits (0-9). Your goal is to build a CNN that can accurately predict the number written in a $28 \times 28$ grayscale pixel grid.
+## 🧠 Concepts Covered
+- **Spatial Hierarchies**: Why flattening an image (MLP) loses spatial context.
+- **Convolutional Layers**: Using `nn.Conv2d` to extract local features.
+- **Pooling Layers**: Using `nn.MaxPool2d` for downsampling and translation invariance.
+- **Feature Maps**: Visualizing what the CNN actually "sees".
 
-## Requirements
+## 🚀 Getting Started
+This project focuses on code and architecture rather than a web interface. 
 
-1. **Dataset**: Load the MNIST dataset (built-in to PyTorch/TensorFlow).
-2. **Architecture**: Build a simple CNN with at least:
-   - 2 Convolutional Layers
-   - 2 MaxPooling Layers
-   - ReLU Activations
-   - 1 Fully Connected (Dense) Output Layer
-3. **Training**: Train the model for 5-10 epochs. Track the training and validation loss.
-4. **Evaluation**: Build a simple evaluation dashboard (using Matplotlib) that displays:
-   - The original image.
-   - The model's prediction.
-   - The true label.
-   - A bar chart of the Softmax probabilities for all 10 classes.
+To explore the comparison, open the Jupyter Notebook:
+1. Ensure you have Jupyter installed (`pip install jupyter`).
+2. Navigate to the `notebooks/` directory.
+3. Open `CNN_vs_MLP.ipynb` and step through the cells to train and compare both architectures.
 
-## Bonus Challenge
-Find 5 images where the model makes a mistake. Plot them and try to figure out *why* the model was confused (e.g., a badly drawn `7` that looks like a `1`).
+## 📂 Project Structure
+```
+01-Handwritten-Digit-Recognition/
+│
+├── notebooks/
+│   └── CNN_vs_MLP.ipynb    # Training code & Architecture comparison
+│
+└── README.md
+```

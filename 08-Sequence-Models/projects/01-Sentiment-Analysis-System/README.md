@@ -1,0 +1,1 @@
+# 01 - Sentiment Analysis System\n\nA complete pipeline using an LSTM to classify movie reviews as positive or negative.\n\n## Architecture\n- Vocabulary Embedding\n- Bidirectional LSTM\n- Binary Cross Entropy Loss

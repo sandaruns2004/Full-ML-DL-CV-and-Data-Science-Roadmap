@@ -1,0 +1,1 @@
+# 02 - SMS Spam Detection\n\nUsing a Vanilla RNN to detect spam messages. Focuses on text preprocessing, tokenization, and padding sequences.

@@ -85,17 +85,17 @@ graph LR
     end
     
     subgraph Hidden Layer 1
-        h11((a[1]₁))
-        h12((a[1]₂))
-        h13((a[1]₃))
-        h14((a[1]₄))
+        h11(("a[1]₁"))
+        h12(("a[1]₂"))
+        h13(("a[1]₃"))
+        h14(("a[1]₄"))
     end
     
     subgraph Hidden Layer 2
-        h21((a[2]₁))
-        h22((a[2]₂))
-        h23((a[2]₃))
-        h24((a[2]₄))
+        h21(("a[2]₁"))
+        h22(("a[2]₂"))
+        h23(("a[2]₃"))
+        h24(("a[2]₄"))
     end
     
     subgraph Output Layer

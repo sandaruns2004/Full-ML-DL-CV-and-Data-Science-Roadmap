@@ -1,0 +1,1 @@
+import torch\n\ndef generate_text(model, seed_text, num_words=50):\n    pass

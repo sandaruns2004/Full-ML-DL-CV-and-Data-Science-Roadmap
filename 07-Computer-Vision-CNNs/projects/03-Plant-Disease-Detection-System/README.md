@@ -1,19 +1,38 @@
-# Project 03: Plant Disease Detection System
+# 03 - Plant Disease Detection System
 
-> [!NOTE]  
-> Let's solve a real-world problem. In agriculture, catching crop diseases early can save entire harvests. This project simulates an industry workflow.
+## 🎯 Objective
+Create a multi-class image classification system using Convolutional Neural Networks (CNNs) to identify healthy plants and various plant diseases from leaf images.
 
-## The Goal
-Build a multi-class CNN capable of identifying various plant diseases from images of their leaves.
+## 🧠 Concepts Covered
+- **Multi-Class Classification**: Using `CrossEntropyLoss` for more than 2 categories.
+- **Deeper CNN Architectures**: Stacking more convolution and pooling layers.
+- **Handling Multi-Class Outputs**: Using `softmax` and `torch.max` to extract the winning class prediction and confidence score.
 
-## Requirements
+## 🚀 Getting Started
 
-1. **Dataset**: Use the "PlantVillage" dataset (contains healthy and diseased leaves across multiple crop types like Apple, Corn, and Tomato).
-2. **Architecture Strategy**: 
-   - Choose a modern, efficient architecture (e.g., **EfficientNet-B0**).
-   - Use fine-tuning: Train the classification head first, then unfreeze the top 30% of the network and train with a very low learning rate.
-3. **Class Imbalance**: The dataset may not be perfectly balanced. Implement **Class Weights** in your loss function to penalize misclassifying rare diseases.
-4. **Evaluation**: Because a False Negative (missing a disease) is costly, evaluate your model using a **Confusion Matrix** and calculate **Recall** for the disease classes.
+### 1. Training the Model
+If you have the PlantVillage dataset (or a subset), place it in `../data/plant_village/` with subfolders for each class (e.g., `Apple_Healthy/`, `Apple_Scab/`). 
+If you do not have the dataset, running the script will automatically generate a mock "FakeData" dataset.
+```bash
+cd src/
+python train.py
+```
+This outputs `model.pth` (the weights) and `classes.json` (the list of class names).
 
-## Bonus Challenge
-Use **Grad-CAM** to visualize the predictions. Show a heatmap of a diseased leaf to prove the CNN is actually looking at the spots/lesions on the leaf, and not just the green background.
+### 2. Running the Web App
+We have provided an interactive Streamlit dashboard where you can upload a leaf image to test the model's diagnostic capabilities.
+```bash
+streamlit run app.py
+```
+
+## 📂 Project Structure
+```
+03-Plant-Disease-Detection-System/
+│
+├── src/
+│   ├── train.py          # PyTorch training loop for multi-class CNN
+│   ├── model.pth         # Saved weights (generated after training)
+│   └── classes.json      # Saved class names mapping (generated after training)
+├── app.py                # Streamlit Diagnostic Web App
+└── README.md
+```

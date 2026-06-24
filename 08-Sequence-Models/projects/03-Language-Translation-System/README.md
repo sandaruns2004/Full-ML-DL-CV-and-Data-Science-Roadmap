@@ -1,0 +1,1 @@
+# 03 - Language Translation System\n\nAn Encoder-Decoder (Seq2Seq) model with Attention to translate short sentences.

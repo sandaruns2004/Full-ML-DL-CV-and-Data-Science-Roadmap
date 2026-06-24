@@ -39,7 +39,7 @@ This is almost always caused by using the **Sigmoid** or **Tanh** activation fun
 
 ```mermaid
 graph RL
-    subgraph Layer 5 (Output)
+    subgraph "Layer 5 (Output)"
         L5((Grad: 1.0))
     end
     subgraph Layer 4
@@ -51,7 +51,7 @@ graph RL
     subgraph Layer 2
         L2((Grad: 0.01))
     end
-    subgraph Layer 1 (Input)
+    subgraph "Layer 1 (Input)"
         L1((Grad: 0.00))
     end
     

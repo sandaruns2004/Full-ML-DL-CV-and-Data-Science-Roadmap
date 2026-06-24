@@ -42,12 +42,12 @@ graph LR
         X2((x₂: 8 hrs))
     end
 
-    subgraph Hidden Layer (ReLU)
+    subgraph "Hidden Layer (ReLU)"
         H1((h₁))
         H2((h₂))
     end
 
-    subgraph Output Layer (Sigmoid)
+    subgraph "Output Layer (Sigmoid)"
         Y((ŷ))
     end
 

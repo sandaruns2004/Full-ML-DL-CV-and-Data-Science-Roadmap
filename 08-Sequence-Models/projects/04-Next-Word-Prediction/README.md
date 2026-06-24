@@ -1,0 +1,1 @@
+# 04 - Next Word Prediction\n\nA GRU-based language model trained to predict the next word in a sequence.

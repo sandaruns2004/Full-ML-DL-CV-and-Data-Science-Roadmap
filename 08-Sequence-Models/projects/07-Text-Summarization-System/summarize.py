@@ -1,0 +1,1 @@
+from transformers import pipeline\n\nsummarizer = pipeline('summarization', model='facebook/bart-large-cnn')\nprint('Pipeline ready.')

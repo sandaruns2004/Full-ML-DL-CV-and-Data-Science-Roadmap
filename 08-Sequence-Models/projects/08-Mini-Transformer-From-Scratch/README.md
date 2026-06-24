@@ -1,0 +1,1 @@
+# 08 - Mini Transformer From Scratch\n\nBuilding a complete Transformer Encoder and Decoder in raw PyTorch to understand the matrix math.

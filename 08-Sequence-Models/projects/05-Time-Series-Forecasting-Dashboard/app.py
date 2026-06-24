@@ -1,0 +1,1 @@
+import streamlit as st\nimport pandas as pd\nimport numpy as np\n\nst.title('Multivariate Time Series Forecasting')\nst.line_chart(np.random.randn(100, 3))

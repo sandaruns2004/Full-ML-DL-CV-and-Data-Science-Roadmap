@@ -34,7 +34,7 @@ graph LR
     end
 
     subgraph Output
-        Y((y ∈ {0,1}))
+        Y(("y ∈ {0,1}"))
     end
 
     X1 -- w₁ --> Sum

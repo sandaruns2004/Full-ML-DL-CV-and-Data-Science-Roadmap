@@ -1,22 +1,36 @@
-# Project 02: Cat vs Dog Classifier
+# 02 - Cat vs Dog Classifier
 
-> [!NOTE]  
-> Now that you've built a CNN from scratch, it's time to tackle larger RGB images. This project introduces Transfer Learning and Data Augmentation.
+## 🎯 Objective
+Build a binary image classification system using a custom Convolutional Neural Network (CNN) to distinguish between images of cats and dogs.
 
-## The Goal
-Build a robust binary classifier that can tell the difference between a Cat and a Dog using high-resolution color images.
+## 🧠 Concepts Covered
+- **Custom CNN Architecture**: Building deep networks with multiple `Conv2d` and `MaxPool2d` layers.
+- **Image Augmentation**: Using `torchvision.transforms` to artificially expand the dataset.
+- **Binary Cross Entropy**: Using `BCELoss` with a Sigmoid output for binary classification.
 
-## Requirements
+## 🚀 Getting Started
 
-1. **Dataset**: Download the Kaggle "Dogs vs. Cats" dataset or use the built-in TensorFlow Datasets / PyTorch Torchvision version.
-2. **Transfer Learning**: Do NOT train a CNN from scratch. Instead, load a pre-trained **ResNet-18** or **MobileNetV2**.
-   - Freeze the convolutional base.
-   - Replace the final classification head with a single dense layer (or two) for binary classification.
-3. **Data Augmentation**: Apply the following during training:
-   - Random Horizontal Flips
-   - Random Rotations (up to 20 degrees)
-   - Subtle Color Jitter
-4. **Evaluation**: Achieve a validation accuracy of at least **95%**.
+### 1. Training the Model
+If you have a dataset of Cat and Dog images, place them in `../data/cats_dogs/` (with subfolders `cats/` and `dogs/`).
+If you do not have the dataset, running the script will automatically generate a mock "FakeData" dataset to demonstrate the training loop without crashing.
+```bash
+cd src/
+python train.py
+```
+This will output a `model.pth` weight file.
 
-## Bonus Challenge
-Deploy the model! Write a simple Python script `predict.py` that takes an image path from the command line and outputs `CAT` or `DOG`.
+### 2. Running the Web App
+We have provided an interactive Streamlit dashboard where you can upload an image from your computer to test the model's prediction.
+```bash
+streamlit run app.py
+```
+
+## 📂 Project Structure
+```
+02-Cat-vs-Dog-Classifier/
+│
+├── src/
+│   └── train.py          # PyTorch training loop and CNN architecture
+├── app.py                # Streamlit Web App
+└── README.md
+```

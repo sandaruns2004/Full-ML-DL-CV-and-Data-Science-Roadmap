@@ -1,0 +1,1 @@
+import streamlit as st\n\nst.title('Sentiment Analysis LSTM')\nuser_input = st.text_area('Enter a movie review:')\nif st.button('Analyze'):\n    st.write('Prediction: Positive (Mock)')

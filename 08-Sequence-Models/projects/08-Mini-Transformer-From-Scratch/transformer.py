@@ -1,0 +1,1 @@
+import torch.nn as nn\n\nclass MultiHeadAttention(nn.Module):\n    pass\n\nclass TransformerBlock(nn.Module):\n    pass\n\nclass Transformer(nn.Module):\n    pass

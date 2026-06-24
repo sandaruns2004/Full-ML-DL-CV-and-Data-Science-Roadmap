@@ -1,22 +1,27 @@
-# Project 05: Image Classification Web App
+# 05 - Image Classification Web App
 
-> [!NOTE]  
-> The ultimate portfolio project. A machine learning model is useless if non-technical users cannot interact with it. In this project, you will wrap your CNN in a beautiful web interface.
+## 🎯 Objective
+Deploy a State-of-the-Art (SOTA) pre-trained Deep Learning model (`MobileNetV2`) using PyTorch and Streamlit to classify everyday images into 1000 different categories.
 
-## The Goal
-Build a Streamlit web application where a user can upload an image, and the backend model will classify it and display the results.
+## 🧠 Concepts Covered
+- **Pre-trained Models**: Utilizing `torchvision.models` to leverage weights trained on massive datasets (ImageNet) without needing to train from scratch.
+- **Image Preprocessing**: Using the model's specific `transforms()` to ensure the input image matches the exact normalization and scaling the model expects.
+- **Softmax & Top-K**: Converting raw logits into probabilities and extracting the top 3 most likely classifications using `torch.topk`.
 
-## Requirements
+## 🚀 Getting Started
 
-1. **The Model**: You can use the Cat vs. Dog model from Project 2, or the Plant Disease model from Project 3. Export the trained model to an `.h5` or `.pt` file.
-2. **The App Framework**: Use **Streamlit** (or Gradio/FastAPI if you prefer).
-3. **Features**:
-   - A title and description explaining what the app does.
-   - A file uploader widget (`st.file_uploader`) accepting `.png` and `.jpg` files.
-   - Once uploaded, display the image on the screen.
-   - A "Predict" button.
-   - When clicked, run the inference pipeline (remember to apply the exact same normalizations/resizing used during training!).
-   - Display the predicted class and a bar chart of the confidence scores.
+### Running the Web App
+Because this project uses a pre-trained model downloaded dynamically via PyTorch, there is no custom training script required!
+Just launch the dashboard:
+```bash
+streamlit run app.py
+```
+*Note: The first time you run this, PyTorch will download the MobileNetV2 weights (around 14MB) over your internet connection.*
 
-## Bonus Challenge
-Deploy the app live to the internet using **Streamlit Community Cloud** or **HuggingFace Spaces** so you can share the link on your resume.
+## 📂 Project Structure
+```
+05-Image-Classification-Web-App/
+│
+├── app.py                # Streamlit Universal Classifier Web App
+└── README.md
+```
